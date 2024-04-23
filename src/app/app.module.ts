@@ -8,18 +8,34 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
 import { HomeContentComponent } from './public/components/home/components/home-content/home-content.component';
+import { RoomUpdateComponent } from './execution/components/room-management/room-update.component/room-update.component';
+import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
+import {MatFormField} from "@angular/material/form-field";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    RoomUpdateComponent
   ],
   imports: [
+    MatMenuModule,
+    MatSelectModule,
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
-    MatButtonModule
+    MatButtonModule,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    MatFormField,
+    MatSelect,
+    MatOption
   ],
   providers: [
     provideAnimationsAsync()
