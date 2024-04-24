@@ -8,21 +8,59 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
 import { HomeContentComponent } from './public/components/home/components/home-content/home-content.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerInput} from "@angular/material/datepicker";
+import {MatDatepickerToggle} from "@angular/material/datepicker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {provideNativeDateAdapter} from "@angular/material/core";
+import {DialogOverviewExampleDialog} from "./planning/components/task-creation/components/task-creation.component";
+import {DialogOverviewExample} from "./planning/components/task-creation/components/task-creation.component";
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogModule,
+  MatDialogTitle
+} from "@angular/material/dialog";
+import {FormsModule} from "@angular/forms";
+
+// @ts-ignore
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    DialogOverviewExampleDialog,
+    DialogOverviewExample
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogActions,
+    MatDialogContent,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogModule,
+    FormsModule,
+
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
+
   ],
   bootstrap: [AppComponent]
 })
