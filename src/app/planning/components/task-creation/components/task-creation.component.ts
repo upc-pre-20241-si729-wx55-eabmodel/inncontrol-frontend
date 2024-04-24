@@ -41,7 +41,7 @@ export class DialogOverviewExample {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {name: this.name, animal: this.animal, id: this.id, dueDate: this.dueDate}
+      data: new TaskEntity('', '', '', new Date(), '', new Date(), new Date(), '')
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -61,7 +61,7 @@ export class DialogOverviewExample {
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: TaskEntity,
   ) {}
 
   onNoClick(): void {
