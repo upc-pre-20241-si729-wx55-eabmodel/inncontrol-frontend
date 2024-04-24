@@ -1,2 +1,1 @@
-// some random txt.
-// sdsdsds
+json-server --watch db.json
