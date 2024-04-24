@@ -8,12 +8,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
 import { HomeContentComponent } from './public/components/home/components/home-content/home-content.component';
+import { InventoryContentComponent } from './inventory/components/inventory-content/inventory-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    InventoryContentComponent
   ],
   imports: [
     BrowserModule,
