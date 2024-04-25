@@ -1,56 +1,31 @@
-import {Component, Inject} from '@angular/core';
-import {ItemEntity} from "../../model/item.entity";
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-
-} from '@angular/material/dialog';
-
-
-// @ts-ignore
-@Component({
-  selector: 'app-add-item',
-  templateUrl: './inventory-add-item-button.component.html',
-})
-
-export class addItemButton {
-
-  items: ItemEntity[] = [];
-  selectedItem: ItemEntity | null = null;
-
-  constructor(public dialog: MatDialog) {}
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewItemDialog, {
-      data: new ItemEntity('', '', '',0)
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result) {
-        this.items.push(result);
-        console.log(this.items);
-        this.selectedItem = result;
-      }
-    });
-  }
-
-}
-
+import {Component} from '@angular/core';
+import {Item} from "../../model/item.entity";
+import {MatDialog} from "@angular/material/dialog";
+import {InventoryAddDialogComponent} from "../inventory-add-dialog/inventory-add-dialog.component";
 
 @Component({
-  selector: 'dialog-overview-item-dialog',
-  templateUrl: '../../service/item-dialog.html',
-
+    selector: 'app-inventory-add-item-button',
+    templateUrl: './inventory-add-item-button.component.html',
+    styleUrl: './inventory-add-item-button.component.css'
 })
-export class DialogOverviewItemDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewItemDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: ItemEntity,
-  ) {}
+export class InventoryAddItemButtonComponent {
+    items: Item[] = [];
+    selectedItem: Item | null = null;
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    constructor(private dialog: MatDialog) {
+    }
+
+    openDialog(): void {
+        const dialogRef = this.dialog.open(InventoryAddDialogComponent, {
+            data: new Item('', '', '', 0)
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.items.push(result);
+                console.log(this.items);
+                this.selectedItem = result;
+            }
+        });
+    }
 }
