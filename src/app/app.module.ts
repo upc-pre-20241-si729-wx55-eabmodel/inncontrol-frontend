@@ -10,6 +10,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomeContentComponent } from './public/components/home/components/home-content/home-content.component';
 import { ReportFormComponent } from './interactions/report/components/report-form/report-form.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,11 @@ import {MatCardModule} from "@angular/material/card";
     AppRoutingModule,
     MatCardModule,
     MatToolbar,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelect,
+    MatOption,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()

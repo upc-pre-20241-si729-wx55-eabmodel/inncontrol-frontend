@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-report-form',
@@ -7,23 +8,30 @@ import {Component} from '@angular/core';
 })
 export class ReportFormComponent {
 
+  reportFormGroup: FormGroup;
+
   reportContent: string;
 
   reportSubject: string;
 
   availableReportSubjects: Array<string>;
 
-  constructor() {
-    this.reportContent = '';
+  constructor(private formBuilder: FormBuilder) {
+    this.reportFormGroup = this.formBuilder.group({
+      contentController: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      subjectController: new FormControl('', Validators.required)
+    });    this.reportContent = '';
     this.reportSubject = '';
     this.availableReportSubjects = [
       'Lorem',
-      'Ipsum'
+      'Ipsum',
+      'Other'
     ];
   }
 
-  onChooseReportSubject(reportSubject: string) {
-    this.reportSubject = reportSubject;
+  onChooseReportSubject(reportSubject: any) {
+    this.reportSubject = reportSubject.value;
+    console.log('Report subject: ', this.reportSubject);
   }
 
   onSubmitReport() {
@@ -31,4 +39,6 @@ export class ReportFormComponent {
       console.log('Report submitted');
     }
   }
+
+
 }
