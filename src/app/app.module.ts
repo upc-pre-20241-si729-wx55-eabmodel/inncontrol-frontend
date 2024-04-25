@@ -15,13 +15,14 @@ import {MatOption, MatSelect} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {InventoryContentComponent} from './inventory/components/inventory-content/inventory-content.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
     HomeContentComponent,
-    ReportFormComponent
+    ReportFormComponent,
     InventoryContentComponent
   ],
   imports: [
@@ -34,7 +35,8 @@ import {InventoryContentComponent} from './inventory/components/inventory-conten
     MatSelect,
     MatOption,
     ReactiveFormsModule,
-    MatInput
+    MatInput,
+    HttpClientModule,
   ],
   providers: [
     provideAnimationsAsync()
