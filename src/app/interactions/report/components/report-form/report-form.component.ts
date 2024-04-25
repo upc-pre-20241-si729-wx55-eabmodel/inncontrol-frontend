@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-report-form',
@@ -12,7 +13,7 @@ export class ReportFormComponent {
 
   availableReportSubjects: Array<string>;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
     this.reportFormGroup = this.formBuilder.group({
       description: new FormControl('', [Validators.required, Validators.minLength(10)]),
       subject: new FormControl('', Validators.required)
@@ -25,9 +26,12 @@ export class ReportFormComponent {
   }
 
   onSubmitReport() {
-    console.log('Report submitted');
-    console.log(this.reportFormGroup.value['subject']);
-    console.log(this.reportFormGroup.value['description']);
+    if (this.reportFormGroup.valid) {
+      this._snackBar.open('Report submitted', 'Close', {
+        duration: 2000,
+
+      });
+    }
   }
 
 
