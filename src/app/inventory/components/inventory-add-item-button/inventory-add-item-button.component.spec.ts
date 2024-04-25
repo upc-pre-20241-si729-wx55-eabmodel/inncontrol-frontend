@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {TaskCreator} from './inventory-add-item-button.component';
+import { InventoryAddItemButtonComponent } from './inventory-add-item-button.component';
 
 describe('InventoryAddItemButtonComponent', () => {
-  let component: TaskCreator;
-  let fixture: ComponentFixture<TaskCreator>;
+  let component: InventoryAddItemButtonComponent;
+  let fixture: ComponentFixture<InventoryAddItemButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TaskCreator]
+      declarations: [InventoryAddItemButtonComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(TaskCreator);
+    
+    fixture = TestBed.createComponent(InventoryAddItemButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
