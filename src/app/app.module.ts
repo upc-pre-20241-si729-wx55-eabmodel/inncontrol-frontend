@@ -8,12 +8,16 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
 import { HomeContentComponent } from './public/components/home/components/home-content/home-content.component';
+import { ReportFormComponentComponent } from './interactions/report/components/report-form.component/report-form.component.component';
+import { ReportFormComponent } from './interactions/report/components/report-form/report-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    ReportFormComponentComponent,
+    ReportFormComponent
   ],
   imports: [
     BrowserModule,
