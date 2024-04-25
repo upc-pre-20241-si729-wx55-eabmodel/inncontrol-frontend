@@ -10,18 +10,13 @@ export class ReportFormComponent {
 
   reportFormGroup: FormGroup;
 
-  reportContent: string;
-
-  reportSubject: string;
-
   availableReportSubjects: Array<string>;
 
   constructor(private formBuilder: FormBuilder) {
     this.reportFormGroup = this.formBuilder.group({
-      contentController: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      subjectController: new FormControl('', Validators.required)
-    });    this.reportContent = '';
-    this.reportSubject = '';
+      description: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      subject: new FormControl('', Validators.required)
+    });
     this.availableReportSubjects = [
       'Lorem',
       'Ipsum',
@@ -29,15 +24,10 @@ export class ReportFormComponent {
     ];
   }
 
-  onChooseReportSubject(reportSubject: any) {
-    this.reportSubject = reportSubject.value;
-    console.log('Report subject: ', this.reportSubject);
-  }
-
   onSubmitReport() {
-    if (this.reportContent && this.reportSubject) {
-      console.log('Report submitted');
-    }
+    console.log('Report submitted');
+    console.log(this.reportFormGroup.value['subject']);
+    console.log(this.reportFormGroup.value['description']);
   }
 
 

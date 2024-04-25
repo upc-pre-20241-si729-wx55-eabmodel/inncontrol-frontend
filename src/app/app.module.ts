@@ -13,6 +13,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatInput} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatSelect,
     MatOption,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInput
   ],
   providers: [
     provideAnimationsAsync()
