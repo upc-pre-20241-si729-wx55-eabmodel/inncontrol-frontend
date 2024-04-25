@@ -16,7 +16,7 @@ export class TaskEntity {
     this.completion = 0;
     this.description = description;
     this.dueDate = dueDate;
-    this.status = status;
+    this.status = status || 'pending';
     this.creationDate = creationDate;
     this.updateDate = updateDate;
     this.userId = userId;

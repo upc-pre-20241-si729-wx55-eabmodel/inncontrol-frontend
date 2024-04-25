@@ -16,7 +16,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {DialogOverviewExampleDialog} from "./planning/components/task-creation/components/task-creation.component";
-import {DialogOverviewExample} from "./planning/components/task-creation/components/task-creation.component";
+import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
 import {
   MatDialogActions,
   MatDialogClose,
@@ -34,7 +34,7 @@ import {FormsModule} from "@angular/forms";
     ToolbarContentComponent,
     HomeContentComponent,
     DialogOverviewExampleDialog,
-    DialogOverviewExample
+    TaskCreator
 
 
   ],

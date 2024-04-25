@@ -4,7 +4,11 @@
   <li>
     <button mat-raised-button (click)="openDialog()">Pick one</button>
   </li>
-  @if (dueDate) {
-    <li>DueDate: <em>{{dueDate}}</em></li>
-  }
+  <ng-container *ngIf="selectedTask">
+    <li>DueDate: <em>{{ selectedTask.dueDate | date: 'short' }}</em></li>
+    <li>Name: <em>{{ selectedTask.name }}</em></li>
+    <li>Description: <em>{{ selectedTask.description }}</em></li>
+    <li>Completion: <em>{{ selectedTask.completion }}</em></li>
+    <li>Status: <em>{{ selectedTask.status }}</em></li>
+  </ng-container>
 </ol>

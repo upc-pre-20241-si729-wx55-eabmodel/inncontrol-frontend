@@ -8,19 +8,6 @@ import {
 } from '@angular/material/dialog';
 
 
-export interface DialogData {
-  animal: string;
-  id: string;
-  name: string;
-  completion: number;
-  description: string;
-  dueDate: Date;
-  status: string;
-  creationDate: Date;
-  updateDate: Date;
-  userId: string;
-}
-
 // @ts-ignore
 @Component({
   selector: 'app-task-creation',
@@ -28,14 +15,10 @@ export interface DialogData {
   styleUrl: './task-creation.component.css'
 })
 
-export class DialogOverviewExample {
-  // @ts-ignore
-  animal: string;
-  name: string | undefined;
-  id: string | undefined;
-  dueDate: Date | undefined;
+export class TaskCreator {
 
-
+  tasks: TaskEntity[] = [];
+  selectedTask: TaskEntity | null = null;
 
   constructor(public dialog: MatDialog) {}
 
@@ -46,10 +29,14 @@ export class DialogOverviewExample {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
-      this.dueDate = result;
+      if (result) {
+        this.tasks.push(result);
+        console.log(this.tasks);
+        this.selectedTask = result; // Asignar la tarea seleccionada
+      }
     });
   }
+
 }
 
 
@@ -67,8 +54,4 @@ export class DialogOverviewExampleDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
-}
-
-
-export class TaskCreationComponent {
 }
