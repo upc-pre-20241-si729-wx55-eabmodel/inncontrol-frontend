@@ -29,6 +29,7 @@ export class BaseService<T> {
   private resourcePath() {
     return `${this.basePath}${this.resourceEndpoint}`;
   }
+
   // Create resource
   create(item: any): Observable<T> {
     return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
