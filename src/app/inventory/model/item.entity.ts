@@ -1,4 +1,4 @@
-export class ItemEntity {
+export class Item {
 
   id: string;
   name: string;
