@@ -14,6 +14,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
+import {InventoryContentComponent} from './inventory/components/inventory-content/inventory-content.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {MatInput} from "@angular/material/input";
     ToolbarContentComponent,
     HomeContentComponent,
     ReportFormComponent
+    InventoryContentComponent
   ],
   imports: [
     BrowserModule,
