@@ -1,7 +1,7 @@
-import { ReportEntity } from './report.entity';
+import {Report} from './report.entity';
 
 describe('ReportEntity', () => {
   it('should create an instance', () => {
-    expect(new ReportEntity()).toBeTruthy();
+    expect(new Report(1,'', '')).toBeTruthy();
   });
 });
