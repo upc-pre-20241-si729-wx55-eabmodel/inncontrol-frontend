@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 
 import {Notification} from '../../model/notification-entity';
 import {ThemePalette} from "@angular/material/core";
+import {MatDialog} from "@angular/material/dialog";
+import {NotificationsViewComponent} from "../notifications-view/notifications-view.component";
 
 @Component({
   selector: 'app-notifications-badge',
@@ -9,6 +11,10 @@ import {ThemePalette} from "@angular/material/core";
   styleUrl: './notifications-badge.component.css'
 })
 export class NotificationsBadgeComponent {
+
+  constructor(private dialog: MatDialog) {
+
+  }
 
   notifications: Notification[] = [
     new Notification(new Date(), 'You have a new message', true),
@@ -45,6 +51,16 @@ export class NotificationsBadgeComponent {
   }
 
   onOpenNotifications(): void {
-    console.log('Open notifications');
+    const dialogRef = this.dialog.open(
+      NotificationsViewComponent,
+      {
+        data: this.notifications,
+        autoFocus: false
+      }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      // This is only for testing purposes it´s supposed to set viewed in backend.
+      this.notifications.forEach(notification => notification.viewed = true);
+    });
   }
 }
