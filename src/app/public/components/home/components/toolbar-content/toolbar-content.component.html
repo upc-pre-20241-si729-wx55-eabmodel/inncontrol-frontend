@@ -1,9 +1,16 @@
 <mat-toolbar color="primary">
-  <button mat-button> Inn Control </button>
+  <div class="img-div">
+    <a
+      [routerLink]="['/']"
+    >
+      <img src="assets/img/innControl.svg" alt="innControl" height="40" width="201">
+    </a>
+  </div>
+
   <span class="spacer">
   </span>
-  <a mat-button *ngFor="let option of options"
-     [routerLink]="option.path">
+  <button mat-button *ngFor="let option of options"
+          [routerLink]="option.path">
     {{ option.title }}
-  </a>
+  </button>
 </mat-toolbar>
