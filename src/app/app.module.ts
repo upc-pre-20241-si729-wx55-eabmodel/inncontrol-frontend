@@ -16,13 +16,19 @@ import {MatInput} from "@angular/material/input";
 import {InventoryContentComponent} from './inventory/components/inventory-content/inventory-content.component';
 import {HttpClientModule} from "@angular/common/http";
 import {HomeComponent} from "./public/pages/home/home.component";
-import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
-import { TasksComponent } from './public/pages/tasks/tasks.component';
-import { RoomStateComponent } from './public/pages/room-state/room-state.component';
-import { MessagesComponent } from './public/pages/messages/messages.component';
-import { EmployeesComponent } from './public/pages/employees/employees.component';
-import { SearchContentComponent } from './public/components/home/components/search-content/search-content.component';
+import {PageNotFoundComponent} from './public/pages/page-not-found/page-not-found.component';
+import {TasksComponent} from './public/pages/tasks/tasks.component';
+import {RoomStateComponent} from './public/pages/room-state/room-state.component';
+import {MessagesComponent} from './public/pages/messages/messages.component';
+import {EmployeesComponent} from './public/pages/employees/employees.component';
+import {SearchContentComponent} from './public/components/home/components/search-content/search-content.component';
 import {MatIconModule} from "@angular/material/icon";
+import {
+  NotificationsCardComponent
+} from './monitoring/notifications/components/notifications-card/notifications-card.component';
+import {
+  NotificactionsViewComponent
+} from './monitoring/notifications/components/notificactions-view/notificactions-view.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,9 @@ import {MatIconModule} from "@angular/material/icon";
     RoomStateComponent,
     MessagesComponent,
     EmployeesComponent,
-    SearchContentComponent
+    SearchContentComponent,
+    NotificationsCardComponent,
+    NotificactionsViewComponent
   ],
   imports: [
     BrowserModule,
