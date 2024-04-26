@@ -22,7 +22,7 @@ import {
   MatDialogModule,
   MatDialogTitle
 } from "@angular/material/dialog";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InventoryContentComponent} from "./inventory/components/inventory-content/inventory-content.component";
 import {InventoryAddDialogComponent} from './inventory/components/inventory-add-dialog/inventory-add-dialog.component';
 import { InventoryAddItemButtonComponent } from './inventory/components/inventory-add-item-button/inventory-add-item-button.component';
@@ -55,6 +55,7 @@ import { InventoryAddItemButtonComponent } from './inventory/components/inventor
     MatDialogTitle,
     MatDialogModule,
     FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [
