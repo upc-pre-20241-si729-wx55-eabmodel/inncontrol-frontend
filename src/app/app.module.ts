@@ -7,7 +7,6 @@ import {ToolbarContentComponent} from './public/components/home/components/toolb
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
-import {HomeContentComponent} from './public/components/home/components/home-content/home-content.component';
 import {ReportFormComponent} from './interactions/report/components/report-form/report-form.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -16,14 +15,17 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {InventoryContentComponent} from './inventory/components/inventory-content/inventory-content.component';
 import {HttpClientModule} from "@angular/common/http";
+import {HomeComponent} from "./public/pages/home/home.component";
+import { PageNotFoundComponent } from './public/pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent,
     ReportFormComponent,
-    InventoryContentComponent
+    InventoryContentComponent,
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
