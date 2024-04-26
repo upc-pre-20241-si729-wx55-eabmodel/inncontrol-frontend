@@ -1,12 +1,9 @@
 <mat-toolbar color="primary">
-  <button mat-button>InnControl</button>
+  <button mat-button> Inn Control </button>
   <span class="spacer">
   </span>
-  <div>
-    <button mat-button class="button">Inventory</button>
-    <button mat-button class="button">Tasks</button>
-    <button mat-button class="button">Room States</button>
-    <button mat-button class="button">Messages</button>
-    <button mat-button class="button">Employees</button>
-  </div>
+  <a mat-button *ngFor="let option of options"
+     [routerLink]="option.path">
+    {{ option.title }}
+  </a>
 </mat-toolbar>
