@@ -7,5 +7,12 @@ import {Component, Input} from '@angular/core';
 })
 export class ToolbarContentComponent {
 
-  @Input() options: any[] = [];
+  options = [
+    {title: 'Home', path: '/home'},
+    {title: 'Inventory', path: '/inventory'},
+    {title: 'Tasks', path: '/tasks'},
+    {title: 'Room States', path: '/room-state'},
+    {title: 'Messages', path: '/messages'},
+    {title: 'Employees', path: '/employees'},
+  ];
 }

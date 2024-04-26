@@ -6,9 +6,11 @@
       <img src="assets/img/innControl.svg" alt="innControl" height="40" width="201">
     </a>
   </div>
-
+  <span class="spacer"></span>
+  <app-search-content/>
   <span class="spacer">
   </span>
+
   <button mat-button *ngFor="let option of options"
           [routerLink]="option.path">
     {{ option.title }}

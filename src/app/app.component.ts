@@ -7,7 +7,4 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'inncontrol';
-  options = [
-    {title: 'Home', path: '/home'},
-  ];
 }
