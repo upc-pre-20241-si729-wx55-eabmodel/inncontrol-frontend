@@ -26,9 +26,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {
   NotificationsCardComponent
 } from './monitoring/notifications/components/notifications-card/notifications-card.component';
-import {
-  NotificactionsViewComponent
-} from './monitoring/notifications/components/notificactions-view/notificactions-view.component';
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import { NotificationsViewComponent } from './monitoring/notifications/components/notifications-view/notifications-view.component';
+import { NotificationsBadgeComponent } from './monitoring/notifications/components/notifications-badge/notifications-badge.component';
+import {MatBadge} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {
     EmployeesComponent,
     SearchContentComponent,
     NotificationsCardComponent,
-    NotificactionsViewComponent
+    NotificationsViewComponent,
+    NotificationsBadgeComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,11 @@ import {
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
+    MatBadge,
   ],
   providers: [
     provideAnimationsAsync()
