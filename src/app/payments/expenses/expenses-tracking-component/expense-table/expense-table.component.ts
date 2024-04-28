@@ -2,18 +2,18 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {Expense} from "../../../model/expense.entity";
-
+import {Expense} from "../../model/expense.entity";
 
 @Component({
   selector: 'app-expense-table',
   templateUrl: './expense-table.component.html',
-  styleUrl: './expense-table.component.spec.ts'
+  styleUrl: './expense-table.component.css'
 })
-  export class ExpenseTableComponent implements AfterViewInit {
+export class ExpenseTableComponent implements AfterViewInit {
+
   expenses: Expense[] = [];
-@ViewChild(MatPaginator) paginator!: MatPaginator;
-@ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   displayedColumns: string[] = ['id', 'description', 'company', 'currency'];
   dataSource: MatTableDataSource<Expense>;
   lastId = 0;
@@ -23,12 +23,13 @@ import {Expense} from "../../../model/expense.entity";
 
   }
 
-  expenseCreatedEvent($event: Expense){
+  expenseCreatedEvent($event: Expense) {
     console.log('Task created');
     this.addNewExpense($event); // Pass $event to addNewItem
     this.dataSource._updateChangeSubscription();
 
   }
+
   addNewExpense(newItem: Expense) {
     newItem.id = (++this.lastId).toString(); // Convert the number to a string
     this.expenses.push(newItem);

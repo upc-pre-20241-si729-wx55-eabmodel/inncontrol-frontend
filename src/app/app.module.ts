@@ -24,7 +24,7 @@ import { EmployeesComponent } from './public/pages/employees/employees.component
 import { SearchContentComponent } from './public/components/home/components/search-content/search-content.component';
 import {MatIconModule} from "@angular/material/icon";
 
-import {ExpenseTableComponent} from "./payments/expenses/expenses-tracking-component/expense-table/expense-table/expense-table.component";
+import {ExpenseTableComponent} from "./payments/expenses/expenses-tracking-component/expense-table/expense-table.component";
 import {
   MatCell,
   MatCellDef,

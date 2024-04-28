@@ -11,7 +11,7 @@ describe('ExpenseTableComponent', () => {
       declarations: [ExpenseTableComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ExpenseTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
