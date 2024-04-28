@@ -22,7 +22,7 @@ export class InventoryTableComponent implements AfterViewInit {
 
   }
 
-  itemCreatedevent($event: Item){
+  onItemCreatedEvent($event: Item){
     console.log('Task created');
     this.addNewItem($event); // Pass $event to addNewItem
     this.dataSource._updateChangeSubscription();

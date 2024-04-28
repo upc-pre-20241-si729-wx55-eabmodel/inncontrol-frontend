@@ -26,8 +26,10 @@ import {
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InventoryContentComponent} from "./inventory/components/inventory-content/inventory-content.component";
 import {InventoryAddDialogComponent} from './inventory/components/inventory-add-dialog/inventory-add-dialog.component';
-import { InventoryAddItemButtonComponent } from './inventory/components/inventory-add-item-button/inventory-add-item-button.component';
-import { InventoryTableComponent } from './inventory/components/inventory-table/inventory-table.component';
+import {
+  InventoryAddItemButtonComponent
+} from './inventory/components/inventory-add-item-button/inventory-add-item-button.component';
+import {InventoryTableComponent} from './inventory/components/inventory-table/inventory-table.component';
 import {
   MatCell,
   MatCellDef,
