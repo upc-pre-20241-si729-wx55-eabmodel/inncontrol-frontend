@@ -1,10 +1,3 @@
 <button mat-raised-button (click)="openDialog()" color="primary">Add item
   <i class="material-icons">add</i>
 </button>
-<ol>
-  <ng-container *ngIf="selectedItem">
-    <li>Name: <em>{{ selectedItem.name }}</em></li>
-    <li>Description: <em>{{ selectedItem.description }}</em></li>
-    <li>Quantity: <em>{{ selectedItem.quantity }}</em></li>
-  </ng-container>
-</ol>
