@@ -17,22 +17,25 @@ export class InventoryAddDialogComponent {
     this.reportItemFormGroup = this.formBuilder.group({
       name: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)  // This line ensures a minimum of 2 characters
+        Validators.minLength(2)  // minimum 2 characters
       ]),
       description: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)  // This line ensures a minimum of 2 characters
+        Validators.minLength(2)
       ]),
       quantity: new FormControl(0, [
         Validators.required,
-        Validators.min(0),
-        Validators.pattern("^[0-9]*$")  // This line ensures only numeric input
+        Validators.min(1),
+        Validators.pattern("^[0-9]*$")  //numeric input
       ])
     });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  getReportItemFormGroup(): FormGroup {
+    return this.reportItemFormGroup;
   }
 
   onSubmit(): void {
