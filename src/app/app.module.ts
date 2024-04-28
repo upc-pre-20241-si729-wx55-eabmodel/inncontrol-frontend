@@ -15,6 +15,7 @@ import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
+
 import {
   MatDialogActions,
   MatDialogClose,
@@ -26,6 +27,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InventoryContentComponent} from "./inventory/components/inventory-content/inventory-content.component";
 import {InventoryAddDialogComponent} from './inventory/components/inventory-add-dialog/inventory-add-dialog.component';
 import { InventoryAddItemButtonComponent } from './inventory/components/inventory-add-item-button/inventory-add-item-button.component';
+import { InventoryTableComponent } from './inventory/components/inventory-table/inventory-table.component';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
 
 // @ts-ignore
 
@@ -36,7 +49,8 @@ import { InventoryAddItemButtonComponent } from './inventory/components/inventor
     HomeContentComponent,
     InventoryContentComponent,
     InventoryAddDialogComponent,
-    InventoryAddItemButtonComponent
+    InventoryAddItemButtonComponent,
+    InventoryTableComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +70,21 @@ import { InventoryAddItemButtonComponent } from './inventory/components/inventor
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatSort,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRow,
+    MatRow,
+    MatNoDataRow,
+    MatRowDef,
+    MatPaginator,
+    MatHeaderRowDef,
+    MatSortHeader
+
 
   ],
   providers: [
