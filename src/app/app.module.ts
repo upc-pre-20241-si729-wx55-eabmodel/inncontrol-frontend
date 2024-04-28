@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarContentComponent } from './public/components/home/components/toolbar-content/toolbar-content.component';
@@ -15,7 +14,6 @@ import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
-import {DialogOverviewExampleDialog} from "./planning/components/task-creation/components/task-creation.component";
 import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
 import {
   MatDialogActions,
@@ -24,7 +22,20 @@ import {
   MatDialogModule,
   MatDialogTitle
 } from "@angular/material/dialog";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TaskViewComponent } from './planning/page/task-view/task-view.component';
+import { TaskCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/task-create-dialog.component';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell, MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatNoDataRow,
+  MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 
 // @ts-ignore
 
@@ -33,12 +44,12 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     ToolbarContentComponent,
     HomeContentComponent,
-    DialogOverviewExampleDialog,
-    TaskCreator
-
-
+    TaskCreator,
+    TaskViewComponent,
+    TaskCreateDialogComponent
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
@@ -55,6 +66,21 @@ import {FormsModule} from "@angular/forms";
     MatDialogTitle,
     MatDialogModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatTable,
+    MatPaginator,
+    MatHeaderRow,
+    MatRow,
+    MatCell,
+    MatHeaderCell,
+    MatColumnDef,
+    MatCellDef,
+    MatHeaderCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatNoDataRow,
+    MatSort,
+    MatSortHeader
 
   ],
   providers: [

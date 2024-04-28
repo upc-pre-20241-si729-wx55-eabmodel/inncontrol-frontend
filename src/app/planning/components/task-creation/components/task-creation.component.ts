@@ -3,16 +3,25 @@ import {ItemsEntity} from "../../../../display/components/task-create-dialog/mod
 import {MatDialog} from "@angular/material/dialog";
 import {TaskCreateDialogComponent} from "../../../../display/components/task-create-dialog/task-create-dialog/task-create-dialog.component";
 
+
+
 @Component({
   selector: 'app-task-creation',
   templateUrl: './task-creation.component.html',
   styleUrl: './task-creation.component.css'
 })
+
+
 export class TaskCreator {
+
+
 
   @Output() taskCreated = new EventEmitter<ItemsEntity>();
 
   selectedItem: ItemsEntity | null = null;
+
+  // @ts-ignore
+
 
 
   constructor(private dialog: MatDialog) {
@@ -20,8 +29,14 @@ export class TaskCreator {
 
 
   openDialog(): void {
+
+
+
+
+    // @ts-ignore
     const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
       data: new ItemsEntity('', '', '', 0)
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -34,7 +49,6 @@ export class TaskCreator {
       }
     });
   }
-
 
 
 }

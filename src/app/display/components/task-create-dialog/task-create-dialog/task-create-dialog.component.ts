@@ -13,7 +13,6 @@ export class TaskCreateDialogComponent {
   constructor(private formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ItemsEntity,
-
   ) {
     this.reportItemFormGroup = this.formBuilder.group({
       taskName: new FormControl('', [
@@ -38,7 +37,7 @@ export class TaskCreateDialogComponent {
 
   onSubmit(): void {
     if (this.reportItemFormGroup.valid) {
-      this.data = new ItemsEntity('', this.reportItemFormGroup.value.taskName, this.reportItemFormGroup.value.description, this.reportItemFormGroup.value.quantity);
+      this.data = this.reportItemFormGroup.value;
       this.dialogRef.close(this.data);
     }
   }

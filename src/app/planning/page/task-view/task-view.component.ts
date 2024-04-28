@@ -9,8 +9,13 @@ import {MatSort} from "@angular/material/sort";
   templateUrl: './task-view.component.html',
   styleUrl: './task-view.component.css'
 })
+
+
+
 export class TaskViewComponent implements AfterViewInit{
   items: ItemsEntity[] = [];
+  length: number = this.items.length;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   displayedColumns: string[] = ['id', 'taskName', 'description', 'quantity'];
@@ -18,11 +23,14 @@ export class TaskViewComponent implements AfterViewInit{
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.items);
-
   }
 
   taskCreatedevent($event: ItemsEntity){
     console.log('Task created');
+    this.length++;
+    console.log('Serio '+ this.length);
+    $event.id = this.length.toString();
+    console.log($event);
     this.items.push($event);
     this.dataSource._updateChangeSubscription();
 
