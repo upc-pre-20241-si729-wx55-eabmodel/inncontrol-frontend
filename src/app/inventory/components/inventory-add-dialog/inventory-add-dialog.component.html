@@ -19,7 +19,7 @@
     <br>
     <mat-form-field>
       <mat-label> Quantity</mat-label>
-      <input matInput formControlName="quantity">
+      <input matInput type="number" min="1" formControlName="quantity">
       <mat-error *ngIf="reportItemFormGroup.get('quantity')?.invalid">
         Please enter a valid quantity
       </mat-error>
