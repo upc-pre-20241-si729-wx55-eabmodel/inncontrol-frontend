@@ -5,21 +5,21 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 
 @Component({
-  selector: 'app-task-view',
-  templateUrl: './task-view.component.html',
-  styleUrl: './task-view.component.css'
+  selector: 'app-performance-report',
+  templateUrl: './performance-report.html',
+  styleUrl: './performance-report.css'
 })
 
 
 
-export class TaskViewComponent implements AfterViewInit{
+export class PerformanceReport implements AfterViewInit{
   tasks: TasksEntity[] = [];
 
   length: number = 1;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['id', 'taskName', 'description', 'dueDate', 'status', 'userid', 'creationDate'];
+  displayedColumns: string[] = ['taskName','userid', 'status'];
   dataSource: MatTableDataSource<TasksEntity>;
 
   constructor() {
