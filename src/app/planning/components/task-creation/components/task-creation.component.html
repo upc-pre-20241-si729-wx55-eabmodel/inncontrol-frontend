@@ -1,14 +1,14 @@
-<p>task-creation works!</p>
 
+
+
+<button mat-raised-button (click)="openDialog()" color="primary">Add item
+  <i class="material-icons">add</i>
+</button>
 <ol>
-  <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-  </li>
-  <ng-container *ngIf="selectedTask">
-    <li>DueDate: <em>{{ selectedTask.dueDate | date: 'short' }}</em></li>
-    <li>Name: <em>{{ selectedTask.name }}</em></li>
-    <li>Description: <em>{{ selectedTask.description }}</em></li>
-    <li>Completion: <em>{{ selectedTask.completion }}</em></li>
-    <li>Status: <em>{{ selectedTask.status }}</em></li>
+  <ng-container *ngIf="selectedItem">
+    <li>Name: <em>{{ selectedItem.taskName }}</em></li>
+    <li>Description: <em>{{ selectedItem.description }}</em></li>
+    <li>Quantity: <em>{{ selectedItem.quantity }}</em></li>
   </ng-container>
 </ol>
+

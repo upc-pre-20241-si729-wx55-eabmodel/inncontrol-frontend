@@ -1,57 +1,40 @@
-import {Component, Inject} from '@angular/core';
-import {TaskEntity} from "../models/task.entity";
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
+import {Component, Output, EventEmitter} from '@angular/core';
+import {ItemsEntity} from "../../../../display/components/task-create-dialog/models/items.entity";
+import {MatDialog} from "@angular/material/dialog";
+import {TaskCreateDialogComponent} from "../../../../display/components/task-create-dialog/task-create-dialog/task-create-dialog.component";
 
-} from '@angular/material/dialog';
-
-
-// @ts-ignore
 @Component({
   selector: 'app-task-creation',
   templateUrl: './task-creation.component.html',
   styleUrl: './task-creation.component.css'
 })
-
 export class TaskCreator {
 
-  tasks: TaskEntity[] = [];
-  selectedTask: TaskEntity | null = null;
+  @Output() taskCreated = new EventEmitter<ItemsEntity>();
 
-  constructor(public dialog: MatDialog) {}
+  selectedItem: ItemsEntity | null = null;
+
+
+  constructor(private dialog: MatDialog) {
+  }
+
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: new TaskEntity('', '', '', new Date(), '', new Date(), new Date(), '')
+    const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
+      data: new ItemsEntity('', '', '', 0)
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result) {
-        this.tasks.push(result);
-        console.log(this.tasks);
-        this.selectedTask = result; // Asignar la tarea seleccionada
+
+        console.log(result);
+        this.selectedItem = result;
+        // @ts-ignore
+        this.taskCreated.emit(this.selectedItem);
       }
     });
   }
 
-}
 
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: '../service/task-dialog.html',
-
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: TaskEntity,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }
