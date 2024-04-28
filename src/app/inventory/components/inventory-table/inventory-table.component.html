@@ -1,12 +1,13 @@
 <app-inventory-add-item-button (itemCreated)="onItemCreatedEvent($event)"></app-inventory-add-item-button>
 
 <ng-container>
-  <div class="div">
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. item x" #input>
-  </mat-form-field>
-
+  <div class="div-filter">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. item x" #input>
+    </mat-form-field>
+  </div>
+  <div class="div-table">
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
 

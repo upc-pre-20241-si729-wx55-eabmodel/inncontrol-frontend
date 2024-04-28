@@ -10,7 +10,10 @@
 .td, th {
   width: 25%;
 }
-.div{
+.div-table{
   margin-right: 2rem;
+}
+.div-filter{
   margin-top: 2rem;
+  width: 15%;
 }
