@@ -1,8 +1,7 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import {ItemsEntity} from "../../../../display/components/task-create-dialog/models/items.entity";
+import {TasksEntity} from "../../../../display/components/task-create-dialog/models/tasks.entity";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskCreateDialogComponent} from "../../../../display/components/task-create-dialog/task-create-dialog/task-create-dialog.component";
-
 
 
 @Component({
@@ -16,10 +15,9 @@ export class TaskCreator {
 
 
 
-  @Output() taskCreated = new EventEmitter<ItemsEntity>();
+  @Output() taskCreated = new EventEmitter<TasksEntity>();
 
-  selectedItem: ItemsEntity | null = null;
-
+  selectedItem: TasksEntity | null = null;
   // @ts-ignore
 
 
@@ -35,7 +33,7 @@ export class TaskCreator {
 
     // @ts-ignore
     const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
-      data: new ItemsEntity('', '', '', 0)
+      data: new TasksEntity('', '', '', new Date(), '', new Date(), ''),
 
     });
 

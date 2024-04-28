@@ -1,20 +1,24 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ItemsEntity} from "../models/items.entity";
+import {TasksEntity} from "../models/tasks.entity";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-task-create-dialog',
   templateUrl: './task-create-dialog.component.html',
   styleUrl: './task-create-dialog.component.css'
+
 })
 export class TaskCreateDialogComponent {
-  reportItemFormGroup: FormGroup;
+
+
+
+  TaskItemFormGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ItemsEntity,
+              @Inject(MAT_DIALOG_DATA) public data: TasksEntity,
   ) {
-    this.reportItemFormGroup = this.formBuilder.group({
+    this.TaskItemFormGroup = this.formBuilder.group({
       taskName: new FormControl('', [
         Validators.required,
         Validators.minLength(2)  // This line ensures a minimum of 2 characters
@@ -23,11 +27,25 @@ export class TaskCreateDialogComponent {
         Validators.required,
         Validators.minLength(2)  // This line ensures a minimum of 2 characters
       ]),
-      quantity: new FormControl(null, [
+      dueDate: new FormControl( new Date().getUTCFullYear(), [
         Validators.required,
-        Validators.min(0),
-        Validators.pattern("^[0-9]*$")  // This line ensures only numeric input
-      ])
+      ]),
+      dueTime: new FormControl( '', [
+        Validators.required,
+      ]),
+      status: new FormControl( '', [
+        Validators.required,
+        Validators.pattern('pending|completed|in progress')  // This line ensures the status is one of the three options
+
+      ]),
+      userid: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(10),  // This line ensures a maximum of 10 characters
+        Validators.minLength(2)  // This line ensures a minimum of 2 characters
+      ]),
+
+
+
     });
   }
 
@@ -35,10 +53,39 @@ export class TaskCreateDialogComponent {
     this.dialogRef.close();
   }
 
+
   onSubmit(): void {
-    if (this.reportItemFormGroup.valid) {
-      this.data = this.reportItemFormGroup.value;
+    console.log(this.TaskItemFormGroup.value.dueTime);
+    let date:any = new Date();
+    let part = this.TaskItemFormGroup.value.dueTime.split(":");
+    let hrs = part[0] ;
+    let mins = part[1];
+
+    const formValues = this.TaskItemFormGroup.value;
+
+
+    const selectedData = {
+
+      id: formValues.id,
+      taskName: formValues.taskName,
+      description: formValues.description,
+      dueDate: formValues.dueDate,
+      status: formValues.status,
+      creationDate: new Date(),
+      userId: formValues.userid,
+
+    };
+
+
+    if (this.TaskItemFormGroup.valid) {
+
+
+      date = this.TaskItemFormGroup.value.dueDate;
+      date.setHours(hrs,mins,0);
+
+      this.data = selectedData;
       this.dialogRef.close(this.data);
+    } else {
     }
   }
 }

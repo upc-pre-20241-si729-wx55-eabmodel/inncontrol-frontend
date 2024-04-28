@@ -12,7 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerInput} from "@angular/material/datepicker";
 import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOption} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
 import {
@@ -36,6 +36,11 @@ import {
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
+import {MatIcon} from "@angular/material/icon";
+import {MatSelect} from "@angular/material/select";
+
+
+
 
 // @ts-ignore
 
@@ -49,7 +54,6 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
     TaskCreateDialogComponent
   ],
   imports: [
-
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
@@ -80,7 +84,10 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
     MatRowDef,
     MatNoDataRow,
     MatSort,
-    MatSortHeader
+    MatSortHeader,
+    MatIcon,
+    MatSelect,
+    MatOption
 
   ],
   providers: [
@@ -89,5 +96,11 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
 
   ],
   bootstrap: [AppComponent]
+
+
 })
+
+// timepicker uses these component
+
+
 export class AppModule { }

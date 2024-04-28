@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {ItemsEntity} from "../../../display/components/task-create-dialog/models/items.entity";
+import {TasksEntity} from "../../../display/components/task-create-dialog/models/tasks.entity";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -13,25 +13,29 @@ import {MatSort} from "@angular/material/sort";
 
 
 export class TaskViewComponent implements AfterViewInit{
-  items: ItemsEntity[] = [];
-  length: number = this.items.length;
+  tasks: TasksEntity[] = [];
+
+  length: number = 1;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['id', 'taskName', 'description', 'quantity'];
-  dataSource: MatTableDataSource<ItemsEntity>;
+  displayedColumns: string[] = ['id', 'taskName', 'description', 'dueDate', 'status', 'userid', 'creationDate'];
+  dataSource: MatTableDataSource<TasksEntity>;
 
   constructor() {
-    this.dataSource = new MatTableDataSource(this.items);
+    this.dataSource = new MatTableDataSource(this.tasks);
+    this.tasks.push(new TasksEntity('1', 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
+    length = this.tasks.length;
+    console.log('Serio '+ this.length);
+
   }
 
-  taskCreatedevent($event: ItemsEntity){
+  taskCreatedevent($event: TasksEntity){
     console.log('Task created');
     this.length++;
-    console.log('Serio '+ this.length);
     $event.id = this.length.toString();
     console.log($event);
-    this.items.push($event);
+    this.tasks.push($event);
     this.dataSource._updateChangeSubscription();
 
   }

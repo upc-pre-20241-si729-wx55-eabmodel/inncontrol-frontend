@@ -1,10 +1,10 @@
 <mat-dialog-content>
   <h2 mat-dialog-title>Add Task</h2>
-  <form [formGroup]="reportItemFormGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="TaskItemFormGroup" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Task Name</mat-label>
       <input matInput formControlName="taskName">
-      <mat-error *ngIf="reportItemFormGroup.get('taskName')?.invalid">
+      <mat-error *ngIf="TaskItemFormGroup.get('taskName')?.invalid">
         Please enter a valid name
       </mat-error>
     </mat-form-field>
@@ -12,22 +12,57 @@
     <mat-form-field>
       <mat-label>Description</mat-label>
       <input matInput formControlName="description">
-      <mat-error *ngIf="reportItemFormGroup.get('description')?.invalid">
+      <mat-error *ngIf="TaskItemFormGroup.get('description')?.invalid">
         Please enter a valid description
       </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
-      <mat-label> Quantity</mat-label>
-      <input matInput formControlName="quantity">
-      <mat-error *ngIf="reportItemFormGroup.get('quantity')?.invalid">
-        Please enter a valid quantity
+      <mat-label> Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dueDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="TaskItemFormGroup.get('dueDate')?.invalid">
+        Please enter a valid Date
       </mat-error>
     </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label> Due Time</mat-label>
+        <input matInput type="time" formControlName = "dueTime" placeholder="Data Lezione"/>
+        <mat-datepicker></mat-datepicker>
+      <mat-hint>HH:MM</mat-hint>
+      <mat-error *ngIf="TaskItemFormGroup.get('dueTime')?.invalid">
+        Please enter a valid Time
+      </mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <mat-select formControlName="status">
+        <mat-option  value="pending">pending</mat-option>
+        <mat-option  value="in progress">in progress</mat-option>
+        <mat-option  value="completed">completed</mat-option>
+      </mat-select>
+      <mat-error *ngIf="TaskItemFormGroup.get('status')?.invalid">
+        Please enter a valid Date
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Employee ID</mat-label>
+      <input matInput formControlName="userid">
+      <mat-error *ngIf="TaskItemFormGroup.get('userid')?.invalid">
+        Please enter a valid ID
+      </mat-error>
+    </mat-form-field>
+
     <br>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="onSubmit()" [mat-dialog-close]="data" [disabled]="reportItemFormGroup.invalid">Add</button>
+  <button mat-button (click)="onSubmit()" [mat-dialog-close]="data" [disabled]="TaskItemFormGroup.invalid">Add</button>
 </mat-dialog-actions>
