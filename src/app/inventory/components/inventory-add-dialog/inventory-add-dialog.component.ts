@@ -23,7 +23,7 @@ export class InventoryAddDialogComponent {
         Validators.required,
         Validators.minLength(2)
       ]),
-      quantity: new FormControl(0, [
+      quantity: new FormControl(1, [
         Validators.required,
         Validators.min(1),
         Validators.pattern("^[0-9]*$")  //numeric input
@@ -33,9 +33,6 @@ export class InventoryAddDialogComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
-  }
-  getReportItemFormGroup(): FormGroup {
-    return this.reportItemFormGroup;
   }
 
   onSubmit(): void {
