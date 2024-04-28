@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Notification} from "../../model/notification-entity";
 
 @Component({
   selector: 'app-notifications-card',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './notifications-card.component.css'
 })
 export class NotificationsCardComponent {
+
+  @Input() notification: Notification;
+
+  constructor() {
+    this.notification = {} as Notification;
+  }
 
 }

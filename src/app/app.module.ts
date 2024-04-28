@@ -27,9 +27,15 @@ import {
   NotificationsCardComponent
 } from './monitoring/notifications/components/notifications-card/notifications-card.component';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import { NotificationsViewComponent } from './monitoring/notifications/components/notifications-view/notifications-view.component';
-import { NotificationsBadgeComponent } from './monitoring/notifications/components/notifications-badge/notifications-badge.component';
+import {
+  NotificationsViewComponent
+} from './monitoring/notifications/components/notifications-view/notifications-view.component';
+import {
+  NotificationsBadgeComponent
+} from './monitoring/notifications/components/notifications-badge/notifications-badge.component';
 import {MatBadge} from "@angular/material/badge";
+import {MatProgressBar} from "@angular/material/progress-bar";
+import {MatDivider} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -67,6 +73,8 @@ import {MatBadge} from "@angular/material/badge";
     MatDialogContent,
     MatDialogTitle,
     MatBadge,
+    MatProgressBar,
+    MatDivider,
   ],
   providers: [
     provideAnimationsAsync()
