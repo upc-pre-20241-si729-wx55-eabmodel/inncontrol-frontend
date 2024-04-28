@@ -23,7 +23,7 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { TaskViewComponent } from './planning/page/task-view/task-view.component';
+import { PerformanceReport } from './planning/page/performance-report/performance-report';
 import { TaskCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/task-create-dialog.component';
 import {
   MatCell,
@@ -50,7 +50,7 @@ import {MatSelect} from "@angular/material/select";
     ToolbarContentComponent,
     HomeContentComponent,
     TaskCreator,
-    TaskViewComponent,
+    PerformanceReport,
     TaskCreateDialogComponent
   ],
   imports: [
