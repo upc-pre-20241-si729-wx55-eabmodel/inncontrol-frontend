@@ -63,7 +63,6 @@ export class TaskCreateDialogComponent {
     const formValues = this.TaskItemFormGroup.value;
 
     const selectedData = {
-
       id: formValues.id,
       taskName: formValues.taskName,
       description: formValues.description,
@@ -71,7 +70,6 @@ export class TaskCreateDialogComponent {
       status: formValues.status,
       creationDate: new Date(),
       userId: formValues.userid,
-
     };
 
 

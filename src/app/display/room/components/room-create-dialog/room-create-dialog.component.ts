@@ -4,11 +4,12 @@ import {Room} from "../../model/room.entity";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-task-create-dialog',
+  selector: 'app-room-dialog',
   templateUrl: './room-create-dialog.component.html',
   styleUrls: ['./room-create-dialog.component.css']
 })
 export class RoomCreateDialogComponent {
+
   taskForm: FormGroup;
 
   constructor(
@@ -52,7 +53,9 @@ export class RoomCreateDialogComponent {
     };
 
     if (this.taskForm.valid) {
-      this.dialogRef.close(selectedData);
+      console.log(selectedData);
+      this.data = selectedData;
+      this.dialogRef.close(this.data);
     }
   }
 }

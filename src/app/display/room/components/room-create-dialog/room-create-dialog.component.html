@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <h2 mat-dialog-title>Add Task</h2>
+  <h2 mat-dialog-title>Add Room</h2>
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Room Number</mat-label>
@@ -51,5 +51,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" [disabled]="taskForm.invalid">Add</button>
+  <button mat-button (clicK)="onSubmit()" [mat-dialog-close]="data" [disabled]="taskForm.invalid">Add</button>
 </mat-dialog-actions>

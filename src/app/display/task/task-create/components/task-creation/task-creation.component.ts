@@ -1,9 +1,7 @@
 import {Component, Output, EventEmitter} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {
-  RoomCreateDialogComponent
-} from "../../../../room-create/components/room-create-dialog/room-create-dialog.component";
 import {Task} from "../../model/task.entity";
+import {TaskCreateDialogComponent} from "../task-create-dialog/task-create-dialog.component";
 
 
 @Component({
@@ -22,13 +20,12 @@ export class TaskCreationComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(RoomCreateDialogComponent, {
+    const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
       data: new Task('', '', '', new Date(), '', new Date(), '')
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
         console.log(result);
         this.selectedItem = result;
         // @ts-ignore

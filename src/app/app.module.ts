@@ -17,7 +17,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogModule,
+  MatDialogModule, MatDialogRef,
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -84,8 +84,12 @@ import {TaskTableComponent} from "./display/task/task-table/task-table.component
 import {TaskCreationComponent} from "./display/task/task-create/components/task-creation/task-creation.component";
 import {
   RoomCreateDialogComponent
-} from "./display/room-create/components/room-create-dialog/room-create-dialog.component";
+} from "./display/room/components/room-create-dialog/room-create-dialog.component";
 import {HttpClientModule} from "@angular/common/http";
+import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
+import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
+import {MatMenuModule} from "@angular/material/menu";
+import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +121,10 @@ import {HttpClientModule} from "@angular/common/http";
     TaskContentComponent,
     TaskTableComponent,
     TaskCreationComponent,
-    RoomCreateDialogComponent
+    RoomCreateDialogComponent,
+    RoomUpdateComponent,
+    RoomsReportComponent,
+    RoomCreateButtonComponent
   ],
   imports: [
     HttpClientModule,
@@ -160,6 +167,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatDividerModule,
     MatIconModule,
     MatBadgeModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
   providers: [
     provideAnimationsAsync(),
