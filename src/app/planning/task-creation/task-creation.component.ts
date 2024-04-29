@@ -1,7 +1,7 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import {TasksEntity} from "../../../../display/components/task-create-dialog/models/tasks.entity";
 import {MatDialog} from "@angular/material/dialog";
-import {TaskCreateDialogComponent} from "../../../../display/components/task-create-dialog/task-create-dialog/task-create-dialog.component";
+import {RoomCreateDialogComponent} from "../../display/room-create/components/room-create-dialog/room-create-dialog.component";
+import {Task} from "../../display/task-create/model/task.entity";
 
 
 @Component({
@@ -11,13 +11,11 @@ import {TaskCreateDialogComponent} from "../../../../display/components/task-cre
 })
 
 
-export class TaskCreator {
+export class TaskCreationComponent {
 
+  @Output() taskCreated = new EventEmitter<Task>();
 
-
-  @Output() taskCreated = new EventEmitter<TasksEntity>();
-
-  selectedItem: TasksEntity | null = null;
+  selectedItem: Task | null = null;
   // @ts-ignore
 
 
@@ -32,9 +30,8 @@ export class TaskCreator {
 
 
     // @ts-ignore
-    const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
-      data: new TasksEntity('', '', '', new Date(), '', new Date(), ''),
-
+    const dialogRef = this.dialog.open(RoomCreateDialogComponent, {
+      data: new Task('', '', '', new Date(), '', new Date(), '')
     });
 
     dialogRef.afterClosed().subscribe(result => {

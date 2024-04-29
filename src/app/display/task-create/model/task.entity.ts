@@ -1,4 +1,4 @@
-export class TasksEntity {
+export class Task {
 
   id: string;
   taskName: string;
@@ -7,7 +7,6 @@ export class TasksEntity {
   status: string;
   creationDate: Date;
   userId: string;
-
 
 
   constructor(id: string, taskName: string, description: string, dueDate: Date, status: string, creationDate: Date, userId: string) {
