@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ToolbarContentComponent } from './public/components/home/components/toolbar-content/toolbar-content.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {ToolbarContentComponent} from './public/components/home/components/toolbar-content/toolbar-content.component';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
-import { HomeContentComponent } from './public/components/home/components/home-content/home-content.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerInput} from "@angular/material/datepicker";
@@ -14,7 +13,6 @@ import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule, MatOption} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
-import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
 import {
   MatDialogActions,
   MatDialogClose,
@@ -23,8 +21,6 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { PerformanceReport } from './planning/page/performance-report/performance-report';
-import { TaskCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/task-create-dialog.component';
 import {
   MatCell,
   MatCellDef,
@@ -36,22 +32,81 @@ import {
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
-import {MatIcon} from "@angular/material/icon";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
-
-
-
-
-// @ts-ignore
+import {InventoryContentComponent} from "./supply/inventory/components/inventory-content/inventory-content.component";
+import {
+  InventoryAddDialogComponent
+} from "./supply/inventory/components/inventory-add-dialog/inventory-add-dialog.component";
+import {
+  InventoryAddItemButtonComponent
+} from "./supply/inventory/components/inventory-add-item-button/inventory-add-item-button.component";
+import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
+import {
+  TaskCreateDialogComponent
+} from "./display/task-create/components/task-create-dialog/task-create-dialog.component";
+import {ReportFormComponent} from "./interactions/report/components/report-form/report-form.component";
+import {HomeComponent} from "./public/pages/home/home.component";
+import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
+import {TasksComponent} from "./public/pages/tasks/tasks.component";
+import {RoomStateComponent} from "./public/pages/room-state/room-state.component";
+import {MessagesComponent} from "./public/pages/messages/messages.component";
+import {EmployeesComponent} from "./public/pages/employees/employees.component";
+import {SearchContentComponent} from "./public/components/home/components/search-content/search-content.component";
+import {
+  ExpenseTableComponent
+} from "./payments/expenses/expenses-tracking-component/expense-table/expense-table.component";
+import {
+  ExpenseAddButtonComponent
+} from "./payments/expenses/expenses-tracking-component/expense-add-button/expense-add-button.component";
+import {
+  ExpenseAddDialogComponent
+} from "./payments/expenses/expenses-tracking-component/expense-add-dialog/expense-add-dialog.component";
+import {
+  NotificationsCardComponent
+} from "./monitoring/notifications/components/notifications-card/notifications-card.component";
+import {
+  ExpenseContentComponent
+} from "./payments/expenses/expenses-tracking-component/expense-content/expense-content.component";
+import {
+  NotificationsViewComponent
+} from "./monitoring/notifications/components/notifications-view/notifications-view.component";
+import {
+  NotificationsBadgeComponent
+} from "./monitoring/notifications/components/notifications-badge/notifications-badge.component";
+import {InventoryComponent} from "./public/pages/inventory/inventory.component";
+import {MatCardModule} from "@angular/material/card";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatDivider, MatDividerModule} from "@angular/material/divider";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent,
-    TaskCreator,
-    PerformanceReport,
-    TaskCreateDialogComponent
+    InventoryContentComponent,
+    InventoryAddDialogComponent,
+    InventoryAddItemButtonComponent,
+    InventoryTableComponent,
+    TasksComponent,
+    TaskCreateDialogComponent,
+    ReportFormComponent,
+    InventoryContentComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    TasksComponent,
+    RoomStateComponent,
+    MessagesComponent,
+    EmployeesComponent,
+    SearchContentComponent,
+    ExpenseTableComponent,
+    ExpenseAddButtonComponent,
+    ExpenseAddDialogComponent,
+    ExpenseContentComponent,
+    NotificationsCardComponent,
+    NotificationsViewComponent,
+    NotificationsBadgeComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
@@ -87,20 +142,19 @@ import {MatSelect} from "@angular/material/select";
     MatSortHeader,
     MatIcon,
     MatSelect,
-    MatOption
-
+    MatOption,
+    MatCardModule,
+    MatProgressBarModule,
+    MatDividerModule,
+    MatIconModule,
+    MatBadgeModule,
   ],
   providers: [
     provideAnimationsAsync(),
     provideNativeDateAdapter()
-
   ],
   bootstrap: [AppComponent]
-
-
 })
 
-// timepicker uses these component
-
-
-export class AppModule { }
+export class AppModule {
+}

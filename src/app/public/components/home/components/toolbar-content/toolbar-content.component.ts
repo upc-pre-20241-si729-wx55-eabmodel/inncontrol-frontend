@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class ToolbarContentComponent {
 
   options = [
-    {title: 'Home', path: '/home'},
+    // {title: 'Home', path: '/home'},
     {title: 'Inventory', path: '/inventory'},
     {title: 'Tasks', path: '/tasks'},
     {title: 'Room States', path: '/room-state'},
