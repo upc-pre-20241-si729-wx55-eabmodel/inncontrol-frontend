@@ -9,13 +9,14 @@ import {EmployeesComponent} from "./public/pages/employees/employees.component";
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  // {path: 'home', component: HomeComponent},
   {path: 'tasks', component: TasksComponent},
   {path: 'room-state', component: RoomStateComponent},
   {path: 'messages', component: MessagesComponent},
   {path: 'employees', component: EmployeesComponent},
   {path: 'inventory', component: InventoryComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  // {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'inventory', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
