@@ -44,7 +44,7 @@ import {
 import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
 import {
   TaskCreateDialogComponent
-} from "./display/task-create/components/task-create-dialog/task-create-dialog.component";
+} from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
 import {ReportFormComponent} from "./interactions/report/components/report-form/report-form.component";
 import {HomeComponent} from "./public/pages/home/home.component";
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
@@ -79,6 +79,12 @@ import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatDivider, MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
+import { TaskContentComponent } from './display/task/task-content/task-content.component';
+import {TaskTableComponent} from "./display/task/task-table/task-table.component";
+import {TaskCreationComponent} from "./display/task/task-create/components/task-creation/task-creation.component";
+import {
+  RoomCreateDialogComponent
+} from "./display/room-create/components/room-create-dialog/room-create-dialog.component";
 
 @NgModule({
   declarations: [
@@ -106,7 +112,11 @@ import {MatBadgeModule} from "@angular/material/badge";
     NotificationsCardComponent,
     NotificationsViewComponent,
     NotificationsBadgeComponent,
-    InventoryComponent
+    InventoryComponent,
+    TaskContentComponent,
+    TaskTableComponent,
+    TaskCreationComponent,
+    RoomCreateDialogComponent
   ],
   imports: [
     BrowserModule,

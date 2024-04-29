@@ -2,8 +2,8 @@ import {Component, Output, EventEmitter} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {
   RoomCreateDialogComponent
-} from "../../display/room-create/components/room-create-dialog/room-create-dialog.component";
-import {Task} from "../../display/task-create/model/task.entity";
+} from "../../../../room-create/components/room-create-dialog/room-create-dialog.component";
+import {Task} from "../../model/task.entity";
 
 
 @Component({

@@ -10,10 +10,18 @@
 .td, th {
   width: 25%;
 }
-.div-table{
+
+.div-table {
   margin-right: 2rem;
 }
-.div-filter{
-  margin-top: 2rem;
+
+.div-filter {
+  margin-left: 10px;
   width: 15%;
+}
+
+.inventory-main-actions {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }

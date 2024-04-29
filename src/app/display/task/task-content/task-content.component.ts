@@ -1,29 +1,28 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
-import {Task} from "../../display/task/task-create/model/task.entity";
+import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
+import {Task} from "../task-create/model/task.entity";
 
 @Component({
-  selector: 'app-performance-report',
-  templateUrl: './performance-report.component.html',
-  styleUrl: './performance-report.component.css'
+  selector: 'app-task-content',
+  templateUrl: './task-content.component.html',
+  styleUrl: './task-content.component.css'
 })
-export class PerformanceReportComponent implements AfterViewInit {
+export class TaskContentComponent implements AfterViewInit {
   tasks: Task[] = [];
 
   length: number = 1;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['taskName', 'userid', 'status'];
+  displayedColumns: string[] = ['id', 'taskName', 'description', 'dueDate', 'status', 'userid', 'creationDate'];
   dataSource: MatTableDataSource<Task>;
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.tasks);
     this.tasks.push(new Task('1', 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
     length = this.tasks.length;
-    console.log('Serio ' + this.length);
   }
 
   onTaskCreatedEvent($event: Task) {
@@ -51,4 +50,3 @@ export class PerformanceReportComponent implements AfterViewInit {
   }
 
 }
-
