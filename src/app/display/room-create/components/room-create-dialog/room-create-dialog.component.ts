@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { RoomEntity } from "../models/room.entity";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Room} from "../../model/room.entity";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-task-create-dialog',
@@ -14,7 +14,7 @@ export class RoomCreateDialogComponent {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<RoomCreateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: RoomEntity
+    @Inject(MAT_DIALOG_DATA) public data: Room
   ) {
     this.taskForm = this.formBuilder.group({
       roomNumber: new FormControl('', [
@@ -43,7 +43,7 @@ export class RoomCreateDialogComponent {
 
   onSubmit(): void {
     const formValues = this.taskForm.value;
-    const selectedData: RoomEntity = {
+    const selectedData: Room = {
       id: '',
       roomNumber: formValues.roomNumber,
       guest: formValues.guest,

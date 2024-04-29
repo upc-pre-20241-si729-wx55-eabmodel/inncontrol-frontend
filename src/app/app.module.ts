@@ -22,8 +22,8 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RoomsReportComponent } from './planning/page/performance-report/rooms-report.component';
-import { RoomCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/room-create-dialog.component';
+import { RoomsReportComponent } from './planning/rooms-report/rooms-report.component';
+import { RoomCreateDialogComponent } from './display/room-create/components/room-create-dialog/room-create-dialog.component';
 import {
   MatCell,
   MatCellDef,
@@ -37,7 +37,11 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {MatIcon} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
-import {RoomCreationComponent} from "./planning/components/task-creation/components/room-creation.component";
+import {TaskCreationComponent} from "./planning/task-creation/task-creation.component";
+import { TaskCreateDialogComponent } from './display/task-create/components/task-create-dialog/task-create-dialog.component';
+import { PerformanceReportComponent } from './planning/performance-report/performance-report.component';
+import { RoomCreateComponent } from './display/room-create/components/room-create/room-create.component';
+import { TaskCreateComponent } from './display/task-create/components/task-create/task-create.component';
 
 
 
@@ -51,7 +55,11 @@ import {RoomCreationComponent} from "./planning/components/task-creation/compone
     HomeContentComponent,
     RoomsReportComponent,
     RoomCreateDialogComponent,
-    RoomCreationComponent
+    TaskCreationComponent,
+    TaskCreateDialogComponent,
+    PerformanceReportComponent,
+    RoomCreateComponent,
+    TaskCreateComponent
   ],
   imports: [
     BrowserModule,

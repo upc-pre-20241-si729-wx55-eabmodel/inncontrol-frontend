@@ -1,8 +1,8 @@
-import { RoomEntity } from './room.entity';
+import { Room } from './room.entity';
 
 describe('ItemsEntity', () => {
   it('should create an instance', () => {
     // @ts-ignore
-    expect(new RoomEntity()).toBeTruthy();
+    expect(new Room()).toBeTruthy();
   });
 });

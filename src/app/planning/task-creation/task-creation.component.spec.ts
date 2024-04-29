@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 //@ts-ignore
-import { TaskCreationComponent } from './room-creation.component';
+import { TaskCreationComponent } from './task-creation.component';
 
 describe('TaskCreationComponent', () => {
   let component: TaskCreationComponent;

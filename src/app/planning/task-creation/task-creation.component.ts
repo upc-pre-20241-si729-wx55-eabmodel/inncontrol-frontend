@@ -1,23 +1,21 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import {RoomEntity} from "../../../../display/components/task-create-dialog/models/room.entity";
 import {MatDialog} from "@angular/material/dialog";
-import {RoomCreateDialogComponent} from "../../../../display/components/task-create-dialog/task-create-dialog/room-create-dialog.component";
+import {RoomCreateDialogComponent} from "../../display/room-create/components/room-create-dialog/room-create-dialog.component";
+import {Task} from "../../display/task-create/model/task.entity";
 
 
 @Component({
   selector: 'app-task-creation',
-  templateUrl: './room-creation.component.html',
-  styleUrl: './room-creation.component.css'
+  templateUrl: './task-creation.component.html',
+  styleUrl: './task-creation.component.css'
 })
 
 
-export class RoomCreationComponent {
+export class TaskCreationComponent {
 
+  @Output() taskCreated = new EventEmitter<Task>();
 
-
-  @Output() taskCreated = new EventEmitter<RoomEntity>();
-
-  selectedItem: RoomEntity | null = null;
+  selectedItem: Task | null = null;
   // @ts-ignore
 
 
@@ -33,7 +31,7 @@ export class RoomCreationComponent {
 
     // @ts-ignore
     const dialogRef = this.dialog.open(RoomCreateDialogComponent, {
-      data: new RoomEntity('', 0, '', '', new Date())
+      data: new Task('', '', '', new Date(), '', new Date(), '')
     });
 
     dialogRef.afterClosed().subscribe(result => {

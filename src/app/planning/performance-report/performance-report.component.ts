@@ -1,37 +1,40 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { RoomEntity } from '../../../display/components/task-create-dialog/models/room.entity';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
+import {MatTableDataSource} from "@angular/material/table";
+import {Task} from "../../display/task-create/model/task.entity";
 
 @Component({
   selector: 'app-performance-report',
-  templateUrl: './rooms-report.component.html',
-  styleUrls: ['./rooms-report.component.css']
+  templateUrl: './performance-report.component.html',
+  styleUrl: './performance-report.component.css'
 })
-export class RoomsReportComponent implements AfterViewInit {
-  tasks: RoomEntity[] = [];
+export class PerformanceReportComponent implements AfterViewInit {
+  tasks: Task[] = [];
+
   length: number = 1;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['roomNumber', 'guest', 'state', 'reservation'];
-  dataSource: MatTableDataSource<RoomEntity>;
+  displayedColumns: string[] = ['taskName', 'userid', 'status'];
+  dataSource: MatTableDataSource<Task>;
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.tasks);
-    this.tasks.push(new RoomEntity('1', 101, 'Guest 1', 'pending', new Date()));
-    this.length = this.tasks.length;
+    this.tasks.push(new Task('1', 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
+    length = this.tasks.length;
     console.log('Serio ' + this.length);
+
   }
 
-  taskCreatedevent($event: RoomEntity) {
+  onTaskCreatedEvent($event: Task) {
     console.log('Task created');
     this.length++;
     $event.id = this.length.toString();
     console.log($event);
     this.tasks.push($event);
     this.dataSource._updateChangeSubscription();
+
   }
 
   ngAfterViewInit() {
@@ -47,4 +50,6 @@ export class RoomsReportComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
 }
+

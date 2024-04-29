@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TasksEntity} from "../models/tasks.entity";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Task} from "../../model/task.entity";
 
 @Component({
   selector: 'app-task-create-dialog',
@@ -12,11 +12,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class TaskCreateDialogComponent {
 
 
-
   TaskItemFormGroup: FormGroup;
+
   constructor(private formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: TasksEntity,
+              @Inject(MAT_DIALOG_DATA) public data: Task,
   ) {
     this.TaskItemFormGroup = this.formBuilder.group({
       taskName: new FormControl('', [
@@ -27,13 +27,13 @@ export class TaskCreateDialogComponent {
         Validators.required,
         Validators.minLength(2)  // This line ensures a minimum of 2 characters
       ]),
-      dueDate: new FormControl( new Date().getUTCFullYear(), [
+      dueDate: new FormControl(new Date().getUTCFullYear(), [
         Validators.required,
       ]),
-      dueTime: new FormControl( '', [
+      dueTime: new FormControl('', [
         Validators.required,
       ]),
-      status: new FormControl( '', [
+      status: new FormControl('', [
         Validators.required,
         Validators.pattern('pending|completed|in progress')  // This line ensures the status is one of the three options
 
@@ -43,7 +43,6 @@ export class TaskCreateDialogComponent {
         Validators.maxLength(10),  // This line ensures a maximum of 10 characters
         Validators.minLength(2)  // This line ensures a minimum of 2 characters
       ]),
-
 
 
     });
@@ -56,13 +55,12 @@ export class TaskCreateDialogComponent {
 
   onSubmit(): void {
     console.log(this.TaskItemFormGroup.value.dueTime);
-    let date:any = new Date();
+    let date: any = new Date();
     let part = this.TaskItemFormGroup.value.dueTime.split(":");
-    let hrs = part[0] ;
+    let hrs = part[0];
     let mins = part[1];
 
     const formValues = this.TaskItemFormGroup.value;
-
 
     const selectedData = {
 
@@ -78,14 +76,10 @@ export class TaskCreateDialogComponent {
 
 
     if (this.TaskItemFormGroup.valid) {
-
-
       date = this.TaskItemFormGroup.value.dueDate;
-      date.setHours(hrs,mins,0);
-
+      date.setHours(hrs, mins, 0);
       this.data = selectedData;
       this.dialogRef.close(this.data);
-    } else {
     }
   }
 }

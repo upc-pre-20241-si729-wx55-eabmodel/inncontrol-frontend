@@ -1,4 +1,4 @@
-export class RoomEntity {
+export class Room {
 
   id: string;
   roomNumber: number;
