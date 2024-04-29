@@ -85,6 +85,7 @@ import {TaskCreationComponent} from "./display/task/task-create/components/task-
 import {
   RoomCreateDialogComponent
 } from "./display/room-create/components/room-create-dialog/room-create-dialog.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import {
     RoomCreateDialogComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
