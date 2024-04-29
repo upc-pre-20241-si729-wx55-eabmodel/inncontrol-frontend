@@ -57,6 +57,7 @@ import {InventoryTableComponent} from "./supply/inventory/components/inventory-t
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +83,9 @@ import {MatTableModule} from "@angular/material/table";
     NotificationsBadgeComponent
   ],
   imports: [
+    MatMenuModule,
+    MatSelectModule,
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     MatToolbar,
