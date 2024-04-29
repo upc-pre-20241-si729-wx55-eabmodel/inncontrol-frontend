@@ -58,6 +58,29 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 
 
+import {ExpenseTableComponent} from "./payments/expenses/expenses-tracking-component/expense-table/expense-table.component";
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef,
+  MatNoDataRow, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
+import {ExpenseAddButtonComponent} from "./payments/expenses/expenses-tracking-component/expense-add-button/expense-add-button.component";
+import { ExpenseAddDialogComponent } from './payments/expenses/expenses-tracking-component/expense-add-dialog/expense-add-dialog.component';
+import { ExpenseContentComponent } from './payments/expenses/expenses-tracking-component/expense-content/expense-content.component';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogModule,
+  MatDialogTitle
+} from "@angular/material/dialog";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +101,10 @@ import {MatTableModule} from "@angular/material/table";
     MessagesComponent,
     EmployeesComponent,
     SearchContentComponent,
+    ExpenseTableComponent,
+    ExpenseAddButtonComponent,
+    ExpenseAddDialogComponent,
+    ExpenseContentComponent
     NotificationsCardComponent,
     NotificationsViewComponent,
     NotificationsBadgeComponent
@@ -113,6 +140,24 @@ import {MatTableModule} from "@angular/material/table";
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    MatTable,
+    MatSort,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatPaginator,
+    MatNoDataRow,
+    MatRowDef,
+    MatRow,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogModule
     MatDialogModule,
     MatBadgeModule,
     MatProgressBarModule,
