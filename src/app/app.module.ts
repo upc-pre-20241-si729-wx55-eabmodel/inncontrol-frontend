@@ -23,7 +23,7 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { PerformanceReport } from './planning/page/performance-report/performance-report';
+import { PerformanceReport } from './planning/components/performance-report/performance-report';
 import { TaskCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/task-create-dialog.component';
 import {
   MatCell,
