@@ -1,9 +1,14 @@
-# Inncontrol-Frontend
+# Inn Control
+Inn control it's a hotel management system that allows you to manage your hotel, it's rooms, and reservations. It's a web application that allows you to manage your hotel from anywhere.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+## Dependencies
+- Angular CLI
+- Node.js
+- npm
 
-## Documentation
-- test test
+## Libraries
+- Angular Material
+- Angular Flex Layout
 
 ## Development server
 
