@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { RoomEntity } from '../../display/room-create/model/room.entity';
+import { Room } from '../../display/room-create/model/room.entity';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -10,22 +10,22 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./rooms-report.component.css']
 })
 export class RoomsReportComponent implements AfterViewInit {
-  tasks: RoomEntity[] = [];
+  tasks: Room[] = [];
   length: number = 1;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   displayedColumns: string[] = ['roomNumber', 'guest', 'state', 'reservation'];
-  dataSource: MatTableDataSource<RoomEntity>;
+  dataSource: MatTableDataSource<Room>;
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.tasks);
-    this.tasks.push(new RoomEntity('1', 101, 'Guest 1', 'pending', new Date()));
+    this.tasks.push(new Room('1', 101, 'Guest 1', 'pending', new Date()));
     this.length = this.tasks.length;
     console.log('Serio ' + this.length);
   }
 
-  taskCreatedevent($event: RoomEntity) {
+  taskCreatedevent($event: Room) {
     console.log('Task created');
     this.length++;
     $event.id = this.length.toString();
