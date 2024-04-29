@@ -38,11 +38,19 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {MatIcon} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
-
-
-
-
-// @ts-ignore
+import {
+  NotificationsCardComponent
+} from './monitoring/notifications/components/notifications-card/notifications-card.component';
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {
+  NotificationsViewComponent
+} from './monitoring/notifications/components/notifications-view/notifications-view.component';
+import {
+  NotificationsBadgeComponent
+} from './monitoring/notifications/components/notifications-badge/notifications-badge.component';
+import {MatBadge} from "@angular/material/badge";
+import {MatProgressBar} from "@angular/material/progress-bar";
+import {MatDivider} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -52,43 +60,40 @@ import {MatSelect} from "@angular/material/select";
     TaskCreator,
     TaskViewComponent,
     TaskCreateDialogComponent
+    ReportFormComponent,
+    InventoryContentComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    TasksComponent,
+    RoomStateComponent,
+    MessagesComponent,
+    EmployeesComponent,
+    SearchContentComponent,
+    NotificationsCardComponent,
+    NotificationsViewComponent,
+    NotificationsBadgeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatCardModule,
     MatToolbar,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerInput,
-    MatDatepickerToggle,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTable,
-    MatPaginator,
-    MatHeaderRow,
-    MatRow,
-    MatCell,
-    MatHeaderCell,
-    MatColumnDef,
-    MatCellDef,
-    MatHeaderCellDef,
-    MatHeaderRowDef,
-    MatRowDef,
-    MatNoDataRow,
-    MatSort,
-    MatSortHeader,
-    MatIcon,
     MatSelect,
-    MatOption
-
+    MatOption,
+    ReactiveFormsModule,
+    MatInput,
+    MatIconModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
+    MatBadge,
+    MatProgressBar,
+    MatDivider,
   ],
   providers: [
     provideAnimationsAsync(),
@@ -99,8 +104,5 @@ import {MatSelect} from "@angular/material/select";
 
 
 })
-
-// timepicker uses these component
-
-
-export class AppModule { }
+export class AppModule {
+}
