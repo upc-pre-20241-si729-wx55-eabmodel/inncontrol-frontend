@@ -14,7 +14,6 @@ import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule, MatOption} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
-import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
 import {
   MatDialogActions,
   MatDialogClose,
@@ -23,8 +22,8 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { PerformanceReport } from './planning/page/performance-report/performance-report';
-import { TaskCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/task-create-dialog.component';
+import { RoomsReportComponent } from './planning/page/performance-report/rooms-report.component';
+import { RoomCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/room-create-dialog.component';
 import {
   MatCell,
   MatCellDef,
@@ -38,6 +37,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {MatIcon} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
+import {RoomCreationComponent} from "./planning/components/task-creation/components/room-creation.component";
 
 
 
@@ -49,9 +49,9 @@ import {MatSelect} from "@angular/material/select";
     AppComponent,
     ToolbarContentComponent,
     HomeContentComponent,
-    TaskCreator,
-    PerformanceReport,
-    TaskCreateDialogComponent
+    RoomsReportComponent,
+    RoomCreateDialogComponent,
+    RoomCreationComponent
   ],
   imports: [
     BrowserModule,
