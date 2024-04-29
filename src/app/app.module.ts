@@ -56,6 +56,7 @@ import {
 import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
+import { InventoryComponent } from './public/pages/inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {MatTableModule} from "@angular/material/table";
     SearchContentComponent,
     NotificationsCardComponent,
     NotificationsViewComponent,
-    NotificationsBadgeComponent
+    NotificationsBadgeComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,
