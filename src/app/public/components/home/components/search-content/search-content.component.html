@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSearch($event)">
+  <mat-form-field ngDefaultControl [formControl]="searchController">
+    <span matPrefix> </span>
+    <input type="tel" matInput placeholder="Search" name="search">
+    <button matSuffix mat-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <br/>
+</form>

@@ -14,6 +14,7 @@ import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule, MatOption} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
+import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
 import {
   MatDialogActions,
   MatDialogClose,
@@ -22,8 +23,8 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RoomsReportComponent } from './planning/rooms-report/rooms-report.component';
-import { RoomCreateDialogComponent } from './display/room-create/components/room-create-dialog/room-create-dialog.component';
+import { PerformanceReport } from './planning/page/performance-report/performance-report';
+import { TaskCreateDialogComponent } from './display/components/task-create-dialog/task-create-dialog/task-create-dialog.component';
 import {
   MatCell,
   MatCellDef,
@@ -37,11 +38,6 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {MatIcon} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
-import {TaskCreationComponent} from "./planning/task-creation/task-creation.component";
-import { TaskCreateDialogComponent } from './display/task-create/components/task-create-dialog/task-create-dialog.component';
-import { PerformanceReportComponent } from './planning/performance-report/performance-report.component';
-import { RoomCreateComponent } from './display/room-create/components/room-create/room-create.component';
-import { TaskCreateComponent } from './display/task-create/components/task-create/task-create.component';
 
 
 
@@ -53,13 +49,9 @@ import { TaskCreateComponent } from './display/task-create/components/task-creat
     AppComponent,
     ToolbarContentComponent,
     HomeContentComponent,
-    RoomsReportComponent,
-    RoomCreateDialogComponent,
-    TaskCreationComponent,
-    TaskCreateDialogComponent,
-    PerformanceReportComponent,
-    RoomCreateComponent,
-    TaskCreateComponent
+    TaskCreator,
+    PerformanceReport,
+    TaskCreateDialogComponent
   ],
   imports: [
     BrowserModule,

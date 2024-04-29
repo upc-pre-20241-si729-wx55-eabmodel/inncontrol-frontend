@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-toolbar-content',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class ToolbarContentComponent {
 
+  options = [
+    {title: 'Home', path: '/home'},
+    {title: 'Inventory', path: '/inventory'},
+    {title: 'Tasks', path: '/tasks'},
+    {title: 'Room States', path: '/room-state'},
+    {title: 'Messages', path: '/messages'},
+    {title: 'Employees', path: '/employees'},
+  ];
 }

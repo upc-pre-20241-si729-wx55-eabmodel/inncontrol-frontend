@@ -1,12 +1,19 @@
 <mat-toolbar color="primary">
-  <button mat-button>InnControl</button>
+  <div class="img-div">
+    <a
+      [routerLink]="['/']"
+    >
+      <img src="assets/img/innControl.svg" alt="innControl" height="40" width="201">
+    </a>
+  </div>
+  <span class="spacer"></span>
+  <app-search-content/>
   <span class="spacer">
   </span>
-  <div>
-    <button mat-button class="button">Inventory</button>
-    <button mat-button class="button">Tasks</button>
-    <button mat-button class="button">Room States</button>
-    <button mat-button class="button">Messages</button>
-    <button mat-button class="button">Employees</button>
-  </div>
+
+  <button mat-button *ngFor="let option of options"
+          [routerLink]="option.path">
+    {{ option.title }}
+  </button>
+  <app-notifications-badge/>
 </mat-toolbar>
