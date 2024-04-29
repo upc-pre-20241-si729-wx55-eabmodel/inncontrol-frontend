@@ -56,6 +56,7 @@ import {
 import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
+import { InventoryComponent } from './public/pages/inventory/inventory.component';
 
 
 import {ExpenseTableComponent} from "./payments/expenses/expenses-tracking-component/expense-table/expense-table.component";
@@ -107,7 +108,8 @@ import {
     ExpenseContentComponent
     NotificationsCardComponent,
     NotificationsViewComponent,
-    NotificationsBadgeComponent
+    NotificationsBadgeComponent,
+    InventoryComponent
   ],
   imports: [
     MatMenuModule,
