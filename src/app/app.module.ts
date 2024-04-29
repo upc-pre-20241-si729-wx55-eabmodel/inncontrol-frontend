@@ -6,47 +6,18 @@ import {ToolbarContentComponent} from './public/components/home/components/toolb
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
-import {HomeContentComponent} from './public/components/home/components/home-content/home-content.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerInput} from "@angular/material/datepicker";
 import {MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {provideNativeDateAdapter} from "@angular/material/core";
-
-import {
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogModule,
-  MatDialogTitle
-} from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {InventoryContentComponent} from "./inventory/components/inventory-content/inventory-content.component";
-import {InventoryAddDialogComponent} from './inventory/components/inventory-add-dialog/inventory-add-dialog.component';
-import {
-  InventoryAddItemButtonComponent
-} from './inventory/components/inventory-add-item-button/inventory-add-item-button.component';
-import {InventoryTableComponent} from './inventory/components/inventory-table/inventory-table.component';
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell,
-  MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef,
-  MatTable
-} from "@angular/material/table";
-import {MatSort, MatSortHeader} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatOptionModule, provideNativeDateAdapter} from "@angular/material/core";
 import {TaskCreator} from "./planning/components/task-creation/components/task-creation.component";
-import {MatDialogModule} from "@angular/material/dialog";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TaskViewComponent} from './planning/page/task-view/task-view.component';
 import {
   TaskCreateDialogComponent
@@ -65,7 +36,6 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCardModule} from "@angular/material/card";
-import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {SearchContentComponent} from "./public/components/home/components/search-content/search-content.component";
@@ -75,17 +45,26 @@ import {RoomStateComponent} from "./public/pages/room-state/room-state.component
 import {TasksComponent} from "./public/pages/tasks/tasks.component";
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
 import {HomeComponent} from "./public/pages/home/home.component";
-import {InventoryContentComponent} from "./inventory/components/inventory-content/inventory-content.component";
 import {ReportFormComponent} from "./interactions/report/components/report-form/report-form.component";
+import {InventoryContentComponent} from "./supply/inventory/components/inventory-content/inventory-content.component";
+import {
+  InventoryAddDialogComponent
+} from "./supply/inventory/components/inventory-add-dialog/inventory-add-dialog.component";
+import {
+  InventoryAddItemButtonComponent
+} from "./supply/inventory/components/inventory-add-item-button/inventory-add-item-button.component";
+import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatTableModule} from "@angular/material/table";
+
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    HomeContentComponent,
     InventoryContentComponent,
     InventoryAddDialogComponent,
     InventoryAddItemButtonComponent,
-    InventoryTableComponent
+    InventoryTableComponent,
     TaskCreator,
     TaskViewComponent,
     TaskCreateDialogComponent,
@@ -113,27 +92,12 @@ import {ReportFormComponent} from "./interactions/report/components/report-form/
     MatDatepickerToggle,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogClose,
-    MatDialogTitle,
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatCell,
-    MatSort,
-    MatHeaderCellDef,
-    MatCellDef,
-    MatHeaderRow,
-    MatRow,
-    MatNoDataRow,
-    MatRowDef,
-    MatPaginator,
-    MatHeaderRowDef,
-    MatSortHeader
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
@@ -153,7 +117,6 @@ import {ReportFormComponent} from "./interactions/report/components/report-form/
   providers: [
     provideAnimationsAsync(),
     provideNativeDateAdapter()
-
   ],
   bootstrap: [AppComponent]
 
