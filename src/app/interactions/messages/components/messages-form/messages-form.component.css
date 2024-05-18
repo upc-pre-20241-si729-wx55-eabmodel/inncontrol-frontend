@@ -6,11 +6,30 @@ mat-card {
   margin: 10px;
 }
 
+.item{
+  width: 100%;
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  color: #3f76b5;
+}
+
+.bell{
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+
+}
+
 .card-title {
   margin: 0;
-  padding: 10px 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 

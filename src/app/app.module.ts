@@ -45,7 +45,6 @@ import {InventoryTableComponent} from "./supply/inventory/components/inventory-t
 import {
   TaskCreateDialogComponent
 } from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
-import {ReportFormComponent} from "./interactions/report/components/report-form/report-form.component";
 import {HomeComponent} from "./public/pages/home/home.component";
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
 import {TasksComponent} from "./public/pages/tasks/tasks.component";
@@ -90,6 +89,8 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
+import { MessagesContainerComponent } from './interactions/messages/components/messages-container/messages-container.component';
+import { MessagesCardComponent } from './interactions/messages/components/messages-card/messages-card.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,6 @@ import { RoomCreateButtonComponent } from './display/room/components/room-create
     InventoryTableComponent,
     TasksComponent,
     TaskCreateDialogComponent,
-    ReportFormComponent,
     InventoryContentComponent,
     HomeComponent,
     PageNotFoundComponent,
@@ -124,7 +124,9 @@ import { RoomCreateButtonComponent } from './display/room/components/room-create
     RoomCreateDialogComponent,
     RoomUpdateComponent,
     RoomsReportComponent,
-    RoomCreateButtonComponent
+    RoomCreateButtonComponent,
+    MessagesContainerComponent,
+    MessagesCardComponent
   ],
   imports: [
     HttpClientModule,

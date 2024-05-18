@@ -1,6 +1,9 @@
 <mat-card>
   <mat-card-title>
-    <h1 class="card-title">Report Issue</h1>
+    <span class="header"> <h1 class="card-title">Messages</h1>
+    <button class="bell" mat-icon-button  aria-label="Messages button">
+      <mat-icon  class="item" [matBadge]="1">notifications</mat-icon>
+    </button></span>
   </mat-card-title>
   <mat-card-content>
     <form [formGroup]="reportFormGroup" (ngSubmit)="onSubmitReport()" aria-label="Report issue form">

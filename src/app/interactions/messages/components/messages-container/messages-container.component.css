@@ -1,0 +1,62 @@
+
+.item{
+  width: 100%;
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  color: #3f76b5;
+}
+
+.addButton{
+  padding: 0;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add{
+  width: auto;
+  height: auto;
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  color: #3f76b5;
+}
+
+.card-title{
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+
+}
+
+.cardDisplay{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  width: 80%;
+  margin: 0 5rem;
+  gap: 1rem;
+
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+}

@@ -1,0 +1,16 @@
+<div class="container">
+  <span class="header"> <h1 class="card-title">Messages</h1>
+    <button mat-icon-button  aria-label="Messages button">
+      <mat-icon  class="item" [matBadge]="1" aria-hidden="false">notifications</mat-icon>
+    </button>
+  </span>
+  <span class="header">
+    <app-search-content [options]="this.options" (optionSelected)="recieveFilter($event)" (search)="searchFilter($event)" ></app-search-content>
+      <button class="addButton" mat-icon-button  aria-label="add message button" (click)="OpenMessageDialog()">
+      <mat-icon  class="add" aria-hidden="false">add_circle</mat-icon>
+    </button>
+  </span>
+  <div class="cardDisplay">
+
+  </div>
+</div>
