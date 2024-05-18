@@ -3,6 +3,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {Task} from "../task-create/model/task.entity";
+import {TaskApiService} from "../task-create/services/task-api.service";
 
 @Component({
   selector: 'app-task-content',
@@ -19,10 +20,22 @@ export class TaskContentComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'taskName', 'description', 'dueDate', 'status', 'userid', 'creationDate'];
   dataSource: MatTableDataSource<Task>;
 
-  constructor() {
+  constructor(private taskService: TaskApiService) {
     this.dataSource = new MatTableDataSource(this.tasks);
-    this.tasks.push(new Task('1', 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
-    length = this.tasks.length;
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => {
+      this.tasks = tasks;
+      this.dataSource.data = this.tasks;
+      this.length = this.tasks.length;
+    });
   }
 
   onTaskCreatedEvent($event: Task) {
@@ -30,14 +43,10 @@ export class TaskContentComponent implements AfterViewInit {
     this.length++;
     $event.id = this.length.toString();
     console.log($event);
-    this.tasks.push($event);
-    this.dataSource._updateChangeSubscription();
-
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.taskService.addTask($event).subscribe(task => {
+      this.tasks.push(task);
+      this.dataSource._updateChangeSubscription();
+    });
   }
 
   applyFilter(event: Event) {
@@ -48,5 +57,4 @@ export class TaskContentComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }
