@@ -90,6 +90,10 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
+import { PanelCardIconComponent } from './interactions/control/components/panel-card-icon/panel-card-icon.component';
+import { PanelContentComponent } from './interactions/control/components/panel-content/panel-content.component';
+import { PanelScheduleComponent } from './interactions/control/components/panel-schedule/panel-schedule.component';
+import { PanelCardIconViewComponent } from './interactions/control/components/panel-card-icon-view/panel-card-icon-view.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +128,11 @@ import { RoomCreateButtonComponent } from './display/room/components/room-create
     RoomCreateDialogComponent,
     RoomUpdateComponent,
     RoomsReportComponent,
-    RoomCreateButtonComponent
+    RoomCreateButtonComponent,
+    PanelCardIconComponent,
+    PanelContentComponent,
+    PanelScheduleComponent,
+    PanelCardIconViewComponent
   ],
   imports: [
     HttpClientModule,
