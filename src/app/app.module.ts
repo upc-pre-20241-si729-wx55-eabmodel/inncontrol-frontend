@@ -91,6 +91,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
 import { MessagesContainerComponent } from './interactions/messages/components/messages-container/messages-container.component';
 import { MessagesCardComponent } from './interactions/messages/components/messages-card/messages-card.component';
+import { MessagesCardDialogComponent } from './interactions/messages/components/messages-card-dialog/messages-card-dialog.component';
 
 @NgModule({
   declarations: [
@@ -126,7 +127,8 @@ import { MessagesCardComponent } from './interactions/messages/components/messag
     RoomsReportComponent,
     RoomCreateButtonComponent,
     MessagesContainerComponent,
-    MessagesCardComponent
+    MessagesCardComponent,
+    MessagesCardDialogComponent
   ],
   imports: [
     HttpClientModule,

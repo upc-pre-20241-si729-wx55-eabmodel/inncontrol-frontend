@@ -1,6 +1,7 @@
 export class Messages {
 
 
+
   messages: [
     {
       id: number;
@@ -10,8 +11,10 @@ export class Messages {
       text: string;
       date: string;
       state: string;
+      sender: string;
+      receiver: string;
     }
-  ] | undefined;
+  ] ;
 
 
 
@@ -24,7 +27,9 @@ export class Messages {
         subject: subject,
         text: text,
         date: date,
-        state: state
+        state: state,
+        sender: ' ',
+        receiver: ' ',
       }
     ];
 
@@ -38,17 +43,6 @@ export class Messages {
     });
   }
 
-  newMessage(messageId: number, from: number, to: number, subject: string, text: string, date: string, state: string) {
-    this.messages?.push({
-      id: messageId,
-      from: from,
-      to: to,
-      subject: subject,
-      text: text,
-      date: date,
-      state: state
-    });
-  }
   deleteMessage(messageId: number) {
 
     const deletedMesage:any = [];
@@ -60,7 +54,7 @@ export class Messages {
       }
     });
 
-    return deletedMesage;
+    this.messages = deletedMesage;
 
 
   }
@@ -70,7 +64,48 @@ export class Messages {
   }
 
   getMessageByUnreadStatus() {
-    return this.messages?.filter((message) => message.state === 'unread');
+    let unreadMessages:any = [];
+   unreadMessages = this.messages.filter((message) => message.state === "unread");
+
+   this.messages.forEach((message) => {
+      if (message.state === "read") {
+        unreadMessages.push(message);
+      }
+   })
+
+
+   console.log('Unread Messages', unreadMessages);
+
+   this.messages = unreadMessages;
+
+   return this.messages;
+  }
+
+  getUnreadSize()
+  {
+    let unreadMessages:any = [];
+    unreadMessages = this.messages.filter((message) => message.state === "unread");
+    return unreadMessages.length;
+  }
+
+
+  setSenderReciever(userid: string, name: string) {
+
+
+    this.messages.forEach((message: any) => {
+
+      if (message.from.toString() === userid.toString()) {
+        message.sender = name;
+        console.log('Sender', message.sender);
+
+      }else if (message.to.toString() === userid.toString()) {
+        message.receiver = name;
+        console.log('Receiver', message.receiver);
+
+      }
+    });
+    console.log('Messages', this.messages);
+    return this.messages;
   }
 
   getMessageBySenderId(userId: number) {
@@ -78,11 +113,15 @@ export class Messages {
     this.messages?.forEach((message) => {
       if (message.from === userId) {
         sentMessages.push(message);
+
       }else if(sentMessages.length === 0) {
         console.log('No messages found');
       }
     });
-    return sentMessages;
+
+    this.messages = sentMessages;
+
+    return this.messages;
   }
 
 }

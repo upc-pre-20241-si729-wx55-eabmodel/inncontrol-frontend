@@ -1,0 +1,41 @@
+.messageCard{
+  background: #EFEFEF;
+  transition: 0.5s;
+}
+.messageCard:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+}
+
+.messageCardContent{
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.messageTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert{
+  color: #3f76b5;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+}
+
+.messageCard:hover .alert{
+  color: #adcfff;
+
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  transition: 0.2s;
+}
+
+
