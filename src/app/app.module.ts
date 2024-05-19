@@ -17,7 +17,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogModule, MatDialogRef,
+  MatDialogModule,
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -77,7 +77,7 @@ import {
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatDivider, MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
 import { TaskContentComponent } from './display/task/task-content/task-content.component';
 import {TaskTableComponent} from "./display/task/task-table/task-table.component";
