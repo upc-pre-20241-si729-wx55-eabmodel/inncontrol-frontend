@@ -35,6 +35,24 @@
           "subject": "Message from Carlos",
           "text": "Hello, I'm fine, thank you!",
           "state": "unread"
+        },
+        {
+          "id": 3,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Hello, I'm fine, thank you!",
+          "state": "unread"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Hello, I'm fine, thank you!",
+          "state": "unread"
         }
       ]
     },
