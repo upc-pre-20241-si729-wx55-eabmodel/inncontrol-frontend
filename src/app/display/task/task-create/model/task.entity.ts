@@ -1,6 +1,6 @@
 export class Task {
 
-  id: string;
+  id: number;
   taskName: string;
   description: string;
   dueDate: Date;
@@ -9,7 +9,7 @@ export class Task {
   userId: string;
 
 
-  constructor(id: string, taskName: string, description: string, dueDate: Date, status: string, creationDate: Date, userId: string) {
+  constructor(id: number, taskName: string, description: string, dueDate: Date, status: string, creationDate: Date, userId: string) {
     this.id = id;
     this.taskName = taskName;
     this.description = description;

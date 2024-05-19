@@ -4,3 +4,8 @@
   box-sizing: border-box;
 
 }
+.menu-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
