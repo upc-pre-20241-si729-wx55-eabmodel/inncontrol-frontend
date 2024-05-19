@@ -1,0 +1,19 @@
+
+<div class="cardContain">
+
+  <h2>{{data.subject}}</h2>
+  <mat-divider></mat-divider>
+  <p>from: {{data.sender}}<br>to: {{data.receiver}}</p>
+
+  <section>
+    <p>{{ data.text }}</p>
+</section>
+
+    sent: {{data.date | date: "short" }}
+    <mat-divider></mat-divider>
+    <div class="buttons">
+    <button >Delete</button>
+    <button >Answer</button>
+    </div>
+
+</div>
