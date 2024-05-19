@@ -91,6 +91,7 @@ import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
 import { TaskCardComponent } from './display/task/task-cards/task-card/task-card.component';
+import { TaskEditDialogComponent } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
 
 
 
@@ -128,7 +129,8 @@ import { TaskCardComponent } from './display/task/task-cards/task-card/task-card
     RoomUpdateComponent,
     RoomsReportComponent,
     RoomCreateButtonComponent,
-    TaskCardComponent
+    TaskCardComponent,
+    TaskEditDialogComponent
   ],
   imports: [
     HttpClientModule,
