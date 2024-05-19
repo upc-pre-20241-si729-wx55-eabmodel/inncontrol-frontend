@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { Messages } from '../../model/messages.entity';
-import { MessagesApiService } from '../../service/messages-api.service';
+import {Messages} from '../../model/messages.entity';
+import {MessagesApiService} from '../../service/messages-api.service';
 import {UsermessageEntity} from "../../model/usermessage.entity";
 
 import {MessagesCardDialogComponent} from "../messages-card-dialog/messages-card-dialog.component";
@@ -12,12 +12,12 @@ import {MatDialog} from "@angular/material/dialog";
   templateUrl: './messages-container.component.html',
   styleUrl: './messages-container.component.css'
 })
-export class MessagesContainerComponent implements OnInit{
+export class MessagesContainerComponent implements OnInit {
 
-  resetMessages:Messages = new Messages(0,0,0,'','','','no');
+  resetMessages: Messages = new Messages(0, 0, 0, '', '', '', 'no');
   message: Messages;
 
-  options: {title: string}[] = [
+  options: { title: string }[] = [
     {
       title: 'Sent'
     },
@@ -33,20 +33,16 @@ export class MessagesContainerComponent implements OnInit{
   loaded: boolean = false;
   unreads: number = 0;
   unread: boolean = false;
-  constructor(private messagesApiService: MessagesApiService,private dialog: MatDialog){
-  this.message = new Messages(0,0,0,'','','','no');
-  this.users = [];
+
+  constructor(private messagesApiService: MessagesApiService, private dialog: MatDialog) {
+    this.message = new Messages(0, 0, 0, '', '', '', 'no');
+    this.users = [];
   }
 
-  badgeControl()
-  {
+  badgeControl() {
     this.unreads = this.message.getUnreadSize();
     this.unread = this.unreads <= 0;
-
     console.log('Unread Messages:', this.unreads, this.unread);
-
-
-
   }
 
   recieveFilter(event: any) {
@@ -54,9 +50,9 @@ export class MessagesContainerComponent implements OnInit{
     this.message.messages = this.resetMessages.messages;
     if (event === 'Sent') {
       this.message.messages = this.message.getMessageBySenderId(1);
-    }else if (event === 'Unread') {
+    } else if (event === 'Unread') {
       this.message.messages = this.message.getMessageByUnreadStatus();
-    }else if (event === 'Reset') {
+    } else if (event === 'Reset') {
       this.message.messages = this.resetMessages.messages;
     }
 
@@ -79,9 +75,9 @@ export class MessagesContainerComponent implements OnInit{
       },
       () => {
         this.messagesApiService.getAll().subscribe(
-          (data: any) =>{
+          (data: any) => {
             let i: number = 0;
-            data.forEach((user: any)=>{
+            data.forEach((user: any) => {
 
                 this.users.push(new UsermessageEntity(user.id, user.name));
                 this.loaded = true;
@@ -89,27 +85,21 @@ export class MessagesContainerComponent implements OnInit{
 
                 i++;
 
-              },(error: any) => {
+              }, (error: any) => {
                 console.log('Error getting users')
                 console.error(error);
               }
             );
 
           });
-          this.loaded = true;
-          this.badgeControl();
+        this.loaded = true;
+        this.badgeControl();
 
       }
-      );
-
-
+    );
 
 
   }
-
-
-
-
 
 
   OpenMessageDialog() {
@@ -121,7 +111,7 @@ export class MessagesContainerComponent implements OnInit{
     this.messagesApiService.patch(id, this.message).subscribe();
   }
 
-  getData(){
+  getData() {
     this.getMessages();
   }
 
