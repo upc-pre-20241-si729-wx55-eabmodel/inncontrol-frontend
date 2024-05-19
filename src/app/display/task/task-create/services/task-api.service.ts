@@ -1,21 +1,15 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Task } from '../model/task.entity';
+import { BaseService } from '../../../../shared/services/base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskApiService {
-  private apiUrl = 'http://localhost:3000/tasks';  // URL to web api
+export class TaskApiService extends BaseService<Task> {
 
-  constructor(private http: HttpClient) { }
-
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.apiUrl);
-  }
-
-  addTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.apiUrl, task);
+  constructor(http: HttpClient) {
+    super(http);
+    this.resourceEndpoint = '/tasks';
   }
 }
