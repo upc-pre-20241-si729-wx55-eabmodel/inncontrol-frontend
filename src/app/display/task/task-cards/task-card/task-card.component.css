@@ -1,0 +1,6 @@
+.app-task-card {
+  display:grid;
+  margin: 10px;
+  box-sizing: border-box;
+
+}

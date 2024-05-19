@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ task.taskName }}</mat-card-title>
+    <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Due Date: {{ task.dueDate | date }} {{ task.dueDate | date:'HH:mm' }}</p>
+    <p>Creation Date: {{task.creationDate | date}} {{ task.dueDate | date:'HH:mm' }}</p>
+    <p>Assigned Employee: {{ task.userId }}</p>
+    <p>Status: {{ task.status }}</p>
+  </mat-card-content>
+</mat-card>
