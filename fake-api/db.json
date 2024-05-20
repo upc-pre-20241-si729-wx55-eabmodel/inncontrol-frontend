@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "2",
+      "id": "1",
       "gender": "female",
       "name": {
         "title": "Ms",
@@ -15,364 +15,93 @@
         "large": "https://randomuser.me/api/portraits/women/13.jpg",
         "medium": "https://randomuser.me/api/portraits/med/women/13.jpg",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/13.jpg"
-      }
-    },
-    {
-      "id": "3",
-      "gender": "female",
-      "name": {
-        "title": "Ms",
-        "first": "Karlijn",
-        "last": "Paling"
       },
-      "email": "karlijn.paling@example.com",
-      "phone": "(023) 9275648",
-      "cell": "(06) 62237027",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/27.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/27.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/27.jpg"
-      }
+      "role": "employee",
+      "messages": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "date": "2017-01-01T12:00:00Z",
+          "subject": "Message from Clarissa",
+          "text": "Hello Clarissa, how are you?",
+          "state": "read",
+          "sender": "Ms Clarissa Lautenschläger",
+          "receiver": "Mr Nicolas Banquito"
+        },
+        {
+          "id": 2,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Hello, I'm fine, thank you!",
+          "state": "unread",
+          "receiver": "Ms Clarissa Lautenschläger",
+          "sender": "Mr Nicolas Banquito"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue nisi vitae suscipit tellus. Tempus iaculis urna id volutpat lacus laoreet non curabitur. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra. Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Sodales neque sodales ut etiam sit amet nisl purus in. Integer eget aliquet nibh praesent tristique. Magna fermentum iaculis eu non diam phasellus vestibulum lorem sed. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Scelerisque varius morbi enim nunc faucibus a. Auctor eu augue ut lectus arcu bibendum at. Dis parturient montes nascetur ridiculus mus mauris. Urna nunc id cursus metus aliquam eleifend mi. Euismod quis viverra nibh cras pulvinar. Ut tortor pretium viverra suspendisse potenti nullam. Nisl pretium fusce id velit ut tortor pretium viverra. Dui vivamus arcu felis bibendum ut tristique et egestas quis. Viverra maecenas accumsan lacus vel facilisis volutpat.\n\nAt in tellus integer feugiat scelerisque varius morbi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Commodo odio aenean sed adipiscing. Ut tortor pretium viverra suspendisse potenti nullam. Volutpat commodo sed egestas egestas. Vitae ultricies leo integer malesuada nunc. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Urna duis convallis convallis tellus. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor. Orci sagittis eu volutpat odio facilisis mauris sit amet massa. Luctus accumsan tortor posuere ac ut consequat semper viverra. Commodo sed egestas egestas fringilla phasellus faucibus. Id ornare arcu odio ut sem nulla pharetra diam sit. Id interdum velit laoreet id donec ultrices tincidunt. Eget arcu dictum varius duis at consectetur lorem donec massa. Viverra vitae congue eu consequat ac felis donec.",
+          "state": "unread",
+          "receiver": "Ms Clarissa Lautenschläger",
+          "sender": "Mr Nicolas Banquito"
+        },
+        {
+          "id": 3,
+          "subject": "El STRIKE ES MENTAL (LEER)",
+          "message": "Message Body...",
+          "sender": "Ms Clarissa Lautenschläger",
+          "date": "Sun May 19 2024 19:41:09 GMT-0500 (hora estándar de Perú)",
+          "receiver": "Mr Nicolas Banquito",
+          "from": 1,
+          "to": 2,
+          "text": "Gente no se si c ve en el codigo pero el funcionamiento d los nombres funciona d una manera bien rata usando los usuarios tonces este como q dependo de eso, ese es el terror mas grande q tengo con eso, fuera d lo demas tmbn esta wbd FUNCIONA SOLO PARA EL USUARIO 1 cuando creen la wbd esta de q se loggee faltara cambiar eso pq SOLO SE VE PARA EL USER 1 no el 2 ni 3, dsp veo como puedo arreglar eso pero hasta ahora todo piola con mensajes nomas q cuando creemos un endpoint para eso tendre q modificar\n",
+          "state": "unread"
+        }
+      ]
     },
     {
-      "id": "4",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Sara",
-        "last": "Olsen"
-      },
-      "email": "sara.olsen@example.com",
-      "phone": "59264469",
-      "cell": "48139574",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/0.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/0.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/0.jpg"
-      }
-    },
-    {
-      "id": "5",
+      "id": "2",
       "gender": "male",
       "name": {
         "title": "Mr",
-        "first": "Harvey",
-        "last": "Jones"
+        "first": "Nicolas",
+        "last": "Banquito"
       },
-      "email": "harvey.jones@example.com",
-      "phone": "(473) 779-6752",
-      "cell": "(867) 858-3405",
+      "email": "NicolasB@example.com",
+      "phone": "0059-5689607",
+      "cell": "0172-9220794",
       "picture": {
-        "large": "https://randomuser.me/api/portraits/men/0.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/0.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/0.jpg"
-      }
-    },
-    {
-      "id": "6",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Floyd",
-        "last": "George"
+        "large": "https://randomuser.me/api/portraits/women/13.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/13.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/13.jpg"
       },
-      "email": "floyd.george@example.com",
-      "phone": "017683 73767",
-      "cell": "07742 801565",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/80.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/80.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/80.jpg"
-      }
-    },
-    {
-      "id": "7",
-      "gender": "female",
-      "name": {
-        "title": "Mrs",
-        "first": "Lina",
-        "last": "Lassen"
-      },
-      "email": "lina.lassen@example.com",
-      "phone": "69529467",
-      "cell": "47171531",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/43.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/43.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/43.jpg"
-      }
-    },
-    {
-      "id": "8",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Kerttu",
-        "last": "Kemppainen"
-      },
-      "email": "kerttu.kemppainen@example.com",
-      "phone": "05-688-421",
-      "cell": "040-243-65-18",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/3.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/3.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/3.jpg"
-      }
-    },
-    {
-      "id": "9",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Eevi",
-        "last": "Pelto"
-      },
-      "email": "eevi.pelto@example.com",
-      "phone": "05-253-987",
-      "cell": "049-795-61-23",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/16.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/16.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/16.jpg"
-      }
-    },
-    {
-      "id": "10",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Lucas",
-        "last": "Campbell"
-      },
-      "email": "lucas.campbell@example.com",
-      "phone": "(709) 207-0745",
-      "cell": "(965) 566-5954",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/96.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/96.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/96.jpg"
-      }
-    },
-    {
-      "id": "11",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Saisha",
-        "last": "Saha"
-      },
-      "email": "saisha.saha@example.com",
-      "phone": "7798409787",
-      "cell": "7820751358",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/95.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-      }
-    },
-    {
-      "id": "12",
-      "gender": "male",
-      "name": {
-        "title": "Monsieur",
-        "first": "Alessandro",
-        "last": "Roy"
-      },
-      "email": "alessandro.roy@example.com",
-      "phone": "078 349 87 33",
-      "cell": "077 477 13 62",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/18.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/18.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/18.jpg"
-      }
-    },
-    {
-      "id": "13",
-      "gender": "female",
-      "name": {
-        "title": "Mrs",
-        "first": "Prathiksha",
-        "last": "Kini"
-      },
-      "email": "prathiksha.kini@example.com",
-      "phone": "7102711545",
-      "cell": "9542107166",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/10.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/10.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/10.jpg"
-      }
-    },
-    {
-      "id": "14",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Leslie",
-        "last": "Alexander"
-      },
-      "email": "leslie.alexander@example.com",
-      "phone": "02-5750-1960",
-      "cell": "0418-555-773",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/56.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
-      }
-    },
-    {
-      "id": "15",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "نيما",
-        "last": "صدر"
-      },
-      "email": "nym.sdr@example.com",
-      "phone": "089-32658740",
-      "cell": "0979-964-7494",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/76.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/76.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/76.jpg"
-      }
-    },
-    {
-      "id": "16",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Laly",
-        "last": "Robin"
-      },
-      "email": "laly.robin@example.com",
-      "phone": "02-29-07-26-11",
-      "cell": "06-59-51-56-41",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/82.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/82.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/82.jpg"
-      }
-    },
-    {
-      "id": "17",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Gabriel",
-        "last": "Almås"
-      },
-      "email": "gabriel.almas@example.com",
-      "phone": "37792960",
-      "cell": "44100220",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/57.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/57.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/57.jpg"
-      }
-    },
-    {
-      "id": "18",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Douglas",
-        "last": "Morris"
-      },
-      "email": "douglas.morris@example.com",
-      "phone": "03-7340-0851",
-      "cell": "0490-354-193",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/96.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/96.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/96.jpg"
-      }
-    },
-    {
-      "id": "19",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Carlos",
-        "last": "Frazier"
-      },
-      "email": "carlos.frazier@example.com",
-      "phone": "(796) 903-5245",
-      "cell": "(881) 384-5502",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/23.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/23.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/23.jpg"
-      }
-    },
-    {
-      "id": "20",
-      "gender": "male",
-      "name": {
-        "title": "Mr",
-        "first": "Javier",
-        "last": "Castro"
-      },
-      "email": "javier.castro@example.com",
-      "phone": "921-162-248",
-      "cell": "639-606-056",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/45.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/45.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/45.jpg"
-      }
-    },
-    {
-      "id": "21",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Lucy",
-        "last": "King"
-      },
-      "email": "lucy.king@example.com",
-      "phone": "(500)-540-2623",
-      "cell": "(982)-608-0218",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/8.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
-      }
-    },
-    {
-      "id": "1",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Lucy",
-        "last": "King"
-      },
-      "email": "lucy.king@example.com",
-      "phone": "(500)-540-2623",
-      "cell": "(982)-608-0218",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/8.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
-      }
-    },
-    {
-      "id": "1",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Lucy",
-        "last": "King"
-      },
-      "email": "lucy.king@example.com",
-      "phone": "(500)-540-2623",
-      "cell": "(982)-608-0218",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/8.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
-      }
+      "role": "manager",
+      "messages": [
+        {
+          "id": 1,
+          "from": 1,
+          "to": 2,
+          "date": "2017-01-01T12:00:00Z",
+          "subject": "Message from Clarissa",
+          "text": "Hello Carlos, how are you?",
+          "state": "read"
+        },
+        {
+          "id": 2,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Hello, I'm fine, thank you Clarissa!",
+          "state": "unread"
+        }
+      ]
     }
   ],
   "reports": [],

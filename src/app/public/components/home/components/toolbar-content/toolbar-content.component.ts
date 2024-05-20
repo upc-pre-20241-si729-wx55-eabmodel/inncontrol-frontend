@@ -12,7 +12,7 @@ export class ToolbarContentComponent {
     {title: 'Inventory', path: '/inventory'},
     {title: 'Tasks', path: '/tasks'},
     {title: 'Room States', path: '/room-state'},
-    {title: 'Report', path: '/messages'},
+    {title: 'Messages', path: '/messages'},
     {title: 'Employees', path: '/employees'},
   ];
 }

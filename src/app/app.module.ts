@@ -45,7 +45,6 @@ import {InventoryTableComponent} from "./supply/inventory/components/inventory-t
 import {
   TaskCreateDialogComponent
 } from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
-import {ReportFormComponent} from "./interactions/report/components/report-form/report-form.component";
 import {HomeComponent} from "./public/pages/home/home.component";
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
 import {TasksComponent} from "./public/pages/tasks/tasks.component";
@@ -77,7 +76,7 @@ import {
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatDividerModule} from "@angular/material/divider";
+import { MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
 import { TaskContentComponent } from './display/task/task-content/task-content.component';
 import {TaskTableComponent} from "./display/task/task-table/task-table.component";
@@ -90,10 +89,13 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
+import { MessagesContainerComponent } from './interactions/messages/components/messages-container/messages-container.component';
+import { MessagesCardComponent } from './interactions/messages/components/messages-card/messages-card.component';
+import { MessagesCardDialogComponent } from './interactions/messages/components/messages-card-dialog/messages-card-dialog.component';
+import { MessagesNewMessageDialogComponent } from './interactions/messages/components/messages-new-message-dialog/messages-new-message-dialog.component';
+import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 import { TaskCardComponent } from './display/task/task-cards/task-card/task-card.component';
 import { TaskEditDialogComponent } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
-
-
 
 @NgModule({
   declarations: [
@@ -105,7 +107,6 @@ import { TaskEditDialogComponent } from './display/task/task-create/components/t
     InventoryTableComponent,
     TasksComponent,
     TaskCreateDialogComponent,
-    ReportFormComponent,
     InventoryContentComponent,
     HomeComponent,
     PageNotFoundComponent,
@@ -129,6 +130,10 @@ import { TaskEditDialogComponent } from './display/task/task-create/components/t
     RoomUpdateComponent,
     RoomsReportComponent,
     RoomCreateButtonComponent,
+    MessagesContainerComponent,
+    MessagesCardComponent,
+    MessagesCardDialogComponent,
+    MessagesNewMessageDialogComponent
     TaskCardComponent,
     TaskEditDialogComponent
   ],
@@ -175,6 +180,8 @@ import { TaskEditDialogComponent } from './display/task/task-create/components/t
     MatBadgeModule,
     MatMenuModule,
     MatDialogModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
   ],
   providers: [
     provideAnimationsAsync(),
