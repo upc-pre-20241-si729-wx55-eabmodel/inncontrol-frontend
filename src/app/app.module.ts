@@ -17,7 +17,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogModule, MatDialogRef,
+  MatDialogModule,
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -77,7 +77,7 @@ import {
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatDivider, MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
 import { TaskContentComponent } from './display/task/task-content/task-content.component';
 import {TaskTableComponent} from "./display/task/task-table/task-table.component";
@@ -90,6 +90,10 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
+import { TaskCardComponent } from './display/task/task-cards/task-card/task-card.component';
+import { TaskEditDialogComponent } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
+
+
 
 @NgModule({
   declarations: [
@@ -124,7 +128,9 @@ import { RoomCreateButtonComponent } from './display/room/components/room-create
     RoomCreateDialogComponent,
     RoomUpdateComponent,
     RoomsReportComponent,
-    RoomCreateButtonComponent
+    RoomCreateButtonComponent,
+    TaskCardComponent,
+    TaskEditDialogComponent
   ],
   imports: [
     HttpClientModule,

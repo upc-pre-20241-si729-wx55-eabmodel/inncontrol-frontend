@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <h2 mat-dialog-title>Add Task</h2>
+  <h2 mat-dialog-title>Edit Task</h2>
   <button mat-icon-button class="close" (click)="onNoClick()">
     <mat-icon>close</mat-icon>
   </button>
@@ -59,9 +59,9 @@
     <br>
     <mat-form-field class="rectangle-employee">
       <mat-label>Assigned Employee</mat-label>
-      <input matInput formControlName="employee">
-      <mat-error *ngIf="TaskItemFormGroup.get('employee')?.invalid">
-        Please enter a employee
+      <input matInput formControlName="userid">
+      <mat-error *ngIf="TaskItemFormGroup.get('userid')?.invalid">
+        Please enter a valid ID
       </mat-error>
     </mat-form-field>
 
@@ -70,5 +70,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="onSubmit()" [mat-dialog-close]="data" [disabled]="TaskItemFormGroup.invalid">Add</button>
+  <button mat-button (click)="onSubmit()" [mat-dialog-close]="data" [disabled]="TaskItemFormGroup.invalid">Update</button>
 </mat-dialog-actions>
