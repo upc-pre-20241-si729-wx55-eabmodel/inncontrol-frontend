@@ -33,7 +33,7 @@ constructor() {
 
 
 
-  changestate() {
+  changeState() {
 
   this.Menu = false;
   this.unread = false;
@@ -57,4 +57,5 @@ constructor() {
   clickedMenu() {
     this.Menu = true;
   }
+
 }
