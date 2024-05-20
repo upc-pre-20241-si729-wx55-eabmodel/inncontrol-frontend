@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../model/user";
 import {UserApiServiceService} from "../../services/user-api.service.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {RoleUser} from "../../model/roll-user";
 
 @Component({
   selector: 'app-login',
@@ -17,13 +17,16 @@ export class LoginComponent {
   password: string;
   email: string;
   id: number;
+  rollUser:RoleUser;
   constructor(private userService: UserApiServiceService, private snackBar: MatSnackBar) {
     this.email = '';
     this.password = '';
     this.id = 0;
+    this.rollUser = RoleUser.Employee;
 
   }
   singInAccount() {
+console.log(this.rollUser)
     if (this.myForm.valid) {
       console.log(this.email);
 
@@ -60,5 +63,11 @@ export class LoginComponent {
       panelClass: ['error-snackbar']
     });
   }
-
+setRolleUser(rollUser: number) {
+  if (rollUser == 1) {
+    this.rollUser = RoleUser.Employee;
+  }
+  if (rollUser == 2){
+    this.rollUser = RoleUser.Manager;}
+  }
 }

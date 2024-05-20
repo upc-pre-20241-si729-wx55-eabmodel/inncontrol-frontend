@@ -15,6 +15,17 @@
       </div>
 
     </div>
+
+    <div class="input-box role-selection">
+      <label>
+        <input type="radio" name="role" (click)="setRolleUser(1)" >
+        Employee
+      </label>
+      <label>
+        <input type="radio" name="role" (click)="setRolleUser(2)" >
+        Manager
+      </label>
+    </div>
     <div class="content-button" style="text-align: center">
       <button  style="color: white" type="submit" mat-button>Log in</button>
       <div class="text-signup">
@@ -24,7 +35,3 @@
     </div>
   </form>
 </div>
-
-
-
-
