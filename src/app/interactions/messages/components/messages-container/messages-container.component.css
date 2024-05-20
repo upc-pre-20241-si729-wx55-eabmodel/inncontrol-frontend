@@ -1,5 +1,4 @@
-
-.item{
+.item {
   width: 100%;
   display: flex;
   font-size: 3rem;
@@ -8,7 +7,7 @@
   color: #3f76b5;
 }
 
-.addButton{
+.addButton {
   padding: 0;
   margin: 1rem;
   display: flex;
@@ -16,7 +15,7 @@
   align-items: center;
 }
 
-.add{
+.add {
   width: auto;
   height: auto;
   display: flex;
@@ -26,7 +25,7 @@
   color: #3f76b5;
 }
 
-.card-title{
+.card-title {
   margin: 0;
   text-align: center;
   font-size: 2rem;
@@ -41,23 +40,7 @@
 
 }
 
-.cardDisplay{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: auto;
-  width: 90%;
-  gap: 1rem;
-
-
-}
-
-.card{
-  width: 48%;
-}
-
-
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,12 +51,6 @@
 }
 
 @media (max-width: 768px) {
-  .cardDisplay {
-    flex-direction: column;
-  }
-  .card{
-    width: 100%;
-  }
   .header {
     padding: 0;
   }

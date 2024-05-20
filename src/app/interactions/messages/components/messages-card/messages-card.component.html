@@ -1,4 +1,4 @@
-<mat-card class="messageCard" (click)="clickedMessage()">
+<mat-card class="card-content" (click)="clickedMessage()">
   <mat-card-header class="messageTitle">
     <mat-card-title class="title" >{{this.message.subject}}<mat-icon *ngIf="unread" class="alert">error</mat-icon>
       <mat-menu #menu="matMenu" xPosition="before">
