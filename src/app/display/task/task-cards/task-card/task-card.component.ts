@@ -9,7 +9,10 @@ import {Task} from "../../task-create/model/task.entity";
 export class TaskCardComponent {
   @Input() task!: Task;
   @Output() update = new EventEmitter<Task>();
-
+  @Output() delete = new EventEmitter<Task>();
+  deleteTask(): void {
+    this.delete.emit(this.task);
+  }
   openUpdateDialog(): void {
     this.update.emit(this.task);
   }

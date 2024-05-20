@@ -28,6 +28,16 @@ export class TaskContentComponent implements OnInit {
   handleUpdate(task: Task): void {
     this.openUpdateDialog(task);
   }
+  onDeleteItem(element: Task) {
+    this.deleteTask(element.id);
+  }
+
+
+  private deleteTask(taskId: number): void {
+    this.taskService.delete(taskId).subscribe(() => {
+      this.tasksData = this.tasksData.filter((task: Task) => task.id !== taskId);
+    });
+  }
   openUpdateDialog(task: Task): void {
     const dialogRef = this.dialog.open(TaskEditDialogComponent, {
       data: task
