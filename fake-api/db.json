@@ -25,7 +25,9 @@
           "date": "2017-01-01T12:00:00Z",
           "subject": "Message from Clarissa",
           "text": "Hello Clarissa, how are you?",
-          "state": "read"
+          "state": "read",
+          "sender": "Ms Clarissa Lautenschläger",
+          "receiver": "Mr Nicolas Banquito"
         },
         {
           "id": 2,
@@ -34,16 +36,9 @@
           "date": "2017-01-01T12:01:00Z",
           "subject": "Message from Carlos",
           "text": "Hello, I'm fine, thank you!",
-          "state": "unread"
-        },
-        {
-          "id": 3,
-          "from": 2,
-          "to": 1,
-          "date": "2017-01-01T12:01:00Z",
-          "subject": "Message from Carlos",
-          "text": "Hello, I'm fine, thank you!",
-          "state": "unread"
+          "state": "unread",
+          "receiver": "Ms Clarissa Lautenschläger",
+          "sender": "Mr Nicolas Banquito"
         },
         {
           "id": 4,
@@ -51,7 +46,21 @@
           "to": 1,
           "date": "2017-01-01T12:01:00Z",
           "subject": "Message from Carlos",
-          "text": "Hello, I'm fine, thank you!",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue nisi vitae suscipit tellus. Tempus iaculis urna id volutpat lacus laoreet non curabitur. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra. Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Sodales neque sodales ut etiam sit amet nisl purus in. Integer eget aliquet nibh praesent tristique. Magna fermentum iaculis eu non diam phasellus vestibulum lorem sed. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Scelerisque varius morbi enim nunc faucibus a. Auctor eu augue ut lectus arcu bibendum at. Dis parturient montes nascetur ridiculus mus mauris. Urna nunc id cursus metus aliquam eleifend mi. Euismod quis viverra nibh cras pulvinar. Ut tortor pretium viverra suspendisse potenti nullam. Nisl pretium fusce id velit ut tortor pretium viverra. Dui vivamus arcu felis bibendum ut tristique et egestas quis. Viverra maecenas accumsan lacus vel facilisis volutpat.\n\nAt in tellus integer feugiat scelerisque varius morbi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Commodo odio aenean sed adipiscing. Ut tortor pretium viverra suspendisse potenti nullam. Volutpat commodo sed egestas egestas. Vitae ultricies leo integer malesuada nunc. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Urna duis convallis convallis tellus. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor. Orci sagittis eu volutpat odio facilisis mauris sit amet massa. Luctus accumsan tortor posuere ac ut consequat semper viverra. Commodo sed egestas egestas fringilla phasellus faucibus. Id ornare arcu odio ut sem nulla pharetra diam sit. Id interdum velit laoreet id donec ultrices tincidunt. Eget arcu dictum varius duis at consectetur lorem donec massa. Viverra vitae congue eu consequat ac felis donec.",
+          "state": "unread",
+          "receiver": "Ms Clarissa Lautenschläger",
+          "sender": "Mr Nicolas Banquito"
+        },
+        {
+          "id": 3,
+          "subject": "El STRIKE ES MENTAL (LEER)",
+          "message": "Message Body...",
+          "sender": "Ms Clarissa Lautenschläger",
+          "date": "Sun May 19 2024 19:41:09 GMT-0500 (hora estándar de Perú)",
+          "receiver": "Mr Nicolas Banquito",
+          "from": 1,
+          "to": 2,
+          "text": "Gente no se si c ve en el codigo pero el funcionamiento d los nombres funciona d una manera bien rata usando los usuarios tonces este como q dependo de eso, ese es el terror mas grande q tengo con eso, fuera d lo demas tmbn esta wbd FUNCIONA SOLO PARA EL USUARIO 1 cuando creen la wbd esta de q se loggee faltara cambiar eso pq SOLO SE VE PARA EL USER 1 no el 2 ni 3, dsp veo como puedo arreglar eso pero hasta ahora todo piola con mensajes nomas q cuando creemos un endpoint para eso tendre q modificar\n",
           "state": "unread"
         }
       ]

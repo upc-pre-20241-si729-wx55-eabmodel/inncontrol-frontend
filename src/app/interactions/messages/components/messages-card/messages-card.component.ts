@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-messages-card',
@@ -15,14 +14,13 @@ export class MessagesCardComponent implements OnInit{
   Menu: boolean;
 
 
-constructor(private router: Router) {
+constructor() {
   this.Menu = false;
 }
 
 
 
   ngOnInit() {
-  console.log("DataRECIBIDA" , this.message);
 
   if (this.message.state === 'unread') {
     this.unread = true;
@@ -31,9 +29,7 @@ constructor(private router: Router) {
   }
 
 
-
-  console.log('Unread:', this.unread);
-  }
+ }
 
 
 

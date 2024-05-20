@@ -17,7 +17,6 @@ export class Messages {
   ] ;
 
 
-
   constructor(messageId: number, from: number, to: number, subject: string, text: string, date: string, state: string) {
     this.messages = [
       {
@@ -59,6 +58,44 @@ export class Messages {
 
   }
 
+  getMessagesById(messageId: number) {
+    let messager:any;
+    this.messages?.forEach((message) => {
+      if (message.id === messageId) {
+        messager = message;
+      }
+    });
+
+    return messager;
+  }
+
+  copyMessage(messageId: number) {
+    let messager:any;
+
+    this.messages?.forEach((message) => {
+      if (message.id === messageId) {
+        // Crear una copia profunda del mensaje
+        messager = JSON.parse(JSON.stringify(message));
+        messager.id = this.makeIdValid();
+      }
+    });
+
+    console.log('Messagerr:', messager);
+
+    return messager;
+  }
+
+  makeIdValid() {
+    const ids = new Set(this.messages?.map(message => message.id));
+    let id = 1;
+    while (ids.has(id)) {
+      id++;
+    }
+    console.log('ID:', id);
+    return id;
+  }
+
+
   getMessages() {
     return this.messages;
   }
@@ -74,7 +111,6 @@ export class Messages {
    })
 
 
-   console.log('Unread Messages', unreadMessages);
 
    this.messages = unreadMessages;
 
@@ -83,7 +119,7 @@ export class Messages {
 
   getUnreadSize()
   {
-    let unreadMessages:any = [];
+    let unreadMessages:any;
     unreadMessages = this.messages.filter((message) => message.state === "unread");
     return unreadMessages.length;
   }
@@ -96,15 +132,12 @@ export class Messages {
 
       if (message.from.toString() === userid.toString()) {
         message.sender = name;
-        console.log('Sender', message.sender);
 
       }else if (message.to.toString() === userid.toString()) {
         message.receiver = name;
-        console.log('Receiver', message.receiver);
 
       }
     });
-    console.log('Messages', this.messages);
     return this.messages;
   }
 
@@ -124,4 +157,11 @@ export class Messages {
     return this.messages;
   }
 
+  addMessage(result: any) {
+    console.log('Result:', result);
+    console.log('Messages:', this.messages);
+    this.messages.push(result);
+    console.log('Messages:', this.messages);
+    return this.messages;
+  }
 }

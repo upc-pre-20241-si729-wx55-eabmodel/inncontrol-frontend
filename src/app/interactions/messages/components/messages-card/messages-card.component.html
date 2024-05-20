@@ -9,13 +9,13 @@
     <button (click)="clickedMenu()" mat-icon-button (onMenuClose)="this.Menu=false" [matMenuTriggerFor]="menu"><mat-icon>more_horiz</mat-icon></button>
   </mat-card-header>
   <mat-card-content class="messageCardContent">
-<div>
-  <mat-card-subtitle>from: {{this.message.sender}}</mat-card-subtitle>
-  <mat-card-subtitle>to: {{this.message.receiver}}</mat-card-subtitle>
-  <mat-card-subtitle>Sent: {{this.message.date | date:'short'}}</mat-card-subtitle>
+<div class="subtitle">
+  <mat-card-subtitle class="subtitle-text" >from: {{this.message.sender}}</mat-card-subtitle>
+  <mat-card-subtitle class="subtitle-text">to: {{this.message.receiver}}</mat-card-subtitle>
+  <mat-card-subtitle class="subtitle-text">Sent: {{this.message.date | date:'short'}}</mat-card-subtitle>
 </div>
     <mat-divider [vertical]="true"></mat-divider>
-    <p>
+    <p class="text">
       {{this.message.text}}
     </p>
   </mat-card-content>

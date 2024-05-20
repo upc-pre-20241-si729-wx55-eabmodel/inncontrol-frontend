@@ -6,12 +6,12 @@
   </span>
   <span class="header">
     <app-search-content [options]="this.options" (optionSelected)="recieveFilter($event)" (search)="searchFilter($event)" ></app-search-content>
-      <button class="addButton" mat-icon-button  aria-label="add message button" (click)="OpenMessageDialog()">
+      <button class="addButton" mat-icon-button  aria-label="add message button" (click)="OpenMessageDialog(null)">
       <mat-icon  class="add" aria-hidden="false">add_circle</mat-icon>
     </button>
   </span>
   <div class="cardDisplay" *ngIf="loaded">
-    <app-messages-card  class="card" *ngFor="let messages of message.messages" [message]="messages" (deleted)="deletemessage($event)" (state)="changeState($event)" (clicked)="openDialog(messages)" ></app-messages-card>
+    <app-messages-card  class="card" *ngFor="let messages of message.messages" [message]="messages" (deleted)="deletemessage($event)" (state)="changeState($event)" (clicked)="openDialog(messages.id)" ></app-messages-card>
     <h1 *ngIf="message.messages.length<=0"> It seems you dont have any messages yet...</h1>
   </div>
 </div>

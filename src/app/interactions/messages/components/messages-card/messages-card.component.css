@@ -5,6 +5,7 @@
 .messageCard:hover{
   transform: scale(1.05);
   box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+
 }
 
 .messageCardContent{
@@ -35,7 +36,29 @@
   width: 2rem;
   height: 2rem;
   font-size: 2rem;
-  transition: 0.2s;
+  transition: 0.5s;
+
 }
 
+.text{
+  width: 50%;
+  height: 5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.subtitle-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subtitle{
+  width: 50%;
+  height: 5rem;
+}
 

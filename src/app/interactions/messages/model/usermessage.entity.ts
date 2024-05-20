@@ -8,6 +8,10 @@ export class UsermessageEntity {
     this.name = name;
   }
 
+  getId() {
+    return Number(this.id);
+  }
+
   concatName() {
     return this.name.title + ' ' + this.name.first + ' ' + this.name.last;
   }

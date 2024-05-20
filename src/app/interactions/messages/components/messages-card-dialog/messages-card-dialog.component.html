@@ -1,19 +1,21 @@
 
 <div class="cardContain">
-
-  <h2>{{data.subject}}</h2>
+<div class="header">
+  <h2 class="title">{{data.subject}}</h2>
   <mat-divider></mat-divider>
-  <p>from: {{data.sender}}<br>to: {{data.receiver}}</p>
-
-  <section>
+  <p >from: {{data.sender}}<br>to: {{data.receiver}}</p>
+</div>
+  <section class="text">
     <p>{{ data.text }}</p>
 </section>
 
-    sent: {{data.date | date: "short" }}
+   <p class="header"> sent: {{data.date | date: "short" }}</p>
     <mat-divider></mat-divider>
     <div class="buttons">
-    <button >Delete</button>
-    <button >Answer</button>
+      <mat-dialog-actions>
+    <button mat-flat-button color="primary" [mat-dialog-close]="deleted">Delete</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="answer">Answer</button>
+      </mat-dialog-actions>
     </div>
 
 </div>

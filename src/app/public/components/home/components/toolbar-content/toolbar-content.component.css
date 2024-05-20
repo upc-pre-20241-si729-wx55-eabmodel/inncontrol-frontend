@@ -16,3 +16,21 @@
 .img-div img {
   filter: invert(1);
 }
+
+.fix {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.items{
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 768px) {
+  .items {
+    visibility: hidden;
+  }
+}

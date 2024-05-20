@@ -17,7 +17,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogModule, MatDialogRef,
+  MatDialogModule,
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -76,7 +76,7 @@ import {
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatDivider, MatDividerModule} from "@angular/material/divider";
+import { MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
 import { TaskContentComponent } from './display/task/task-content/task-content.component';
 import {TaskTableComponent} from "./display/task/task-table/task-table.component";
@@ -92,6 +92,8 @@ import { RoomCreateButtonComponent } from './display/room/components/room-create
 import { MessagesContainerComponent } from './interactions/messages/components/messages-container/messages-container.component';
 import { MessagesCardComponent } from './interactions/messages/components/messages-card/messages-card.component';
 import { MessagesCardDialogComponent } from './interactions/messages/components/messages-card-dialog/messages-card-dialog.component';
+import { MessagesNewMessageDialogComponent } from './interactions/messages/components/messages-new-message-dialog/messages-new-message-dialog.component';
+import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -128,7 +130,8 @@ import { MessagesCardDialogComponent } from './interactions/messages/components/
     RoomCreateButtonComponent,
     MessagesContainerComponent,
     MessagesCardComponent,
-    MessagesCardDialogComponent
+    MessagesCardDialogComponent,
+    MessagesNewMessageDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -173,6 +176,8 @@ import { MessagesCardDialogComponent } from './interactions/messages/components/
     MatBadgeModule,
     MatMenuModule,
     MatDialogModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
   ],
   providers: [
     provideAnimationsAsync(),

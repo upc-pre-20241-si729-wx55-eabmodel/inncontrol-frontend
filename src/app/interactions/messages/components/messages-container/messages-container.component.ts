@@ -4,6 +4,7 @@ import { MessagesApiService } from '../../service/messages-api.service';
 import {UsermessageEntity} from "../../model/usermessage.entity";
 
 import {MessagesCardDialogComponent} from "../messages-card-dialog/messages-card-dialog.component";
+import {MessagesNewMessageDialogComponent} from "../messages-new-message-dialog/messages-new-message-dialog.component";
 
 import {MatDialog} from "@angular/material/dialog";
 
@@ -42,10 +43,6 @@ export class MessagesContainerComponent implements OnInit{
   {
     this.unreads = this.message.getUnreadSize();
     this.unread = this.unreads <= 0;
-
-    console.log('Unread Messages:', this.unreads, this.unread);
-
-
 
   }
 
@@ -112,8 +109,39 @@ export class MessagesContainerComponent implements OnInit{
 
 
 
-  OpenMessageDialog() {
-    console.log('Open Message Dialog');
+  OpenMessageDialog(messages:any) {
+
+    if (messages) {
+      let message = this.message.copyMessage(messages);
+
+      const dialogRef = this.dialog.open(MessagesNewMessageDialogComponent, {
+        data: {messages:message, users: this.users}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result){
+          console.log('The dialog was closed', result);
+          console.log('Messages:', this.message);
+          this.message.addMessage(result);
+          this.badgeControl();
+          this.updateMessages(1);
+      }
+      });
+
+    }
+    else {
+      console.log('Open CREATE Message Dialog');
+      const dialogRef = this.dialog.open(MessagesNewMessageDialogComponent, {
+        data: {messages:{id: this.message.makeIdValid() , subject: 'Message Subject', message: 'Message Body...', sender: 1, date: new Date(), receiver: 'Receiver',from:1,to:1 }, users: this.users}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed', result);
+        if (result){
+          this.message.addMessage(result);
+          this.badgeControl();
+          this.updateMessages(1);
+        }
+      });
+    }
   }
 
   updateMessages(id: number) {
@@ -123,6 +151,8 @@ export class MessagesContainerComponent implements OnInit{
 
   getData(){
     this.getMessages();
+    console.log('Messages:', this.message);
+
   }
 
   ngOnInit() {
@@ -132,12 +162,22 @@ export class MessagesContainerComponent implements OnInit{
   deletemessage($event: any) {
     console.log('Evento recibido del hijo:', $event);
     this.message.deleteMessage($event);
-    this.updateMessages(1);
+    this.badgeControl();
   }
 
   openDialog(messages: any): void {
+    let message = this.message.getMessagesById(messages);
+    console.log('Open Dialog:', message)
     const dialogRef = this.dialog.open(MessagesCardDialogComponent, {
-      data: messages
+      data: message
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (result === 'Delete') {
+        this.deletemessage(messages);
+      }else if (result === 'Answer') {
+        this.OpenMessageDialog(messages);
+      }
     });
   }
 
