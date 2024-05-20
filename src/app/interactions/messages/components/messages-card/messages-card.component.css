@@ -3,9 +3,8 @@
   transition: 0.5s;
 }
 .messageCard:hover{
-  transform: scale(1.05);
-  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
-
+  transform: scale(1.03);
+  box-shadow: 0 0 1rem rgba(99, 128, 169, 0.51);
 }
 
 .messageCardContent{
