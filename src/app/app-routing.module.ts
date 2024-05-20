@@ -7,6 +7,8 @@ import {TasksComponent} from "./public/pages/tasks/tasks.component";
 import {MessagesComponent} from "./public/pages/messages/messages.component";
 import {EmployeesComponent} from "./public/pages/employees/employees.component";
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
+import {LoginComponent} from "./user/pages/login/login.component";
+import {SigUpComponent} from "./user/pages/sig-up/sig-up.component";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'messages', component: MessagesComponent},
   {path: 'employees', component: EmployeesComponent},
   {path: 'inventory', component: InventoryComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'sign-up', component: SigUpComponent},
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '', redirectTo: 'inventory', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
