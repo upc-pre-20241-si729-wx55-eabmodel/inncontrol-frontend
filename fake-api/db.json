@@ -381,11 +381,10 @@
       "taskName": "Task 1",
       "description": "task 1 description",
       "dueDate": "2024-05-20T03:22:00.000Z",
-      "dueTime": "22:22",
       "status": "in progress",
       "userid": "Employee 1",
       "id": 1,
-      "userId": "Employee 1"
+      "employee": "Employee 1"
     },
     {
       "id": 2,
@@ -394,15 +393,16 @@
       "dueDate": "2024-05-18T09:11:00.000Z",
       "status": "pending",
       "creationDate": "2024-05-18T03:57:54.200Z",
-      "userId": "2"
+      "employee": "Employee 2"
     },
     {
       "taskName": "Task 3",
       "description": "Task 3 description",
       "dueDate": "2024-05-19T08:03:00.000Z",
       "status": "pending",
+      "dueTime": "22:22",
       "creationDate": "2024-05-19T17:38:12.605Z",
-      "userId": "Employee 3",
+      "employee": "Employee 3",
       "id": 3
     },
     {
@@ -411,17 +411,8 @@
       "dueDate": "2024-05-20T08:01:00.000Z",
       "status": "in progress",
       "creationDate": "2024-05-19T20:05:13.637Z",
-      "userId": "Employee 1",
+      "employee": "Employee 1",
       "id": 4
-    },
-    {
-      "taskName": "Task 5",
-      "description": "Task 5 description",
-      "dueDate": "2024-05-21T16:11:00.000Z",
-      "status": "pending",
-      "creationDate": "2024-05-19T20:26:52.799Z",
-      "userId": "Employee 2",
-      "id": 5
     },
     {
       "taskName": "Task 6 ii",
@@ -429,9 +420,8 @@
       "dueDate": "2024-05-28T16:22:00.000Z",
       "dueTime": "11:22",
       "status": "in progress",
-      "userid": "iiii",
       "id": 6,
-      "userId": "iiii"
+      "employee": "iiii"
     }
   ]
 }
