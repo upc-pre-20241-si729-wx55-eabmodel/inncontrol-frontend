@@ -8,15 +8,5 @@
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-}
-.task-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 50%;
-  margin: 0 auto;
-}
-.task-cards-container app-task-card {
-  flex: 0 0 calc(33.33% - 20px);
-  margin: 10px;
-
+  margin-bottom: 2rem;
 }
