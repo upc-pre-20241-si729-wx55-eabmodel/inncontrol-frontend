@@ -94,6 +94,8 @@ import { MessagesCardComponent } from './interactions/messages/components/messag
 import { MessagesCardDialogComponent } from './interactions/messages/components/messages-card-dialog/messages-card-dialog.component';
 import { MessagesNewMessageDialogComponent } from './interactions/messages/components/messages-new-message-dialog/messages-new-message-dialog.component';
 import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
+import { TaskCardComponent } from './display/task/task-cards/task-card/task-card.component';
+import { TaskEditDialogComponent } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -132,6 +134,8 @@ import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocom
     MessagesCardComponent,
     MessagesCardDialogComponent,
     MessagesNewMessageDialogComponent
+    TaskCardComponent,
+    TaskEditDialogComponent
   ],
   imports: [
     HttpClientModule,

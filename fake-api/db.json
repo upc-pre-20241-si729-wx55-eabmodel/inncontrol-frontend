@@ -104,5 +104,53 @@
       ]
     }
   ],
-  "reports": []
+  "reports": [],
+  "tasks": [
+    {
+      "taskName": "Task 1",
+      "description": "task 1 description",
+      "dueDate": "2024-05-20T03:22:00.000Z",
+      "status": "in progress",
+      "userid": "Employee 1",
+      "id": 1,
+      "employee": "Employee 1"
+    },
+    {
+      "id": 2,
+      "taskName": "Task 2",
+      "description": "task 2 description",
+      "dueDate": "2024-05-18T09:11:00.000Z",
+      "status": "pending",
+      "creationDate": "2024-05-18T03:57:54.200Z",
+      "employee": "Employee 2"
+    },
+    {
+      "taskName": "Task 3",
+      "description": "Task 3 description",
+      "dueDate": "2024-05-19T08:03:00.000Z",
+      "status": "pending",
+      "dueTime": "22:22",
+      "creationDate": "2024-05-19T17:38:12.605Z",
+      "employee": "Employee 3",
+      "id": 3
+    },
+    {
+      "taskName": "Task 4 ",
+      "description": "Task 4 description",
+      "dueDate": "2024-05-20T08:01:00.000Z",
+      "status": "in progress",
+      "creationDate": "2024-05-19T20:05:13.637Z",
+      "employee": "Employee 1",
+      "id": 4
+    },
+    {
+      "taskName": "Task 6 ii",
+      "description": "Task 6 description iiiiii",
+      "dueDate": "2024-05-28T16:22:00.000Z",
+      "dueTime": "11:22",
+      "status": "in progress",
+      "id": 6,
+      "employee": "iiii"
+    }
+  ]
 }

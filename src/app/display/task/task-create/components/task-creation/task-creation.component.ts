@@ -21,7 +21,7 @@ export class TaskCreationComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
-      data: new Task('', '', '', new Date(), '', new Date(), '')
+      data: new Task(0, '', '', new Date(), '', new Date(), '')
     });
 
     dialogRef.afterClosed().subscribe(result => {
