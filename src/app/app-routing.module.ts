@@ -7,8 +7,8 @@ import {TasksComponent} from "./public/pages/tasks/tasks.component";
 import {MessagesComponent} from "./public/pages/messages/messages.component";
 import {EmployeesComponent} from "./public/pages/employees/employees.component";
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
-import {LoginComponent} from "./user/pages/login/login.component";
-import {SigUpComponent} from "./user/pages/sig-up/sig-up.component";
+import {LoginComponent} from "./iam/pages/login/login.component";
+import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},

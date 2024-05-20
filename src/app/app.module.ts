@@ -90,8 +90,8 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
-import { LoginComponent } from './user/pages/login/login.component';
-import { SigUpComponent } from './user/pages/sig-up/sig-up.component';
+import {LoginComponent} from "./iam/pages/login/login.component";
+import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
 
 @NgModule({
   declarations: [
