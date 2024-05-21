@@ -91,9 +91,9 @@ import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
 import { PanelCardIconComponent } from './interactions/control/components/panel-card-icon/panel-card-icon.component';
-import { PanelContentComponent } from './interactions/control/components/panel-content/panel-content.component';
 import { PanelScheduleComponent } from './interactions/control/components/panel-schedule/panel-schedule.component';
 import { PanelCardIconViewComponent } from './interactions/control/components/panel-card-icon-view/panel-card-icon-view.component';
+import { ControlPanelPageComponent } from './interactions/control/pages/control-panel-page/control-panel-page.component';
 
 @NgModule({
   declarations: [
@@ -130,9 +130,9 @@ import { PanelCardIconViewComponent } from './interactions/control/components/pa
     RoomsReportComponent,
     RoomCreateButtonComponent,
     PanelCardIconComponent,
-    PanelContentComponent,
     PanelScheduleComponent,
-    PanelCardIconViewComponent
+    PanelCardIconViewComponent,
+    ControlPanelPageComponent
   ],
   imports: [
     HttpClientModule,
