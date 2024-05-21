@@ -8,9 +8,11 @@ import {MessagesComponent} from "./public/pages/messages/messages.component";
 import {EmployeesComponent} from "./public/pages/employees/employees.component";
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {ControlPanelPageComponent} from "./interactions/control/pages/control-panel-page/control-panel-page.component";
+import {SchedulePageComponent} from "./planning/schedule/pages/schedule-page/schedule-page.component";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
+  {path: 'schedule', component: SchedulePageComponent},
   {path: 'control', component: ControlPanelPageComponent},
   {path: 'tasks', component: TasksComponent},
   {path: 'room-state', component: RoomStateComponent},
