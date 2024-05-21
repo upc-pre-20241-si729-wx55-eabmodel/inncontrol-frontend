@@ -13,7 +13,11 @@ export class PanelCardIconComponent {
   @Input() title: string;
   @Input() toRoute: string;
 
-  constructor(private route: Router) { }
+  constructor(private route: Router) {
+    this.icon = {} as PanelCardIcon;
+    this.title = '';
+    this.toRoute = '';
+  }
 
   /**
    * Navigates to the route declared in the toRoute input
