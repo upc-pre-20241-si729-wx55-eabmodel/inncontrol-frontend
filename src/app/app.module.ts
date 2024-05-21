@@ -87,10 +87,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
-import { PanelCardIconComponent } from './interactions/control/components/panel-card-icon/panel-card-icon.component';
-import { PanelScheduleComponent } from './interactions/control/components/panel-schedule/panel-schedule.component';
-import { PanelCardIconViewComponent } from './interactions/control/components/panel-card-icon-view/panel-card-icon-view.component';
-import { ControlPanelPageComponent } from './interactions/control/pages/control-panel-page/control-panel-page.component';
+import {PanelCardIconComponent} from './interactions/control/components/panel-card-icon/panel-card-icon.component';
+import {PanelScheduleComponent} from './interactions/control/components/panel-schedule/panel-schedule.component';
+import {
+  PanelCardIconViewComponent
+} from './interactions/control/components/panel-card-icon-view/panel-card-icon-view.component';
+import {ControlPanelPageComponent} from './interactions/control/pages/control-panel-page/control-panel-page.component';
 import {RoomCreateButtonComponent} from './display/room/components/room-create-button/room-create-button.component';
 import {
   MessagesContainerComponent
@@ -107,6 +109,7 @@ import {TaskCardComponent} from './display/task/task-cards/task-card/task-card.c
 import {
   TaskEditDialogComponent
 } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
+import {PerformanceReportComponent} from "./planning/performance-report/performance-report.component";
 
 @NgModule({
   declarations: [
@@ -133,6 +136,7 @@ import {
     NotificationsCardComponent,
     NotificationsViewComponent,
     NotificationsBadgeComponent,
+    PerformanceReportComponent,
     InventoryComponent,
     TaskContentComponent,
     TaskCreationComponent,
