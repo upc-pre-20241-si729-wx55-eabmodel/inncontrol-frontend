@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user";
 import {UserApiServiceService} from "../../services/user-api.service.service";
+import {RoleUser} from "../../model/roll-user";
 
 @Component({
   selector: 'app-sig-up',
@@ -9,6 +10,8 @@ import {UserApiServiceService} from "../../services/user-api.service.service";
   styleUrl: './sig-up.component.css'
 })
 export class SigUpComponent {
+  rolUser: RoleUser;
+
   myForm: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -20,6 +23,8 @@ export class SigUpComponent {
 
   constructor(private userService: UserApiServiceService) {
     this.userCreated = {} as User;
+    this.rolUser = RoleUser.Employee;
+
   }
 
   signUpAccount() {
@@ -28,9 +33,10 @@ export class SigUpComponent {
         if (!exists) {
           this.userService.create(this.userCreated).subscribe(user => {
               this.userCreated = user;
+              this.userCreated.rolUser = this.rolUser;
               console.log('User created successfully');
               localStorage.setItem('id', this.userCreated.id.toString());
-              localStorage.setItem('email', this.userCreated.email);
+              localStorage.setItem('rollUser', String(this.rolUser));
               console.log(this.userCreated)
             },
             error => {
@@ -44,7 +50,8 @@ export class SigUpComponent {
         }
       });
     }
-
-
+  }
+  setRollUser(rollUser: number) {
+    this.rolUser = rollUser === 1 ? RoleUser.Employee : RoleUser.Manager;
   }
 }

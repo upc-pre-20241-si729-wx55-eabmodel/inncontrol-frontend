@@ -28,7 +28,16 @@
       <div class="mat-form-field">
         <input matInput type="password" placeholder="Password" [(ngModel)]="this.userCreated.password" formControlName="password" required>
       </div>
-
+      <div class="input-box role-selection">
+        <label>
+          <input type="radio" name="role" (click)="setRollUser(1)" >
+          Employee
+        </label>
+        <label>
+          <input type="radio" name="role" (click)="setRollUser(2)" >
+          Manager
+        </label>
+      </div>
     </div>
     <div class="content-button" style="text-align: center">
       <button style="color: white" type="submit" mat-button>Sign Up</button>

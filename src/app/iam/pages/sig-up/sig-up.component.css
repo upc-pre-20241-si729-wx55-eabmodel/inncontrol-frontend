@@ -1,4 +1,3 @@
-
 .container {
   padding: 20px 0;
   width: 500px;
@@ -7,54 +6,26 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-h3{
+h3 {
   font-size: 25px;
   font-weight: 600;
   text-align: center;
   padding-top: 10px;
 }
 
-.column p {
-  font-weight: 500;
-  text-align: center;
-  margin: 0.5rem 0 0.5rem 0;
-}
-
-.column span a {
-  color:#E3BD86;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.column span a:hover {
-  color: #0E3026;
-}
-
-form{
+form {
   margin: auto;
-}
-form{
   margin-top: 1rem;
   width: 400px;
 }
 
-.mat-label{
-  color: #0E3026;
-  font-weight: bold;
-  font-size: 19px;
-  margin: 0 15px;
-}
-
-.input-box{
-
+.input-box {
   align-items: center;
   justify-content: center;
   margin: 30px 25px 30px 0;
-
 }
 
-.input-box input{
-
+.input-box input {
   background: white;
   border-radius: 0px;
   height: 1rem;
@@ -63,7 +34,24 @@ form{
   border: none;
 }
 
-button  {
+.role-selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 30px 0;
+}
+
+.role-selection label {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.role-selection input {
+  margin-right: 10px;
+}
+
+button {
   width: 100%;
   background: deepskyblue;
   font-weight: bold;
@@ -81,31 +69,29 @@ button:hover {
   transform: scale(1.2);
 }
 
-@media (max-width: 900px){
-  .container{
+.text-signup {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .container {
     display: flex;
     align-items: center;
   }
-  .input-box{
+  .input-box {
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     color: #0E3026;
     height: 120px;
   }
-
-
-  mat-label{
-    color: #0E3026;
-    font-size: 20px;
-    padding: 30px;
-    font-weight: bold;
-    width: 40px;
-    margin-right: 40px;
-    font-family: 'Overpass', sans-serif;
+  .role-selection {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
   }
-  .text-signup{
-    display: flex; flex-direction: column;
+  .text-signup {
+    display: flex;
+    flex-direction: column;
   }
-
 }
-
