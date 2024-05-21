@@ -113,6 +113,7 @@ import {PerformanceReportComponent} from "./planning/performance-report/performa
 import {CalendarModule, DateAdapter} from "angular-calendar";
 import {adapterFactory} from "angular-calendar/date-adapters/moment";
 import { ScheduleViewComponent } from './planning/schedule/components/schedule-view/schedule-view.component';
+import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/schedule-page.component';
 
 @NgModule({
   declarations: [
@@ -157,7 +158,8 @@ import { ScheduleViewComponent } from './planning/schedule/components/schedule-v
     MessagesNewMessageDialogComponent,
     TaskCardComponent,
     TaskEditDialogComponent,
-    ScheduleViewComponent
+    ScheduleViewComponent,
+    SchedulePageComponent
   ],
   imports: [
     HttpClientModule,
