@@ -13,6 +13,18 @@
       }
     },
     {
+      "id": "2",
+      "email": "holi",
+      "password": "1",
+      "phone": "02-5750-1960",
+      "cell": "0418-555-773",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/56.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
+      }
+    },
+    {
       "id": "15",
       "gender": "male",
       "name": {
@@ -173,7 +185,21 @@
     },
     {
       "id": "b7b9"
+    },
+    {
+      "id": "8b5a",
+      "firstName": "dasd",
+      "lastName": "dasd",
+      "phoneNumber": "dasd",
+      "email": "dasd",
+      "password": "dasd"
     }
   ],
-  "reports": []
+  "user": [
+    {
+      "id": "1",
+      "email": "josue",
+      "password": "hola"
+    }
+  ]
 }
