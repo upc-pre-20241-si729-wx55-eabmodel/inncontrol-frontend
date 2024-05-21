@@ -87,7 +87,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
-import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
 import { PanelCardIconComponent } from './interactions/control/components/panel-card-icon/panel-card-icon.component';
 import { PanelScheduleComponent } from './interactions/control/components/panel-schedule/panel-schedule.component';
 import { PanelCardIconViewComponent } from './interactions/control/components/panel-card-icon-view/panel-card-icon-view.component';

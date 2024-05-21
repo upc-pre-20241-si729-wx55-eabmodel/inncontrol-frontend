@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'employees', component: EmployeesComponent},
   {path: 'inventory', component: InventoryComponent},
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '', redirectTo: 'inventory', pathMatch: 'full'},
+  {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
