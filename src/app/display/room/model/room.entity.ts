@@ -8,15 +8,17 @@ export class Rooms {
   status: string;
   guest: string;
   reservation: string;
+  content: string;
 }] ;
-constructor(roomId: number, type: string, status: string, guest: string, reservation: string) {
+constructor(roomId: number, type: string, status: string, guest: string, reservation: string, content: string) {
   this.rooms = [
     {
       id: roomId,
       type: type,
       status: status,
       guest: guest,
-      reservation: reservation
+      reservation: reservation,
+      content: content
     }
   ];
 }
