@@ -4,9 +4,12 @@
 <div class="task-container">
   <div class="task-buttons">
     <mat-form-field>
-      <mat-label> <mat-icon>search</mat-icon> Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Task 1">
+    <mat-label> <mat-icon>search</mat-icon> Filter</mat-label>
+    <input matInput #filterInput (keyup)="applyFilter($event)" placeholder="Ex. Task 1">
     </mat-form-field>
+    <button mat-icon-button (click)="resetFilter(filterInput)">
+      <mat-icon>refresh</mat-icon>
+    </button>
     <button mat-icon-button [matMenuTriggerFor]="filterMenu">
       <mat-icon>filter_list</mat-icon>
     </button>

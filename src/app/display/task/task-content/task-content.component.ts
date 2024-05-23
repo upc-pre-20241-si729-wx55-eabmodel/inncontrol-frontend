@@ -13,6 +13,7 @@ export class TaskContentComponent implements OnInit {
   tasksData: Task[] = [];
   filteredTasks: Task[] = [];
   filterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
+  defaultFilterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
 
   constructor(private taskService: TaskApiService, private dialog: MatDialog) {}
 
@@ -23,20 +24,6 @@ export class TaskContentComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    if (filterValue) {
-      this.filteredTasks = this.tasksData.filter(task => {
-        let value = task[this.filterType];
-        if (value instanceof Date) {
-          value = value.toISOString();
-        }
-        return value.toLowerCase().includes(filterValue);
-      });
-    } else {
-      this.filteredTasks = this.tasksData;
-    }
-  }
   protected createTask(task: Task){
     this.taskService.create(task).subscribe((response: any)=>{
       this.tasksData.push(response);
@@ -73,6 +60,29 @@ export class TaskContentComponent implements OnInit {
         this.tasksData[index] = response;
       }
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    if (filterValue) {
+      this.filteredTasks = this.tasksData.filter(task => {
+        let value = task[this.filterType];
+        if (value) {
+          if (value instanceof Date) {
+            value = value.toISOString();
+          }
+          return value.toLowerCase().includes(filterValue);
+        }
+        return false;
+      });
+    } else {
+      this.filteredTasks = this.tasksData;
+    }
+  }
+  resetFilter(filterInput: HTMLInputElement): void {
+    filterInput.value = '';
+    this.filterType = this.defaultFilterType;
+    this.filteredTasks = this.tasksData;
   }
   ngOnInit() {
     this.getAllTasks();
