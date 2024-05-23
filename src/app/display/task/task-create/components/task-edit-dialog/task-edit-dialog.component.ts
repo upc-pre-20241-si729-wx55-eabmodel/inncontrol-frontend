@@ -33,7 +33,7 @@ export class TaskEditDialogComponent {
         Validators.required,
         Validators.pattern('pending|completed|in progress')
       ]),
-      userid: new FormControl(data.employee, [
+      employee: new FormControl(data.employee, [
         Validators.required,
         Validators.maxLength(10),
         Validators.minLength(2)
@@ -63,7 +63,7 @@ export class TaskEditDialogComponent {
         description: formValues.description,
         dueDate: date,
         status: formValues.status,
-        userId: formValues.userid
+        employee: formValues.employee
       };
 
       this.dialogRef.close(updatedTask);
