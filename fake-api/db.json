@@ -1,16 +1,15 @@
 {
   "users": [
     {
-      "id": "1",
-      "email": "josue",
+      "id": 1,
+      "email": "josue@gmail.com",
+      "rolUser": 1,
+      "firstName": "Josué",
+      "lastName": "Hidalgo",
+      "phoneNumber": "555-123-4567",
       "password": "123",
-      "phone": "02-5750-1960",
       "cell": "0418-555-773",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/56.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
-      }
+      "picture": "https://i.imgur.com/zrpMQ7R.jpg"
     },
     {
       "id": "2",
@@ -145,20 +144,14 @@
     },
     {
       "id": "1",
-      "gender": "female",
-      "name": {
-        "title": "Miss",
-        "first": "Lucy",
-        "last": "King"
-      },
-      "email": "lucy.king@example.com",
-      "phone": "(500)-540-2623",
-      "cell": "(982)-608-0218",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/women/8.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
-      }
+      "email": "josue@gmail.com",
+      "rolUser": 1,
+      "firstName": "mirey",
+      "lastName": "Hidalgo",
+      "phoneNumber": "555-123-4567",
+      "password": "123",
+      "cell": "0418-555-773",
+      "picture": "https://i.imgur.com/zrpMQ7R.jpg"
     },
     {
       "id": "1",
@@ -193,6 +186,23 @@
       "phoneNumber": "dasd",
       "email": "dasd",
       "password": "dasd"
+    },
+    {
+      "id": "d381",
+      "firstName": "dasd",
+      "lastName": "dasd",
+      "phoneNumber": "dasd",
+      "email": "dasdd",
+      "password": "dasd"
+    },
+    {
+      "id": "d381",
+      "firstName": "dasd",
+      "lastName": "dasd",
+      "phoneNumber": "dasd",
+      "email": "dasddddd",
+      "password": "dasd",
+      "rolUser": 1
     }
   ],
   "user": [
