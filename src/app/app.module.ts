@@ -92,6 +92,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
 import {LoginComponent} from "./iam/pages/login/login.component";
 import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
+import { UserProfileContentComponent } from './display/user-view/pages/user-profile-content/user-profile-content.component';
+import { UserEditDialogComponent } from './display/user-view/components/user-edit-dialog/user-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +130,9 @@ import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
     RoomsReportComponent,
     RoomCreateButtonComponent,
     LoginComponent,
-    SigUpComponent
+    SigUpComponent,
+    UserProfileContentComponent,
+    UserEditDialogComponent
   ],
   imports: [
     HttpClientModule,
