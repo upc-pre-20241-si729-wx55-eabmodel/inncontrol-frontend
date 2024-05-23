@@ -11,15 +11,32 @@ import {TaskEditDialogComponent} from "../task-create/components/task-edit-dialo
 })
 export class TaskContentComponent implements OnInit {
   tasksData: Task[] = [];
+  filteredTasks: Task[] = [];
+  filterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
 
   constructor(private taskService: TaskApiService, private dialog: MatDialog) {}
 
   private getAllTasks(): void {
     this.taskService.getAll().subscribe((response: any)=>{
       this.tasksData = response;
+      this.filteredTasks = this.tasksData;
     })
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    if (filterValue) {
+      this.filteredTasks = this.tasksData.filter(task => {
+        let value = task[this.filterType];
+        if (value instanceof Date) {
+          value = value.toISOString();
+        }
+        return value.toLowerCase().includes(filterValue);
+      });
+    } else {
+      this.filteredTasks = this.tasksData;
+    }
+  }
   protected createTask(task: Task){
     this.taskService.create(task).subscribe((response: any)=>{
       this.tasksData.push(response);
