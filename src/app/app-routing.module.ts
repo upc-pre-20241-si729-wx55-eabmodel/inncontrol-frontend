@@ -9,6 +9,9 @@ import {EmployeesComponent} from "./public/pages/employees/employees.component";
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {LoginComponent} from "./iam/pages/login/login.component";
 import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
+import {
+  UserProfileContentComponent
+} from "./display/user-view/pages/user-profile-content/user-profile-content.component";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
@@ -19,6 +22,7 @@ const routes: Routes = [
   {path: 'inventory', component: InventoryComponent},
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SigUpComponent},
+  {path: 'user-profile', component: UserProfileContentComponent},
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: '', redirectTo: 'inventory', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
