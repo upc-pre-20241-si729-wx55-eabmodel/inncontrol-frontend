@@ -11,8 +11,9 @@ export class UserApiServiceService extends BaseService<User>{
 
   constructor(http:HttpClient) {
     super(http);
-    this.resourceEndpoint = '/users';
+    this.resourceEndpoint = 'users';
   }
+  private readonly baseUrl = 'http://localhost:3000'; // Reemplaza con la URL correcta de tu backend
 
   // @ts-ignore
   override getAll(): Observable<User[]> {
@@ -39,13 +40,7 @@ export class UserApiServiceService extends BaseService<User>{
     );
   }
 
-  userExistsByPassword(password: string): Observable<boolean> {
-    console.log("passwordApi",password)
-    return this.onGetUserByPassword(password).pipe(
-      map(user =>  user?.password == password), // Emite true si el usuario existe, false en caso contrario
-      catchError(error => of(false)) // Emite false en caso de error
-    );
-  }
+
   getUserByEmailAndPassword(email: string, password: string): Observable<User | null> {
     return this.getFromCustomEndpoint<User[]>(`users?email=${email}&password=${password}`).pipe(
       map(users => users.length > 0 ? users[0] : null),
@@ -55,5 +50,30 @@ export class UserApiServiceService extends BaseService<User>{
       })
     );
   }
+
+  getUserById(id: number): Observable<User> {
+    return this.getFromCustomEndpoint(`users?id=${id}`).pipe(
+      map(users => {
+        // @ts-ignore
+        if (users.length > 0) {
+          // @ts-ignore
+          return users[0];
+        } else {
+          throw new Error('User not found');
+        }
+      })
+    );
+  }
+// Método para actualizar un usuario
+  updateUser(id: number, updatedUserData: Partial<User>): Observable<User> {
+    const url = `${this.baseUrl}/users/${id}`; // Aquí se especifica el ID del usuario en la URL
+    return this.http.put<User>(url, updatedUserData, this.httpOptions).pipe(
+      catchError(error => {
+        console.error('Error updating user:', error);
+        throw error;
+      })
+    );
+  }
+
 
 }
