@@ -8,6 +8,7 @@ export class User {
   lastName: string;
   phoneNumber: string;
   password: string;
+  picture: string;
 
   constructor() {
     this.id=0;
@@ -15,6 +16,7 @@ export class User {
     this.rolUser = RoleUser.Employee;
     this.firstName = '';
     this.lastName = '';
+    this.picture = '';
     this.phoneNumber = '';
     this.password = '';
   }
