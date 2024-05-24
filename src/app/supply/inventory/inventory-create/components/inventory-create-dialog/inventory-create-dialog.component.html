@@ -1,0 +1,65 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title style="text-align: center; font-weight: bold">Add  Inventory Item</h2>
+  <button mat-icon-button class="close" (click)="onNoClick()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <form [formGroup]="InventoryItemFormGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field >
+      <mat-label>Item Name</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="InventoryItemFormGroup.get('name')?.invalid">
+        Please enter a name
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="rectangle-description">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" class="input-large" >
+      <mat-error *ngIf="InventoryItemFormGroup.get('description')?.invalid">
+        Please enter a description
+      </mat-error>
+    </mat-form-field>
+
+    <div class="flex-container">
+      <mat-form-field >
+        <mat-label>Provider Name</mat-label>
+        <input matInput formControlName="providerName">
+        <mat-error *ngIf="InventoryItemFormGroup.get('providerName')?.invalid">
+          Please enter a provider name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Provider Contact</mat-label>
+        <input matInput formControlName="providerContact">
+        <mat-error *ngIf="InventoryItemFormGroup.get('providerContact')?.invalid">
+          Please enter a provider contact
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="flex-container">
+      <mat-form-field >
+        <mat-label>Provider desc</mat-label>
+        <input matInput formControlName="providerDesc">
+        <mat-error *ngIf="InventoryItemFormGroup.get('providerDesc')?.invalid">
+          Please enter a provider desc
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <mat-form-field >
+      <mat-label>Quantity</mat-label>
+      <input matInput formControlName="quantity">
+      <mat-error *ngIf="InventoryItemFormGroup.get('quantity')?.invalid">
+        Please enter quantity of items
+      </mat-error>
+    </mat-form-field>
+    <br>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onSubmit()" [mat-dialog-close]="data">Add</button>
+</mat-dialog-actions>
