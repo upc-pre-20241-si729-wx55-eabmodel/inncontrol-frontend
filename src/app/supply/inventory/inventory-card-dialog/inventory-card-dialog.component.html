@@ -1,0 +1,17 @@
+<div class="cardContainer">
+  <div class="header">
+    <h2 class="title">Item: {{ data.name}}</h2>
+    <mat-divider></mat-divider>
+    <p >{{ data.description }}</p>
+    <mat-divider></mat-divider>
+  </div>
+  <mat-divider></mat-divider>
+  <section class="subtitle">Stock Level:</section>
+  <mat-divider></mat-divider>
+  <section class="actions">
+    <button class="btn">Add</button>
+    <button class="btn">Substact</button>
+    <button class="btn" (click)="openUpdateDialog()">Update Stock</button>
+  </section>
+</div>
+
