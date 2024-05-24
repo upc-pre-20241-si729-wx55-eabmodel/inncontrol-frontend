@@ -1,0 +1,18 @@
+<div class="container">
+  <span class="header"> <h1 class="card-title">Inventory</h1>
+    <button mat-icon-button  aria-label="Inventory button">
+      <mat-icon  class="item"  >notifications</mat-icon>
+    </button>
+  </span>
+  <span class="header">
+    <app-search-content ></app-search-content>
+    <div>
+  <div>
+    <app-inventory-creation (itemCreated)="createItem($event)"></app-inventory-creation>
+  </div>
+</div>
+  </span>
+  <div class="card-display">
+    <app-inventory-card class="card" *ngFor="let inventory of inventoryData" [inventory]="inventory" (update)="handleUpdate($event)" (delete)="onDeleteItem($event)" (clicked)="openDialog(inventory.id)"></app-inventory-card>
+  </div>
+</div>
