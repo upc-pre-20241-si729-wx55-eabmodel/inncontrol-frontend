@@ -1,0 +1,20 @@
+<mat-card class="card-content" (click)="clickedInventory()">
+  <mat-card-header class="inventoryTitle">
+    <mat-card-title>{{ inventory.name }}</mat-card-title>
+    <br>
+    <br>
+    <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" class="menu-button"><mat-icon>more_horiz</mat-icon></button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="deleteItem()">Delete</button>
+      <button mat-menu-item (click)="openUpdateDialog()">Update</button>
+    </mat-menu>
+  </mat-card-header>
+  <mat-card-content class="inventoryCardContent">
+    <div class="subtitle">
+      <p class="subtitle-text">{{inventory.description}}</p>
+      <br>
+      <mat-card-subtitle class="subtitle-text" style="font-weight: bold">Stock Level: {{inventory.quantity}}</mat-card-subtitle>
+    </div>
+  </mat-card-content>
+</mat-card>
+
