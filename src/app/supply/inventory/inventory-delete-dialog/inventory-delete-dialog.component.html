@@ -1,0 +1,22 @@
+<mat-dialog-content>
+  <mat-card-header>
+    <h2 style="text-align: center; font-weight: bold" mat-dialog-title>Are you sure?</h2>
+    <button mat-icon-button class="close" (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    You are about to delete item 1 from the inventory, this process cant be undone
+    <hr>
+    To confirm this, write the item ID/Name below
+    <br>
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id">
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-flat-button>Cancel</button>
+    <button mat-flat-button>Delete</button>
+  </mat-card-footer>
+</mat-dialog-content>

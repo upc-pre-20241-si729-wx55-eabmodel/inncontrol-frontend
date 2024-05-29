@@ -46,7 +46,7 @@ export class InventoryCreateDialogComponent {
   }
 
   onSubmit(): void{
-    console.log(this.InventoryItemFormGroup.value);
+    console.log(this.InventoryItemFormGroup.value.name);
 
     const formValues = this.InventoryItemFormGroup.value;
 
@@ -58,10 +58,11 @@ export class InventoryCreateDialogComponent {
       providerName: formValues.providerName,
       providerContact: formValues.providerContact,
       providerDesc: formValues.providerDesc,
-      quantity: formValues.quantity
+      quantity: formValues.quantity,
     };
     if(this.InventoryItemFormGroup.valid){
-      this.dialogRef.close(selectedData);
+      this.data = selectedData;
+      this.dialogRef.close(this.data);
     }
   }
 

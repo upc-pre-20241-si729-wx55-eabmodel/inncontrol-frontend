@@ -13,6 +13,6 @@
 </div>
   </span>
   <div class="card-display">
-    <app-inventory-card class="card" *ngFor="let inventory of inventoryData" [inventory]="inventory" (update)="handleUpdate($event)" (delete)="onDeleteItem($event)" (clicked)="openDialog(inventory.id)"></app-inventory-card>
+    <app-inventory-card class="card" *ngFor="let inventory of inventoryData" [inventory]="inventory" (update)="handleUpdate($event)" (delete)="handleDelete($event)" (clicked)="openDialog(inventory.id)"></app-inventory-card>
   </div>
 </div>

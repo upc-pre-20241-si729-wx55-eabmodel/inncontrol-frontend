@@ -18,6 +18,9 @@ export class InventoryCardsComponent {
   deleteItem():void{
     this.delete.emit(this.inventory);
   }
+  openDeleteDialog(){
+    this.delete.emit(this.inventory);
+  }
   openUpdateDialog(): void {
     this.update.emit(this.inventory);
   }

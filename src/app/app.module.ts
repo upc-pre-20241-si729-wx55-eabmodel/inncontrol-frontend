@@ -34,14 +34,6 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
-import {InventoryContentComponent} from "./supply/inventory/components/inventory-content/inventory-content.component";
-import {
-  InventoryAddDialogComponent
-} from "./supply/inventory/components/inventory-add-dialog/inventory-add-dialog.component";
-import {
-  InventoryAddItemButtonComponent
-} from "./supply/inventory/components/inventory-add-item-button/inventory-add-item-button.component";
-import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
 import {
   TaskCreateDialogComponent
 } from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
@@ -90,19 +82,20 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
-
+import { InventoryCardsComponent } from './supply/inventory/inventory-cards/inventory-cards.component';
+import { InventoryContentComponent } from './supply/inventory/inventory-content/inventory-content.component';
+import { InventoryCreateDialogComponent } from './supply/inventory/inventory-create/components/inventory-create-dialog/inventory-create-dialog.component';
+import { InventoryCreationComponent } from './supply/inventory/inventory-create/components/inventory-creation/inventory-creation.component';
+import { InventoryEditDialogComponent } from './supply/inventory/inventory-create/components/inventory-edit-dialog/inventory-edit-dialog.component';
+import { InventoryCardDialogComponent } from './supply/inventory/inventory-card-dialog/inventory-card-dialog.component';
+import { InventoryDeleteDialogComponent } from './supply/inventory/inventory-delete-dialog/inventory-delete-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarContentComponent,
-    InventoryContentComponent,
-    InventoryAddDialogComponent,
-    InventoryAddItemButtonComponent,
-    InventoryTableComponent,
     TasksComponent,
     TaskCreateDialogComponent,
     ReportFormComponent,
-    InventoryContentComponent,
     HomeComponent,
     PageNotFoundComponent,
     TasksComponent,
@@ -124,7 +117,14 @@ import { RoomCreateButtonComponent } from './display/room/components/room-create
     RoomCreateDialogComponent,
     RoomUpdateComponent,
     RoomsReportComponent,
-    RoomCreateButtonComponent
+    RoomCreateButtonComponent,
+    InventoryCardsComponent,
+    InventoryContentComponent,
+    InventoryCreateDialogComponent,
+    InventoryCreationComponent,
+    InventoryEditDialogComponent,
+    InventoryCardDialogComponent,
+    InventoryDeleteDialogComponent
   ],
   imports: [
     HttpClientModule,

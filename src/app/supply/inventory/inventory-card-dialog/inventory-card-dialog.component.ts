@@ -1,6 +1,9 @@
 import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Inventory} from "../inventory-create/model/inventory.entity";
+import {
+  InventoryEditDialogComponent
+} from "../inventory-create/components/inventory-edit-dialog/inventory-edit-dialog.component";
 
 @Component({
   selector: 'app-inventory-card-dialog',
@@ -14,7 +17,7 @@ export class InventoryCardDialogComponent {
   @Output() clicked = new EventEmitter<unknown>();
 
   constructor(public dialogRef: MatDialogRef<InventoryCardDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {
 
     console.log('Data received: ', data);
   }
@@ -24,8 +27,6 @@ export class InventoryCardDialogComponent {
   }
 
   openUpdateDialog(): void {
-    console.log('Inventory card dialog open');
-    this.update.emit(this.inventory);
-  }
-
+    console.log('Inventory card update dialog open');
+    }
 }
