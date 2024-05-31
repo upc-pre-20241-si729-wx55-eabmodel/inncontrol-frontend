@@ -66,6 +66,7 @@ export class BaseService<T> {
         retry(2),
         catchError(this.handleError)
       );
+  }
 
   getById(id: any): Observable<T> {
     return this.http.get<T>(`${this.resourcePath()}/${id}`, this.httpOptions)

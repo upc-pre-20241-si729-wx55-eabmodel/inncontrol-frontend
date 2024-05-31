@@ -25,10 +25,10 @@ const routes: Routes = [
   {path: 'employees', component: EmployeesComponent},
   {path: 'inventory', component: InventoryComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'sign-up', component: SigUpComponent},
+  {path: 'register', component: SigUpComponent},
   {path: 'user-profile', component: UserProfileContentComponent},
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '', redirectTo: 'control', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
