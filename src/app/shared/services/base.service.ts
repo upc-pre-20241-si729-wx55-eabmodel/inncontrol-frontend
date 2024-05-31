@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 
 export class BaseService<T> {
-  basePath: string = `${environment.serverBasePath}`;
+  basePath: string = `http://localhost:3000`;
   resourceEndpoint: string = '/resource';
 
   httpOptions = {
@@ -26,7 +26,7 @@ export class BaseService<T> {
   }
 
   // Build Resource Path
-  private resourcePath() {
+  protected resourcePath() {
     return `${this.basePath}${this.resourceEndpoint}`;
   }
 
@@ -59,9 +59,18 @@ export class BaseService<T> {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+
+  getFromCustomEndpoint<T>(endpoint: string): Observable<T> {
+    return this.http.get<T>(`${this.basePath}/${endpoint}`, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+
   getById(id: any): Observable<T> {
     return this.http.get<T>(`${this.resourcePath()}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
+
   }
 
 }

@@ -86,6 +86,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
+import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
+import {LoginComponent} from "./iam/pages/login/login.component";
+import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
+import { UserProfileContentComponent } from './display/user-view/pages/user-profile-content/user-profile-content.component';
+import { UserEditDialogComponent } from './display/user-view/components/user-edit-dialog/user-edit-dialog.component';
 import {PanelCardIconComponent} from './interactions/control/components/panel-card-icon/panel-card-icon.component';
 import {PanelScheduleComponent} from './interactions/control/components/panel-schedule/panel-schedule.component';
 import {
@@ -150,6 +155,10 @@ import { SidebarItemComponent } from './public/components/home/components/sideba
     RoomUpdateComponent,
     RoomsReportComponent,
     RoomCreateButtonComponent,
+    LoginComponent,
+    SigUpComponent,
+    UserProfileContentComponent,
+    UserEditDialogComponent,
     PanelCardIconComponent,
     PanelScheduleComponent,
     PanelCardIconViewComponent,
