@@ -44,6 +44,10 @@ body {
   width: 48%;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
 @media (max-width: 768px) {
   .card-display {
     flex-direction: column;

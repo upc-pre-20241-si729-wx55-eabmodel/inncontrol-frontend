@@ -1,28 +1,34 @@
 import {Component, Input} from '@angular/core';
-import {PanelCardIcon} from "../../../../shared/model/panel-card-icon";
 import {Router} from "@angular/router";
+import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
 
 @Component({
-  selector: 'app-panel-card-icon',
-  templateUrl: './panel-card-icon.component.html',
-  styleUrl: './panel-card-icon.component.css'
+  selector: 'app-sidebar-item',
+  templateUrl: './sidebar-item.component.html',
+  styleUrl: './sidebar-item.component.css'
 })
-export class PanelCardIconComponent {
+export class SidebarItemComponent {
 
   @Input() icon: PanelCardIcon
   @Input() title: string;
   @Input() toRoute: string;
+  @Input() logout: boolean;
 
   constructor(private route: Router) {
     this.icon = {} as PanelCardIcon;
     this.title = '';
     this.toRoute = '';
+    this.logout = false;
   }
 
   /**
    * Navigates to the route declared in the toRoute input
    */
   onClick() {
-    this.route.navigate([this.toRoute]);
+    if (this.logout) {
+
+    } else {
+      this.route.navigate([this.toRoute]);
+    }
   }
 }
