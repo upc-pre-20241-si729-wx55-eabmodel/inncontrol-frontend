@@ -12,9 +12,13 @@ import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
 import {
   UserProfileContentComponent
 } from "./display/user-view/pages/user-profile-content/user-profile-content.component";
+import {ControlPanelPageComponent} from "./interactions/control/pages/control-panel-page/control-panel-page.component";
+import {SchedulePageComponent} from "./planning/schedule/pages/schedule-page/schedule-page.component";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
+  {path: 'schedule', component: SchedulePageComponent},
+  {path: 'control', component: ControlPanelPageComponent},
   {path: 'tasks', component: TasksComponent},
   {path: 'room-state', component: RoomStateComponent},
   {path: 'messages', component: MessagesComponent},
@@ -24,7 +28,7 @@ const routes: Routes = [
   {path: 'sign-up', component: SigUpComponent},
   {path: 'user-profile', component: UserProfileContentComponent},
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '', redirectTo: 'inventory', pathMatch: 'full'},
+  {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 

@@ -2,5 +2,10 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 1.2rem;
+}
+
+.option{
+  display: flex;
+  flex-direction: column;
 }

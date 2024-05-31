@@ -48,11 +48,17 @@ export class BaseService<T> {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  patch(id: any, item: any): Observable<T> {
+    return this.http.patch<T>(`${this.resourcePath()}/${id}`, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   // Get All
   getAll(): Observable<T> {
     return this.http.get<T>(this.resourcePath(), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
 
   getFromCustomEndpoint<T>(endpoint: string): Observable<T> {
     return this.http.get<T>(`${this.basePath}/${endpoint}`, this.httpOptions)
@@ -60,6 +66,11 @@ export class BaseService<T> {
         retry(2),
         catchError(this.handleError)
       );
+
+  getById(id: any): Observable<T> {
+    return this.http.get<T>(`${this.resourcePath()}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+
   }
 
 }

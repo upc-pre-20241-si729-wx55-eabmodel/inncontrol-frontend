@@ -38,7 +38,7 @@ export class TaskCreateDialogComponent {
         Validators.pattern('pending|completed|in progress')  // This line ensures the status is one of the three options
 
       ]),
-      userid: new FormControl('', [
+      employee: new FormControl('', [
         Validators.required,
         Validators.maxLength(10),  // This line ensures a maximum of 10 characters
         Validators.minLength(2)  // This line ensures a minimum of 2 characters
@@ -69,7 +69,7 @@ export class TaskCreateDialogComponent {
       dueDate: formValues.dueDate,
       status: formValues.status,
       creationDate: new Date(),
-      userId: formValues.userid,
+      employee: formValues.employee,
     };
 
 

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
 
 @Component({
@@ -14,8 +14,25 @@ export class SearchContentComponent {
     this.searchController = new FormControl('');
   }
 
+  @Input() options:{title: string}[] | undefined;
+  @Output() search = new EventEmitter<string>();
+  @Output() optionSelected = new EventEmitter<any>();
 
-  onSearch(event: any) {
+
+  onSearch() {
     const value = this.searchController.value;
+    console.log('Searching for: ', value);
+    this.search.emit(value);
   }
+
+  onSelect(title: string){
+    // @ts-ignore
+    const value = title;
+    console.log('Option selected: ', value);
+    this.optionSelected.emit(value);
+  }
+
+
+
+
 }
