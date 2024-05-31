@@ -1,5 +1,5 @@
 import {
-  Component,
+  Component, Input,
 } from '@angular/core';
 import {
   startOfDay,
@@ -42,62 +42,64 @@ const colors: Record<string, EventColor> = {
 })
 export class ScheduleViewComponent {
 
-  view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
 
   viewDate: Date = new Date();
 
   refresh = new Subject<void>();
 
+  @Input() canChangeView: boolean = true;
+
+  @Input() view: CalendarView = CalendarView.Month;
+
+  @Input() activeDayIsOpen: boolean = true;
+
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: {...colors["red"]},
-      allDay: true,
-      // resizable: {
-      //   beforeStart: true,
-      //   afterEnd: true,
-      // },
-      // draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: {...colors["yellow"]},
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: {...colors["blue"]},
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: {...colors["yellow"]},
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-
-    // event from 5pm to 6pm
-    {
-      title: 'Event 1',
-      start: addHours(startOfDay(new Date()), 3),
-      end: addHours(startOfDay(new Date()), 12),
-      color: colors["red"],
-      allDay: false,
-    },
+    // {
+    //   start: subDays(startOfDay(new Date()), 1),
+    //   end: addDays(new Date(), 1),
+    //   title: 'A 3 day event',
+    //   color: {...colors["red"]},
+    //   allDay: true,
+    //   // resizable: {
+    //   //   beforeStart: true,
+    //   //   afterEnd: true,
+    //   // },
+    //   // draggable: true,
+    // },
+    // {
+    //   start: startOfDay(new Date()),
+    //   title: 'An event with no end date',
+    //   color: {...colors["yellow"]},
+    // },
+    // {
+    //   start: subDays(endOfMonth(new Date()), 3),
+    //   end: addDays(endOfMonth(new Date()), 3),
+    //   title: 'A long event that spans 2 months',
+    //   color: {...colors["blue"]},
+    //   allDay: true,
+    // },
+    // {
+    //   start: addHours(startOfDay(new Date()), 2),
+    //   end: addHours(new Date(), 2),
+    //   title: 'A draggable and resizable event',
+    //   color: {...colors["yellow"]},
+    //   resizable: {
+    //     beforeStart: true,
+    //     afterEnd: true,
+    //   },
+    //   draggable: true,
+    // },
+    //
+    // // event from 5pm to 6pm
+    // {
+    //   title: 'Event 1',
+    //   start: addHours(startOfDay(new Date()), 3),
+    //   end: addHours(startOfDay(new Date()), 12),
+    //   color: colors["red"],
+    //   allDay: false,
+    // },
   ];
-
-  activeDayIsOpen: boolean = true;
 
   dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
