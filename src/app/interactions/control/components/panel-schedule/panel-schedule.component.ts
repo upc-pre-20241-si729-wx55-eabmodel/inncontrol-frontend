@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CalendarView} from "angular-calendar";
 
 @Component({
   selector: 'app-panel-schedule',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class PanelScheduleComponent {
 
+  protected readonly CalendarView = CalendarView;
 }
