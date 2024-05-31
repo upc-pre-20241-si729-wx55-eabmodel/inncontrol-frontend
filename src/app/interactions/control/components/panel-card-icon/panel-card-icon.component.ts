@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PanelCardIcon} from "../../model/panel-card-icon";
+import {PanelCardIcon} from "../../../../shared/model/panel-card-icon";
 import {Router} from "@angular/router";
 
 @Component({
