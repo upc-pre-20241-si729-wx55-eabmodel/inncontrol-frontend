@@ -54,3 +54,26 @@ body {
   }
 }
 
+/*Style for easy development*/
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.col-md-4 {
+  width: 50%
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
