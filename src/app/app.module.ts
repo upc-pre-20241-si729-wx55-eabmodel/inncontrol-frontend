@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ToolbarContentComponent} from './public/components/home/components/toolbar-content/toolbar-content.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
@@ -114,11 +113,13 @@ import {CalendarModule, DateAdapter} from "angular-calendar";
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ScheduleViewComponent } from './planning/schedule/components/schedule-view/schedule-view.component';
 import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/schedule-page.component';
+import { SidebarContentComponent } from './public/components/home/components/sidebar-content/sidebar-content.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListItem, MatNavList} from "@angular/material/list";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarContentComponent,
     InventoryContentComponent,
     InventoryAddDialogComponent,
     InventoryAddItemButtonComponent,
@@ -159,7 +160,8 @@ import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/s
     TaskCardComponent,
     TaskEditDialogComponent,
     ScheduleViewComponent,
-    SchedulePageComponent
+    SchedulePageComponent,
+    SidebarContentComponent
   ],
   imports: [
     HttpClientModule,
@@ -209,7 +211,10 @@ import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/s
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    MatSidenavModule,
+    MatNavList,
+    MatListItem
   ],
   providers: [
     provideAnimationsAsync(),
