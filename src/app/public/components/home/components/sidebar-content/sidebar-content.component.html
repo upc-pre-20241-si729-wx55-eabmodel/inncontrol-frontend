@@ -1,13 +1,21 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport>
-    <mat-toolbar>Sources</mat-toolbar>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport position="end">
+    <mat-toolbar>InnControl</mat-toolbar>
     <mat-nav-list>
-      <!--      <mat-list-item (click)="onSourceSelected(source);drawer.toggle();"-->
-      <!--                     *ngFor="let source of sources">-->
-      <!--        <img [alt]="source.name" [ngSrc]="source.urlToLogo"-->
-      <!--             height="60" width="60" matListItemAvatar>-->
-      <!--        <p matListItemLine><span>{{ source.name }}</span></p>-->
-      <!--      </mat-list-item>-->
+      <mat-list-item *ngFor="let item of items">
+        <app-sidebar-item (click)="drawer.toggle();"
+                          [icon]="item.icon"
+                          [title]="item.title"
+                          [toRoute]="item.toRoute"/>
+      </mat-list-item>
+      <hr>
+      <mat-list-item>
+        <app-sidebar-item (click)="drawer.toggle();"
+                          [icon]="PanelCardIcon.Logout"
+                          [title]="'Logout'"
+                          [logout]="true">
+        </app-sidebar-item>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

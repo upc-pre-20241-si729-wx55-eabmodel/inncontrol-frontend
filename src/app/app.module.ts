@@ -116,6 +116,7 @@ import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/s
 import { SidebarContentComponent } from './public/components/home/components/sidebar-content/sidebar-content.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
+import { SidebarItemComponent } from './public/components/home/components/sidebar-item/sidebar-item.component';
 
 @NgModule({
   declarations: [
@@ -161,7 +162,8 @@ import {MatListItem, MatNavList} from "@angular/material/list";
     TaskEditDialogComponent,
     ScheduleViewComponent,
     SchedulePageComponent,
-    SidebarContentComponent
+    SidebarContentComponent,
+    SidebarItemComponent
   ],
   imports: [
     HttpClientModule,

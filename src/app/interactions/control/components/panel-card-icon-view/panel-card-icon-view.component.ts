@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PanelCard} from "../../model/panel-card";
+import {PanelCard} from "../../../../shared/model/panel-card";
 
 @Component({
   selector: 'app-panel-card-icon-view',
