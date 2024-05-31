@@ -110,6 +110,10 @@ import {
   TaskEditDialogComponent
 } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
 import {PerformanceReportComponent} from "./planning/performance-report/performance-report.component";
+import {CalendarModule, DateAdapter} from "angular-calendar";
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ScheduleViewComponent } from './planning/schedule/components/schedule-view/schedule-view.component';
+import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/schedule-page.component';
 
 @NgModule({
   declarations: [
@@ -153,7 +157,9 @@ import {PerformanceReportComponent} from "./planning/performance-report/performa
     MessagesCardDialogComponent,
     MessagesNewMessageDialogComponent,
     TaskCardComponent,
-    TaskEditDialogComponent
+    TaskEditDialogComponent,
+    ScheduleViewComponent,
+    SchedulePageComponent
   ],
   imports: [
     HttpClientModule,
@@ -200,6 +206,10 @@ import {PerformanceReportComponent} from "./planning/performance-report/performa
     MatDialogModule,
     MatAutocompleteTrigger,
     MatAutocomplete,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [
     provideAnimationsAsync(),

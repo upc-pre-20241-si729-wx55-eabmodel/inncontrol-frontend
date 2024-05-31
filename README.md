@@ -11,7 +11,8 @@ By netlify :heart: [![Netlify Status](https://api.netlify.com/api/v1/badges/903c
 
 ## Libraries
 - Angular Material
-- Angular Flex Layout
+- [Angular Calendar](https://github.com/mattlewis92/angular-calendar#readme)
+- [i18n](https://www.npmjs.com/package/@ngx-translate/core)
 
 ## Development server
 
