@@ -22,10 +22,12 @@ export class InventoryDeleteDialogComponent{
       ])
     });
   }
-  onDeleteItem(element: Inventory){
+  borrarItem():void{
+    this.deleteItem(this.data.id)
+    console.log('Item deleted');
+    this.onNoClick();
   }
-  handleDelete(inventory: Inventory){}
-  protected deleteItem(inventoryId: number){
+  private deleteItem(inventoryId: number){
     this.inventoryService.delete(inventoryId).subscribe(() =>{
       this.inventoryData = this.inventoryData.filter((inventory: Inventory) => inventory.id !== inventoryId);
     });
@@ -33,6 +35,5 @@ export class InventoryDeleteDialogComponent{
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 
 }
