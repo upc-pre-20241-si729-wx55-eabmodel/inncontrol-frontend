@@ -5,7 +5,7 @@
     </button>
   </span>
   <span class="header">
-    <app-search-content ></app-search-content>
+    <app-search-content [options]="this.options" (optionSelected)="receiveFilter($event)" (search)="searchFilter($event)" ></app-search-content>
     <div>
   <div>
     <app-inventory-creation (itemCreated)="createItem($event)"></app-inventory-creation>

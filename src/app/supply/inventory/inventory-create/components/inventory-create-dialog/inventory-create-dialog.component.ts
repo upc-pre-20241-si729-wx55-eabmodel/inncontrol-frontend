@@ -36,7 +36,8 @@ export class InventoryCreateDialogComponent {
         Validators.required
       ]),
       quantity: new FormControl('',[
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^\d+$/)
       ]),
     });
   }
@@ -59,7 +60,7 @@ export class InventoryCreateDialogComponent {
       providerContact: formValues.providerContact,
       providerDesc: formValues.providerDesc,
       quantity: formValues.quantity,
-    };
+    } as Inventory;
     if(this.InventoryItemFormGroup.valid){
       this.data = selectedData;
       this.dialogRef.close(this.data);

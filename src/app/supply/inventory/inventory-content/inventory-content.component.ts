@@ -14,6 +14,14 @@ import {InventoryDeleteDialogComponent} from "../inventory-delete-dialog/invento
 export class InventoryContentComponent implements OnInit{
   inventoryData: Inventory[]=[];
   item: Inventory;
+  options:{title: string}[]=[
+    {
+      title: 'More to less stock'
+    },
+    {
+      title: 'Less to more stock'
+    }
+  ];
   constructor(private inventoryService: InventoryApiService, private dialog: MatDialog) {
     this.item = new Inventory(0,'','',0,'','','','');
   }
@@ -30,7 +38,17 @@ export class InventoryContentComponent implements OnInit{
     });
   };
 
-
+searchFilter(event: any){
+  console.log('Filtro recibido');
+}
+receiveFilter(event: any){
+  console.log('Event received', event);
+  if(event === 'More to less stock'){
+    console.log('Order in: More to less');
+  }else if(event === 'Less to more stock'){
+    console.log('Order in: Less to more');
+  }
+}
 
   handleUpdate(inventory: Inventory):void{
     this.openUpdateDialog(inventory);
@@ -42,7 +60,7 @@ export class InventoryContentComponent implements OnInit{
     this.openDeleteDialog(inventory);
   }
 openDeleteDialog(inventory: Inventory){
-  console.log('Delete dialog opened');
+  console.log('Delete dialog opened', inventory.id);
   const dialogRef = this.dialog.open(InventoryDeleteDialogComponent, {
     data: inventory
   });
@@ -73,17 +91,12 @@ openDeleteDialog(inventory: Inventory){
       }
     });
   }
-  openDialog(inventory: any){
+  openDialog(info: any){
+    let inventory = this.item.getInventoryById(this.inventoryData,info);
     console.log('Open Dialog', inventory);
     const dialogRef = this.dialog.open(InventoryCardDialogComponent, {
       data:inventory
     });
-    dialogRef.afterClosed().subscribe(result=>{
-      console.log('The dialog was closed', result);
-      if(result == 'Delete'){
-        this.deleteItem(inventory);
-      }
-    })
   }
   ngOnInit() {
     this.getAllItems();
