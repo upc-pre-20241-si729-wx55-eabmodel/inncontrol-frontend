@@ -1,17 +1,18 @@
-<div class="cardContainer">
+
+<div class="cardContent">
   <div class="header">
     <h2 class="title">Item: {{ data.name}}</h2>
-    <mat-divider></mat-divider>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
     <p >{{ data.description }}</p>
-    <mat-divider></mat-divider>
+    <p >Item ID: {{ data.providerId }}</p>
   </div>
-  <mat-divider></mat-divider>
-  <section class="subtitle">Stock Level:</section>
-  <mat-divider></mat-divider>
-  <section class="actions">
-    <button class="btn">Add</button>
-    <button class="btn">Substact</button>
-    <button class="btn" (click)="openUpdateDialog()">Update Stock</button>
-  </section>
+  <hr style="height:2px;border-width:0;color:gray;background-color:black">
+  <p>Provider: {{data.providerName}}</p>
+  <p>Provider Contact: {{data.providerContact}}</p>
+  <p>Provider Desc: {{ data.providerDesc}}</p>
+  <p>Provider ID: {{data.providerId}}</p>
+  <hr style="height:2px;border-width:0;color:gray;background-color:black">
+  <section class="subtitle">Stock Level:{{data.quantity}}</section>
+  <hr style="height:2px;border-width:0;color:gray;background-color:black">
 </div>
 

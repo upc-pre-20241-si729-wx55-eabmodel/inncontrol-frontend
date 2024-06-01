@@ -15,9 +15,6 @@ export class InventoryCardsComponent {
   constructor() {
     this.Menu = false;
   }
-  deleteItem():void{
-    this.delete.emit(this.inventory);
-  }
   openDeleteDialog(){
     this.delete.emit(this.inventory);
   }

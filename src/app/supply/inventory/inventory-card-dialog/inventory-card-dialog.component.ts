@@ -4,6 +4,8 @@ import {Inventory} from "../inventory-create/model/inventory.entity";
 import {
   InventoryEditDialogComponent
 } from "../inventory-create/components/inventory-edit-dialog/inventory-edit-dialog.component";
+import {InventoryCardsComponent} from "../inventory-cards/inventory-cards.component";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-inventory-card-dialog',
@@ -29,4 +31,6 @@ export class InventoryCardDialogComponent {
   openUpdateDialog(): void {
     console.log('Inventory card update dialog open');
     }
+
+  protected readonly InventoryCardsComponent = InventoryCardsComponent;
 }
