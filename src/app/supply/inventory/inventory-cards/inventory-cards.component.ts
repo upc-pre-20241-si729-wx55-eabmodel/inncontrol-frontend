@@ -15,6 +15,9 @@ export class InventoryCardsComponent {
   constructor() {
     this.Menu = false;
   }
+  clickedMenu(){
+    this.Menu = true;
+  }
   openDeleteDialog(){
     this.delete.emit(this.inventory);
   }

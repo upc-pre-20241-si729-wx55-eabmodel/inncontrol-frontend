@@ -3,7 +3,7 @@
     <mat-card-title>{{ inventory.name }}</mat-card-title>
     <br>
     <br>
-    <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" class="menu-button"><mat-icon>more_horiz</mat-icon></button>
+    <button (click)="clickedMenu()" (onMenuClose)="this.Menu=false" mat-icon-button color="primary" [matMenuTriggerFor]="menu" class="menu-button"><mat-icon>more_horiz</mat-icon></button>
     <mat-menu #menu="matMenu" xPosition="before">
       <button mat-menu-item (click)="openDeleteDialog()">Delete</button>
       <button mat-menu-item (click)="openUpdateDialog()">Update</button>
