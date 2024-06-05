@@ -1,8 +1,20 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
 .spacer {
   flex: 1 1 auto;
 }
 
-.button{
+.button {
   margin: 20px;
 }
 
@@ -22,15 +34,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 8vh;
   overflow: hidden;
 }
 
-.items{
-  display: flex;
-  flex-direction: row;
-}
-@media (max-width: 768px) {
-  .items {
-    visibility: hidden;
-  }
+router-outlet {
+  height: 100%;
 }

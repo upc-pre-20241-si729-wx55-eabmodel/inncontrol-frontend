@@ -33,7 +33,7 @@ export class TaskEditDialogComponent {
         Validators.required,
         Validators.pattern('pending|completed|in progress')
       ]),
-      userid: new FormControl(data.employee, [
+      employee: new FormControl(data.employee, [
         Validators.required,
         Validators.maxLength(10),
         Validators.minLength(2)
@@ -49,11 +49,11 @@ export class TaskEditDialogComponent {
     if (this.TaskItemFormGroup.valid) {
       const formValues = this.TaskItemFormGroup.value;
 
-      let date: any = new Date();
       let part = formValues.dueTime.split(":");
       let hrs = part[0];
       let mins = part[1];
-      date = formValues.dueDate;
+
+      let date: any = new Date(formValues.dueDate);
       date.setHours(hrs, mins, 0);
 
       const updatedTask = {
@@ -63,7 +63,7 @@ export class TaskEditDialogComponent {
         description: formValues.description,
         dueDate: date,
         status: formValues.status,
-        userId: formValues.userid// include the task's id
+        employee: formValues.employee
       };
 
       this.dialogRef.close(updatedTask);

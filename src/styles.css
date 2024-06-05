@@ -1,3 +1,5 @@
+/*Angular calendar style  */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
@@ -42,6 +44,10 @@ body {
   width: 48%;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
 @media (max-width: 768px) {
   .card-display {
     flex-direction: column;
@@ -52,3 +58,26 @@ body {
   }
 }
 
+/*Style for easy development*/
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.col-md-4 {
+  width: 50%
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
