@@ -1,52 +1,91 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatSort} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
+import { Component, OnInit} from '@angular/core';
 import {Task} from "../task-create/model/task.entity";
+import {TaskApiService} from "../task-create/services/task-api.service";
+import {MatDialog} from "@angular/material/dialog";
+import {TaskEditDialogComponent} from "../task-create/components/task-edit-dialog/task-edit-dialog.component";
 
 @Component({
   selector: 'app-task-content',
   templateUrl: './task-content.component.html',
   styleUrl: './task-content.component.css'
 })
-export class TaskContentComponent implements AfterViewInit {
-  tasks: Task[] = [];
+export class TaskContentComponent implements OnInit {
+  tasksData: Task[] = [];
+  filteredTasks: Task[] = [];
+  filterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
+  defaultFilterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
 
-  length: number = 1;
+  constructor(private taskService: TaskApiService, private dialog: MatDialog) {}
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  displayedColumns: string[] = ['id', 'taskName', 'description', 'dueDate', 'status', 'userid', 'creationDate'];
-  dataSource: MatTableDataSource<Task>;
-
-  constructor() {
-    this.dataSource = new MatTableDataSource(this.tasks);
-    this.tasks.push(new Task('1', 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
-    length = this.tasks.length;
+  private getAllTasks(): void {
+    this.taskService.getAll().subscribe((response: any)=>{
+      this.tasksData = response;
+      this.filteredTasks = this.tasksData;
+    })
   }
 
-  onTaskCreatedEvent($event: Task) {
-    console.log('Task created');
-    this.length++;
-    $event.id = this.length.toString();
-    console.log($event);
-    this.tasks.push($event);
-    this.dataSource._updateChangeSubscription();
-
+  protected createTask(task: Task){
+    this.taskService.create(task).subscribe((response: any)=>{
+      this.tasksData.push(response);
+    });
+  };
+  handleUpdate(task: Task): void {
+    this.openUpdateDialog(task);
+  }
+  onDeleteItem(element: Task) {
+    this.deleteTask(element.id);
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
+  private deleteTask(taskId: number): void {
+    this.taskService.delete(taskId).subscribe(() => {
+      this.tasksData = this.tasksData.filter((task: Task) => task.id !== taskId);
+    });
+  }
+  openUpdateDialog(task: Task): void {
+    const dialogRef = this.dialog.open(TaskEditDialogComponent, {
+      data: task
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.updateTask(result);
+      }
+    });
+  }
+  private updateTask(task: Task): void {
+    this.taskService.update(task.id, task).subscribe((response: Task) => {
+      const index = this.tasksData.findIndex(t => t.id === task.id);
+      if (index !== -1) {
+        this.tasksData[index] = response;
+      }
+    });
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    if (filterValue) {
+      this.filteredTasks = this.tasksData.filter(task => {
+        let value = task[this.filterType];
+        if (value) {
+          if (value instanceof Date) {
+            value = value.toISOString();
+          }
+          return value.toLowerCase().includes(filterValue);
+        }
+        return false;
+      });
+    } else {
+      this.filteredTasks = this.tasksData;
     }
+  }
+  resetFilter(filterInput: HTMLInputElement): void {
+    filterInput.value = '';
+    this.filterType = this.defaultFilterType;
+    this.filteredTasks = this.tasksData;
+  }
+  ngOnInit() {
+    this.getAllTasks();
   }
 
 }

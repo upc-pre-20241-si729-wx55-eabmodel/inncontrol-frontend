@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ToolbarContentComponent} from './public/components/home/components/toolbar-content/toolbar-content.component';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButtonModule} from '@angular/material/button';
@@ -17,7 +16,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogModule, MatDialogRef,
+  MatDialogModule,
   MatDialogTitle
 } from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -37,7 +36,6 @@ import {MatSelect} from "@angular/material/select";
 import {
   TaskCreateDialogComponent
 } from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
-import {ReportFormComponent} from "./interactions/report/components/report-form/report-form.component";
 import {HomeComponent} from "./public/pages/home/home.component";
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
 import {TasksComponent} from "./public/pages/tasks/tasks.component";
@@ -69,10 +67,9 @@ import {
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatDivider, MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from "@angular/material/divider";
 import {MatBadgeModule} from "@angular/material/badge";
-import { TaskContentComponent } from './display/task/task-content/task-content.component';
-import {TaskTableComponent} from "./display/task/task-table/task-table.component";
+import {TaskContentComponent} from './display/task/task-content/task-content.component';
 import {TaskCreationComponent} from "./display/task/task-create/components/task-creation/task-creation.component";
 import {
   RoomCreateDialogComponent
@@ -81,21 +78,54 @@ import {HttpClientModule} from "@angular/common/http";
 import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
-import { RoomCreateButtonComponent } from './display/room/components/room-create-button/room-create-button.component';
-import { InventoryCardsComponent } from './supply/inventory/inventory-cards/inventory-cards.component';
-import { InventoryContentComponent } from './supply/inventory/inventory-content/inventory-content.component';
-import { InventoryCreateDialogComponent } from './supply/inventory/inventory-create/components/inventory-create-dialog/inventory-create-dialog.component';
-import { InventoryCreationComponent } from './supply/inventory/inventory-create/components/inventory-creation/inventory-creation.component';
-import { InventoryEditDialogComponent } from './supply/inventory/inventory-create/components/inventory-edit-dialog/inventory-edit-dialog.component';
-import { InventoryCardDialogComponent } from './supply/inventory/inventory-card-dialog/inventory-card-dialog.component';
-import { InventoryDeleteDialogComponent } from './supply/inventory/inventory-delete-dialog/inventory-delete-dialog.component';
+import {LoginComponent} from "./iam/pages/login/login.component";
+import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
+import { UserProfileContentComponent } from './display/user-view/pages/user-profile-content/user-profile-content.component';
+import { UserEditDialogComponent } from './display/user-view/components/user-edit-dialog/user-edit-dialog.component';
+import {PanelCardIconComponent} from './interactions/control/components/panel-card-icon/panel-card-icon.component';
+import {PanelScheduleComponent} from './interactions/control/components/panel-schedule/panel-schedule.component';
+import {
+  PanelCardIconViewComponent
+} from './interactions/control/components/panel-card-icon-view/panel-card-icon-view.component';
+import {ControlPanelPageComponent} from './interactions/control/pages/control-panel-page/control-panel-page.component';
+import {RoomCreateButtonComponent} from './display/room/components/room-create-button/room-create-button.component';
+import {
+  MessagesContainerComponent
+} from './interactions/messages/components/messages-container/messages-container.component';
+import {MessagesCardComponent} from './interactions/messages/components/messages-card/messages-card.component';
+import {
+  MessagesCardDialogComponent
+} from './interactions/messages/components/messages-card-dialog/messages-card-dialog.component';
+import {
+  MessagesNewMessageDialogComponent
+} from './interactions/messages/components/messages-new-message-dialog/messages-new-message-dialog.component';
+import {MatAutocomplete, MatAutocompleteTrigger} from "@angular/material/autocomplete";
+import {TaskCardComponent} from './display/task/task-cards/task-card/task-card.component';
+import {
+  TaskEditDialogComponent
+} from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
+import { RoomsCardComponent } from './display/room/components/rooms-card/rooms-card.component';
+import { RoomCardContentComponent } from './display/room/components/room-card-content/room-card-content.component';
+import {PerformanceReportComponent} from "./planning/performance-report/performance-report.component";
+import {CalendarModule, DateAdapter} from "angular-calendar";
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ScheduleViewComponent } from './planning/schedule/components/schedule-view/schedule-view.component';
+import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/schedule-page.component';
+import { SidebarContentComponent } from './public/components/home/components/sidebar-content/sidebar-content.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListItem, MatNavList} from "@angular/material/list";
+import { SidebarItemComponent } from './public/components/home/components/sidebar-item/sidebar-item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarContentComponent,
+    InventoryContentComponent,
+    InventoryAddDialogComponent,
+    InventoryAddItemButtonComponent,
+    InventoryTableComponent,
     TasksComponent,
     TaskCreateDialogComponent,
-    ReportFormComponent,
+    InventoryContentComponent,
     HomeComponent,
     PageNotFoundComponent,
     TasksComponent,
@@ -110,9 +140,9 @@ import { InventoryDeleteDialogComponent } from './supply/inventory/inventory-del
     NotificationsCardComponent,
     NotificationsViewComponent,
     NotificationsBadgeComponent,
+    PerformanceReportComponent,
     InventoryComponent,
     TaskContentComponent,
-    TaskTableComponent,
     TaskCreationComponent,
     RoomCreateDialogComponent,
     RoomUpdateComponent,
@@ -124,7 +154,27 @@ import { InventoryDeleteDialogComponent } from './supply/inventory/inventory-del
     InventoryCreationComponent,
     InventoryEditDialogComponent,
     InventoryCardDialogComponent,
-    InventoryDeleteDialogComponent
+    InventoryDeleteDialogComponent,
+    LoginComponent,
+    SigUpComponent,
+    UserProfileContentComponent,
+    UserEditDialogComponent,
+    PanelCardIconComponent,
+    PanelScheduleComponent,
+    PanelCardIconViewComponent,
+    ControlPanelPageComponent,
+    MessagesContainerComponent,
+    MessagesCardComponent,
+    MessagesCardDialogComponent,
+    MessagesNewMessageDialogComponent,
+    TaskCardComponent,
+    TaskEditDialogComponent,
+    RoomsCardComponent,
+    RoomCardContentComponent,
+    ScheduleViewComponent,
+    SchedulePageComponent,
+    SidebarContentComponent,
+    SidebarItemComponent
   ],
   imports: [
     HttpClientModule,
@@ -169,6 +219,15 @@ import { InventoryDeleteDialogComponent } from './supply/inventory/inventory-del
     MatBadgeModule,
     MatMenuModule,
     MatDialogModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    MatSidenavModule,
+    MatNavList,
+    MatListItem
   ],
   providers: [
     provideAnimationsAsync(),

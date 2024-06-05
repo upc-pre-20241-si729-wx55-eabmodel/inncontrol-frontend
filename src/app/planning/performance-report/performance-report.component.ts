@@ -10,6 +10,7 @@ import {Task} from "../../display/task/task-create/model/task.entity";
   styleUrl: './performance-report.component.css'
 })
 export class PerformanceReportComponent implements AfterViewInit {
+
   tasks: Task[] = [];
 
   length: number = 1;
@@ -21,7 +22,7 @@ export class PerformanceReportComponent implements AfterViewInit {
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.tasks);
-    this.tasks.push(new Task('1', 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
+    this.tasks.push(new Task(1, 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
     length = this.tasks.length;
     console.log('Serio ' + this.length);
   }
@@ -29,7 +30,7 @@ export class PerformanceReportComponent implements AfterViewInit {
   onTaskCreatedEvent($event: Task) {
     console.log('Task created');
     this.length++;
-    $event.id = this.length.toString();
+    $event.id = this.length;
     console.log($event);
     this.tasks.push($event);
     this.dataSource._updateChangeSubscription();

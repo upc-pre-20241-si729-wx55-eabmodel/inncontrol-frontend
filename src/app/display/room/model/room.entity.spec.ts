@@ -1,4 +1,4 @@
-import { Room } from './room.entity';
+import { Rooms } from './room.entity';
 
 describe('ItemsEntity', () => {
   it('should create an instance', () => {
