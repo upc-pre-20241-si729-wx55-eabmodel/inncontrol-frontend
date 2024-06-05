@@ -112,6 +112,8 @@ import {TaskCardComponent} from './display/task/task-cards/task-card/task-card.c
 import {
   TaskEditDialogComponent
 } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
+import { RoomsCardComponent } from './display/room/components/rooms-card/rooms-card.component';
+import { RoomCardContentComponent } from './display/room/components/room-card-content/room-card-content.component';
 import {PerformanceReportComponent} from "./planning/performance-report/performance-report.component";
 import {CalendarModule, DateAdapter} from "angular-calendar";
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -168,6 +170,8 @@ import { SidebarItemComponent } from './public/components/home/components/sideba
     MessagesNewMessageDialogComponent,
     TaskCardComponent,
     TaskEditDialogComponent,
+    RoomsCardComponent,
+    RoomCardContentComponent,
     ScheduleViewComponent,
     SchedulePageComponent,
     SidebarContentComponent,
