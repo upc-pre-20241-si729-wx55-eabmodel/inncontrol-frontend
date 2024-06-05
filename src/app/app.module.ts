@@ -104,6 +104,7 @@ import {
   TaskEditDialogComponent
 } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
 import { RoomsCardComponent } from './display/room/components/rooms-card/rooms-card.component';
+import { RoomCardContentComponent } from './display/room/components/room-card-content/room-card-content.component';
 
 @NgModule({
   declarations: [
@@ -143,7 +144,8 @@ import { RoomsCardComponent } from './display/room/components/rooms-card/rooms-c
     MessagesNewMessageDialogComponent,
     TaskCardComponent,
     TaskEditDialogComponent,
-    RoomsCardComponent
+    RoomsCardComponent,
+    RoomCardContentComponent
   ],
   imports: [
     HttpClientModule,
