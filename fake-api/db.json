@@ -105,6 +105,29 @@
     }
   ],
   "reports": [],
+  "inventory": [
+    {
+      "id": "1",
+      "name": "Papel",
+      "description": "Papel para el baño",
+      "providerId": "13",
+      "providerName": "Elite",
+      "providerDesc": "av los cedros 290 Santa Anita",
+      "providerContact": "123456789",
+      "quantity": "100"
+
+    },
+    {
+      "id": "2",
+      "name": "Jabon",
+      "description": "Jabon para manos",
+      "providerId": "10",
+      "provider": "Dove",
+      "providerContact": "879512384",
+      "providerDesc": "av Brasil 290 Magdalena",
+      "quantity": "30"
+    }
+    ],
   "tasks": [
     {
       "taskName": "Task 1",

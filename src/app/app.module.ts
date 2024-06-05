@@ -33,14 +33,6 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, MatSortHeader} from "@angular/material/sort";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatSelect} from "@angular/material/select";
-import {InventoryContentComponent} from "./supply/inventory/components/inventory-content/inventory-content.component";
-import {
-  InventoryAddDialogComponent
-} from "./supply/inventory/components/inventory-add-dialog/inventory-add-dialog.component";
-import {
-  InventoryAddItemButtonComponent
-} from "./supply/inventory/components/inventory-add-item-button/inventory-add-item-button.component";
-import {InventoryTableComponent} from "./supply/inventory/components/inventory-table/inventory-table.component";
 import {
   TaskCreateDialogComponent
 } from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
@@ -156,6 +148,13 @@ import { SidebarItemComponent } from './public/components/home/components/sideba
     RoomUpdateComponent,
     RoomsReportComponent,
     RoomCreateButtonComponent,
+    InventoryCardsComponent,
+    InventoryContentComponent,
+    InventoryCreateDialogComponent,
+    InventoryCreationComponent,
+    InventoryEditDialogComponent,
+    InventoryCardDialogComponent,
+    InventoryDeleteDialogComponent,
     LoginComponent,
     SigUpComponent,
     UserProfileContentComponent,
