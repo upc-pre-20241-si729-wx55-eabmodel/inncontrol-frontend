@@ -115,14 +115,26 @@ import { SidebarContentComponent } from './public/components/home/components/sid
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import { SidebarItemComponent } from './public/components/home/components/sidebar-item/sidebar-item.component';
+import {InventoryCardsComponent} from "./supply/inventory/inventory-cards/inventory-cards.component";
+import {InventoryContentComponent} from "./supply/inventory/inventory-content/inventory-content.component";
+import {
+  InventoryCreateDialogComponent
+} from "./supply/inventory/inventory-create/components/inventory-create-dialog/inventory-create-dialog.component";
+import {
+  InventoryCreationComponent
+} from "./supply/inventory/inventory-create/components/inventory-creation/inventory-creation.component";
+import {
+  InventoryEditDialogComponent
+} from "./supply/inventory/inventory-create/components/inventory-edit-dialog/inventory-edit-dialog.component";
+import {InventoryCardDialogComponent} from "./supply/inventory/inventory-card-dialog/inventory-card-dialog.component";
+import {
+  InventoryDeleteDialogComponent
+} from "./supply/inventory/inventory-delete-dialog/inventory-delete-dialog.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     InventoryContentComponent,
-    InventoryAddDialogComponent,
-    InventoryAddItemButtonComponent,
-    InventoryTableComponent,
     TasksComponent,
     TaskCreateDialogComponent,
     InventoryContentComponent,
