@@ -1,0 +1,20 @@
+<mat-card class="card-content" (click)="clickedEmployee()">
+  <mat-card-header class="messageTitle">
+    <mat-card-title class="title" >{{this.employee.PersonName}}
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="changeState()">Mark as Read</button>
+        <button mat-menu-item (click)="delete()" >Delete</button>
+      </mat-menu>
+    </mat-card-title>
+    <mat-card-subtitle class="subtitle-text">Role: {{this.employee.role}}</mat-card-subtitle>
+
+    <button (click)="clickedMenu()" mat-icon-button (onMenuClose)="this.Menu=false" [matMenuTriggerFor]="menu"><mat-icon>more_horiz</mat-icon></button>
+  </mat-card-header>
+  <mat-card-content class="EmployeeCardContent">
+    <div class="subtitle">
+      <mat-card-subtitle class="subtitle-text" >Profile ID: {{this.employee.profileId}}</mat-card-subtitle>
+      <mat-card-subtitle class="subtitle-text">Total Tasks: {{this.employee.Tasks}}</mat-card-subtitle>
+      <mat-card-subtitle class="subtitle-text">Service Hours: {{this.employee.ServiceHours}}</mat-card-subtitle>
+    </div>
+  </mat-card-content>
+</mat-card>
