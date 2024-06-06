@@ -1,6 +1,9 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Router, NavigationEnd } from '@angular/router';
 import {Component} from '@angular/core';
 import {PanelCard} from "../../../../../shared/model/panel-card";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-sidebar-content',
@@ -23,4 +26,10 @@ export class SidebarContentComponent {
   }
 
   protected readonly PanelCardIcon = PanelCardIcon;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver) { }
 }
