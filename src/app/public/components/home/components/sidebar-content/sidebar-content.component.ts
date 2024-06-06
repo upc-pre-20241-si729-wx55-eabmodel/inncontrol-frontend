@@ -1,5 +1,4 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Router, NavigationEnd } from '@angular/router';
 import {Component} from '@angular/core';
 import {PanelCard} from "../../../../../shared/model/panel-card";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
