@@ -28,7 +28,10 @@
         </a>
       </div>
       <span class="spacer"></span>
-      <button (click)="drawer.toggle()" mat-icon-button color="white" aria-label="Open navbar">
+      <ng-container *ngFor="let item of items">
+        <button mat-button [routerLink]="item.toRoute" *ngIf="!(isHandset$ | async)">{{item.title}}</button>
+      </ng-container>
+      <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" mat-icon-button color="white" aria-label="Open navbar">
         <mat-icon>menu</mat-icon>
       </button>
 
