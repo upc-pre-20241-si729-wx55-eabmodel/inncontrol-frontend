@@ -130,6 +130,9 @@ import {InventoryCardDialogComponent} from "./supply/inventory/inventory-card-di
 import {
   InventoryDeleteDialogComponent
 } from "./supply/inventory/inventory-delete-dialog/inventory-delete-dialog.component";
+import {EmployeesContainerComponent} from "./monitoring/employees/components/employees-container/employees-container.component";
+import { EmployeeCardComponent } from './monitoring/employees/components/employee-card/employee-card.component';
+import { EmployeeDialogComponent } from './monitoring/employees/components/employee-dialog/employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -186,7 +189,10 @@ import {
     ScheduleViewComponent,
     SchedulePageComponent,
     SidebarContentComponent,
-    SidebarItemComponent
+    SidebarItemComponent,
+    EmployeesContainerComponent,
+    EmployeeCardComponent,
+    EmployeeDialogComponent
   ],
   imports: [
     HttpClientModule,

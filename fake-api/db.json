@@ -115,7 +115,6 @@
       "providerDesc": "av los cedros 290 Santa Anita",
       "providerContact": "123456789",
       "quantity": "100"
-
     },
     {
       "id": "2",
@@ -127,7 +126,7 @@
       "providerDesc": "av Brasil 290 Magdalena",
       "quantity": "30"
     }
-    ],
+  ],
   "tasks": [
     {
       "taskName": "Task 1",
@@ -173,6 +172,40 @@
       "status": "in progress",
       "employee": "WOKE UP",
       "id": 6
+    },
+    {
+      "taskName": "TaskTest",
+      "description": "Hacer",
+      "dueDate": "2024-06-07T07:41:00.000Z",
+      "status": "in progress",
+      "creationDate": "2024-06-06T15:57:56.250Z",
+      "employee": "Nicolas",
+      "id": 7
     }
+  ],
+
+  "employees": [
+    {
+      "profileId": 1,
+      "PersonName": "FirstName LastName",
+      "role": "employee",
+      "ServiceHours": "8:00 - 17:00",
+      "Tasks": 8
+    },{
+      "profileId": 2,
+      "PersonName": "FirstName LastName",
+      "role": "Manager",
+      "ServiceHours": "8:00 - 17:00",
+      "Tasks": 8
+    },
+    {
+      "profileId": 3,
+      "PersonName": "FirstName LastName",
+      "role": "employee",
+      "ServiceHours": "8:00 - 17:00",
+      "Tasks": 8
+    }
+
   ]
+
 }
