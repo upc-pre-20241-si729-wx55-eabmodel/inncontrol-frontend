@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../../../iam/model/user';
-import { UserApiServiceService } from '../../../../shared/services/user-api.service.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../../../iam/model/user';
+import {UserApiServiceService} from '../../../../shared/services/user-api.service.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
 import {UserEditDialogComponent} from "../../components/user-edit-dialog/user-edit-dialog.component";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user-profile-content',
@@ -13,29 +14,33 @@ import {UserEditDialogComponent} from "../../components/user-edit-dialog/user-ed
 export class UserProfileContentComponent implements OnInit {
 
   userLogged: User;
-  roleUser: number;
+  id: number = 0;
 
   constructor(
     private userService: UserApiServiceService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) {
-    this.userLogged = {} as User;
-    this.roleUser = Number(localStorage.getItem('rollUser'));
+    this.userLogged = new User();
+  }
+
+  UserProfileContentComponent(index: number) {
+    this.id = index;
   }
 
   ngOnInit() {
-
-    this.userService.getUserById(Number(localStorage.getItem('id'))).subscribe(
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.userService.getUserById(this.id).subscribe(
       (user: User | null) => {
         if (user) {
           this.userLogged = user;
-          console.log(this.userLogged);
         } else {
           this.showMessage('Invalid email or password');
         }
       },
       error => {
+        console.error(error);
         this.showMessage('An error occurred during login');
       }
     );
@@ -51,7 +56,7 @@ export class UserProfileContentComponent implements OnInit {
   }
 
   rollDescription(): string {
-    return this.roleUser === 1 ? 'Employee' : 'Manager';
+    return this.userLogged.rolUser === 1 ? 'Employee' : 'Manager';
   }
 
   openEditDialog(): void {

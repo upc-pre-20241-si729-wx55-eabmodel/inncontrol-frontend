@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'inventory', component: InventoryComponent , canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent, canActivate: [LoggedInAuthGuard]},
   {path: 'register', component: SigUpComponent , canActivate: [LoggedInAuthGuard]},
-  {path: 'profile', component: UserProfileContentComponent , canActivate: [AuthGuard]},
+  {path: 'profile/:id', component: UserProfileContentComponent , canActivate: [AuthGuard]},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
