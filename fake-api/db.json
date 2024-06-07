@@ -187,23 +187,26 @@
   "employees": [
     {
       "profileId": 1,
-      "PersonName": "FirstName LastName",
+      "PersonName": "Carlos Banquito",
       "role": "employee",
       "ServiceHours": "8:00 - 17:00",
-      "Tasks": 8
+      "Tasks": 8,
+      "profileImage": "https://randomuser.me/api/portraits/men/41.jpg"
     },{
       "profileId": 2,
-      "PersonName": "FirstName LastName",
+      "PersonName": "Juan Vargas",
       "role": "Manager",
       "ServiceHours": "8:00 - 17:00",
-      "Tasks": 8
+      "Tasks": 8,
+      "profileImage": "https://randomuser.me/api/portraits/men/33.jpg"
     },
     {
       "profileId": 3,
-      "PersonName": "FirstName LastName",
+      "PersonName": "Raul Rivas",
       "role": "employee",
       "ServiceHours": "8:00 - 17:00",
-      "Tasks": 8
+      "Tasks": 8,
+      "profileImage": "https://randomuser.me/api/portraits/men/40.jpg"
     }
 
   ]

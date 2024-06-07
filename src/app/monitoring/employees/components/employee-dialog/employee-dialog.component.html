@@ -1,21 +1,14 @@
 
 <div class="cardContain">
   <div class="header">
-    <h2 class="title">{{data.subject}}</h2>
-    <mat-divider></mat-divider>
-    <p >from: {{data.sender}}<br>to: {{data.receiver}}</p>
-  </div>
-  <section class="text">
-    <p>{{ data.text }}</p>
-  </section>
+    <h2 class="title">{{data.PersonName}}</h2>
+    <img class="profileImage" src="{{ data.profileImage }}" alt="Profile Image">
 
-  <p class="header"> sent: {{data.date | date: "short" }}</p>
-  <mat-divider></mat-divider>
-  <div class="buttons">
-    <mat-dialog-actions>
-      <button mat-flat-button color="primary" [mat-dialog-close]="">Delete</button>
-      <button mat-flat-button color="primary" [mat-dialog-close]="">Answer</button>
-    </mat-dialog-actions>
   </div>
+  <mat-divider></mat-divider>
+  <section class="header"><p >Role: {{data.role}}<br>Profile ID: {{data.profileId}}</p>
+    <p>Service Hours {{ data.ServiceHours }}</p>
+    <p> Tasks: {{data.Tasks }}</p></section>
+
 
 </div>
