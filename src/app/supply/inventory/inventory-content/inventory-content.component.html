@@ -1,8 +1,5 @@
 <div class="container">
   <span class="header"> <h1 class="card-title">Inventory</h1>
-    <button mat-icon-button  aria-label="Inventory button">
-      <mat-icon  class="item"  >notifications</mat-icon>
-    </button>
   </span>
   <span class="header">
     <app-search-content [options]="this.options" (optionSelected)="receiveFilter($event)" (search)="searchFilter($event)" ></app-search-content>
