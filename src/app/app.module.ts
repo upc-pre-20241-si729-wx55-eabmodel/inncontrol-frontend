@@ -36,7 +36,6 @@ import {MatSelect} from "@angular/material/select";
 import {
   TaskCreateDialogComponent
 } from "./display/task/task-create/components/task-create-dialog/task-create-dialog.component";
-import {HomeComponent} from "./public/pages/home/home.component";
 import {PageNotFoundComponent} from "./public/pages/page-not-found/page-not-found.component";
 import {TasksComponent} from "./public/pages/tasks/tasks.component";
 import {RoomStateComponent} from "./public/pages/room-state/room-state.component";
@@ -135,6 +134,7 @@ import { EmployeeCardComponent } from './monitoring/employees/components/employe
 import { EmployeeDialogComponent } from './monitoring/employees/components/employee-dialog/employee-dialog.component';
 import {NgOptimizedImage} from "@angular/common";
 import {AuthGuardImpl} from "./shared/services/authguard";
+import { FooterContentComponent } from './public/components/home/components/footer-content/footer-content.component';
 
 @NgModule({
   declarations: [
@@ -143,7 +143,6 @@ import {AuthGuardImpl} from "./shared/services/authguard";
     TasksComponent,
     TaskCreateDialogComponent,
     InventoryContentComponent,
-    HomeComponent,
     PageNotFoundComponent,
     TasksComponent,
     RoomStateComponent,
@@ -194,7 +193,8 @@ import {AuthGuardImpl} from "./shared/services/authguard";
     SidebarItemComponent,
     EmployeesContainerComponent,
     EmployeeCardComponent,
-    EmployeeDialogComponent
+    EmployeeDialogComponent,
+    FooterContentComponent
   ],
     imports: [
         HttpClientModule,
