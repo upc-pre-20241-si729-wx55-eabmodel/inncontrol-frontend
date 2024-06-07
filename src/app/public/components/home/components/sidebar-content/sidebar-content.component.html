@@ -28,15 +28,20 @@
         </a>
       </div>
       <span class="spacer"></span>
-      <ng-container *ngFor="let item of items">
-        <button mat-button [routerLink]="item.toRoute" *ngIf="!(isHandset$ | async)">{{item.title}}</button>
-      </ng-container>
-      <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" mat-icon-button color="white" aria-label="Open navbar">
-        <mat-icon>menu</mat-icon>
-      </button>
+      <div *ngIf="iamService.isLoggedIn()">
+        <ng-container *ngFor="let item of items">
+          <button mat-button [routerLink]="item.toRoute" *ngIf="!(isHandset$ | async)">{{item.title}}</button>
+        </ng-container>
+      </div>
+
+      <div *ngIf="iamService.isLoggedIn()">
+        <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" mat-icon-button color="white" aria-label="Open navbar">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
 
 <!--      if has pending notifications-->
-      <app-notifications-badge/>
+      <app-notifications-badge *ngIf="iamService.isLoggedIn()"/>
     </mat-toolbar>
 
     <router-outlet/>

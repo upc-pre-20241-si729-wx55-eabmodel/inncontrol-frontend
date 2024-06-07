@@ -3,7 +3,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 
 export class BaseService<T> {
-  basePath: string = `http://localhost:3000`;
+  basePath: string = environment.serverBasePath;
+
   resourceEndpoint: string = '/resource';
 
   httpOptions = {
@@ -12,7 +13,8 @@ export class BaseService<T> {
     })
   }
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient) {
+  }
 
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -39,7 +41,7 @@ export class BaseService<T> {
   // Delete resource
   delete(id: any) {
     return this.http.delete(`${this.resourcePath()}/${id}`, this.httpOptions)
-    .pipe(retry(2), catchError(this.handleError));
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   // Update Resource
@@ -73,5 +75,4 @@ export class BaseService<T> {
       .pipe(retry(2), catchError(this.handleError));
 
   }
-
 }

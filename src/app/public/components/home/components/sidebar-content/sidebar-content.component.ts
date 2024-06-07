@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {PanelCard} from "../../../../../shared/model/panel-card";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
 import {map, Observable} from "rxjs";
+import {IamStorageService} from "../../../../../shared/services/iam-storage.service";
 
 @Component({
   selector: 'app-sidebar-content',
@@ -30,5 +31,5 @@ export class SidebarContentComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver, protected iamService: IamStorageService) { }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../../iam/model/user';
-import { UserApiServiceService } from '../../../../iam/services/user-api.service.service';
+import { UserApiServiceService } from '../../../../shared/services/user-api.service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import {UserEditDialogComponent} from "../../components/user-edit-dialog/user-edit-dialog.component";
