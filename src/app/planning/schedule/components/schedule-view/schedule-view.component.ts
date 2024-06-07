@@ -1,5 +1,6 @@
 import {
-  Component, Input,
+  AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef,
+  Component, ElementRef, Input, ViewChild,
 } from '@angular/core';
 import {
   startOfDay,
@@ -9,7 +10,7 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  addHours,
+  addHours, startOfHour, differenceInMinutes,
 } from 'date-fns';
 import {Subject} from 'rxjs';
 import {
@@ -38,9 +39,20 @@ const colors: Record<string, EventColor> = {
 @Component({
   selector: 'app-schedule-view',
   templateUrl: './schedule-view.component.html',
-  styleUrl: './schedule-view.component.css'
+  styleUrl: './schedule-view.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
+      .scroll-container {
+        height: calc(100vh - 320px);
+        overflow-y: auto;
+      }
+    `,
+  ],
 })
-export class ScheduleViewComponent {
+export class ScheduleViewComponent implements AfterViewInit {
+
+  @ViewChild('scrollContainer') scrollContainer!: ElementRef<HTMLElement>;
 
   CalendarView = CalendarView;
 
@@ -48,57 +60,62 @@ export class ScheduleViewComponent {
 
   refresh = new Subject<void>();
 
+
   @Input() canChangeView: boolean = true;
 
   @Input() view: CalendarView = CalendarView.Month;
 
   @Input() activeDayIsOpen: boolean = true;
 
+  constructor(private cdr: ChangeDetectorRef) {
+  }
+
+
   events: CalendarEvent[] = [
-    // {
-    //   start: subDays(startOfDay(new Date()), 1),
-    //   end: addDays(new Date(), 1),
-    //   title: 'A 3 day event',
-    //   color: {...colors["red"]},
-    //   allDay: true,
-    //   // resizable: {
-    //   //   beforeStart: true,
-    //   //   afterEnd: true,
-    //   // },
-    //   // draggable: true,
-    // },
-    // {
-    //   start: startOfDay(new Date()),
-    //   title: 'An event with no end date',
-    //   color: {...colors["yellow"]},
-    // },
-    // {
-    //   start: subDays(endOfMonth(new Date()), 3),
-    //   end: addDays(endOfMonth(new Date()), 3),
-    //   title: 'A long event that spans 2 months',
-    //   color: {...colors["blue"]},
-    //   allDay: true,
-    // },
-    // {
-    //   start: addHours(startOfDay(new Date()), 2),
-    //   end: addHours(new Date(), 2),
-    //   title: 'A draggable and resizable event',
-    //   color: {...colors["yellow"]},
-    //   resizable: {
-    //     beforeStart: true,
-    //     afterEnd: true,
-    //   },
-    //   draggable: true,
-    // },
-    //
-    // // event from 5pm to 6pm
-    // {
-    //   title: 'Event 1',
-    //   start: addHours(startOfDay(new Date()), 3),
-    //   end: addHours(startOfDay(new Date()), 12),
-    //   color: colors["red"],
-    //   allDay: false,
-    // },
+    {
+      start: subDays(startOfDay(new Date()), 1),
+      end: addDays(new Date(), 1),
+      title: 'A 3 day event',
+      color: {...colors["red"]},
+      allDay: true,
+      // resizable: {
+      //   beforeStart: true,
+      //   afterEnd: true,
+      // },
+      // draggable: true,
+    },
+    {
+      start: startOfDay(new Date()),
+      title: 'An event with no end date',
+      color: {...colors["yellow"]},
+    },
+    {
+      start: subDays(endOfMonth(new Date()), 3),
+      end: addDays(endOfMonth(new Date()), 3),
+      title: 'A long event that spans 2 months',
+      color: {...colors["blue"]},
+      allDay: true,
+    },
+    {
+      start: addHours(startOfDay(new Date()), 2),
+      end: addHours(new Date(), 2),
+      title: 'A draggable and resizable event',
+      color: {...colors["yellow"]},
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+
+    // event from 5pm to 6pm
+    {
+      title: 'Event 1',
+      start: addHours(startOfDay(new Date()), 3),
+      end: addHours(startOfDay(new Date()), 12),
+      color: colors["red"],
+      allDay: false,
+    },
   ];
 
   dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
@@ -159,5 +176,27 @@ export class ScheduleViewComponent {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+
+  ngAfterViewInit(): void {
+    this.scrollToCurrentView();
+  }
+
+  viewChanged() {
+    this.cdr.detectChanges();
+    this.scrollToCurrentView();
+  }
+
+  private scrollToCurrentView() {
+    if (this.view === CalendarView.Week || CalendarView.Day) {
+      // each hour is 60px high, so to get the pixels to scroll it's just the amount of minutes since midnight
+      const minutesSinceStartOfDay = differenceInMinutes(
+        startOfHour(new Date()),
+        startOfDay(new Date())
+      );
+      const headerHeight = this.view === CalendarView.Week ? 60 : 0;
+      this.scrollContainer.nativeElement.scrollTop =
+        minutesSinceStartOfDay + headerHeight;
+    }
   }
 }

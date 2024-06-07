@@ -58,7 +58,7 @@
 </div>
 <br/>
 
-<div [ngSwitch]="view">
+<div [ngSwitch]="view" class="scroll-container" #scrollContainer>
   <mwl-calendar-month-view
     *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
