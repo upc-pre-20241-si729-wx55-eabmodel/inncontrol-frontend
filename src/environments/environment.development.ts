@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  serverBasePath: 'http://eabmodel.ryzeon.me'
+  serverBasePath: 'https://eabmodel.ryzeon.me'
 };
