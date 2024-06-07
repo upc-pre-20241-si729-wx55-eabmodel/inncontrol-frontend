@@ -75,7 +75,7 @@ export class ScheduleViewComponent implements AfterViewInit {
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: 'A 3 day event',
+      title: 'Clean Room 101',
       color: {...colors["red"]},
       allDay: true,
       // resizable: {
@@ -86,20 +86,20 @@ export class ScheduleViewComponent implements AfterViewInit {
     },
     {
       start: startOfDay(new Date()),
-      title: 'An event with no end date',
+      title: 'Clean 2nd floor.',
       color: {...colors["yellow"]},
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
+      title: 'Pool Cleaning',
       color: {...colors["blue"]},
       allDay: true,
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
+      title: 'Cleaning of suite 803',
       color: {...colors["yellow"]},
       resizable: {
         beforeStart: true,
@@ -110,7 +110,7 @@ export class ScheduleViewComponent implements AfterViewInit {
 
     // event from 5pm to 6pm
     {
-      title: 'Event 1',
+      title: 'Meeting with Manager',
       start: addHours(startOfDay(new Date()), 3),
       end: addHours(startOfDay(new Date()), 12),
       color: colors["red"],
