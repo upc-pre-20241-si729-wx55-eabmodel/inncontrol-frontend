@@ -4,6 +4,8 @@ import { UserApiServiceService } from "../../../shared/services/user-api.service
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { RoleUser } from "../../model/roll-user";
 import { User } from "../../model/user";
+import {IamStorageService} from "../../../shared/services/iam-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,11 @@ export class LoginComponent {
   email: string;
   rolUser: RoleUser;
 
-  constructor(private userService: UserApiServiceService, private snackBar: MatSnackBar) {
+  constructor(private userService: UserApiServiceService,
+              private snackBar: MatSnackBar,
+              private route: Router,
+              private iamService: IamStorageService
+  ) {
     this.email = '';
     this.password = '';
     this.rolUser = RoleUser.Employee;
@@ -31,8 +37,8 @@ export class LoginComponent {
           if (user) {
             console.log(user)
             this.showMessage('Login Successfully');
-            localStorage.setItem('id', String(user.id));
-            localStorage.setItem('rollUser', String(this.rolUser));
+            this.iamService.saveCredentials(user.id, user.email, user.password, this.rolUser);
+            this.iamService.validLogin();
           } else {
             this.showMessage('Invalid email or password');
           }

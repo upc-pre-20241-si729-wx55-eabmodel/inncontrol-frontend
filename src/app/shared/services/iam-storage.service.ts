@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserApiServiceService} from "./user-api.service.service";
 import {User} from "../../iam/model/user";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class IamStorageService {
 
   private user: User | null = null;
 
-  constructor(private userApi: UserApiServiceService) {
+  constructor(private userApi: UserApiServiceService, private router: Router) {
     this.user = null;
   }
 
@@ -52,6 +53,7 @@ export class IamStorageService {
     return this.userApi.getUserByEmailAndPassword(credentials.email, credentials.password).subscribe(user => {
         if (user) {
           this.user = user;
+          this.router.navigate(['/control']);
         }
       },
       error => {

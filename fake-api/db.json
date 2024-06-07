@@ -1,29 +1,24 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
+      "firstName": "josue",
+      "lastName": "zzzz",
       "email": "josue",
       "password": "123",
-      "phone": "02-5750-1960",
-      "cell": "0418-555-773",
-      "picture": {
-        "large": "https://randomuser.me/api/portraits/men/56.jpg",
-        "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
-      }
-    },
-    {
-      "firstName": "sds",
-      "lastName": "dsd",
-      "phoneNumber": "sds",
-      "email": "dsdss",
-      "password": "sdsd",
-      "rolUser": 1,
-      "id": "at57-KJ"
-    },
-    {
+      "phoneNumber": "02-5750-1960",
       "rolUser": 2,
-      "id": "lqL7Vnp"
+      "picture": "https://randomuser.me/api/portraits/med/men/56.jpg"
+    },
+    {
+      "firstName": "Riz",
+      "lastName": "Rizzeon",
+      "phoneNumber": "69669",
+      "email": "dev@ryzeon.me",
+      "password": "123",
+      "rolUser": 1,
+      "id": 2,
+      "picture": "https://randomuser.me/api/portraits/med/men/56.jpg"
     }
   ],
   "reports": [],
