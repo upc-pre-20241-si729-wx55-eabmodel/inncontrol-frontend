@@ -134,6 +134,7 @@ import {EmployeesContainerComponent} from "./monitoring/employees/components/emp
 import { EmployeeCardComponent } from './monitoring/employees/components/employee-card/employee-card.component';
 import { EmployeeDialogComponent } from './monitoring/employees/components/employee-dialog/employee-dialog.component';
 import {NgOptimizedImage} from "@angular/common";
+import {AuthGuardImpl} from "./shared/services/authguard";
 
 @NgModule({
   declarations: [
@@ -251,7 +252,8 @@ import {NgOptimizedImage} from "@angular/common";
     ],
   providers: [
     provideAnimationsAsync(),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+    AuthGuardImpl,
   ],
   bootstrap: [AppComponent]
 })
