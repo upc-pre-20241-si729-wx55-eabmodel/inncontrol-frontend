@@ -18,7 +18,7 @@ export class AuthGuardImpl {
 
   canLoggedIn(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this._authService.isLoggedIn()) {
-      this._router.navigate(['/contorl'])
+      this._router.navigate(['/control'])
       return false;
     } else {
       if (this._authService.hasCredentials()) {
