@@ -1,37 +1,13 @@
+import {Message} from "./message.entity";
+
 export class Messages {
 
+  messages: Message[]
 
 
-  messages: [
-    {
-      id: number;
-      from: number;
-      to: number;
-      subject: string;
-      text: string;
-      date: string;
-      state: string;
-      sender: string;
-      receiver: string;
-    }
-  ] ;
-
-
-  constructor(messageId: number, from: number, to: number, subject: string, text: string, date: string, state: string) {
-    this.messages = [
-      {
-        id: messageId,
-        from: from,
-        to: to,
-        subject: subject,
-        text: text,
-        date: date,
-        state: state,
-        sender: ' ',
-        receiver: ' ',
-      }
-    ];
-
+  constructor() {
+  //   create empty array
+    this.messages = [];
   }
 
   changeState(messageId: number, state: string) {
@@ -44,11 +20,11 @@ export class Messages {
 
   deleteMessage(messageId: number) {
 
-    const deletedMesage:any = [];
+    const deletedMesage: any = [];
     this.messages?.forEach((message) => {
       if (message.id === messageId) {
 
-      }else {
+      } else {
         deletedMesage.push(message);
       }
     });
@@ -59,7 +35,7 @@ export class Messages {
   }
 
   getMessagesById(messageId: number) {
-    let messager:any;
+    let messager: any;
     this.messages?.forEach((message) => {
       if (message.id === messageId) {
         messager = message;
@@ -70,7 +46,7 @@ export class Messages {
   }
 
   copyMessage(messageId: number) {
-    let messager:any;
+    let messager: any;
 
     this.messages?.forEach((message) => {
       if (message.id === messageId) {
@@ -101,53 +77,49 @@ export class Messages {
   }
 
   getMessageByUnreadStatus() {
-    let unreadMessages:any = [];
-   unreadMessages = this.messages.filter((message) => message.state === "unread");
+    let unreadMessages: any = [];
+    unreadMessages = this.messages.filter((message) => message.state === "unread");
 
-   this.messages.forEach((message) => {
+    this.messages.forEach((message) => {
       if (message.state === "read") {
         unreadMessages.push(message);
       }
-   })
+    })
 
 
+    this.messages = unreadMessages;
 
-   this.messages = unreadMessages;
-
-   return this.messages;
+    return this.messages;
   }
 
-  getUnreadSize()
-  {
-    let unreadMessages:any;
+  getUnreadSize() {
+    let unreadMessages: any;
     unreadMessages = this.messages.filter((message) => message.state === "unread");
     return unreadMessages.length;
   }
 
 
   setSenderReciever(userid: string, name: string) {
-
-
     this.messages.forEach((message: any) => {
 
       if (message.from.toString() === userid.toString()) {
         message.sender = name;
 
-      }else if (message.to.toString() === userid.toString()) {
+      } else if (message.to.toString() === userid.toString()) {
         message.receiver = name;
 
       }
     });
-    return this.messages;
+    return this;
   }
 
   getMessageBySenderId(userId: number) {
-    const sentMessages:any = [];
+    const sentMessages: any = [];
     this.messages?.forEach((message) => {
       if (message.from === userId) {
         sentMessages.push(message);
 
-      }else if(sentMessages.length === 0) {
+      } else if (sentMessages.length === 0) {
         console.log('No messages found');
       }
     });
@@ -157,11 +129,11 @@ export class Messages {
     return this.messages;
   }
 
-  addMessage(result: any) {
-    console.log('Result:', result);
-    console.log('Messages:', this.messages);
+  addMessage(result: Message) {
+    // console.log('Result:', result);
+    // console.log('Messages:', this.messages);
     this.messages.push(result);
-    console.log('Messages:', this.messages);
+    // console.log('Messages:', this.messages);
     return this.messages;
   }
 }

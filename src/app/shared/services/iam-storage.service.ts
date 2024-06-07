@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {UserApiServiceService} from "./user-api.service.service";
 import {User} from "../../iam/model/user";
 import {Router} from "@angular/router";
+import {RoleUser} from "../../iam/model/roll-user";
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,20 @@ export class IamStorageService {
     return localStorage.getItem('id') !== null;
   }
 
+  getRoleUser(): RoleUser {
+    return this.user ? this.user.rolUser : RoleUser.None;
+  }
+
+  getUserId(): number {
+    return this.user ? this.user.id : -1;
+  }
+
   removeCredentials(): void {
     localStorage.removeItem('id');
     localStorage.removeItem('email');
     localStorage.removeItem('password');
     localStorage.removeItem('rollUser');
+    this.user = null;
   }
 
   saveCredentials(id: number, email: string, password: string, rollUser: number): void {
@@ -63,5 +73,9 @@ export class IamStorageService {
       () => {
         return this.user !== null;
       });
+  }
+
+  getUserName() {
+    return this.user ? `${this.user.firstName}.${this.user.lastName}` : '';
   }
 }

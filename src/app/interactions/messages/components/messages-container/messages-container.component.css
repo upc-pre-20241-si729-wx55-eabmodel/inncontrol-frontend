@@ -48,6 +48,7 @@
   flex-wrap: wrap;
   height: auto;
   width: 100%;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {

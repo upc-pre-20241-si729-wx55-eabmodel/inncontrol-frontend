@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
+import {IamStorageService} from "../../../../../shared/services/iam-storage.service";
 
 @Component({
   selector: 'app-sidebar-item',
@@ -14,7 +15,7 @@ export class SidebarItemComponent {
   @Input() toRoute: string;
   @Input() logout: boolean;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private iamService: IamStorageService) {
     this.icon = {} as PanelCardIcon;
     this.title = '';
     this.toRoute = '';
@@ -26,7 +27,8 @@ export class SidebarItemComponent {
    */
   onClick() {
     if (this.logout) {
-
+      this.iamService.removeCredentials();
+      this.route.navigate(['/']);
     } else {
       this.route.navigate([this.toRoute]);
     }

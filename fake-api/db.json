@@ -32,7 +32,43 @@
       "text": "Hello Clarissa, how are you?",
       "state": "read",
       "sender": "Ms Clarissa Lautenschläger",
-      "receiver": "Mr Nicolas Banquito"
+      "receiver": "Mr Nicolas Banquito",
+      "messages": [
+        {
+          "id": 2,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Hello, I'm fine, thank you!",
+          "state": "unread",
+          "receiver": "Ms Clarissa Lautenschläger",
+          "sender": "Riz.Rizzeon"
+        },
+        {
+          "id": 4,
+          "from": 2,
+          "to": 1,
+          "date": "2017-01-01T12:01:00Z",
+          "subject": "Message from Carlos",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue nisi vitae suscipit tellus. Tempus iaculis urna id volutpat lacus laoreet non curabitur. Donec ac odio tempor orci dapibus ultrices in iaculis nunc. Sed ullamcorper morbi tincidunt ornare massa eget egestas purus viverra. Consequat interdum varius sit amet mattis vulputate enim nulla aliquet. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Sodales neque sodales ut etiam sit amet nisl purus in. Integer eget aliquet nibh praesent tristique. Magna fermentum iaculis eu non diam phasellus vestibulum lorem sed. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Scelerisque varius morbi enim nunc faucibus a. Auctor eu augue ut lectus arcu bibendum at. Dis parturient montes nascetur ridiculus mus mauris. Urna nunc id cursus metus aliquam eleifend mi. Euismod quis viverra nibh cras pulvinar. Ut tortor pretium viverra suspendisse potenti nullam. Nisl pretium fusce id velit ut tortor pretium viverra. Dui vivamus arcu felis bibendum ut tristique et egestas quis. Viverra maecenas accumsan lacus vel facilisis volutpat.\n\nAt in tellus integer feugiat scelerisque varius morbi. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Commodo odio aenean sed adipiscing. Ut tortor pretium viverra suspendisse potenti nullam. Volutpat commodo sed egestas egestas. Vitae ultricies leo integer malesuada nunc. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Urna duis convallis convallis tellus. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor. Orci sagittis eu volutpat odio facilisis mauris sit amet massa. Luctus accumsan tortor posuere ac ut consequat semper viverra. Commodo sed egestas egestas fringilla phasellus faucibus. Id ornare arcu odio ut sem nulla pharetra diam sit. Id interdum velit laoreet id donec ultrices tincidunt. Eget arcu dictum varius duis at consectetur lorem donec massa. Viverra vitae congue eu consequat ac felis donec.",
+          "state": "unread",
+          "receiver": "Ms Clarissa Lautenschläger",
+          "sender": "Riz.Rizzeon"
+        },
+        {
+          "id": 1,
+          "subject": "sdsd",
+          "message": "Message Body...",
+          "sender": "",
+          "date": "Thu Jun 06 2024 22:19:29 GMT-0500 (hora estándar de Perú)",
+          "receiver": "Riz.Rizzeon",
+          "from": 1,
+          "to": 2,
+          "text": "zzz",
+          "state": "unread"
+        }
+      ]
     },
     {
       "id": 2,

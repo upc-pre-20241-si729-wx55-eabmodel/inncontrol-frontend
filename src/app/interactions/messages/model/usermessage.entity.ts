@@ -1,9 +1,9 @@
 export class UsermessageEntity {
 
   id: string;
-  name: { title: string, first: string, last: string };
+  name: string
 
-  constructor(id: string, name: { title: string, first: string, last: string }) {
+  constructor(id: string, name: string) {
     this.id = id;
     this.name = name;
   }
@@ -13,7 +13,7 @@ export class UsermessageEntity {
   }
 
   concatName() {
-    return this.name.title + ' ' + this.name.first + ' ' + this.name.last;
+    return this.name;
   }
 
 }
