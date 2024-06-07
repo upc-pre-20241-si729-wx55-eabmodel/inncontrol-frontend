@@ -30,18 +30,25 @@
       <span class="spacer"></span>
       <div *ngIf="iamService.isLoggedIn()">
         <ng-container *ngFor="let item of items">
-          <button mat-button [routerLink]="item.toRoute" *ngIf="!(isHandset$ | async)">{{item.title}}</button>
+          <button mat-button (click)="sendToRoute(item.toRoute)" *ngIf="!(isHandset$ | async)">{{ item.title }}</button>
         </ng-container>
       </div>
 
       <div *ngIf="iamService.isLoggedIn()">
-        <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" mat-icon-button color="white" aria-label="Open navbar">
+        <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" mat-icon-button color="white"
+                aria-label="Open navbar">
           <mat-icon>menu</mat-icon>
         </button>
       </div>
 
-<!--      if has pending notifications-->
+      <!--      if has pending notifications-->
       <app-notifications-badge *ngIf="iamService.isLoggedIn()"/>
+      <br>
+      <div *ngIf="iamService.isLoggedIn()">
+        <button mat-icon-button  (click)="sendToRoute('/logout')" *ngIf="!(isHandset$ | async)">
+          <mat-icon>logout</mat-icon>
+          </button>
+      </div>
     </mat-toolbar>
 
     <router-outlet/>

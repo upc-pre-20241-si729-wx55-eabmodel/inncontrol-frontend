@@ -4,6 +4,7 @@ import {PanelCard} from "../../../../../shared/model/panel-card";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
 import {map, Observable} from "rxjs";
 import {IamStorageService} from "../../../../../shared/services/iam-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar-content',
@@ -22,7 +23,8 @@ export class SidebarContentComponent {
   ]
 
   logout() {
-
+    this.iamService.removeCredentials();
+    this.router.navigate(['/login']);
   }
 
   protected readonly PanelCardIcon = PanelCardIcon;
@@ -31,5 +33,15 @@ export class SidebarContentComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, protected iamService: IamStorageService) { }
+  constructor(private breakpointObserver: BreakpointObserver, protected iamService: IamStorageService, private router: Router) { }
+
+  sendToRoute(toRoute: string) {
+    if (toRoute === '/logout') {
+      this.logout();
+    } else if (toRoute.includes('profile')) {
+      this.router.navigate([toRoute, localStorage.getItem('id')]);
+    } else {
+      this.router.navigate([toRoute]);
+    }
+  }
 }

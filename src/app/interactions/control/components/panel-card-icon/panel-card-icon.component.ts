@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {PanelCardIcon} from "../../../../shared/model/panel-card-icon";
 import {Router} from "@angular/router";
+import {IamStorageService} from "../../../../shared/services/iam-storage.service";
 
 @Component({
   selector: 'app-panel-card-icon',
@@ -13,7 +14,7 @@ export class PanelCardIconComponent {
   @Input() title: string;
   @Input() toRoute: string;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private iamService: IamStorageService) {
     this.icon = {} as PanelCardIcon;
     this.title = '';
     this.toRoute = '';
@@ -23,6 +24,10 @@ export class PanelCardIconComponent {
    * Navigates to the route declared in the toRoute input
    */
   onClick() {
-    this.route.navigate([this.toRoute]);
+    if (this.toRoute.includes('profile')) {
+      this.route.navigate([this.toRoute, this.iamService.getUserId()]);
+    } else {
+      this.route.navigate([this.toRoute]);
+    }
   }
 }
