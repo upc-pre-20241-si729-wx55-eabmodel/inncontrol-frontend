@@ -11,7 +11,7 @@ import {SignInResponse} from "../model/sign-in.response";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  basePath: string = "http://ryzeon.me:8045/api/v1"
+  basePath: string = environment.prodBasePath;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
