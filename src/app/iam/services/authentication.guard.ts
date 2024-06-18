@@ -9,9 +9,11 @@ export const authenticationGuard: CanActivateFn = () => {
   return authenticationService.isSignedIn.pipe(
     take(1), map(isSignedIn => {
       if (isSignedIn) {
+        console.log('Signed in, allowing access');
         return true;
       } else {
-        router.navigate(['/sign-in']).then();
+        console.log('Not signed in, redirecting to login');
+        router.navigate(['/login']).then();
         return false;
       }
     })

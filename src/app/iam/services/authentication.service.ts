@@ -11,7 +11,7 @@ import {SignInResponse} from "../model/sign-in.response";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  basePath: string = `${environment.serverBasePath}`;
+  basePath: string = "http://localhost:8080/api/v1"
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,11 +37,12 @@ export class AuthenticationService {
       .subscribe({
         next: (response)=>{
           console.log(`Signed up as ${response.username} with id ${response.id}`);
-          this.router.navigate(['/sign-in']).then();
+          
+          this.router.navigate(['/login']).then();
         },
         error: (error)=>{
           console.error(`Error signing up: ${error}`);
-          this.router.navigate(['/sign-up']).then();
+          this.router.navigate(['/register']).then();
         }
       });
   }
@@ -64,7 +65,7 @@ export class AuthenticationService {
           this.signedInUserId.next(0);
           this.signedInUserName.next('');
           localStorage.removeItem('token');
-          this.router.navigate(['/sign-in']).then();
+          this.router.navigate(['/register']).then();
         }
       });
   }
