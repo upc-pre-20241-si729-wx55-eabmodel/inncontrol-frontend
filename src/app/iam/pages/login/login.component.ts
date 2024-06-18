@@ -6,6 +6,8 @@ import { RoleUser } from "../../model/roll-user";
 import { User } from "../../model/user";
 import {IamStorageService} from "../../../shared/services/iam-storage.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../services/authentication.service";
+import {SignInRequest} from "../../model/sign-in.request";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,8 @@ export class LoginComponent {
   constructor(private userService: UserApiServiceService,
               private snackBar: MatSnackBar,
               private route: Router,
-              private iamService: IamStorageService
+              private iamService: IamStorageService,
+              private authenticationService: AuthenticationService
   ) {
     this.email = '';
     this.password = '';
@@ -32,21 +35,23 @@ export class LoginComponent {
   }
   singInAccount() {
     if (this.myForm.valid) {
-      this.userService.getUserByEmailAndPassword(this.email, this.password).subscribe(
-        (user: User | null) => {
-          if (user) {
-            console.log(user)
-            this.showMessage('Login Successfully');
-            this.iamService.saveCredentials(user.id, user.email, user.password, this.rolUser);
-            this.iamService.validLogin();
-          } else {
-            this.showMessage('Invalid email or password');
-          }
-        },
-        error => {
-          this.showMessage('An error occurred during login');
-        }
-      );
+      const signInRequest = new SignInRequest(this.email, this.password);
+      this.authenticationService.signIn(signInRequest);
+      // this.userService.getUserByEmailAndPassword(this.email, this.password).subscribe(
+      //   (user: User | null) => {
+      //     if (user) {
+      //       console.log(user)
+      //       this.showMessage('Login Successfully');
+      //       this.iamService.saveCredentials(user.id, user.email, user.password, this.rolUser);
+      //       this.iamService.validLogin();
+      //     } else {
+      //       this.showMessage('Invalid email or password');
+      //     }
+      //   },
+      //   error => {
+      //     this.showMessage('An error occurred during login');
+      //   }
+      // );
     } else {
       this.showMessage('Invalid Form');
     }

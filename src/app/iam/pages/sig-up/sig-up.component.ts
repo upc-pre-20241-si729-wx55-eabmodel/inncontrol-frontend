@@ -5,6 +5,8 @@ import {UserApiServiceService} from "../../../shared/services/user-api.service.s
 import {RoleUser} from "../../model/roll-user";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {SignUpRequest} from "../../model/sign-up.request";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-sig-up',
@@ -23,7 +25,10 @@ export class SigUpComponent {
   });
   userCreated: User;
 
-  constructor(private userService: UserApiServiceService, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private userService: UserApiServiceService, private snackBar: MatSnackBar,
+              private router: Router,
+              private authenticationService: AuthenticationService
+  ) {
     this.userCreated = {} as User;
     this.rolUser = RoleUser.Employee;
   }
@@ -31,26 +36,28 @@ export class SigUpComponent {
   signUpAccount() {
     if (this.myForm.valid) {
       console.log(this.userCreated);
-      this.userService.userExistsByEmail(this.userCreated.email).subscribe(exists => {
-        if (!exists) {
-          this.userService.create(this.userCreated).subscribe(user => {
-              console.log(this.userCreated)
-              this.userCreated = user;
-              this.userCreated.rolUser = this.rolUser;
-              console.log('User created successfully');
-            },
-            error => {
-              this.showMessage('Error creating user');
-              console.error('Error creating user', error);
-            },
-            () => {
-              console.log('User creation completed');
-              this.router.navigate(['/login']);
-            });
-        } else {
-          this.showMessage('User already exists');
-        }
-      });
+      const signUpRequest = new SignUpRequest(this.userCreated.email, this.userCreated.password);
+      this.authenticationService.signUp(signUpRequest);
+      // this.userService.userExistsByEmail(this.userCreated.email).subscribe(exists => {
+      //   if (!exists) {
+      //     this.userService.create(this.userCreated).subscribe(user => {
+      //         console.log(this.userCreated)
+      //         this.userCreated = user;
+      //         this.userCreated.rolUser = this.rolUser;
+      //         console.log('User created successfully');
+      //       },
+      //       error => {
+      //         this.showMessage('Error creating user');
+      //         console.error('Error creating user', error);
+      //       },
+      //       () => {
+      //         console.log('User creation completed');
+      //         this.router.navigate(['/login']);
+      //       });
+      //   } else {
+      //     this.showMessage('User already exists');
+      //   }
+      // });
     } else {
       this.showMessage('Please fill in all the fields');
     }

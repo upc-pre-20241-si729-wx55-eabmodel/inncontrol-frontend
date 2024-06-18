@@ -14,20 +14,23 @@ import {
 import {ControlPanelPageComponent} from "./interactions/control/pages/control-panel-page/control-panel-page.component";
 import {SchedulePageComponent} from "./planning/schedule/pages/schedule-page/schedule-page.component";
 import {AuthGuard, LoggedInAuthGuard} from "./shared/services/authguard";
+import {authenticationGuard} from "./iam/services/authentication.guard";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
-  {path: 'schedule', component: SchedulePageComponent, canActivate: [AuthGuard]},
-  {path: 'control', component: ControlPanelPageComponent , canActivate: [AuthGuard]},
-  {path: 'tasks', component: TasksComponent , canActivate: [AuthGuard]},
-  {path: 'rooms', component: RoomStateComponent , canActivate: [AuthGuard]},
-  {path: 'messages', component: MessagesComponent , canActivate: [AuthGuard]},
-  {path: 'employees', component: EmployeesComponent , canActivate: [AuthGuard]},
-  {path: 'inventory', component: InventoryComponent , canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent, canActivate: [LoggedInAuthGuard]},
-  {path: 'register', component: SigUpComponent , canActivate: [LoggedInAuthGuard]},
-  {path: 'profile/:id', component: UserProfileContentComponent , canActivate: [AuthGuard]},
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'schedule', component: SchedulePageComponent, canActivate: [authenticationGuard]},
+  {path: 'control', component: ControlPanelPageComponent , canActivate: [authenticationGuard]},
+  {path: 'tasks', component: TasksComponent , canActivate: [authenticationGuard]},
+  {path: 'rooms', component: RoomStateComponent , canActivate: [authenticationGuard]},
+  {path: 'messages', component: MessagesComponent , canActivate: [authenticationGuard]},
+  {path: 'employees', component: EmployeesComponent , canActivate: [authenticationGuard]},
+  {path: 'inventory', component: InventoryComponent , canActivate: [authenticationGuard]},
+  {path: 'login', component: LoginComponent},
+  // {path: 'login', component: LoginComponent, canActivate: [authenticationGuard]},
+  {path: 'register', component: SigUpComponent},
+  // {path: 'register', component: SigUpComponent , canActivate: [authenticationGuard]},
+  {path: 'profile/:id', component: UserProfileContentComponent , canActivate: [authenticationGuard]},
+  {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
