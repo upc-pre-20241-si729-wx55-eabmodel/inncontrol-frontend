@@ -11,7 +11,7 @@ import {SignInResponse} from "../model/sign-in.response";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  basePath: string = "http://localhost:8080/api/v1"
+  basePath: string = "http://ryzeon.me:4567/api/v1"
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export class AuthenticationService {
       .subscribe({
         next: (response)=>{
           console.log(`Signed up as ${response.username} with id ${response.id}`);
-          
+
           this.router.navigate(['/login']).then();
         },
         error: (error)=>{
