@@ -133,7 +133,6 @@ import {EmployeesContainerComponent} from "./monitoring/employees/components/emp
 import { EmployeeCardComponent } from './monitoring/employees/components/employee-card/employee-card.component';
 import { EmployeeDialogComponent } from './monitoring/employees/components/employee-dialog/employee-dialog.component';
 import {NgOptimizedImage} from "@angular/common";
-import {AuthGuardImpl} from "./shared/services/authguard";
 import { FooterContentComponent } from './public/components/home/components/footer-content/footer-content.component';
 
 @NgModule({
@@ -252,8 +251,7 @@ import { FooterContentComponent } from './public/components/home/components/foot
     ],
   providers: [
     provideAnimationsAsync(),
-    provideNativeDateAdapter(),
-    AuthGuardImpl,
+    provideNativeDateAdapter()
   ],
   bootstrap: [AppComponent]
 })

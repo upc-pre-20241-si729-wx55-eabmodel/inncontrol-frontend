@@ -76,7 +76,7 @@ export class AuthenticationService {
           this.signedInUserId.next(0);
           this.signedInUserName.next('');
           localStorage.removeItem('token');
-          this.showSnackBar(`Error signing in: ${error}`);
+          this.showSnackBar(`Check your credentials`);
           this.router.navigate(['/register']).then();
         }
       });
@@ -87,6 +87,6 @@ export class AuthenticationService {
     this.signedInUserId.next(0);
     this.signedInUserName.next('');
     localStorage.removeItem('token');
-    this.router.navigate(['/sign-in']).then();
+    this.router.navigate(['/login']).then();
   }
 }

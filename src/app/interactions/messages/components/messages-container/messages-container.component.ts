@@ -7,9 +7,9 @@ import {MessagesCardDialogComponent} from "../messages-card-dialog/messages-card
 import {MessagesNewMessageDialogComponent} from "../messages-new-message-dialog/messages-new-message-dialog.component";
 
 import {MatDialog} from "@angular/material/dialog";
-import {IamStorageService} from "../../../../shared/services/iam-storage.service";
 import {Message} from "../../model/message.entity";
 import {UserApiServiceService} from "../../../../shared/services/user-api.service.service";
+import {AuthenticationService} from "../../../../iam/services/authentication.service";
 
 @Component({
   selector: 'app-messages-container',
@@ -41,7 +41,7 @@ export class MessagesContainerComponent implements OnInit {
   constructor(private messagesApiService: MessagesApiService,
               private dialog: MatDialog,
               private userApiService: UserApiServiceService,
-              private iamStorage: IamStorageService) {
+              private iamStorage: AuthenticationService) {
     this.message = new Messages();
     this.resetMessages = new Messages();
     this.users = [];
@@ -87,39 +87,37 @@ export class MessagesContainerComponent implements OnInit {
 
 
   getMessages() {
-    this.messagesApiService.getById(1).subscribe(
-      (data: Message) => {
-        // this.message.addMessage(data);
-        // this.resetMessages.addMessage(data);
-      },
-      (error: any) => {
-        console.log('Error getting messages')
-      },
-      () => {
-        this.messagesApiService.getMessageBySenderId(this.iamStorage.getUserId()).subscribe(
-          (data: any) => {
-            console.log('Data:', data);
-            let i: number = 0;
-            data.forEach((messsage: Message) => {
-                this.message.addMessage(messsage);
-                this.resetMessages.addMessage(messsage);
-                this.loaded = true;
-              this.message = this.message.setSenderReciever(this.iamStorage.getUserId().toString(), this.iamStorage.getUserName());
-                i++;
-
-              }, (error: any) => {
-                console.log('Error getting users')
-                console.error(error);
-              }
-            );
-
-          });
-        this.loaded = true;
-        this.badgeControl();
-      }
-    );
-
-
+    // this.messagesApiService.getById(1).subscribe(
+    //   (data: Message) => {
+    //     // this.message.addMessage(data);
+    //     // this.resetMessages.addMessage(data);
+    //   },
+    //   (error: any) => {
+    //     console.log('Error getting messages')
+    //   },
+    //   () => {
+    //     this.messagesApiService.getMessageBySenderId(this.iamStorage.getUserId()).subscribe(
+    //       (data: any) => {
+    //         console.log('Data:', data);
+    //         let i: number = 0;
+    //         data.forEach((messsage: Message) => {
+    //             this.message.addMessage(messsage);
+    //             this.resetMessages.addMessage(messsage);
+    //             this.loaded = true;
+    //           this.message = this.message.setSenderReciever(this.iamStorage.getUserId().toString(), this.iamStorage.getUserName());
+    //             i++;
+    //
+    //           }, (error: any) => {
+    //             console.log('Error getting users')
+    //             console.error(error);
+    //           }
+    //         );
+    //
+    //       });
+    //     this.loaded = true;
+    //     this.badgeControl();
+    //   }
+    // );
   }
 
   OpenMessageDialog(messages: any) {

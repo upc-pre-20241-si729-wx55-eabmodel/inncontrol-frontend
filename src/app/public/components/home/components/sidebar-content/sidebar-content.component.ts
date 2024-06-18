@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {PanelCard} from "../../../../../shared/model/panel-card";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
 import {map, Observable} from "rxjs";
-import {IamStorageService} from "../../../../../shared/services/iam-storage.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../../../../iam/services/authentication.service";
 
 @Component({
   selector: 'app-sidebar-content',
@@ -23,8 +23,7 @@ export class SidebarContentComponent {
   ]
 
   logout() {
-    this.iamService.removeCredentials();
-    this.router.navigate(['/login']);
+    this.iamService.signOut();
   }
 
   protected readonly PanelCardIcon = PanelCardIcon;
@@ -33,7 +32,7 @@ export class SidebarContentComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, protected iamService: IamStorageService, private router: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, protected iamService: AuthenticationService, private router: Router) { }
 
   sendToRoute(toRoute: string) {
     if (toRoute === '/logout') {

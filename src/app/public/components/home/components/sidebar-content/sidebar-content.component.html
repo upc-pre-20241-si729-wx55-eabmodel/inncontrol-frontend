@@ -28,13 +28,13 @@
         </a>
       </div>
       <span class="spacer"></span>
-      <div *ngIf="iamService.isLoggedIn()">
+      <div *ngIf="iamService.isSignedIn">
         <ng-container *ngFor="let item of items">
           <button mat-button (click)="sendToRoute(item.toRoute)" *ngIf="!(isHandset$ | async)">{{ item.title }}</button>
         </ng-container>
       </div>
 
-      <div *ngIf="iamService.isLoggedIn()">
+      <div *ngIf="iamService.isSignedIn">
         <button *ngIf="isHandset$ | async" (click)="drawer.toggle()" mat-icon-button color="white"
                 aria-label="Open navbar">
           <mat-icon>menu</mat-icon>
@@ -42,9 +42,9 @@
       </div>
 
       <!--      if has pending notifications-->
-      <app-notifications-badge *ngIf="iamService.isLoggedIn()"/>
+      <app-notifications-badge *ngIf="iamService.isSignedIn"/>
       <br>
-      <div *ngIf="iamService.isLoggedIn()">
+      <div *ngIf="iamService.isSignedIn">
         <button mat-icon-button  (click)="sendToRoute('/logout')" *ngIf="!(isHandset$ | async)">
           <mat-icon>logout</mat-icon>
           </button>
