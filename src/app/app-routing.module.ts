@@ -13,8 +13,7 @@ import {
 } from "./display/user-view/pages/user-profile-content/user-profile-content.component";
 import {ControlPanelPageComponent} from "./interactions/control/pages/control-panel-page/control-panel-page.component";
 import {SchedulePageComponent} from "./planning/schedule/pages/schedule-page/schedule-page.component";
-import {AuthGuard, LoggedInAuthGuard} from "./shared/services/authguard";
-import {authenticationGuard} from "./iam/services/authentication.guard";
+import {authenticationGuard, loginGuard} from "./iam/services/authentication.guard";
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
@@ -25,10 +24,8 @@ const routes: Routes = [
   {path: 'messages', component: MessagesComponent , canActivate: [authenticationGuard]},
   {path: 'employees', component: EmployeesComponent , canActivate: [authenticationGuard]},
   {path: 'inventory', component: InventoryComponent , canActivate: [authenticationGuard]},
-  {path: 'login', component: LoginComponent},
-  // {path: 'login', component: LoginComponent, canActivate: [authenticationGuard]},
-  {path: 'register', component: SigUpComponent},
-  // {path: 'register', component: SigUpComponent , canActivate: [authenticationGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [loginGuard]},
+  {path: 'register', component: SigUpComponent, canActivate: [loginGuard]},
   {path: 'profile/:id', component: UserProfileContentComponent , canActivate: [authenticationGuard]},
   {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
