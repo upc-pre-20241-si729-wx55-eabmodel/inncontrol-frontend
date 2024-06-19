@@ -9,11 +9,11 @@ import {SignUpRequest} from "../../model/sign-up.request";
 import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
-  selector: 'app-sig-up',
-  templateUrl: './sig-up.component.html',
-  styleUrl: './sig-up.component.css'
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrl: './sign-up.component.css'
 })
-export class SigUpComponent {
+export class SignUpComponent {
   rolUser: RoleUser;
 
   myForm: FormGroup = new FormGroup({
@@ -30,42 +30,23 @@ export class SigUpComponent {
               private authenticationService: AuthenticationService
   ) {
     this.userCreated = {} as User;
-    this.rolUser = RoleUser.Employee;
+    this.rolUser = RoleUser.EMPLOYEE;
   }
 
   signUpAccount() {
     if (this.myForm.valid) {
       console.log(this.userCreated);
-      const signUpRequest = new SignUpRequest(this.userCreated.email, this.userCreated.password);
+      const roles = [];
+      roles.push(RoleUser[this.rolUser].toUpperCase());
+      const signUpRequest = new SignUpRequest(this.userCreated.email, this.userCreated.password, roles);
       this.authenticationService.signUp(signUpRequest);
-      // this.userService.userExistsByEmail(this.userCreated.email).subscribe(exists => {
-      //   if (!exists) {
-      //     this.userService.create(this.userCreated).subscribe(user => {
-      //         console.log(this.userCreated)
-      //         this.userCreated = user;
-      //         this.userCreated.rolUser = this.rolUser;
-      //         console.log('User created successfully');
-      //       },
-      //       error => {
-      //         this.showMessage('Error creating user');
-      //         console.error('Error creating user', error);
-      //       },
-      //       () => {
-      //         console.log('User creation completed');
-      //         this.router.navigate(['/login']);
-      //       });
-      //   } else {
-      //     this.showMessage('User already exists');
-      //   }
-      // });
     } else {
       this.showMessage('Please fill in all the fields');
     }
   }
 
   setRollUser(rollUser: number) {
-    this.rolUser = rollUser === 1 ? RoleUser.Employee : RoleUser.Manager;
-    this.userCreated.rolUser = this.rolUser;
+    this.rolUser = rollUser === 1 ? RoleUser.EMPLOYEE : RoleUser.MANAGER;
   }
 
   showMessage(message: string): void {

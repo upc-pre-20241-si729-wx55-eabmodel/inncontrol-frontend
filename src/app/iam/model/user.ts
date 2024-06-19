@@ -13,7 +13,7 @@ export class User {
   constructor() {
     this.id=0;
     this.email = '';
-    this.rolUser = RoleUser.Employee;
+    this.rolUser = RoleUser.NONE;
     this.firstName = '';
     this.lastName = '';
     this.picture = '';

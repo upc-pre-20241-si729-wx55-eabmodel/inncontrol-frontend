@@ -19,7 +19,7 @@ export class LoginComponent {
   });
   password: string;
   email: string;
-  rolUser: RoleUser;
+  // rolUser: RoleUser;
 
   constructor(private userService: UserApiServiceService,
               private snackBar: MatSnackBar,
@@ -29,7 +29,7 @@ export class LoginComponent {
   ) {
     this.email = '';
     this.password = '';
-    this.rolUser = RoleUser.Employee;
+    // this.rolUser = RoleUser.Employee;
   }
 
   singInAccount() {
@@ -48,9 +48,5 @@ export class LoginComponent {
       verticalPosition: 'top',
       panelClass: ['error-snackbar']
     });
-  }
-
-  setRollUser(rollUser: number) {
-    this.rolUser = rollUser === 1 ? RoleUser.Employee : RoleUser.Manager;
   }
 }
