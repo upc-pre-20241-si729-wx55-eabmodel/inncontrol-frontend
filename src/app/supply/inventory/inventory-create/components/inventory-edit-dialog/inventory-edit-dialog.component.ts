@@ -23,7 +23,7 @@ export class InventoryEditDialogComponent {
         Validators.required
       ]),
 
-      providerName: new FormControl(data.Brand,[
+      brandName: new FormControl(data.Brand,[
         Validators.required
       ]),
 
@@ -47,10 +47,7 @@ export class InventoryEditDialogComponent {
         id: this.data.id,
         name: formValues.name,
         description: formValues.description,
-        providerId: formValues.providerId,
-        providerName: formValues.providerName,
-        providerDesc: formValues.providerDesc,
-        providerContact: formValues.providerContact,
+        brandName: formValues.brandName,
         quantity: formValues.quantity
       };
       this.dialogRef.close(updateItem);

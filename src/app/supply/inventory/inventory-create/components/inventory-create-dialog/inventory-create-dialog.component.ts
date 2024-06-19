@@ -23,16 +23,7 @@ export class InventoryCreateDialogComponent {
       description: new FormControl('',[
         Validators.required
       ]),
-      providerId: new FormControl('',[
-        Validators.required
-      ]),
-      providerName: new FormControl('',[
-        Validators.required
-      ]),
-      providerContact: new FormControl('',[
-        Validators.required
-      ]),
-      providerDesc: new FormControl('',[
+      brandName: new FormControl('',[
         Validators.required
       ]),
       quantity: new FormControl('',[
@@ -55,7 +46,7 @@ export class InventoryCreateDialogComponent {
       id: formValues.id,
       productTitle: formValues.name,
       productDescription: formValues.description,
-      Brand: formValues.providerName,
+      Brand: formValues.brandName,
       Quantity: formValues.quantity,
     } as Inventory;
     if(this.InventoryItemFormGroup.valid){

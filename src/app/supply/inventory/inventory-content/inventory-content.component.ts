@@ -65,6 +65,11 @@ openDeleteDialog(inventory: Inventory){
   const dialogRef = this.dialog.open(InventoryDeleteDialogComponent, {
     data: inventory
   });
+  dialogRef.afterClosed().subscribe(result=>{
+    if(result){
+      this.onDeleteItem(result);
+    }
+  });
 }
   private deleteItem(inventoryId: number) {
     this.inventoryService.delete(inventoryId).subscribe(() =>{
