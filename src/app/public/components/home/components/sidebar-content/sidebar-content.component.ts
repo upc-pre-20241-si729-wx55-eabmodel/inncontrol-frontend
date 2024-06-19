@@ -32,7 +32,11 @@ export class SidebarContentComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, protected iamService: AuthenticationService, private router: Router) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    protected iamService: AuthenticationService,
+    private router: Router
+  ) { }
 
   sendToRoute(toRoute: string) {
     if (toRoute === '/logout') {
