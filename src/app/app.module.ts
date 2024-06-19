@@ -78,7 +78,7 @@ import {RoomUpdateComponent} from "./execution/components/room-management/room-u
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {LoginComponent} from "./iam/pages/login/login.component";
-import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
+import {SignUpComponent} from "./iam/pages/sign-up/sign-up.component";
 import { UserProfileContentComponent } from './display/user-view/pages/user-profile-content/user-profile-content.component';
 import { UserEditDialogComponent } from './display/user-view/components/user-edit-dialog/user-edit-dialog.component';
 import {PanelCardIconComponent} from './interactions/control/components/panel-card-icon/panel-card-icon.component';
@@ -172,7 +172,7 @@ import {AuthenticationInterceptor} from "./iam/services/authentication.intercept
     InventoryCardDialogComponent,
     InventoryDeleteDialogComponent,
     LoginComponent,
-    SigUpComponent,
+    SignUpComponent,
     UserProfileContentComponent,
     UserEditDialogComponent,
     PanelCardIconComponent,

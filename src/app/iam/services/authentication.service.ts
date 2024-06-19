@@ -7,6 +7,8 @@ import {SignUpResponse} from "../model/sign-up.response";
 import {SignUpRequest} from "../model/sign-up.request";
 import {SignInResponse} from "../model/sign-in.response";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {SignInRequest} from "../model/sign-in.request";
+import {RoleUser} from "../model/roll-user";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,7 @@ export class AuthenticationService {
   private signedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private signedInUserId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private signedInUserName: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private signedInRole: BehaviorSubject<RoleUser> = new BehaviorSubject<RoleUser>(RoleUser.NONE);
 
   constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
   }
@@ -37,6 +40,11 @@ export class AuthenticationService {
     return this.signedInUserName.asObservable();
   }
 
+  get currentRole() {
+    return this.signedInRole.asObservable();
+
+  }
+
   signUp(signUpRequest: SignUpRequest) {
     return this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
       .subscribe({
@@ -46,8 +54,8 @@ export class AuthenticationService {
           this.router.navigate(['/login']).then();
         },
         error: (error) => {
-          console.error(`Error signing up: ${error}`);
-          this.showSnackBar(`Error signing up: ${error}`);
+          let errorBody = error.error;
+          this.showSnackBar(`${errorBody.message}`);
           this.router.navigate(['/register']).then();
         }
       });
@@ -61,15 +69,26 @@ export class AuthenticationService {
     });
   }
 
-  signIn(signInRequest: SignUpRequest) {
+  storageSession(response: SignInResponse) {
+    this.signedIn.next(true);
+    this.signedInUserId.next(response.id);
+    this.signedInUserName.next(response.username);
+    let roleUser = RoleUser.NONE;
+    if (response.roles[0] === "EMPLOYEE") {
+      roleUser = RoleUser.EMPLOYEE;
+    } else if (response.roles[0] === "MANAGER") {
+      roleUser = RoleUser.MANAGER;
+    }
+    this.signedInRole.next(roleUser);
+    localStorage.setItem('token', response.token);
+  }
+
+  signIn(signInRequest: SignInRequest) {
     console.log(signInRequest);
     return this.http.post<SignInResponse>(`${this.basePath}/authentication/sign-in`, signInRequest, this.httpOptions)
       .subscribe({
         next: (response) => {
-          this.signedIn.next(true);
-          this.signedInUserId.next(response.id);
-          this.signedInUserName.next(response.username);
-          localStorage.setItem('token', response.token);
+          this.storageSession(response);
           // console.log(`Signed in as ${response.username} with token ${response.token}`);
           this.showSnackBar(`Signed in as ${response.username}`);
           this.router.navigate(['/']).then();
@@ -86,6 +105,7 @@ export class AuthenticationService {
       });
   }
 
+
   async verifyToken(): Promise<boolean> {
     // return promise true if token is valid or false is token isn't valid
     const token = localStorage.getItem('token');
@@ -96,10 +116,7 @@ export class AuthenticationService {
         this.http.post<SignInResponse>(`${this.basePath}/authentication/verify-token/${token}`, null, this.httpOptions)
           .subscribe({
             next: (response) => {
-              this.signedIn.next(true);
-              this.signedInUserId.next(response.id);
-              this.signedInUserName.next(response.username);
-              localStorage.setItem('token', token);
+              this.storageSession(response);
               // console.log(`Retrieved session as ${response.username}`);
               this.showSnackBar(`Retrieved session as ${response.username}`);
               resolve(true);
@@ -135,6 +152,7 @@ export class AuthenticationService {
     this.signedIn.next(false);
     this.signedInUserId.next(0);
     this.signedInUserName.next('');
+    this.signedInRole.next(RoleUser.NONE);
     localStorage.removeItem('token');
     this.router.navigate(['/login']).then();
   }

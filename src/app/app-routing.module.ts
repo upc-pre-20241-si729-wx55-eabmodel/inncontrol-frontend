@@ -7,7 +7,7 @@ import {MessagesComponent} from "./public/pages/messages/messages.component";
 import {EmployeesComponent} from "./public/pages/employees/employees.component";
 import {InventoryComponent} from "./public/pages/inventory/inventory.component";
 import {LoginComponent} from "./iam/pages/login/login.component";
-import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
+import {SignUpComponent} from "./iam/pages/sign-up/sign-up.component";
 import {
   UserProfileContentComponent
 } from "./display/user-view/pages/user-profile-content/user-profile-content.component";
@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'employees', component: EmployeesComponent, canActivate: [authenticationGuard]},
   {path: 'inventory', component: InventoryComponent, canActivate: [authenticationGuard]},
   {path: 'login', component: LoginComponent, canActivate: [loginGuard]},
-  {path: 'register', component: SigUpComponent, canActivate: [loginGuard]},
+  {path: 'register', component: SignUpComponent, canActivate: [loginGuard]},
   {path: 'profile/:id', component: UserProfileContentComponent, canActivate: [authenticationGuard]},
   {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

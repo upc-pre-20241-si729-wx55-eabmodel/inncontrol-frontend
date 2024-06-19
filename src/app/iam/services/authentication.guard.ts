@@ -51,7 +51,7 @@ export const loginGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
               router.navigate(['/']).then();
             } else {
               const routeToNavigateFullPath = route.routeConfig?.path;
-              console.log('routeToNavigateFullPath', routeToNavigateFullPath);
+              // console.log('routeToNavigateFullPath', routeToNavigateFullPath);
               if (routeToNavigateFullPath) {
                 router.navigate([routeToNavigateFullPath]).then();
               } else {
