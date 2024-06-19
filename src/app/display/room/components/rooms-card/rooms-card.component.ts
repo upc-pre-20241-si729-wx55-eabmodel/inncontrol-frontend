@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Room} from "../../model/room.entity";
+import {RoomRequest} from "../../model/room.request";
 
 @Component({
   selector: 'app-rooms-card',
@@ -8,7 +9,7 @@ import {Room} from "../../model/room.entity";
 })
 export class RoomsCardComponent {
 
-  @Input() room!: Room;
+  @Input() room!: RoomRequest;
   @Output() stateRoomEvent = new EventEmitter();
   @Output() deletedRoomEvent = new EventEmitter();
   Occupied: boolean = false;
@@ -21,13 +22,13 @@ export class RoomsCardComponent {
   }
 
   ngOnInit() {
-    this.Occupied = this.room.state === 'occupied';
+    this.Occupied = this.room.roomStatus === 'occupied';
   }
 
   changeStateRooms() {
     this.Menu = false;
     this.Occupied = false;
-    return this.stateRoomEvent.emit(this.room.state);
+    return this.stateRoomEvent.emit(this.room.roomStatus);
   }
   delete() {
     this.Menu = false;

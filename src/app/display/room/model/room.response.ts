@@ -1,5 +1,4 @@
-export class Room {
-  id: string;
+export class RoomResponse {
   firstName: string;
   lastName: string;
   type: string;
@@ -8,8 +7,7 @@ export class Room {
   initialDate: Date;
   finalDate: Date;
 
-  constructor(id: string, firstName: string, lastName: string, type: string, state: string, roomNumber: number, initialDate: Date, finalDate: Date) {
-    this.id = id;
+  constructor(firstName: string, lastName: string, type: string, state: string, roomNumber: number, initialDate: Date, finalDate: Date) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.type = type;

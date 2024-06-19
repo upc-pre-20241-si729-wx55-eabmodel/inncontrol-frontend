@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Room} from "../../model/room.entity";
+import {RoomRequest} from "../../model/room.request";
 
 @Component({
   selector: 'app-room-card-content',
@@ -8,14 +8,13 @@ import {Room} from "../../model/room.entity";
 })
 export class RoomCardContentComponent {
 
-  roomsData: Room[] = [];
+  roomsData: RoomRequest[] = [];
   length: number = 1;
 
-
-  createRoom($event: Room) {
+  createRoom($event: RoomRequest) {
     console.log('Task created');
     this.length++;
-    $event.id = this.length.toString();
+    $event.id = this.length;
     console.log($event);
     this.roomsData.push($event);
   }

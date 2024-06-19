@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../../shared/services/base.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Room} from "../model/room.entity";
+import {environment} from "../../../../environments/environment";
+import {catchError, Observable, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomsApiService extends BaseService<Room>{
 
-  constructor(httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {
     super(httpClient);
     this.resourceEndpoint = '/rooms';
   }
+  createRoom(room: any): Observable<any> {
+    return this.httpClient.post(`${environment.serverBasePath}${this.resourceEndpoint}`, room);
+  }
+  getRooms(): Observable<any> {
+    return this.httpClient.get(`${environment.serverBasePath}${this.resourceEndpoint}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 }

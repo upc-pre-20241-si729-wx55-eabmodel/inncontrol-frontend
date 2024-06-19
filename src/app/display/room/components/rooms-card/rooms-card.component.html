@@ -13,14 +13,12 @@
   </mat-card-header>
   <mat-card-content class="roomCardContent">
     <div class="subtitle">
-      <mat-card-subtitle class="subtitle-text-room">Type: {{ this.room.roomNumber }}</mat-card-subtitle>
-      <mat-card-subtitle class="subtitle-text-room">Status: {{ this.room.state }}</mat-card-subtitle>
-      <mat-card-subtitle class="subtitle-text-room">Upcoming Reservations: {{ this.room.reservation | date:'short' }}
+      <mat-card-subtitle class="subtitle-text-room">Type: {{ this.room.roomType }}</mat-card-subtitle>
+      <mat-card-subtitle class="subtitle-text-room">Status: {{ this.room.roomStatus }}</mat-card-subtitle>
+      <mat-card-subtitle class="subtitle-text-room">Reservation: {{ this.room.roomReservation }}
       </mat-card-subtitle>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
-    <p class="textcontentroom">
-      {{ this.room.guest }}
-    </p>
+    <mat-card-subtitle class="subtitle-text-room">Guest: {{ this.room.fullName }}</mat-card-subtitle>
   </mat-card-content>
 </mat-card>

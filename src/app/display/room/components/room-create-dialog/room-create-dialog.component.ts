@@ -1,7 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Room} from "../../model/room.entity";
+import {RoomRequest} from "../../model/room.request";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {RoomsApiService} from "../../services/rooms-api.service";
+import {RoomResponse} from "../../model/room.response";
 
 @Component({
   selector: 'app-room-dialog',
@@ -15,26 +17,33 @@ export class RoomCreateDialogComponent {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<RoomCreateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Room
+    @Inject(MAT_DIALOG_DATA) public data: RoomRequest, private roomsApiService: RoomsApiService
   ) {
     this.taskForm = this.formBuilder.group({
-      roomNumber: new FormControl('', [
-        Validators.required,
-        Validators.min(1)
-      ]),
-      guest: new FormControl('', [
+      firstName: new FormControl('', [
         Validators.required,
         Validators.minLength(2)
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
+      type: new FormControl('', [
+        Validators.required
       ]),
       state: new FormControl('', [
         Validators.required
       ]),
-      reservation: new FormControl(new Date(), [
+      roomNumber: new FormControl('', [
+        Validators.required,
+        Validators.min(1)
+      ]),
+      initialDate: new FormControl('', [
         Validators.required
       ]),
-      id: new FormControl('', [
+      finalDate: new FormControl('', [
         Validators.required
-      ])
+      ]),
     });
   }
 
@@ -44,18 +53,21 @@ export class RoomCreateDialogComponent {
 
   onSubmit(): void {
     const formValues = this.taskForm.value;
-    const selectedData: Room = {
-      id: '',
-      roomNumber: formValues.roomNumber,
-      guest: formValues.guest,
-      state: formValues.state,
-      reservation: new Date(formValues.reservation)
-    };
+    const newRoom = new RoomResponse(
+      formValues.firstName,
+      formValues.lastName,
+      formValues.type,
+      formValues.state,
+      formValues.roomNumber,
+      formValues.initialDate,
+      formValues.finalDate
+    );
 
     if (this.taskForm.valid) {
-      console.log(selectedData);
-      this.data = selectedData;
-      this.dialogRef.close(this.data);
+      this.roomsApiService.createRoom(newRoom).subscribe(response => {
+        console.log(response);
+        this.dialogRef.close(response);
+      });
     }
   }
 }
