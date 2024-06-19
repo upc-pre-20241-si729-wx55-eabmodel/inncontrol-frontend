@@ -15,7 +15,7 @@ export class InventoryDeleteDialogComponent{
   InventoryDeleteFormGroup: FormGroup;
   constructor(private inventoryService: InventoryApiService, private formBuilder: FormBuilder, public dialogRef: MatDialogRef<InventoryDeleteDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Inventory) {
-    this.item = new Inventory(0,'','',0,'','','','');
+    this.item = new Inventory(0,'','','','');
     this.InventoryDeleteFormGroup = this.formBuilder.group({
       id: new FormControl(data.id, [
         Validators.required

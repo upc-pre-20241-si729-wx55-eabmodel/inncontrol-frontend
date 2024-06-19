@@ -53,13 +53,10 @@ export class InventoryCreateDialogComponent {
 
     const selectedData = {
       id: formValues.id,
-      name: formValues.name,
-      description: formValues.description,
-      providerId: formValues.providerId,
-      providerName: formValues.providerName,
-      providerContact: formValues.providerContact,
-      providerDesc: formValues.providerDesc,
-      quantity: formValues.quantity,
+      productTitle: formValues.name,
+      productDescription: formValues.description,
+      Brand: formValues.providerName,
+      Quantity: formValues.quantity,
     } as Inventory;
     if(this.InventoryItemFormGroup.valid){
       this.data = selectedData;

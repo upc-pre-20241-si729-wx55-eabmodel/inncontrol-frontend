@@ -13,13 +13,12 @@ import {FormGroup} from "@angular/forms";
   styleUrl: './inventory-card-dialog.component.css'
 })
 export class InventoryCardDialogComponent {
-  @Input() inventory!: Inventory;
   @Output() update = new EventEmitter<Inventory>();
   @Output() delete = new EventEmitter<Inventory>();
   @Output() clicked = new EventEmitter<unknown>();
 
   constructor(public dialogRef: MatDialogRef<InventoryCardDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {
+              @Inject(MAT_DIALOG_DATA) public data: Inventory, private dialog: MatDialog) {
 
     console.log('Data received: ', data);
   }

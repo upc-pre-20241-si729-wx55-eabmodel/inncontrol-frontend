@@ -23,12 +23,13 @@ export class InventoryContentComponent implements OnInit{
     }
   ];
   constructor(private inventoryService: InventoryApiService, private dialog: MatDialog) {
-    this.item = new Inventory(0,'','',0,'','','','');
+    this.item = new Inventory(0,'','','','');
   }
 
   private getAllItems():void{
     this.inventoryService.getAll().subscribe((response:any)=>{
       this.inventoryData = response;
+      console.log('Inventory data', this.inventoryData);
     })
   }
 

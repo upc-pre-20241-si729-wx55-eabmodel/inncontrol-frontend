@@ -18,7 +18,7 @@ export class InventoryCreationComponent {
 
   openDialog(): void{
     const dialogRef = this.dialog.open(InventoryCreateDialogComponent,{
-      data: new Inventory(0,'','',0,'','','','')
+      data: new Inventory(0,'','','','')
     });
     dialogRef.afterClosed().subscribe(result=>{
       if(result){
