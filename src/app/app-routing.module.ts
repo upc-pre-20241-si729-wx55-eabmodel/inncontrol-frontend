@@ -18,15 +18,15 @@ import {authenticationGuard, loginGuard} from "./iam/services/authentication.gua
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
   {path: 'schedule', component: SchedulePageComponent, canActivate: [authenticationGuard]},
-  {path: 'control', component: ControlPanelPageComponent , canActivate: [authenticationGuard]},
-  {path: 'tasks', component: TasksComponent , canActivate: [authenticationGuard]},
-  {path: 'rooms', component: RoomStateComponent , canActivate: [authenticationGuard]},
-  {path: 'messages', component: MessagesComponent , canActivate: [authenticationGuard]},
-  {path: 'employees', component: EmployeesComponent , canActivate: [authenticationGuard]},
-  {path: 'inventory', component: InventoryComponent , canActivate: [authenticationGuard]},
+  {path: 'control', component: ControlPanelPageComponent, canActivate: [authenticationGuard]},
+  {path: 'tasks', component: TasksComponent, canActivate: [authenticationGuard]},
+  {path: 'rooms', component: RoomStateComponent, canActivate: [authenticationGuard]},
+  {path: 'messages', component: MessagesComponent, canActivate: [authenticationGuard]},
+  {path: 'employees', component: EmployeesComponent, canActivate: [authenticationGuard]},
+  {path: 'inventory', component: InventoryComponent, canActivate: [authenticationGuard]},
   {path: 'login', component: LoginComponent, canActivate: [loginGuard]},
   {path: 'register', component: SigUpComponent, canActivate: [loginGuard]},
-  {path: 'profile/:id', component: UserProfileContentComponent , canActivate: [authenticationGuard]},
+  {path: 'profile/:id', component: UserProfileContentComponent, canActivate: [authenticationGuard]},
   {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
