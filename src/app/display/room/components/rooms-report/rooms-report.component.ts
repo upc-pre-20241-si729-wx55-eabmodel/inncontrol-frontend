@@ -11,6 +11,8 @@ import {RoomRequest} from "../../model/room.request";
   templateUrl: './rooms-report.component.html',
   styleUrls: ['./rooms-report.component.css']
 })
+
+// THIS COMPONETS IS UNUSED, THE COMPONETS IN ROOM-CARD-CONTENT
 export class RoomsReportComponent implements AfterViewInit, OnInit {
   tasks: RoomRequest[] = [];
   length: number = 1;
@@ -24,6 +26,10 @@ export class RoomsReportComponent implements AfterViewInit, OnInit {
     this.dataSource = new MatTableDataSource(this.tasks);
   }
 
+  ngOnInit(): void {
+       console.log('Fetching rooms');
+    }
+
   onRoomCreatedEvent($event: RoomRequest) {
     console.log('Task created');
     this.length++;
@@ -36,6 +42,7 @@ export class RoomsReportComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.fetchRooms();
   }
 
   applyFilter(event: Event) {
@@ -46,8 +53,14 @@ export class RoomsReportComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  ngOnInit() {
-    this.roomsApiService.getRooms().subscribe(response => {
+
+  fetchRooms() {
+    console.log('Fetching rooms');
+    console.log('Fetching rooms');
+    console.log('Fetching rooms');
+    console.log('Fetching rooms');
+    console.log('Fetching rooms');
+    this.roomsApiService.getAll().subscribe(response => {
       console.log(response);
       this.tasks = response.map((room: any) => new RoomRequest(
         room.id,

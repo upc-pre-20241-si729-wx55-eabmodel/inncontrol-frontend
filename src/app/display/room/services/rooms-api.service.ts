@@ -17,10 +17,5 @@ export class RoomsApiService extends BaseService<Room>{
   createRoom(room: any): Observable<any> {
     return this.httpClient.post(`${environment.serverBasePath}${this.resourceEndpoint}`, room);
   }
-  getRooms(): Observable<any> {
-    return this.httpClient.get(`${environment.serverBasePath}${this.resourceEndpoint}`).pipe(
-      catchError(this.handleError)
-    );
-  }
 
 }
