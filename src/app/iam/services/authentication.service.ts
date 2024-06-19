@@ -6,12 +6,13 @@ import {Router} from "@angular/router";
 import {SignUpResponse} from "../model/sign-up.response";
 import {SignUpRequest} from "../model/sign-up.request";
 import {SignInResponse} from "../model/sign-in.response";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  basePath: string = environment.prodBasePath;
+  basePath: string = environment.production ? environment.prodBasePath : environment.serverBasePath;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,7 +21,7 @@ export class AuthenticationService {
   private signedInUserId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private signedInUserName: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {}
 
   get isSignedIn() {
     return this.signedIn.asObservable();
@@ -37,14 +38,23 @@ export class AuthenticationService {
       .subscribe({
         next: (response)=>{
           console.log(`Signed up as ${response.username} with id ${response.id}`);
-
+          this.showSnackBar(`Signed up as ${response.username}`);
           this.router.navigate(['/login']).then();
         },
         error: (error)=>{
           console.error(`Error signing up: ${error}`);
+          this.showSnackBar(`Error signing up: ${error}`);
           this.router.navigate(['/register']).then();
         }
       });
+  }
+
+  private showSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 2000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 
   signIn(signInRequest: SignUpRequest) {
@@ -57,6 +67,7 @@ export class AuthenticationService {
           this.signedInUserName.next(response.username);
           localStorage.setItem('token', response.token);
           console.log(`Signed in as ${response.username} with token ${response.token}`);
+          this.showSnackBar(`Signed in as ${response.username}`);
           this.router.navigate(['/']).then();
         },
         error: (error)=>{
@@ -65,6 +76,7 @@ export class AuthenticationService {
           this.signedInUserId.next(0);
           this.signedInUserName.next('');
           localStorage.removeItem('token');
+          this.showSnackBar(`Check your credentials`);
           this.router.navigate(['/register']).then();
         }
       });
@@ -75,6 +87,6 @@ export class AuthenticationService {
     this.signedInUserId.next(0);
     this.signedInUserName.next('');
     localStorage.removeItem('token');
-    this.router.navigate(['/sign-in']).then();
+    this.router.navigate(['/login']).then();
   }
 }

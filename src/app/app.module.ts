@@ -73,7 +73,7 @@ import {TaskCreationComponent} from "./display/task/task-create/components/task-
 import {
   RoomCreateDialogComponent
 } from "./display/room/components/room-create-dialog/room-create-dialog.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
 import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
@@ -133,8 +133,8 @@ import {EmployeesContainerComponent} from "./monitoring/employees/components/emp
 import { EmployeeCardComponent } from './monitoring/employees/components/employee-card/employee-card.component';
 import { EmployeeDialogComponent } from './monitoring/employees/components/employee-dialog/employee-dialog.component';
 import {NgOptimizedImage} from "@angular/common";
-import {AuthGuardImpl} from "./shared/services/authguard";
 import { FooterContentComponent } from './public/components/home/components/footer-content/footer-content.component';
+import {AuthenticationInterceptor} from "./iam/services/authentication.interceptor";
 
 @NgModule({
   declarations: [
@@ -253,7 +253,11 @@ import { FooterContentComponent } from './public/components/home/components/foot
   providers: [
     provideAnimationsAsync(),
     provideNativeDateAdapter(),
-    AuthGuardImpl,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { UserApiServiceService } from "../../../shared/services/user-api.service.service";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { RoleUser } from "../../model/roll-user";
-import { User } from "../../model/user";
-import {IamStorageService} from "../../../shared/services/iam-storage.service";
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserApiServiceService} from "../../../shared/services/user-api.service.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {RoleUser} from "../../model/roll-user";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import {SignInRequest} from "../../model/sign-in.request";
@@ -26,32 +24,18 @@ export class LoginComponent {
   constructor(private userService: UserApiServiceService,
               private snackBar: MatSnackBar,
               private route: Router,
-              private iamService: IamStorageService,
+              private iamService: AuthenticationService,
               private authenticationService: AuthenticationService
   ) {
     this.email = '';
     this.password = '';
     this.rolUser = RoleUser.Employee;
   }
+
   singInAccount() {
     if (this.myForm.valid) {
       const signInRequest = new SignInRequest(this.email, this.password);
       this.authenticationService.signIn(signInRequest);
-      // this.userService.getUserByEmailAndPassword(this.email, this.password).subscribe(
-      //   (user: User | null) => {
-      //     if (user) {
-      //       console.log(user)
-      //       this.showMessage('Login Successfully');
-      //       this.iamService.saveCredentials(user.id, user.email, user.password, this.rolUser);
-      //       this.iamService.validLogin();
-      //     } else {
-      //       this.showMessage('Invalid email or password');
-      //     }
-      //   },
-      //   error => {
-      //     this.showMessage('An error occurred during login');
-      //   }
-      // );
     } else {
       this.showMessage('Invalid Form');
     }
