@@ -12,7 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  basePath: string = environment.prodBasePath;
+  basePath: string = environment.production ? environment.prodBasePath : environment.serverBasePath;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
