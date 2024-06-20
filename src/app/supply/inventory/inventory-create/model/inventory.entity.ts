@@ -5,16 +5,16 @@ export class Inventory {
   productTitle: string;
   productDescription: string;
   Brand: string;
-  Quantity: string;
+  Quantity: number;
 
 
 
-  constructor(id: number, name: string, description: string,  brand: string,  quantity: string) {
+  constructor(id: number, name: string, description: string,  Brand: string,  Quantity: number) {
     this.id = id;
     this.productTitle = name;
     this.productDescription = description;
-    this.Brand = brand;
-    this.Quantity = quantity;
+    this.Brand = Brand;
+    this.Quantity = Quantity;
   }
   getInventoryById(inventories: Inventory[], inventoryId: number): Inventory | undefined {
     return inventories.find(inventory => inventory.id === inventoryId);

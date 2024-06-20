@@ -45,11 +45,11 @@ export class InventoryEditDialogComponent {
       const updateItem = {
         ...formValues,
         id: this.data.id,
-        name: formValues.name,
-        description: formValues.description,
-        brandName: formValues.brandName,
-        quantity: formValues.quantity
-      };
+        productTitle: formValues.name,
+        productDescription: formValues.description,
+        Brand: formValues.brandName,
+        Quantity: formValues.quantity,
+      } as Inventory;
       this.dialogRef.close(updateItem);
     }
   }
