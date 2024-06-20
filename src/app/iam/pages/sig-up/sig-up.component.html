@@ -3,30 +3,39 @@
   <form [formGroup]="myForm" (ngSubmit)="signUpAccount()" class="form-add-post">
 
     <div class="input-box">
-      <div class="mat-form-field">
+      <mat-form-field class="mat-form-field">
         <input matInput type="firstName" placeholder="First Name" [(ngModel)]="this.userCreated.firstName" formControlName="firstName" required>
-      </div>
+      </mat-form-field>
     </div>
     <div class="input-box">
-      <div class="mat-form-field">
+      <mat-form-field class="mat-form-field">
         <input matInput type="lastName" placeholder="Last Name" [(ngModel)]="this.userCreated.lastName" formControlName="lastName" required>
-      </div>
+      </mat-form-field>
     </div>
     <div class="input-box">
-      <div class="mat-form-field">
+      <mat-form-field class="mat-form-field">
         <input matInput type="phoneNumber" placeholder="Phone Number" [(ngModel)]="this.userCreated.phoneNumber" formControlName="phoneNumber" required>
-      </div>
+        <mat-error *ngIf="myForm.get('phoneNumber')?.invalid">
+          Phone Number is required and must be a valid phone number.
+        </mat-error>
+      </mat-form-field>
     </div>
     <div class="input-box">
-      <div class="mat-form-field">
-        <input matInput type="username" placeholder="Email" [(ngModel)]="this.userCreated.email" formControlName="email" required>
-      </div>
+      <mat-form-field class="mat-form-field">
+        <input matInput type="email" placeholder="Email" [(ngModel)]="this.userCreated.email" formControlName="email" required>
+        <mat-error *ngIf="myForm.get('email')?.invalid">
+          Email is required and must be a valid email address.
+        </mat-error>
+      </mat-form-field>
     </div>
 
     <div class="input-box">
-      <div class="mat-form-field">
+      <mat-form-field class="mat-form-field">
         <input matInput type="password" placeholder="Password" [(ngModel)]="this.userCreated.password" formControlName="password" required>
-      </div>
+        <mat-error *ngIf="myForm.get('password')?.invalid">
+          Password is required and must be at least 6 characters long.
+        </mat-error>
+      </mat-form-field>
       <div class="input-box role-selection">
         <label>
           <input type="radio" name="role" (click)="setRollUser(1)" >
@@ -39,7 +48,7 @@
       </div>
     </div>
     <div class="content-button" style="text-align: center">
-      <button style="color: white" type="submit" mat-button>Sign Up</button>
+      <button style="color: white" type="submit" mat-button (click)="signUpAccount()">Sign Up</button>
       <div class="text-signup">
         <p  style="padding-top: 1rem">Already Have an Account?</p>
         <a routerLink="/login" style="color: inherit; text-decoration: none" >Log In</a>
