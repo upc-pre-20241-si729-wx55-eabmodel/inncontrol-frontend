@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {RoomRequest} from "../../model/room.request";
 import {MatTableDataSource} from "@angular/material/table";
 import {RoomsApiService} from "../../services/rooms-api.service";
+import {catchError, of} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {RoomCreateRequest} from "../../model/room.create-request";
 
 @Component({
   selector: 'app-room-card-content',
@@ -13,25 +16,50 @@ export class RoomCardContentComponent implements  OnInit{
     this.fetchRooms();
   }
 
+  existingRooms: RoomRequest[] = [];
+  newRoom: RoomRequest[] = [];
   roomsData: RoomRequest[] = [];
   length: number = 1;
 
-  constructor(private roomsApiService: RoomsApiService) {
+  constructor(private roomsApiService: RoomsApiService, private snackBar: MatSnackBar) {
   }
 
   createRoom($event: RoomRequest) {
     console.log('Task created');
-    this.length++;
-    $event.id = this.length;
-    console.log($event);
-    this.roomsData.push($event);
+    const newRoom = new RoomCreateRequest(
+      $event.fullName.split(' ')[0], // firstName
+      $event.fullName.split(' ')[1], // lastName
+      $event.roomType, // type
+      $event.roomStatus, // state
+      $event.roomNumber, // roomNumber
+      new Date(), // initialDate - replace with actual initial date
+      new Date() // finalDate - replace with actual final date
+    );
+
+    this.roomsApiService.createRoom(newRoom).pipe(
+      catchError((error) => {
+        console.error('Error occurred:', error);
+        this.snackBar.open('An error occurred while creating the room', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top'
+        });
+        return of(null); // Return an Observable that completes without emitting any items
+      })
+    ).subscribe(response => {
+      if (response) {
+        console.log(response);
+        this.length++;
+        $event.id = this.length;
+        console.log($event);
+        this.newRoom.push($event);
+        this.existingRooms = [...this.existingRooms, ...this.newRoom];
+        this.newRoom = [];
+        this.fetchRooms(); // Fetch the rooms again after creating a new room
+      }
+    });
   }
 
   fetchRooms() {
-    console.log('Fetching rooms');
-    console.log('Fetching rooms');
-    console.log('Fetching rooms');
-    console.log('Fetching rooms');
     console.log('Fetching rooms');
     this.roomsApiService.getAll().subscribe(response => {
       console.log(response);

@@ -3,7 +3,7 @@
     <mat-card-title class="titleroom">{{ this.room.roomNumber }}
       <mat-icon *ngIf="Occupied" class="alertRoom">error</mat-icon>
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item (click)="changeStateRooms()">Edit</button>
+        <button mat-menu-item (click)="editRoom(room)">Edit</button>
         <button mat-menu-item (click)="delete()">Delete</button>
       </mat-menu>
     </mat-card-title>
