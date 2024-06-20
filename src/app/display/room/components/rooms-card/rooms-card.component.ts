@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Room} from "../../model/room.entity";
 import {RoomRequest} from "../../model/room.request";
 import {RoomCreateDialogComponent} from "../room-create-dialog/room-create-dialog.component";
 import {MatDialog} from "@angular/material/dialog";

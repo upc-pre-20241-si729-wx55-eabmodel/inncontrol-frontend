@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../../shared/services/base.service";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Room} from "../model/room.entity";
 import {environment} from "../../../../environments/environment";
-import {catchError, Observable, throwError} from "rxjs";
-import {RoomRequest} from "../model/room.request";
-import {RoomResponse} from "../model/room.response";
+import {Observable} from "rxjs";
 import {RoomUpdateRequest} from "../model/room.update-request";
 import {RoomCreateRequest} from "../model/room.create-request";
 

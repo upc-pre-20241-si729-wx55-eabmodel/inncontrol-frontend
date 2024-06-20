@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {RoomRequest} from "../../model/room.request";
-import {MatTableDataSource} from "@angular/material/table";
 import {RoomsApiService} from "../../services/rooms-api.service";
 import {catchError, of} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -36,25 +35,34 @@ export class RoomCardContentComponent implements  OnInit{
       new Date() // finalDate - replace with actual final date
     );
 
-    this.roomsApiService.createRoom(newRoom).pipe(
-      catchError((error) => {
-        console.error('Error occurred:', error);
-        this.snackBar.open('An error occurred while creating the room', 'Close', {
+    this.roomsApiService.getAll().subscribe(existingRooms => {
+      if (existingRooms.some((room: RoomRequest) => room.roomNumber === newRoom.roomNumber)) {
+        this.snackBar.open('A room with this number already exists', 'Close', {
           duration: 3000,
           verticalPosition: 'top'
         });
-        return of(null); // Return an Observable that completes without emitting any items
-      })
-    ).subscribe(response => {
-      if (response) {
-        console.log(response);
-        this.length++;
-        $event.id = this.length;
-        console.log($event);
-        this.newRoom.push($event);
-        this.existingRooms = [...this.existingRooms, ...this.newRoom];
-        this.newRoom = [];
-        this.fetchRooms(); // Fetch the rooms again after creating a new room
+      } else {
+        this.roomsApiService.createRoom(newRoom).pipe(
+          catchError((error) => {
+            console.error('Error occurred:', error);
+            this.snackBar.open('An error occurred while creating the room', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top'
+            });
+            return of(null); // Return an Observable that completes without emitting any items
+          })
+        ).subscribe(response => {
+          if (response) {
+            console.log(response);
+            this.length++;
+            $event.id = this.length;
+            console.log($event);
+            this.newRoom.push($event);
+            this.existingRooms = [...this.existingRooms, ...this.newRoom];
+            this.newRoom = [];
+            this.fetchRooms(); // Fetch the rooms again after creating a new room
+          }
+        });
       }
     });
   }

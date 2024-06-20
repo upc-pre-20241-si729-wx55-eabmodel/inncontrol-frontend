@@ -8,7 +8,6 @@ import { of } from 'rxjs';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { RoomDialogData } from '../../model/room.dialog.data';
-import { RoomResponse } from '../../model/room.response';
 import {RoomCreateRequest} from "../../model/room.create-request";
 import {RoomUpdateRequest} from "../../model/room.update-request";
 export const dateValidator: ValidatorFn = (control: AbstractControl) => {
