@@ -43,12 +43,11 @@ export class InventoryCreateDialogComponent {
     const formValues = this.InventoryItemFormGroup.value;
 
     const selectedData = {
-      id: formValues.id,
       productTitle: formValues.name,
       productDescription: formValues.description,
-      Brand: formValues.brandName,
-      Quantity: formValues.quantity,
-    } as Inventory;
+      brand: formValues.brandName,
+      quantity: formValues.quantity,
+    } as any;
     if(this.InventoryItemFormGroup.valid){
       this.data = selectedData;
       this.dialogRef.close(this.data);
