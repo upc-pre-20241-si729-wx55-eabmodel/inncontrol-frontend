@@ -8,7 +8,7 @@
 </div>
 <div class="card-container">
   <div class="card-display">
-    <app-rooms-card class="card" *ngFor="let room of roomsData" [room]="room" (clicked)="fetchRooms()"></app-rooms-card>
+    <app-rooms-card class="card" *ngFor="let room of roomsData" [room]="room" (clicked)="fetchRooms()" (deletedRoomEvent)="onDeleteRoomEvent($event)"></app-rooms-card>
 
     <!--                    (stateRoomEvent)=""-->
 <!--                    (delete)="onDeleteItem($event)"></app-rooms-card>-->

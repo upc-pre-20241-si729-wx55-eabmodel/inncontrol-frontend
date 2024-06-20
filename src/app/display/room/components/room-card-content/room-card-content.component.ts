@@ -78,4 +78,7 @@ export class RoomCardContentComponent implements  OnInit{
       console.log(response);
     });
   }
+  onDeleteRoomEvent(id: number) {
+    this.fetchRooms();
+  }
 }

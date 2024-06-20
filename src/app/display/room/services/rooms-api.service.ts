@@ -26,4 +26,7 @@ export class RoomsApiService extends BaseService<Room>{
   updateRoom(room: RoomUpdateRequest): Observable<any> {
     return this.httpClient.put(`${environment.serverBasePath}${this.resourceEndpoint}/${room.id}`, room);
   }
+  deleteRoom(id: number): Observable<any> {
+    return this.httpClient.delete(`${environment.serverBasePath}${this.resourceEndpoint}/${id}`, {responseType: 'text'});
+  }
 }
