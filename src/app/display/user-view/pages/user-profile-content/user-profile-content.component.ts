@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../../../iam/model/user';
+import {User} from '../../../../shared/model/user';
 import {UserApiServiceService} from '../../../../shared/services/user-api.service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';

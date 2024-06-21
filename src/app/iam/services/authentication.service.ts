@@ -9,6 +9,7 @@ import {SignInResponse} from "../model/sign-in.response";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignInRequest} from "../model/sign-in.request";
 import {RoleUser} from "../model/roll-user";
+import {EmployeeApiService} from "../../shared/services/employee-api.service";
 
 @Injectable({
   providedIn: 'root'
@@ -45,20 +46,24 @@ export class AuthenticationService {
 
   }
 
-  signUp(signUpRequest: SignUpRequest) {
-    return this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
-      .subscribe({
-        next: (response) => {
-          console.log(`Signed up as ${response.username} with id ${response.id}`);
-          this.showSnackBar(`Signed up as ${response.username}`);
-          this.router.navigate(['/login']).then();
-        },
-        error: (error) => {
-          let errorBody = error.error;
-          this.showSnackBar(`${errorBody.message}`);
-          this.router.navigate(['/register']).then();
-        }
-      });
+  signUp(signUpRequest: SignUpRequest):Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
+        .subscribe({
+          next: (response) => {
+            console.log(`Signed up as ${response.username} with id ${response.id}`)
+            this.showSnackBar(`Signed up as ${response.username}`);
+            this.router.navigate(['/login']).then();
+            resolve(true);
+          },
+          error: (error) => {
+            let errorBody = error.error;
+            this.showSnackBar(`${errorBody.message}`);
+            reject(error);
+            this.router.navigate(['/register']).then();
+          }
+        });
+    });
   }
 
   private showSnackBar(message: string) {
@@ -83,26 +88,30 @@ export class AuthenticationService {
     localStorage.setItem('token', response.token);
   }
 
-  signIn(signInRequest: SignInRequest) {
-    console.log(signInRequest);
-    return this.http.post<SignInResponse>(`${this.basePath}/authentication/sign-in`, signInRequest, this.httpOptions)
-      .subscribe({
-        next: (response) => {
-          this.storageSession(response);
-          // console.log(`Signed in as ${response.username} with token ${response.token}`);
-          this.showSnackBar(`Signed in as ${response.username}`);
-          this.router.navigate(['/']).then();
-        },
-        error: (error) => {
-          console.error(`Error while signing in: ${error}`);
-          this.signedIn.next(false);
-          this.signedInUserId.next(0);
-          this.signedInUserName.next('');
-          localStorage.removeItem('token');
-          this.showSnackBar(`Check your credentials`);
-          this.router.navigate(['/register']).then();
-        }
-      });
+  signIn(signInRequest: SignInRequest): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      console.log(signInRequest);
+      this.http.post<SignInResponse>(`${this.basePath}/authentication/sign-in`, signInRequest, this.httpOptions)
+        .subscribe({
+          next: (response) => {
+            this.storageSession(response);
+            // console.log(`Signed in as ${response.username} with token ${response.token}`);
+            this.showSnackBar(`Signed in as ${response.username}`);
+            resolve(true);
+            this.router.navigate(['/']).then();
+          },
+          error: (error) => {
+            console.error(`Error while signing in: ${error}`);
+            this.signedIn.next(false);
+            this.signedInUserId.next(0);
+            this.signedInUserName.next('');
+            localStorage.removeItem('token');
+            this.showSnackBar(`Check your credentials`);
+            reject(false);
+            this.router.navigate(['/register']).then();
+          }
+        });
+    });
   }
 
 

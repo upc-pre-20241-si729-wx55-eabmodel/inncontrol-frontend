@@ -1,0 +1,16 @@
+
+/**
+ * Alex Avila Asto - A.K.A (Ryzeon)
+ * Project: inncontrol-frontend
+ * 6/21/24 @ 08:25
+ */
+export class ProfileResponse {
+  constructor(
+    public id: number,
+    public fullName: string,
+    public email: string,
+    public phoneNumber: string,
+    public userId: number
+  ) {
+  }
+}
