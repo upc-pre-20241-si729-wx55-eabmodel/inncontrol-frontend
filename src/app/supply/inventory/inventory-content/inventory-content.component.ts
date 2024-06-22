@@ -31,7 +31,7 @@ export class InventoryContentComponent implements OnInit{
     this.inventoryService.getAll().subscribe((response:any)=>{
       this.inventoryData = response;
       this.originalState = response;
-      console.log('Inventory data', this.inventoryData);
+      // console.log('Inventory data', this.inventoryData);
     })
   }
 

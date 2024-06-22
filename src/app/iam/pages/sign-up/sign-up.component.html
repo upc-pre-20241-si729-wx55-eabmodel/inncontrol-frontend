@@ -4,17 +4,17 @@
 
     <div class="input-box">
       <mat-form-field class="mat-form-field">
-        <input matInput type="firstName" placeholder="First Name" [(ngModel)]="this.userCreated.firstName" formControlName="firstName" required>
+        <input matInput type="firstName" placeholder="First Name" [(ngModel)]="this.firstName" formControlName="firstName" required>
       </mat-form-field>
     </div>
     <div class="input-box">
       <mat-form-field class="mat-form-field">
-        <input matInput type="lastName" placeholder="Last Name" [(ngModel)]="this.userCreated.lastName" formControlName="lastName" required>
+        <input matInput type="lastName" placeholder="Last Name" [(ngModel)]="this.lastName" formControlName="lastName" required>
       </mat-form-field>
     </div>
     <div class="input-box">
       <mat-form-field class="mat-form-field">
-        <input matInput type="phoneNumber" placeholder="Phone Number" [(ngModel)]="this.userCreated.phoneNumber" formControlName="phoneNumber" required>
+        <input matInput type="phoneNumber" placeholder="Phone Number" [(ngModel)]="this.phoneNumber" formControlName="phoneNumber" required>
         <mat-error *ngIf="myForm.get('phoneNumber')?.invalid">
           Phone Number is required and must be a valid phone number.
         </mat-error>
@@ -22,7 +22,7 @@
     </div>
     <div class="input-box">
       <mat-form-field class="mat-form-field">
-        <input matInput type="email" placeholder="Email" [(ngModel)]="this.userCreated.email" formControlName="email" required>
+        <input matInput type="email" placeholder="Email" [(ngModel)]="this.email" formControlName="email" required>
         <mat-error *ngIf="myForm.get('email')?.invalid">
           Email is required and must be a valid email address.
         </mat-error>
@@ -31,7 +31,7 @@
 
     <div class="input-box">
       <mat-form-field class="mat-form-field">
-        <input matInput type="password" placeholder="Password" [(ngModel)]="this.userCreated.password" formControlName="password" required>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="this.password" formControlName="password" required>
         <mat-error *ngIf="myForm.get('password')?.invalid">
           Password is required and must be at least 6 characters long.
         </mat-error>

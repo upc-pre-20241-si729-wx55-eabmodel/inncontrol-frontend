@@ -54,8 +54,8 @@ export class EmployeeApiService {
 
   setLocalProfile(email: string) {
     this.fetchUser(email).then((user) => {
-      console.log(`User fetch with id ${user.id}`);
-      console.log(user);
+      // console.log(`User fetch with id ${user.id}`);
+      // console.log(user);
       this.currentUser.next(user);
     });
   }
