@@ -84,6 +84,7 @@ export class EmployeeApiService {
               let user = new User();
               user.id = profile.userId;
               user.email = profile.email;
+              // console.log(response.role);
               user.rolUser = getRoleUserFromValue(response.role);
               // user.rolUser = response.rolUser;
               user.names = profile.names;
@@ -91,8 +92,7 @@ export class EmployeeApiService {
               user.phoneNumber = profile.phoneNumber;
               user.salary = response.salary;
               user.initialDate = response.initiationContract;
-              user.finalDate = response.terminationContract;
-              this.currentUser.next(user);
+              user.finalDate = response.terminationContract
               resolve(user);
             }).catch((error) => {
               // console.log(error);

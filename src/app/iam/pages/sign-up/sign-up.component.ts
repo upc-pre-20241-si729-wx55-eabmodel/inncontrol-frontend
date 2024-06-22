@@ -53,6 +53,7 @@ export class SignUpComponent {
       const roles = [];
       roles.push(RoleUser[this.rolUser].toUpperCase());
       const signUpRequest = new SignUpRequest(this.email, this.password, roles);
+      console.log(signUpRequest);
       this.authenticationService.signUp(signUpRequest).then(value => {
         if (value) {
           this.authenticationService.signIn(new SignInRequest(this.email, this.password)).then((value) => {
@@ -66,7 +67,8 @@ export class SignUpComponent {
                 // not compatible with any of standard forms ("yyyy-MM-dd'T'HH:mm:ss.SSSX", "yyyy-MM-dd'T'HH:mm:ss.SSS", "EEE, dd MMM yyyy HH:mm:ss zzz", "yyyy-MM-dd"))
                 new Date().toISOString(),
                 new Date().toISOString()
-              )
+              ),
+              RoleUser[this.rolUser].toUpperCase()
             );
             this.employeeApi.createEmployee(employeeRequest, this.email).then((value) => {
               if (value) {

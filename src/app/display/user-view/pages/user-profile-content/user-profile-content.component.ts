@@ -28,7 +28,7 @@ export class UserProfileContentComponent implements OnInit {
   ) {
     this.userLogged = {} as User;
     this.userService.getCurrentUser().subscribe((user) => {
-      this.isManager = user.rolUser === RoleUser.MANAGER;
+      this.isManager = user.rolUser == 1;
     });
   }
 
@@ -64,7 +64,7 @@ export class UserProfileContentComponent implements OnInit {
   }
 
   rollDescription(): string {
-    return this.userLogged.rolUser === 1 ? 'Employee' : 'Manager';
+    return this.userLogged.rolUser === 1 ? 'Manager' : 'Employee';
   }
 
   openEditDialog(): void {

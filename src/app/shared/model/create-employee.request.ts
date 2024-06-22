@@ -12,6 +12,7 @@ export class CreateEmployeeRequest {
     public phoneNumber: string,
     public email: string,
     public salary: number,
-    public contractInformationResource: ContractInformationResource
+    public contractInformationResource: ContractInformationResource,
+    public role: string
     ) {}
 }
