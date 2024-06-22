@@ -8,15 +8,15 @@
   </div>
 
   <div class="all-container">
-    <div class="manager-information">
+    <div class="manager-information" *ngIf=isManager>
       <div class="manager-name-container">
-        <h2 style="font-weight: bold">Manager Key: 323234</h2>
+<!--        <h2 style="font-weight: bold">Manager Key: 323234</h2>-->
       </div>
       <div class="manager-edit-button">
         <button mat-button (click)="openEditDialog()">Edit User</button>
       </div>
       <div class="manager-edit-button">
-        <button *ngIf="this.userLogged.rolUser==RoleUser.MANAGER" mat-raised-button color="primary">Delete</button>
+        <button mat-raised-button color="primary">Delete</button>
       </div>
     </div>
 

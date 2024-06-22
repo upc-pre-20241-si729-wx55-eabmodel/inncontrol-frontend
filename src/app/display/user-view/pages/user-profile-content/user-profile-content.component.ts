@@ -18,6 +18,8 @@ export class UserProfileContentComponent implements OnInit {
   userLogged: User;
   username: string | null = '';
 
+  isManager: boolean = false;
+
   constructor(
     private userService: EmployeeApiService,
     private snackBar: MatSnackBar,
@@ -25,6 +27,9 @@ export class UserProfileContentComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.userLogged = {} as User;
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.isManager = user.rolUser === RoleUser.MANAGER;
+    });
   }
 
   UserProfileContentComponent(username: string) {
@@ -46,7 +51,6 @@ export class UserProfileContentComponent implements OnInit {
     }).catch((error) => {
       console.error(error);
       this.showMessage('An error occurred during login');
-
     });
   }
 
