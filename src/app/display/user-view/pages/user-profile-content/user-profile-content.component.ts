@@ -5,6 +5,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {UserEditDialogComponent} from "../../components/user-edit-dialog/user-edit-dialog.component";
 import {ActivatedRoute} from "@angular/router";
+import {RoleUser} from "../../../../iam/model/roll-user";
+import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
 
 @Component({
   selector: 'app-user-profile-content',
@@ -14,36 +16,38 @@ import {ActivatedRoute} from "@angular/router";
 export class UserProfileContentComponent implements OnInit {
 
   userLogged: User;
-  id: number = 0;
+  username: string | null = '';
 
   constructor(
-    private userService: UserApiServiceService,
+    private userService: EmployeeApiService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private route: ActivatedRoute
   ) {
-    this.userLogged = new User();
+    this.userLogged = {} as User;
   }
 
-  UserProfileContentComponent(index: number) {
-    this.id = index;
+  UserProfileContentComponent(username: string) {
+    this.username = username;
   }
 
   ngOnInit() {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUserById(this.id).subscribe(
-      (user: User | null) => {
-        if (user) {
-          this.userLogged = user;
-        } else {
-          this.showMessage('Invalid email or password');
-        }
-      },
-      error => {
-        console.error(error);
-        this.showMessage('An error occurred during login');
+    this.username = this.route.snapshot.paramMap.get('username');
+    if (this.username === null) {
+      this.showMessage('Invalid username');
+      return;
+    }
+    this.userService.fetchUser(this.username!).then((user) => {
+      if (user) {
+        this.userLogged = user;
+      } else {
+        this.showMessage('Invalid email or password');
       }
-    );
+    }).catch((error) => {
+      console.error(error);
+      this.showMessage('An error occurred during login');
+
+    });
   }
 
   showMessage(message: string): void {
@@ -71,4 +75,6 @@ export class UserProfileContentComponent implements OnInit {
       }
     });
   }
+
+  protected readonly RoleUser = RoleUser;
 }

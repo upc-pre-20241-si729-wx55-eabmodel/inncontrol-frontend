@@ -26,7 +26,9 @@ export class AuthenticationService {
   private signedInUserName: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private signedInRole: BehaviorSubject<RoleUser> = new BehaviorSubject<RoleUser>(RoleUser.NONE);
 
-  constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private http: HttpClient,
+              private employeeService: EmployeeApiService,
+              private snackBar: MatSnackBar) {
   }
 
   get isSignedIn() {
@@ -41,12 +43,16 @@ export class AuthenticationService {
     return this.signedInUserName.asObservable();
   }
 
+  get niceUserName(): string {
+    return this.signedInUserName.value;
+  }
+
   get currentRole() {
     return this.signedInRole.asObservable();
 
   }
 
-  signUp(signUpRequest: SignUpRequest):Promise<boolean> {
+  signUp(signUpRequest: SignUpRequest): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
         .subscribe({
@@ -75,6 +81,7 @@ export class AuthenticationService {
   }
 
   storageSession(response: SignInResponse) {
+    localStorage.setItem('token', response.token);
     this.signedIn.next(true);
     this.signedInUserId.next(response.id);
     this.signedInUserName.next(response.username);
@@ -85,7 +92,7 @@ export class AuthenticationService {
       roleUser = RoleUser.MANAGER;
     }
     this.signedInRole.next(roleUser);
-    localStorage.setItem('token', response.token);
+
   }
 
   signIn(signInRequest: SignInRequest): Promise<boolean> {
@@ -128,6 +135,7 @@ export class AuthenticationService {
               this.storageSession(response);
               // console.log(`Retrieved session as ${response.username}`);
               this.showSnackBar(`Retrieved session as ${response.username}`);
+              this.employeeService.setLocalProfile(response.username);
               resolve(true);
             },
             error: (error) => {

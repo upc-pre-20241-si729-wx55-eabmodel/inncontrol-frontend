@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {PanelCardIcon} from "../../../../shared/model/panel-card-icon";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../../iam/services/authentication.service";
+import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
 
 @Component({
   selector: 'app-panel-card-icon',
@@ -12,7 +13,7 @@ export class PanelCardIconComponent {
 
   @Input() icon: PanelCardIcon
   @Input() title: string;
-  @Input() toRoute: string;
+  @Input() toRoute: string
 
   constructor(private route: Router, private iamService: AuthenticationService) {
     this.icon = {} as PanelCardIcon;
@@ -25,7 +26,7 @@ export class PanelCardIconComponent {
    */
   onClick() {
     if (this.toRoute.includes('profile')) {
-      this.route.navigate([this.toRoute, this.iamService.currentUserId]);
+      this.route.navigate([this.toRoute, this.iamService.niceUserName]).then();
     } else {
       this.route.navigate([this.toRoute]);
     }
