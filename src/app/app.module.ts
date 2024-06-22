@@ -75,12 +75,13 @@ import {
 } from "./display/room/components/room-create-dialog/room-create-dialog.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RoomUpdateComponent} from "./execution/components/room-management/room-update/room-update.component";
-import {RoomsReportComponent} from "./display/room/components/rooms-report/rooms-report.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {LoginComponent} from "./iam/pages/login/login.component";
-import {SigUpComponent} from "./iam/pages/sig-up/sig-up.component";
-import { UserProfileContentComponent } from './display/user-view/pages/user-profile-content/user-profile-content.component';
-import { UserEditDialogComponent } from './display/user-view/components/user-edit-dialog/user-edit-dialog.component';
+import {SignUpComponent} from "./iam/pages/sign-up/sign-up.component";
+import {
+  UserProfileContentComponent
+} from './display/user-view/pages/user-profile-content/user-profile-content.component';
+import {UserEditDialogComponent} from './display/user-view/components/user-edit-dialog/user-edit-dialog.component';
 import {PanelCardIconComponent} from './interactions/control/components/panel-card-icon/panel-card-icon.component';
 import {PanelScheduleComponent} from './interactions/control/components/panel-schedule/panel-schedule.component';
 import {
@@ -103,17 +104,17 @@ import {TaskCardComponent} from './display/task/task-cards/task-card/task-card.c
 import {
   TaskEditDialogComponent
 } from './display/task/task-create/components/task-edit-dialog/task-edit-dialog.component';
-import { RoomsCardComponent } from './display/room/components/rooms-card/rooms-card.component';
-import { RoomCardContentComponent } from './display/room/components/room-card-content/room-card-content.component';
+import {RoomsCardComponent} from './display/room/components/rooms-card/rooms-card.component';
+import {RoomCardContentComponent} from './display/room/components/room-card-content/room-card-content.component';
 import {PerformanceReportComponent} from "./planning/performance-report/performance-report.component";
 import {CalendarModule, DateAdapter} from "angular-calendar";
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { ScheduleViewComponent } from './planning/schedule/components/schedule-view/schedule-view.component';
-import { SchedulePageComponent } from './planning/schedule/pages/schedule-page/schedule-page.component';
-import { SidebarContentComponent } from './public/components/home/components/sidebar-content/sidebar-content.component';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {ScheduleViewComponent} from './planning/schedule/components/schedule-view/schedule-view.component';
+import {SchedulePageComponent} from './planning/schedule/pages/schedule-page/schedule-page.component';
+import {SidebarContentComponent} from './public/components/home/components/sidebar-content/sidebar-content.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListItem, MatNavList} from "@angular/material/list";
-import { SidebarItemComponent } from './public/components/home/components/sidebar-item/sidebar-item.component';
+import {SidebarItemComponent} from './public/components/home/components/sidebar-item/sidebar-item.component';
 import {InventoryCardsComponent} from "./supply/inventory/inventory-cards/inventory-cards.component";
 import {InventoryContentComponent} from "./supply/inventory/inventory-content/inventory-content.component";
 import {
@@ -129,11 +130,13 @@ import {InventoryCardDialogComponent} from "./supply/inventory/inventory-card-di
 import {
   InventoryDeleteDialogComponent
 } from "./supply/inventory/inventory-delete-dialog/inventory-delete-dialog.component";
-import {EmployeesContainerComponent} from "./monitoring/employees/components/employees-container/employees-container.component";
-import { EmployeeCardComponent } from './monitoring/employees/components/employee-card/employee-card.component';
-import { EmployeeDialogComponent } from './monitoring/employees/components/employee-dialog/employee-dialog.component';
+import {
+  EmployeesContainerComponent
+} from "./monitoring/employees/components/employees-container/employees-container.component";
+import {EmployeeCardComponent} from './monitoring/employees/components/employee-card/employee-card.component';
+import {EmployeeDialogComponent} from './monitoring/employees/components/employee-dialog/employee-dialog.component';
 import {NgOptimizedImage} from "@angular/common";
-import { FooterContentComponent } from './public/components/home/components/footer-content/footer-content.component';
+import {FooterContentComponent} from './public/components/home/components/footer-content/footer-content.component';
 import {AuthenticationInterceptor} from "./iam/services/authentication.interceptor";
 
 @NgModule({
@@ -162,7 +165,6 @@ import {AuthenticationInterceptor} from "./iam/services/authentication.intercept
     TaskCreationComponent,
     RoomCreateDialogComponent,
     RoomUpdateComponent,
-    RoomsReportComponent,
     RoomCreateButtonComponent,
     InventoryCardsComponent,
     InventoryContentComponent,
@@ -172,7 +174,7 @@ import {AuthenticationInterceptor} from "./iam/services/authentication.intercept
     InventoryCardDialogComponent,
     InventoryDeleteDialogComponent,
     LoginComponent,
-    SigUpComponent,
+    SignUpComponent,
     UserProfileContentComponent,
     UserEditDialogComponent,
     PanelCardIconComponent,
@@ -196,68 +198,68 @@ import {AuthenticationInterceptor} from "./iam/services/authentication.intercept
     EmployeeDialogComponent,
     FooterContentComponent
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        MatToolbar,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDatepickerInput,
-        MatDatepickerToggle,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatDialogActions,
-        MatDialogContent,
-        MatDialogClose,
-        MatDialogTitle,
-        MatDialogModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatTable,
-        MatPaginator,
-        MatHeaderRow,
-        MatRow,
-        MatCell,
-        MatHeaderCell,
-        MatColumnDef,
-        MatCellDef,
-        MatHeaderCellDef,
-        MatHeaderRowDef,
-        MatRowDef,
-        MatNoDataRow,
-        MatSort,
-        MatSortHeader,
-        MatIcon,
-        MatSelect,
-        MatOption,
-        MatCardModule,
-        MatProgressBarModule,
-        MatDividerModule,
-        MatIconModule,
-        MatBadgeModule,
-        MatMenuModule,
-        MatDialogModule,
-        MatAutocompleteTrigger,
-        MatAutocomplete,
-        CalendarModule.forRoot({
-            provide: DateAdapter,
-            useFactory: adapterFactory
-        }),
-        MatSidenavModule,
-        MatNavList,
-        MatListItem,
-        NgOptimizedImage
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    MatToolbar,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogActions,
+    MatDialogContent,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTable,
+    MatPaginator,
+    MatHeaderRow,
+    MatRow,
+    MatCell,
+    MatHeaderCell,
+    MatColumnDef,
+    MatCellDef,
+    MatHeaderCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatNoDataRow,
+    MatSort,
+    MatSortHeader,
+    MatIcon,
+    MatSelect,
+    MatOption,
+    MatCardModule,
+    MatProgressBarModule,
+    MatDividerModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatAutocompleteTrigger,
+    MatAutocomplete,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    MatSidenavModule,
+    MatNavList,
+    MatListItem,
+    NgOptimizedImage
+  ],
   providers: [
-    provideAnimationsAsync(),
-    provideNativeDateAdapter(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
       multi: true
-    }
+    },
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
   ],
   bootstrap: [AppComponent]
 })

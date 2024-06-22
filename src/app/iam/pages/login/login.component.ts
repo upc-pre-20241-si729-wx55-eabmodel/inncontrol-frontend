@@ -6,6 +6,7 @@ import {RoleUser} from "../../model/roll-user";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import {SignInRequest} from "../../model/sign-in.request";
+import {EmployeeApiService} from "../../../shared/services/employee-api.service";
 
 @Component({
   selector: 'app-login',
@@ -19,23 +20,29 @@ export class LoginComponent {
   });
   password: string;
   email: string;
-  rolUser: RoleUser;
+
+  // rolUser: RoleUser;
 
   constructor(private userService: UserApiServiceService,
               private snackBar: MatSnackBar,
               private route: Router,
-              private iamService: AuthenticationService,
-              private authenticationService: AuthenticationService
+              private authenticationService: AuthenticationService,
+              private employeeApi: EmployeeApiService
+
   ) {
     this.email = '';
     this.password = '';
-    this.rolUser = RoleUser.Employee;
+    // this.rolUser = RoleUser.Employee;
   }
 
   singInAccount() {
     if (this.myForm.valid) {
       const signInRequest = new SignInRequest(this.email, this.password);
-      this.authenticationService.signIn(signInRequest);
+      this.authenticationService.signIn(signInRequest).then(value => {
+        if (value) {
+          this.employeeApi.setLocalProfile(this.email);
+        }
+      });
     } else {
       this.showMessage('Invalid Form');
     }
@@ -48,9 +55,5 @@ export class LoginComponent {
       verticalPosition: 'top',
       panelClass: ['error-snackbar']
     });
-  }
-
-  setRollUser(rollUser: number) {
-    this.rolUser = rollUser === 1 ? RoleUser.Employee : RoleUser.Manager;
   }
 }

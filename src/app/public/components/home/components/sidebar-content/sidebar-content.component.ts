@@ -1,4 +1,4 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Component} from '@angular/core';
 import {PanelCard} from "../../../../../shared/model/panel-card";
 import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
@@ -32,13 +32,28 @@ export class SidebarContentComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, protected iamService: AuthenticationService, private router: Router) { }
+  protected isLogged: boolean = false;
+  private currentUsername: string = '';
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    protected iamService: AuthenticationService,
+    private router: Router
+  ) {
+
+    iamService.isSignedIn.subscribe(value => {
+      this.isLogged = value;
+    });
+    iamService.currentUserName.subscribe(value => {
+      this.currentUsername = value;
+    });
+  }
 
   sendToRoute(toRoute: string) {
     if (toRoute === '/logout') {
       this.logout();
     } else if (toRoute.includes('profile')) {
-      this.router.navigate([toRoute, localStorage.getItem('id')]);
+      this.router.navigate([toRoute, this.currentUsername]);
     } else {
       this.router.navigate([toRoute]);
     }
