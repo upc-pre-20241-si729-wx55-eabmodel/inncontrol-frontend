@@ -13,6 +13,7 @@ import {InventoryDeleteDialogComponent} from "../inventory-delete-dialog/invento
 })
 export class InventoryContentComponent implements OnInit{
   inventoryData: Inventory[]=[];
+  originalState: Inventory[]=[];
   item: Inventory;
   options:{title: string}[]=[
     {
@@ -23,12 +24,14 @@ export class InventoryContentComponent implements OnInit{
     }
   ];
   constructor(private inventoryService: InventoryApiService, private dialog: MatDialog) {
-    this.item = new Inventory(0,'','',0,'','','','');
+    this.item = new Inventory(0,'','','',0);
   }
 
   private getAllItems():void{
     this.inventoryService.getAll().subscribe((response:any)=>{
       this.inventoryData = response;
+      this.originalState = response;
+      console.log('Inventory data', this.inventoryData);
     })
   }
 
@@ -39,22 +42,33 @@ export class InventoryContentComponent implements OnInit{
   };
 
 searchFilter(event: any){
-  console.log('Filtro recibido');
+  console.log('Filtro recibido', event);
+
+  let filter: Inventory | undefined = this.inventoryData.find((inventory: Inventory) => inventory.productTitle === event);
+
+  if(filter !== undefined && filter.productTitle !== ''){
+    console.log('Item found');
+    this.inventoryData = this.inventoryData.filter((inventory: Inventory) => inventory.productTitle === event);
+  }
+  else {
+    console.log('Item not found');
+    this.inventoryData = this.originalState;
+  }
+
 }
 receiveFilter(event: any){
   console.log('Event received', event);
   if(event === 'More to less stock'){
     console.log('Order in: More to less');
+    this.inventoryData.sort((a: Inventory ,b) => b.Quantity - a.Quantity);
   }else if(event === 'Less to more stock'){
+    this.inventoryData.sort((a: Inventory, b) => a.Quantity - b.Quantity);
     console.log('Order in: Less to more');
   }
 }
 
   handleUpdate(inventory: Inventory):void{
     this.openUpdateDialog(inventory);
-  }
-  onDeleteItem(element: Inventory) {
-    this.deleteItem(element.id);
   }
   handleDelete(inventory: Inventory) {
     this.openDeleteDialog(inventory);
@@ -64,12 +78,12 @@ openDeleteDialog(inventory: Inventory){
   const dialogRef = this.dialog.open(InventoryDeleteDialogComponent, {
     data: inventory
   });
+  dialogRef.afterClosed().subscribe(result=>{
+    if(result){
+      console.log('Item deleted');
+    }
+  });
 }
-  private deleteItem(inventoryId: number) {
-    this.inventoryService.delete(inventoryId).subscribe(() =>{
-      this.inventoryData = this.inventoryData.filter((inventory: Inventory) => inventory.id !== inventoryId);
-    });
-  }
   openUpdateDialog(inventory: Inventory){
     console.log('Update dialog opened');
     const dialogRef = this.dialog.open(InventoryEditDialogComponent, {

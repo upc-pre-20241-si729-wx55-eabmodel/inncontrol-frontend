@@ -22,49 +22,25 @@
 
     <div class="flex-container">
       <mat-form-field >
-        <mat-label>Provider Name</mat-label>
-        <input matInput formControlName="providerName">
-        <mat-error *ngIf="InventoryItemFormGroup.get('providerName')?.invalid">
-          Please enter a valid provider name
+        <mat-label>Brand Name</mat-label>
+        <input matInput formControlName="brandName">
+        <mat-error *ngIf="InventoryItemFormGroup.get('brandName')?.invalid">
+          Please enter a valid Brand name
         </mat-error>
       </mat-form-field>
 
-        <mat-form-field >
-          <mat-label>Provider ID</mat-label>
-          <input matInput formControlName="providerId">
-          <mat-error *ngIf="InventoryItemFormGroup.get('providerId')?.invalid">
-            Please enter a valid provider ID
-          </mat-error>
-        </mat-form-field>
-
     </div>
-
-    <mat-form-field >
-      <mat-label>Provider Contact</mat-label>
-      <input matInput formControlName="providerContact">
-      <mat-error *ngIf="InventoryItemFormGroup.get('providerContact')?.invalid">
-        Please enter a valid provider contact
-      </mat-error>
-    </mat-form-field>
 
     <div class="flex-container">
-      <mat-form-field >
-        <mat-label>Provider desc</mat-label>
-        <input matInput formControlName="providerDesc">
-        <mat-error *ngIf="InventoryItemFormGroup.get('providerDesc')?.invalid">
-          Please enter a valid provider desc
-        </mat-error>
-      </mat-form-field>
-    </div>
-
 
     <mat-form-field >
       <mat-label>Quantity</mat-label>
-      <input matInput formControlName="quantity">
+      <input matInput formControlName="quantity" type="number">
       <mat-error *ngIf="InventoryItemFormGroup.get('quantity')?.invalid">
         Please enter valid quantity of items
       </mat-error>
     </mat-form-field>
+    </div>
     <br>
   </form>
 </mat-dialog-content>
