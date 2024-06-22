@@ -1,71 +1,105 @@
-import {Component, OnInit} from '@angular/core';
-import {Messages} from '../../model/messages.entity';
-import {MessagesApiService} from '../../service/messages-api.service';
-import {UsermessageEntity} from "../../model/usermessage.entity";
-
-import {MessagesCardDialogComponent} from "../messages-card-dialog/messages-card-dialog.component";
-import {MessagesNewMessageDialogComponent} from "../messages-new-message-dialog/messages-new-message-dialog.component";
-
-import {MatDialog} from "@angular/material/dialog";
-import {Message} from "../../model/message.entity";
-import {UserApiServiceService} from "../../../../shared/services/user-api.service.service";
-import {AuthenticationService} from "../../../../iam/services/authentication.service";
-
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
+import { Messages } from '../../model/messages.entity';
+import {MessageApiService} from "../../../../shared/services/message-api.service";
+import { UsermessageEntity } from "../../model/usermessage.entity";
+import { MessagesCardDialogComponent } from "../messages-card-dialog/messages-card-dialog.component";
+import { MessagesNewMessageDialogComponent } from "../messages-new-message-dialog/messages-new-message-dialog.component";
+import { UserApiServiceService } from "../../../../shared/services/user-api.service.service";
+import { AuthenticationService } from "../../../../iam/services/authentication.service";
+import {MessageResponse} from "../../../../shared/model/message.response";
 @Component({
   selector: 'app-messages-container',
   templateUrl: './messages-container.component.html',
-  styleUrl: './messages-container.component.css'
+  styleUrls: ['./messages-container.component.css']
 })
 export class MessagesContainerComponent implements OnInit {
 
   resetMessages: Messages;
   message: Messages;
-
-  options: { title: string }[] = [
-    {
-      title: 'Sent'
-    },
-    {
-      title: 'Unread'
-    },
-    {
-      title: 'Reset'
-    }
-
-  ];
-  users: UsermessageEntity[];
+  users: UsermessageEntity[] = [];
   loaded: boolean = false;
   unreads: number = 0;
   unread: boolean = false;
+  allMessages: MessageResponse[] = []; // Lista para almacenar todos los mensajes
+  paginatedMessages: MessageResponse[] = []; // Lista para almacenar los mensajes paginados
+  pageSize: number = 10; // Tamaño de página (número de mensajes por página)
+  currentPage: number = 0; // Página actual
 
-  constructor(private messagesApiService: MessagesApiService,
-              private dialog: MatDialog,
-              private userApiService: UserApiServiceService,
-              private iamStorage: AuthenticationService) {
+  options: { title: string }[] = [
+    { title: 'Sent' },
+    { title: 'Unread' },
+    { title: 'Reset' }
+  ];
+
+  constructor(
+    private messagesApiService: MessageApiService,
+    private dialog: MatDialog,
+    private userApiService: UserApiServiceService,
+    private iamStorage: AuthenticationService
+  ) {
     this.message = new Messages();
     this.resetMessages = new Messages();
-    this.users = [];
   }
 
-  badgeControl() {
-    this.unreads = this.message.getUnreadSize();
-    this.unread = this.unreads <= 0;
-
+  ngOnInit() {
+    this.fetchUsers();
+    this.getMessages();
   }
 
   fetchUsers() {
     this.userApiService.getAll().subscribe(
       (data: any) => {
         data.forEach((user: any) => {
-          // if (user.id !== this.iamStorage.getUserId()) {
-            this.users.push(new UsermessageEntity(user.id, `${user.firstName}.${user.lastName}`));
-          // }
-        }, (error: any) => {
-          console.log('Error getting users')
-          console.error(error);
-        }
-      );
-    });
+          this.users.push(new UsermessageEntity(user.id, `${user.firstName}.${user.lastName}`));
+        });
+      },
+      (error: any) => {
+        console.log('Error getting users');
+        console.error(error);
+      }
+    );
+  }
+
+  getMessages() {
+    this.messagesApiService.getMessagesBySenderAndReceiver(1, 2).subscribe(
+      (data: MessageResponse[]) => {
+        this.allMessages = data;
+        this.paginateMessages();
+      },
+      (error: any) => {
+        console.log('Error getting messages');
+      },
+      () => {
+        this.loaded = true;
+        this.badgeControl();
+      }
+    );
+  }
+
+  paginateMessages() {
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+    this.paginatedMessages = this.allMessages.slice(start, end);
+  }
+
+  nextPage() {
+    if ((this.currentPage + 1) * this.pageSize < this.allMessages.length) {
+      this.currentPage++;
+      this.paginateMessages();
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.paginateMessages();
+    }
+  }
+
+  badgeControl() {
+    this.unreads = this.message.getUnreadSize();
+    this.unread = this.unreads <= 0;
   }
 
   recieveFilter(event: any) {
@@ -78,55 +112,18 @@ export class MessagesContainerComponent implements OnInit {
     } else if (event === 'Reset') {
       this.message.messages = this.resetMessages.messages;
     }
-
   }
 
   searchFilter(event: any) {
     console.log('Evento recibido del hijo:', event);
   }
 
-
-  getMessages() {
-    // this.messagesApiService.getById(1).subscribe(
-    //   (data: Message) => {
-    //     // this.message.addMessage(data);
-    //     // this.resetMessages.addMessage(data);
-    //   },
-    //   (error: any) => {
-    //     console.log('Error getting messages')
-    //   },
-    //   () => {
-    //     this.messagesApiService.getMessageBySenderId(this.iamStorage.getUserId()).subscribe(
-    //       (data: any) => {
-    //         console.log('Data:', data);
-    //         let i: number = 0;
-    //         data.forEach((messsage: Message) => {
-    //             this.message.addMessage(messsage);
-    //             this.resetMessages.addMessage(messsage);
-    //             this.loaded = true;
-    //           this.message = this.message.setSenderReciever(this.iamStorage.getUserId().toString(), this.iamStorage.getUserName());
-    //             i++;
-    //
-    //           }, (error: any) => {
-    //             console.log('Error getting users')
-    //             console.error(error);
-    //           }
-    //         );
-    //
-    //       });
-    //     this.loaded = true;
-    //     this.badgeControl();
-    //   }
-    // );
-  }
-
-  OpenMessageDialog(messages: any) {
-
+  openMessageDialog(messages: any) {
     if (messages) {
       let message = this.message.copyMessage(messages);
 
       const dialogRef = this.dialog.open(MessagesNewMessageDialogComponent, {
-        data: {messages: message, users: this.users}
+        data: { messages: message, users: this.users }
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
@@ -134,7 +131,6 @@ export class MessagesContainerComponent implements OnInit {
           console.log('Messages:', this.message);
           this.message.addMessage(result);
           this.badgeControl();
-          this.updateMessages(1);
         }
       });
 
@@ -159,15 +155,9 @@ export class MessagesContainerComponent implements OnInit {
         if (result) {
           this.message.addMessage(result);
           this.badgeControl();
-          this.updateMessages(1);
         }
       });
     }
-  }
-
-  updateMessages(id: number) {
-    console.log('Update Messages:', this.message);
-    this.messagesApiService.patch(id, this.message).subscribe();
   }
 
   getData() {
@@ -175,12 +165,7 @@ export class MessagesContainerComponent implements OnInit {
     console.log('Messages:', this.message);
   }
 
-  ngOnInit() {
-    this.fetchUsers();
-    this.getData();
-  }
-
-  deletemessage($event: any) {
+  deleteMessage($event: any) {
     console.log('Evento recibido del hijo:', $event);
     this.message.deleteMessage($event);
     this.badgeControl();
@@ -188,16 +173,16 @@ export class MessagesContainerComponent implements OnInit {
 
   openDialog(messages: any): void {
     let message = this.message.getMessagesById(messages);
-    console.log('Open Dialog:', message)
+    console.log('Open Dialog:', message);
     const dialogRef = this.dialog.open(MessagesCardDialogComponent, {
       data: message
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if (result === 'Delete') {
-        this.deletemessage(messages);
+        this.deleteMessage(messages);
       } else if (result === 'Answer') {
-        this.OpenMessageDialog(messages);
+        this.openMessageDialog(messages);
       }
     });
   }
@@ -205,7 +190,6 @@ export class MessagesContainerComponent implements OnInit {
   changeState($event: any) {
     console.log('Evento recibido del hijo:', $event);
     this.message.changeState($event, 'read');
-    this.updateMessages(1);
     this.badgeControl();
   }
 }
