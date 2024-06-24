@@ -9,9 +9,10 @@ export class CreateEmployeeRequest {
   constructor(
     public lastName: string,
     public firstName: string,
+    public phoneNumber: string,
     public email: string,
     public salary: number,
     public contractInformationResource: ContractInformationResource,
     public role: string
-    ) {}
+  ) {}
 }

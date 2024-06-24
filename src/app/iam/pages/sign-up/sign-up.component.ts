@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../../shared/model/user";
 import {UserApiServiceService} from "../../../shared/services/user-api.service.service";
 import {RoleUser} from "../../model/roll-user";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -68,6 +67,7 @@ export class SignUpComponent {
                 new Date().toISOString(),
                 new Date().toISOString()
               ),
+
               RoleUser[this.rolUser].toUpperCase()
             );
             this.employeeApi.createEmployee(employeeRequest, this.email).then((value) => {
