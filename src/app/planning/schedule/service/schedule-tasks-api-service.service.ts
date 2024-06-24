@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from "../../../shared/services/base.service";
-import {CalendarEvent} from "../models/calendar-event";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ScheduleTasksApiServiceService extends BaseService<CalendarEvent>{
+export class ScheduleTasksApiServiceService extends BaseService<any>{
 
   constructor(private httpClient: HttpClient) {
     super(httpClient);

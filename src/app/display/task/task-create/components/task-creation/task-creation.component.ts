@@ -1,7 +1,7 @@
 import {Component, Output, EventEmitter} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {Task} from "../../model/task.entity";
 import {TaskCreateDialogComponent} from "../task-create-dialog/task-create-dialog.component";
+import {Task} from "../../../../../shared/model/task/task.entity";
 
 
 @Component({
@@ -20,9 +20,7 @@ export class TaskCreationComponent {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(TaskCreateDialogComponent, {
-      data: new Task(0, '', '', new Date(), '', new Date(), '')
-    });
+    const dialogRef = this.dialog.open(TaskCreateDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

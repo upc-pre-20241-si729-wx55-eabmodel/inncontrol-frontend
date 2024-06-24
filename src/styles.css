@@ -9,6 +9,7 @@
   width: 90%;
   gap: 1rem;
 }
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -99,4 +100,3 @@ body {
   flex-direction: row;
   gap: 1rem;
 }
-
