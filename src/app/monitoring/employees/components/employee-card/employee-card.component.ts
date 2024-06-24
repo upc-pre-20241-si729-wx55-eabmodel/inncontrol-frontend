@@ -1,28 +1,27 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-employee-card',
   templateUrl: './employee-card.component.html',
-  styleUrl: './employee-card.component.css'
+  styleUrls: ['./employee-card.component.css']
 })
 export class EmployeeCardComponent {
   @Input() employee: any;
-  @Output() clicked = new EventEmitter<unknown>();
-  @Output() deleted = new EventEmitter<unknown>();
-  Menu: boolean;
-  @Output() updated = new EventEmitter<unknown>();
+  @Output() clicked = new EventEmitter<void>();
+  @Output() deleted = new EventEmitter<void>();
+  @Output() updated = new EventEmitter<void>();
+  Menu: boolean = false;
 
   constructor() {
-    this.Menu = false;
-    console.log('Employee: ', this.employee);
+    console.log('Employee:', this.employee);
   }
 
   delete() {
-
+    this.deleted.emit(this.employee);
   }
 
   edit() {
-
+    this.updated.emit(this.employee);
   }
 
   clickedMenu() {
@@ -30,12 +29,9 @@ export class EmployeeCardComponent {
   }
 
   clickedEmployee() {
-
-      if (!this.Menu) {
-        console.log('Clicked');
-        this.clicked.emit();
-      }
-
-
+    if (!this.Menu) {
+      console.log('Clicked');
+      this.clicked.emit(this.employee);
+    }
   }
 }
