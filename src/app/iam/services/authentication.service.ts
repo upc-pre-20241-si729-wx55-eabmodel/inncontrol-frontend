@@ -77,7 +77,6 @@ export class AuthenticationService {
       duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      // chjuicha
     });
   }
 
