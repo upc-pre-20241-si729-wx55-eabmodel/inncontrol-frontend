@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PanelCardIcon} from "../../../../shared/model/panel-card-icon";
+import {PanelCardIcon} from "../../../../shared/model/panel/panel-card-icon";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../../iam/services/authentication.service";
 import {EmployeeApiService} from "../../../../shared/services/employee-api.service";

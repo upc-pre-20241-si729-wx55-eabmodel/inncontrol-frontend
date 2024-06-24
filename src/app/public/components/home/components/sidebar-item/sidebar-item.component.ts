@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
-import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
+import {PanelCardIcon} from "../../../../../shared/model/panel/panel-card-icon";
 import {AuthenticationService} from "../../../../../iam/services/authentication.service";
 
 @Component({

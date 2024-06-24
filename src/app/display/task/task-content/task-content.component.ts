@@ -1,8 +1,8 @@
 import { Component, OnInit} from '@angular/core';
-import {Task} from "../task-create/model/task.entity";
 import {TaskApiService} from "../task-create/services/task-api.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskEditDialogComponent} from "../task-create/components/task-edit-dialog/task-edit-dialog.component";
+import {Task} from "../../../shared/model/task/task.entity";
 
 @Component({
   selector: 'app-task-content',
@@ -12,8 +12,9 @@ import {TaskEditDialogComponent} from "../task-create/components/task-edit-dialo
 export class TaskContentComponent implements OnInit {
   tasksData: Task[] = [];
   filteredTasks: Task[] = [];
-  filterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
-  defaultFilterType: 'taskName' | 'description' | 'dueDate' | 'status' | 'employee' = 'taskName';
+
+  filterType: 'name' | 'description' | 'dueDate' | 'pending' | 'employeeEmail' = 'name';
+  defaultFilterType: 'name' | 'description' | 'dueDate' | 'pending' | 'employeeEmail' = 'name';
 
   constructor(private taskService: TaskApiService, private dialog: MatDialog) {}
 
@@ -70,6 +71,9 @@ export class TaskContentComponent implements OnInit {
         if (value) {
           if (value instanceof Date) {
             value = value.toISOString();
+          }
+          if (typeof value === 'boolean') {
+            return value.toString().includes(filterValue);
           }
           return value.toLowerCase().includes(filterValue);
         }

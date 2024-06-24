@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {CreateEmployeeRequest} from "../model/create-employee.request";
-import {User} from "../model/user";
+import {CreateEmployeeRequest} from "../model/employee/create-employee.request";
+import {User} from "../model/user/user";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject} from "rxjs";
-import {EmployeeResponse} from "../model/employee.response";
-import {ProfileResponse} from "../model/profile.response";
+import {EmployeeResponse} from "../model/employee/employee.response";
+import {ProfileResponse} from "../model/employee/profile.response";
 import {getRoleUserFromValue} from "../../iam/model/roll-user";
 
 @Injectable({
@@ -24,6 +24,13 @@ export class EmployeeApiService {
     {} as User // default value
   );
 
+  private employees = new BehaviorSubject<ProfileResponse[]>([]);
+
+  getAllProfiles() {
+    this.fetchAllProfiles();
+    return this.employees.asObservable();
+  }
+
   getCurrentUsername(): string {
     return this.currentUser.value.email;
   }
@@ -33,6 +40,18 @@ export class EmployeeApiService {
   }
 
   constructor(protected httpClient: HttpClient) {
+  }
+
+  fetchAllProfiles() {
+    this.httpClient.get<ProfileResponse[]>(`${this.basePath}/profiles`)
+      .subscribe({
+        next: (response) => {
+          this.employees.next(response);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
   }
 
   createEmployee(request: CreateEmployeeRequest, email: string): Promise<boolean> {

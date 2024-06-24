@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Task} from "../../task-create/model/task.entity";
+import {Task} from "../../../../shared/model/task/task.entity";
 
 @Component({
   selector: 'app-task-card',

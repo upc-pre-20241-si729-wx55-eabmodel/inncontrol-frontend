@@ -7,7 +7,7 @@ import { MessagesCardDialogComponent } from "../messages-card-dialog/messages-ca
 import { MessagesNewMessageDialogComponent } from "../messages-new-message-dialog/messages-new-message-dialog.component";
 import { UserApiServiceService } from "../../../../shared/services/user-api.service.service";
 import { AuthenticationService } from "../../../../iam/services/authentication.service";
-import {MessageResponse} from "../../../../shared/model/message.response";
+import {MessageResponse} from "../../../../shared/model/message/message.response";
 @Component({
   selector: 'app-messages-container',
   templateUrl: './messages-container.component.html',

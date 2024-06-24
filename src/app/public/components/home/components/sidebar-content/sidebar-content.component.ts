@@ -1,7 +1,7 @@
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Component} from '@angular/core';
-import {PanelCard} from "../../../../../shared/model/panel-card";
-import {PanelCardIcon} from "../../../../../shared/model/panel-card-icon";
+import {PanelCard} from "../../../../../shared/model/panel/panel-card";
+import {PanelCardIcon} from "../../../../../shared/model/panel/panel-card-icon";
 import {map, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../../../iam/services/authentication.service";

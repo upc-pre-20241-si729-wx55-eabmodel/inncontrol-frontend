@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {PanelCard} from "../../../../shared/model/panel-card";
-import {PanelCardIcon} from "../../../../shared/model/panel-card-icon";
+import {PanelCard} from "../../../../shared/model/panel/panel-card";
+import {PanelCardIcon} from "../../../../shared/model/panel/panel-card-icon";
 
 @Component({
   selector: 'app-control-panel-page',

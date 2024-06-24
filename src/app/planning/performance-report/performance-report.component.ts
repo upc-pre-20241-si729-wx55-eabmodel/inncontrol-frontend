@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
-import {Task} from "../../display/task/task-create/model/task.entity";
+import {Task} from "../../shared/model/task/task.entity";
 
 @Component({
   selector: 'app-performance-report',
@@ -22,7 +22,7 @@ export class PerformanceReportComponent implements AfterViewInit {
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.tasks);
-    this.tasks.push(new Task(1, 'Task 1', 'Description 1', new Date(), 'pending', new Date(), '1'));
+    // this.tasks.push(new Task(1, 'Task 1', 'Description 1', new Date(), 'pending', new Date(), 'employee1'));
     length = this.tasks.length;
     console.log('Serio ' + this.length);
   }

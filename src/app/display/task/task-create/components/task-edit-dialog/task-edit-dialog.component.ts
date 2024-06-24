@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Task} from "../../model/task.entity";
+import {Task} from "../../../../../shared/model/task/task.entity";
 @Component({
   selector: 'app-task-edit-dialog',
   templateUrl: './task-edit-dialog.component.html',
@@ -15,7 +15,7 @@ export class TaskEditDialogComponent {
               @Inject(MAT_DIALOG_DATA) public data: Task) {
 
     this.TaskItemFormGroup = this.formBuilder.group({
-      taskName: new FormControl(data.taskName, [
+      taskName: new FormControl(data.name, [
         Validators.required,
         Validators.minLength(2)
       ]),
@@ -26,14 +26,14 @@ export class TaskEditDialogComponent {
       dueDate: new FormControl(data.dueDate, [
         Validators.required,
       ]),
-      dueTime: new FormControl(data.creationDate, [
+      dueTime: new FormControl(data.dueDate, [
         Validators.required,
       ]),
-      status: new FormControl(data.status, [
+      status: new FormControl(data.pending, [
         Validators.required,
-        Validators.pattern('pending|completed|in progress')
+        Validators.pattern('pending|completed')
       ]),
-      employee: new FormControl(data.employee, [
+      employee: new FormControl(data.employeeEmail, [
         Validators.required,
         Validators.maxLength(10),
         Validators.minLength(2)
