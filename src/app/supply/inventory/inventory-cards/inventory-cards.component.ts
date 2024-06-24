@@ -11,6 +11,7 @@ export class InventoryCardsComponent {
   @Output() update = new EventEmitter<Inventory>();
   @Output() delete = new EventEmitter<Inventory>();
   @Output() clicked = new EventEmitter<unknown>();
+
   Menu: boolean;
   constructor() {
     this.Menu = false;

@@ -5,12 +5,9 @@ import {
 import {
   startOfDay,
   endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
   isSameDay,
   isSameMonth,
-  addHours, startOfHour, differenceInMinutes,
+  startOfHour, differenceInMinutes,
 } from 'date-fns';
 import {Subject} from 'rxjs';
 import {
@@ -19,6 +16,11 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import {EventColor} from 'calendar-utils';
+import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
+import {TaskApiService} from "../../../../shared/services/task/task-api.service";
+import {Task} from "../../../../shared/model/task/task.entity";
+import {MatDialog} from "@angular/material/dialog";
+import {TaskViewCardComponent} from "../../../../display/task/task-view-card/task-view-card.component";
 
 const colors: Record<string, EventColor> = {
   "red": {
@@ -59,63 +61,47 @@ export class ScheduleViewComponent implements AfterViewInit {
 
   refresh = new Subject<void>();
 
-
   @Input() canChangeView: boolean = true;
 
   @Input() view: CalendarView = CalendarView.Month;
 
   @Input() activeDayIsOpen: boolean = true;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef,
+              private employeeService: EmployeeApiService,
+              private scheduleService: TaskApiService,
+              private dialog: MatDialog
+  ) {
+    employeeService.getCurrentUser().subscribe((employee) => {
+      this.fetchEvents();
+    });
   }
 
+  calendarEventsFromTasks(tasks: Task[]): CalendarEvent[] {
+    return tasks.map((task) => {
+      return {
+        title: task.name,
+        start: new Date(task.dueDate),
+        end: new Date(task.dueDate),
+        color: task.pending ? colors["red"] : colors["blue"],
+        draggable: false,
+        resizable: {
+          beforeStart: false,
+          afterEnd: false,
+        },
+        meta: task,
+      };
+    });
+  }
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'Clean Room 101',
-      color: {...colors["red"]},
-      allDay: true,
-      // resizable: {
-      //   beforeStart: true,
-      //   afterEnd: true,
-      // },
-      // draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'Clean 2nd floor.',
-      color: {...colors["yellow"]},
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'Pool Cleaning',
-      color: {...colors["blue"]},
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'Cleaning of suite 803',
-      color: {...colors["yellow"]},
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
+  fetchEvents() {
+    this.scheduleService.getMyTasks().subscribe((events) => {
+      this.events = this.calendarEventsFromTasks(events);
+      this.refresh.next();
+    });
+  }
 
-    // event from 5pm to 6pm
-    {
-      title: 'Meeting with Manager',
-      start: addHours(startOfDay(new Date()), 3),
-      end: addHours(startOfDay(new Date()), 12),
-      color: colors["red"],
-      allDay: false,
-    },
-  ];
+  events: CalendarEvent[] = []
 
   dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -144,11 +130,21 @@ export class ScheduleViewComponent implements AfterViewInit {
 
   handleEvent(action: string, event: CalendarEvent): void {
     console.log('Event action:', action, event);
-    // this.modalData = {event, action};
-    // this.modal.open(this.modalContent, {size: 'lg'});
+    const task = event.meta as Task;
+    const dialogRef = this.dialog.open(TaskViewCardComponent, {
+      data: task,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.fetchEvents();
+      }
+    });
   }
 
-  addEvent(): void {
+
+  addEvent()
+    :
+    void {
     this.events = [
       ...this.events,
       {
@@ -165,11 +161,17 @@ export class ScheduleViewComponent implements AfterViewInit {
     ];
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
+  deleteEvent(eventToDelete
+                :
+                CalendarEvent
+  ) {
     this.events = this.events.filter((event) => event !== eventToDelete);
   }
 
-  setView(view: CalendarView) {
+  setView(view
+            :
+            CalendarView
+  ) {
     this.view = view;
   }
 
@@ -177,7 +179,9 @@ export class ScheduleViewComponent implements AfterViewInit {
     this.activeDayIsOpen = false;
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit()
+    :
+    void {
     this.scrollToCurrentView();
   }
 
@@ -186,7 +190,7 @@ export class ScheduleViewComponent implements AfterViewInit {
     this.scrollToCurrentView();
   }
 
-  private scrollToCurrentView() {
+  scrollToCurrentView() {
     if (this.view === CalendarView.Week || CalendarView.Day) {
       // each hour is 60px high, so to get the pixels to scroll it's just the amount of minutes since midnight
       const minutesSinceStartOfDay = differenceInMinutes(

@@ -55,7 +55,6 @@ export class TaskEditDialogComponent {
 
       let date: any = new Date(formValues.dueDate);
       date.setHours(hrs, mins, 0);
-
       const updatedTask = {
         ...formValues,
         id: this.data.id,
