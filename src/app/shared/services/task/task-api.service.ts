@@ -43,18 +43,18 @@ export class TaskApiService extends BaseService<Task> {
   }
 
   getAllTasks() {
-    return this.http.get<Task[]>(`${environment.serverBasePath}${this.resourceEndpoint}`).pipe(retry(2), catchError(this.handleError));
+    return this.http.get<Task[]>(`${this.resourcePath()}`).pipe(retry(2), catchError(this.handleError));
   }
 
   getAllTaskForEmployee(employeeEmail: string) {
-    return this.http.get<Task[]>(`${environment.serverBasePath}${this.resourceEndpoint}/employee/${employeeEmail}`).pipe(retry(2), catchError(this.handleError));
+    return this.http.get<Task[]>(`${this.resourcePath()}/employee/${employeeEmail}`).pipe(retry(2), catchError(this.handleError));
   }
 
   deleteTask(id: number) {
-    return this.http.delete(`${environment.serverBasePath}${this.resourceEndpoint}/${id}`).pipe(retry(2), catchError(this.handleError));
+    return this.http.delete(`${this.resourcePath()}/${id}`).pipe(retry(2), catchError(this.handleError));
   }
 
   completeTask(id: number) {
-    return this.http.post(`${environment.serverBasePath}${this.resourceEndpoint}/${id}/complete`, {}).pipe(retry(2), catchError(this.handleError));
+    return this.http.post(`${this.resourcePath()}/${id}/complete`, {}).pipe(retry(2), catchError(this.handleError));
   }
 }

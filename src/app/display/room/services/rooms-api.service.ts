@@ -18,14 +18,14 @@ export class RoomsApiService extends BaseService<Room>{
   }
 
   createRoom(room: RoomCreateRequest): Observable<any> {
-    return this.httpClient.post(`${environment.serverBasePath}${this.resourceEndpoint}`, room);
+    return this.httpClient.post(`${this.resourcePath()}`, room);
   }
 
   updateRoom(room: RoomUpdateRequest): Observable<any> {
-    return this.httpClient.put(`${environment.serverBasePath}${this.resourceEndpoint}/${room.id}`, room);
+    return this.httpClient.put(`${this.resourcePath()}/${room.id}`, room);
   }
 
   deleteRoom(id: number): Observable<any> {
-    return this.httpClient.delete(`${environment.serverBasePath}${this.resourceEndpoint}/${id}`, {responseType: 'text'});
+    return this.httpClient.delete(`${this.resourcePath()}/${id}`, {responseType: 'text'});
   }
 }
