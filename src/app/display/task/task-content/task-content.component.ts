@@ -18,6 +18,8 @@ export class TaskContentComponent implements OnInit, AfterViewInit {
   filterType: 'name' | 'description' | 'dueDate' | 'pending' | 'employeeEmail' = 'name';
   defaultFilterType: 'name' | 'description' | 'dueDate' | 'pending' | 'employeeEmail' = 'name';
 
+  isManager: boolean = false;
+
 
   constructor(private taskService: TaskApiService, private dialog: MatDialog,
               private snackBar: MatSnackBar,
@@ -25,6 +27,7 @@ export class TaskContentComponent implements OnInit, AfterViewInit {
   ) {
     userApiService.getCurrentUser().subscribe((user) => {
       this.getAllTasks();
+      this.isManager = user.rolUser == 1;
     });
   }
 

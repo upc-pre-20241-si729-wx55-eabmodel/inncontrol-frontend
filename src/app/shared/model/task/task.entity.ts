@@ -22,4 +22,8 @@ export class Task {
     this.dueDate = dueDate;
     this.employeeEmail = employeeEmail;
   }
+
+  public getNiceDueDate(): Date {
+    return new Date(this.dueDate);
+  }
 }

@@ -21,7 +21,7 @@
       <button mat-menu-item (click)="filterType = 'employeeEmail'">Employee</button>
     </mat-menu>
   </div>
-  <div class="task-buttons">
+  <div class="task-buttons" *ngIf="isManager">
     <app-task-creation (taskCreated)="createTask($event)"></app-task-creation>
   </div>
 </div>

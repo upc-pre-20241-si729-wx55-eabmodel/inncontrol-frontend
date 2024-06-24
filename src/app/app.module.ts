@@ -138,6 +138,7 @@ import {EmployeeDialogComponent} from './monitoring/employees/components/employe
 import {NgOptimizedImage} from "@angular/common";
 import {FooterContentComponent} from './public/components/home/components/footer-content/footer-content.component';
 import {AuthenticationInterceptor} from "./iam/services/authentication.interceptor";
+import { TaskViewCardComponent } from './display/task/task-view-card/task-view-card.component';
 
 @NgModule({
   declarations: [
@@ -196,7 +197,8 @@ import {AuthenticationInterceptor} from "./iam/services/authentication.intercept
     EmployeesContainerComponent,
     EmployeeCardComponent,
     EmployeeDialogComponent,
-    FooterContentComponent
+    FooterContentComponent,
+    TaskViewCardComponent
   ],
   imports: [
     HttpClientModule,
