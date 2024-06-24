@@ -3,7 +3,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 
 export class BaseService<T> {
-  basePath: string = environment.serverBasePath;
+
+  basePath: string = environment.production ? environment.prodBasePath : environment.serverBasePath;
 
   resourceEndpoint: string = '/resource';
 

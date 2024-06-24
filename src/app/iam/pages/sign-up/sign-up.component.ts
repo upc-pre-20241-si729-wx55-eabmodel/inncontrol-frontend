@@ -33,7 +33,7 @@ export class SignUpComponent {
   email: string;
   password: string;
 
-  constructor(private userService: UserApiServiceService, private snackBar: MatSnackBar,
+  constructor( private snackBar: MatSnackBar,
               private router: Router,
               private authenticationService: AuthenticationService,
               private employeeApi: EmployeeApiService

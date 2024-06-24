@@ -47,7 +47,8 @@ export class RoomCreateDialogComponent implements OnInit {
       ]),
       roomNumber: new FormControl('', [
         Validators.required,
-        Validators.min(1)
+        Validators.min(1),
+        Validators.pattern('^[0-9]*$')
       ]),
       initialDate: new FormControl('', [
         Validators.required
@@ -101,7 +102,6 @@ export class RoomCreateDialogComponent implements OnInit {
 
     this.roomsApiService.createRoom(newRoom).pipe(
       catchError((error) => {
-        console.error('Error occurred:', error);
         this.snackBar.open('An error occurred while creating the room', 'Close', {
           duration: 3000,
           verticalPosition: 'top',
@@ -112,6 +112,10 @@ export class RoomCreateDialogComponent implements OnInit {
       if (response) {
         console.log(response);
         this.dialogRef.close(response);
+        this.snackBar.open('Room created successfully', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
       }
     });
   }
