@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {CreateTaskRequest} from "../../model/create-task.request";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {EmployeeApiService} from "../../../../../shared/services/employee-api.service";
 import {ProfileResponse} from "../../../../../shared/model/employee/profile.response";
+import {TaskApiService} from "../../../../../shared/services/task/task-api.service";
 
 @Component({
   selector: 'app-task-create-dialog',
@@ -23,6 +23,7 @@ export class TaskCreateDialogComponent {
               public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
               private snackBar: MatSnackBar,
               private employeeApiService: EmployeeApiService,
+              private taskApiService: TaskApiService,
               // @Inject(MAT_DIALOG_DATA) public data: Task,
   ) {
     this.employeeApiService.getAllProfiles().subscribe((employees) => {
@@ -75,21 +76,34 @@ export class TaskCreateDialogComponent {
     let part = this.TaskItemFormGroup.value.dueTime.split(":");
     let hrs = part[0];
     let mins = part[1];
-    let employeeEmail = this.getEmailFromString(this.TaskItemFormGroup.value.employee);
+    let niceEmployeeMail = this.getEmailFromString(this.TaskItemFormGroup.value.employee);
 
     const formValues = this.TaskItemFormGroup.value;
 
     if (this.TaskItemFormGroup.valid) {
       date = this.TaskItemFormGroup.value.dueDate;
       date.setHours(hrs, mins, 0);
-      // this.data = selectedData;
-      const createTask = new CreateTaskRequest(
-        formValues.employee,
-        formValues.taskName,
-        formValues.description,
-        date
-      );
-      this.dialogRef.close(createTask);
+      console.log(`Employee: ${niceEmployeeMail}`);
+      console.log(`Due Date: ${date}`);
+      console.log(`Task Name: ${formValues.taskName}`);
+
+      this.taskApiService.createTask({
+        title: formValues.taskName,
+        employeeEmail: niceEmployeeMail,
+        description: formValues.description,
+        dueDate: date.toISOString(),
+      }).subscribe(() => {
+        this.snackBar.open('Task created', 'Close', {
+          duration: 3000,
+        });
+
+        this.dialogRef.close(true);
+
+      }, error => {
+        this.snackBar.open('Error creating task', 'Close', {
+          duration: 3000,
+        });
+      });
     }
   }
 }

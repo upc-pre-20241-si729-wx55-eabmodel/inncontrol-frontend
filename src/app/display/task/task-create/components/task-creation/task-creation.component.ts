@@ -14,8 +14,6 @@ export class TaskCreationComponent {
 
   @Output() taskCreated = new EventEmitter<Task>();
 
-  selectedItem: Task | null = null;
-
   constructor(private dialog: MatDialog) {
   }
 
@@ -24,10 +22,7 @@ export class TaskCreationComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
-        this.selectedItem = result;
-        // @ts-ignore
-        this.taskCreated.emit(this.selectedItem);
+        this.taskCreated.emit();
       }
     });
   }
