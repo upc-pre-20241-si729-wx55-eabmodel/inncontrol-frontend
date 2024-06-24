@@ -7,7 +7,7 @@
     <app-search-content [options]="this.options" (optionSelected)="receiveFilter($event)" (search)="searchFilter($event)" ></app-search-content>
   </span>
   <div class="card-display">
-    <app-employee-card class="card" *ngFor="let employees of EmployeesArray" [employee]="employees" (deleted)="deleteEmployee($event)" (updated)="updateEmployee($event)" (clicked)="openDialog(employees)" ></app-employee-card>
+    <app-employee-card class="card" *ngFor="let employees of EmployeesArray" [employee]="employees" [name]="employees.names" (deleted)="deleteEmployee($event)" (updated)="updateEmployee($event)" ></app-employee-card>
     <h1 *ngIf="EmployeesArray.length<=0"> It seems you dont have any Employees yet...</h1>
   </div>
 </div>

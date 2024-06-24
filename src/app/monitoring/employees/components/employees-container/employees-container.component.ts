@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { EmployeeDialogComponent } from "../employee-dialog/employee-dialog.component";
 import {EmployeeResponse} from "../../../../shared/model/employee/employee.response";
 import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
+import {ProfileResponse} from "../../../../shared/model/employee/profile.response";
 
 @Component({
   selector: 'app-employees-container',
@@ -10,8 +11,8 @@ import {EmployeeApiService} from "../../../../shared/services/employee-api.servi
   styleUrls: ['./employees-container.component.css']
 })
 export class EmployeesContainerComponent implements OnInit {
-  ResetEmployees: EmployeeResponse[] = [];
-  EmployeesArray: EmployeeResponse[] = [];
+  ResetEmployees: ProfileResponse[] = [];
+  EmployeesArray: ProfileResponse[] = [];
   options: { title: string }[] = [
     { title: 'Role' },
     { title: 'Service Hours' },
@@ -20,44 +21,36 @@ export class EmployeesContainerComponent implements OnInit {
 
   constructor(private employeeApiService: EmployeeApiService, private dialog: MatDialog) {}
 
-  getEmployees(email: string) {
-    this.employeeApiService.fetchUser(email).then(
-      (data: any) => {
-        const employee: EmployeeResponse = {
-          employeeId: data.id,
-          role: data.rolUser,
-          salary: data.salary,
-          initiationContract: data.initialDate,
-          terminationContract: data.finalDate,
-          profileId: data.profileId
-        };
-        this.EmployeesArray = [employee];
-        this.ResetEmployees = [employee];
-        console.log('Employees:', this.EmployeesArray);
+
+
+
+  getEmployees() {
+    this.employeeApiService.getAllProfiles().subscribe((employees) => {
+      this.EmployeesArray = employees;
+      this.ResetEmployees = employees;
+      console.log('Employees:', this.EmployeesArray);
       },
-      (error: any) => {
-        console.log('Error getting employees');
-        console.error(error);
-      }
-    );
+(error: any) => {
+      console.log('Error getting employees');
+      console.error(error);
+    }
+      );
   }
 
   ngOnInit() {
-    this.getEmployees('example@example.com'); // Replace with actual email
+    this.getEmployees();
   }
 
   receiveFilter(event: any) {
     console.log('Event received from child:', event);
     if (event === 'Role') {
-      this.EmployeesArray.sort((a, b) => a.role.localeCompare(b.role));
     } else if (event === 'Service Hours') {
-      this.EmployeesArray = this.EmployeesArray.filter(employee => employee.initiationContract);
     } else if (event === 'Reset') {
       this.EmployeesArray = [...this.ResetEmployees];
     }
   }
 
-  openDialog(employee: EmployeeResponse): void {
+  openDialog(employee: ProfileResponse): void {
     const dialogRef = this.dialog.open(EmployeeDialogComponent, {
       data: employee
     });

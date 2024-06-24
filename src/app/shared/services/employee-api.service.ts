@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {CreateEmployeeRequest} from "../model/employee/create-employee.request";
 import {User} from "../model/user/user";
 import {environment} from "../../../environments/environment";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, catchError, Observable, retry, throwError} from "rxjs";
 import {EmployeeResponse} from "../model/employee/employee.response";
 import {ProfileResponse} from "../model/employee/profile.response";
 import {getRoleUserFromValue} from "../../iam/model/roll-user";
@@ -94,6 +94,17 @@ export class EmployeeApiService {
     });
   }
 
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // Default error handling
+      console.log(`An error occurred ${error.error.message}`);
+    } else {
+      // Unsuccessful Response Error Code returned from backend
+      console.log(`Backend returned code ${error.status}, body was ${error.error}`);
+    }
+    return throwError(() => new Error('Something happened with request, please try again later'));
+  }
+
   fetchUser(email: string): Promise<User> {
     return new Promise<User>((resolve, reject) => {
       this.httpClient.get<EmployeeResponse>(`${this.basePath}/employees?email=${email}`)
@@ -126,4 +137,13 @@ export class EmployeeApiService {
         })
     });
   }
+
+  getEmployeeById(id: number): Observable<EmployeeResponse> {
+    return this.httpClient.get<EmployeeResponse>(`${this.basePath}/employees/${id}`);
+  }
+
+  getEmployeeProfileById(id: number): Observable<ProfileResponse> {
+    return this.httpClient.get<ProfileResponse>(`${this.basePath}/profiles/${id}`);
+  }
+
 }
