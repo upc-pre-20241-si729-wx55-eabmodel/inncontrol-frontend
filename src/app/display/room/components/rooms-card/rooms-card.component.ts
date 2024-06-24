@@ -50,7 +50,14 @@ export class RoomsCardComponent {
     this.Menu = true;
   }
 
+  getNiceDates(date: string): Date[] {
+    const dateStrings = date.split(' - ');
+    const dates = dateStrings.map(dateString => new Date(dateString));
+    return dates;
+  }
+
   editRoom(room: RoomRequest): void {
+    var dates = this.getNiceDates(room.roomReservation);
     const dialogRef = this.dialog.open(RoomCreateDialogComponent, {
       width: '350px',
       data: {
@@ -61,8 +68,8 @@ export class RoomsCardComponent {
         type: room.roomType,
         state: room.roomStatus,
         roomNumber: room.roomNumber,
-        initialDate: new Date(), // Replace with the actual initial date
-        finalDate: new Date(), // Replace with the actual final date
+        initialDate: dates[0],
+        finalDate: dates[1]
       } as RoomDialogData
     });
 

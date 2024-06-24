@@ -1,15 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {RoomRequest} from "../../model/room.request";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {RoomsApiService} from "../../services/rooms-api.service";
 import {catchError} from "rxjs/operators";
-import { of } from 'rxjs';
+import {of} from 'rxjs';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { RoomDialogData } from '../../model/room.dialog.data';
+import {RoomDialogData} from '../../model/room.dialog.data';
 import {RoomCreateRequest} from "../../model/room.create-request";
 import {RoomUpdateRequest} from "../../model/room.update-request";
+
 export const dateValidator: ValidatorFn = (control: AbstractControl) => {
   const initialDate = control.get('initialDate');
   const finalDate = control.get('finalDate');
@@ -23,6 +23,8 @@ export const dateValidator: ValidatorFn = (control: AbstractControl) => {
 })
 export class RoomCreateDialogComponent implements OnInit {
 
+  typeOptions = ['STANDARD', 'SUITE', 'DELUXE_SUITE'];
+  stateOptions = ['OCCUPIED', 'VACANT', 'IN_SERVICE'];
   taskForm: FormGroup;
   roomNumberExists: boolean = false;
   constructor(
@@ -66,6 +68,9 @@ export class RoomCreateDialogComponent implements OnInit {
     this.taskForm.get('roomNumber')?.valueChanges.subscribe(roomNumber => {
       this.checkRoomNumberExists(roomNumber);
     });
+    if (this.data.isUpdate) {
+      this.setUpdateValues();
+    }
   }
   onSubmit(): void {
     if (this.taskForm.hasError('dateInvalid')) {
@@ -82,6 +87,19 @@ export class RoomCreateDialogComponent implements OnInit {
       this.createRoom();
     }
   }
+
+  setUpdateValues(): void {
+    this.taskForm.setValue({
+      firstName: this.data.firstName,
+      lastName: this.data.lastName,
+      type: this.data.type.toUpperCase(),
+      state: this.data.state.toUpperCase(),
+      roomNumber: this.data.roomNumber,
+      initialDate: this.data.initialDate,
+      finalDate: this.data.finalDate
+    });
+  }
+
   checkRoomNumberExists(roomNumber: number): void {
     this.roomsApiService.getAll().subscribe(existingRooms => {
       this.roomNumberExists = existingRooms.some((room: RoomRequest) => room.roomNumber === roomNumber && room.id !== this.data.id);
@@ -135,12 +153,20 @@ export class RoomCreateDialogComponent implements OnInit {
     this.roomsApiService.updateRoom(updatedRoom).pipe(
       catchError((error) => {
         console.error('Error occurred:', error);
+        this.snackBar.open('An error occurred while updating the room', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
         return of(null); // Return an Observable that completes without emitting any items
       })
     ).subscribe(response => {
       if (response) {
         console.log(response);
         this.dialogRef.close(response);
+        this.snackBar.open('Room updated successfully', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
       }
     });
   }
