@@ -6,9 +6,9 @@ export enum RoleUser {
 
 export function getRoleUserFromValue(value: string): RoleUser {
   switch (value) {
-    case 'EMPLOYEE':
+    case "EMPLOYEE":
       return RoleUser.EMPLOYEE;
-    case 'MANAGER':
+    case "MANAGER":
       return RoleUser.MANAGER;
     default:
       return RoleUser.NONE;

@@ -24,6 +24,10 @@ export class EmployeeApiService {
     {} as User // default value
   );
 
+  getCurrentUsername(): string {
+    return this.currentUser.value.email;
+  }
+
   getCurrentUser() {
     return this.currentUser.asObservable();
   }
@@ -41,6 +45,7 @@ export class EmployeeApiService {
           },
           error: (error) => {
             let errorBody = error.error;
+            console.log(errorBody);
             reject(errorBody.message);
           }
         })
@@ -49,8 +54,8 @@ export class EmployeeApiService {
 
   setLocalProfile(email: string) {
     this.fetchUser(email).then((user) => {
-      console.log(`User fetch with id ${user.id}`);
-      console.log(user);
+      // console.log(`User fetch with id ${user.id}`);
+      // console.log(user);
       this.currentUser.next(user);
     });
   }
@@ -72,31 +77,32 @@ export class EmployeeApiService {
 
   fetchUser(email: string): Promise<User> {
     return new Promise<User>((resolve, reject) => {
-      this.httpClient.get<EmployeeResponse>(`${this.basePath}/employees/?email=${email}`)
+      this.httpClient.get<EmployeeResponse>(`${this.basePath}/employees?email=${email}`)
         .subscribe({
           next: (response) => {
             this.fetchFetchProfile(response.profileId).then((profile) => {
               let user = new User();
               user.id = profile.userId;
               user.email = profile.email;
-              // get enum from response role, get enum by stirng
+              // console.log(response.role);
               user.rolUser = getRoleUserFromValue(response.role);
               // user.rolUser = response.rolUser;
-              user.fullName = profile.fullName;
+              user.names = profile.names;
+              user.lastName = profile.lastName;
               user.phoneNumber = profile.phoneNumber;
               user.salary = response.salary;
               user.initialDate = response.initiationContract;
-              user.finalDate = response.terminationContract;
-              this.currentUser.next(user);
+              user.finalDate = response.terminationContract
               resolve(user);
             }).catch((error) => {
-              console.log(error);
+              // console.log(error);
               reject(error);
             });
           },
           error: (error) => {
-            let errorBody = error.error;
-            reject(errorBody.message);
+            // let errorBody = error.error;
+            // console.log(error);
+            reject(error);
           }
         })
     });

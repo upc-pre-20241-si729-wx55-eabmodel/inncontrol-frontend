@@ -10,6 +10,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {CreateEmployeeRequest} from "../../../shared/model/create-employee.request";
 import {ContractInformationResource} from "../../../shared/model/contract-information.resource";
 import {EmployeeApiService} from "../../../shared/services/employee-api.service";
+import {SignInRequest} from "../../model/sign-in.request";
 
 @Component({
   selector: 'app-sign-up',
@@ -52,24 +53,29 @@ export class SignUpComponent {
       const roles = [];
       roles.push(RoleUser[this.rolUser].toUpperCase());
       const signUpRequest = new SignUpRequest(this.email, this.password, roles);
+      console.log(signUpRequest);
       this.authenticationService.signUp(signUpRequest).then(value => {
         if (value) {
-          const employeeRequest = new CreateEmployeeRequest(
-            this.lastName,
-            this.firstName,
-            this.phoneNumber,
-            this.email,
-            1200,
-            new ContractInformationResource(
-              new Date().toDateString(),
-              new Date().toDateString()
-            )
-          );
-          this.employeeApi.createEmployee(employeeRequest, this.email).then((value) => {
-            if (value) {
-              this.showMessage("Account creation successfully");
-            }
-
+          this.authenticationService.signIn(new SignInRequest(this.email, this.password)).then((value) => {
+            const employeeRequest = new CreateEmployeeRequest(
+              this.lastName,
+              this.firstName,
+              this.phoneNumber,
+              this.email,
+              1200,
+              new ContractInformationResource(
+                // not compatible with any of standard forms ("yyyy-MM-dd'T'HH:mm:ss.SSSX", "yyyy-MM-dd'T'HH:mm:ss.SSS", "EEE, dd MMM yyyy HH:mm:ss zzz", "yyyy-MM-dd"))
+                new Date().toISOString(),
+                new Date().toISOString()
+              ),
+              RoleUser[this.rolUser].toUpperCase()
+            );
+            this.employeeApi.createEmployee(employeeRequest, this.email).then((value) => {
+              if (value) {
+                this.showMessage("Account creation successfully");
+                this.employeeApi.setLocalProfile(this.email);
+              }
+            });
           });
         }
       });

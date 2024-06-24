@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'inventory', component: InventoryComponent, canActivate: [authenticationGuard]},
   {path: 'login', component: LoginComponent, canActivate: [loginGuard]},
   {path: 'register', component: SignUpComponent, canActivate: [loginGuard]},
-  {path: 'profile/:id', component: UserProfileContentComponent, canActivate: [authenticationGuard]},
+  {path: 'profile/:username', component: UserProfileContentComponent, canActivate: [authenticationGuard]},
   {path: '', redirectTo: 'control', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];

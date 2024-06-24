@@ -27,6 +27,7 @@ export class InventoryCardsComponent {
   clickedInventory(){
     if(!this.Menu){
       console.log('Inventory dialog card opened');
+      console.log(this.inventory + "Inventory card component");
       this.clicked.emit();
     }
 

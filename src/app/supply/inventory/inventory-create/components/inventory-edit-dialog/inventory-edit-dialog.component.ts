@@ -16,25 +16,19 @@ export class InventoryEditDialogComponent {
               @Inject(MAT_DIALOG_DATA) public data: Inventory) {
 
     this.InventoryItemFormGroup = this.formBuilder.group({
-      name: new FormControl(data.name,[
+      name: new FormControl(data.productTitle,[
         Validators.required
       ]),
-      description: new FormControl(data.description,[
+      description: new FormControl(data.productDescription,[
         Validators.required
       ]),
-      providerId: new FormControl(data.providerId,[
+
+      brandName: new FormControl(data.Brand,[
         Validators.required
       ]),
-      providerName: new FormControl(data.providerName,[
-        Validators.required
-      ]),
-      providerDesc: new FormControl(data.providerDesc,[
-        Validators.required
-      ]),
-      providerContact: new FormControl(data.providerContact,[
-        Validators.required
-      ]),
-      quantity: new FormControl(data.quantity,[
+
+
+      quantity: new FormControl(data.Quantity,[
         Validators.required
       ]),
     });
@@ -51,14 +45,11 @@ export class InventoryEditDialogComponent {
       const updateItem = {
         ...formValues,
         id: this.data.id,
-        name: formValues.name,
-        description: formValues.description,
-        providerId: formValues.providerId,
-        providerName: formValues.providerName,
-        providerDesc: formValues.providerDesc,
-        providerContact: formValues.providerContact,
-        quantity: formValues.quantity
-      };
+        productTitle: formValues.name,
+        productDescription: formValues.description,
+        Brand: formValues.brandName,
+        Quantity: formValues.quantity,
+      } as Inventory;
       this.dialogRef.close(updateItem);
     }
   }

@@ -7,7 +7,8 @@
 export class ProfileResponse {
   constructor(
     public id: number,
-    public fullName: string,
+    public names: string,
+    public lastName: string,
     public email: string,
     public phoneNumber: string,
     public userId: number

@@ -18,9 +18,18 @@ export const authenticationGuard: CanActivateFn = (route: ActivatedRouteSnapshot
             router.navigate(['/login']).then();
           } else {
             const routeToNavigateFullPath = route.routeConfig?.path;
-            console.log('routeToNavigateFullPath', routeToNavigateFullPath);
-            if (routeToNavigateFullPath) {
-              router.navigate([routeToNavigateFullPath]).then();
+            const routerParams = route.params;
+            let finalRouteWithParams = routeToNavigateFullPath!;
+            for (const key in routerParams) {
+              if (routerParams.hasOwnProperty(key)) {
+                // console.log('key', key);
+                // console.log('routerParams[key]', routerParams[key]);
+                finalRouteWithParams = finalRouteWithParams.replace(`:${key}`, routerParams[key]);
+              }
+            }
+            // console.log('routeToNavigateFullPath', finalRouteWithParams);
+            if (finalRouteWithParams) {
+              router.navigate([finalRouteWithParams]).then();
             } else {
               router.navigate(['/']).then();
             }

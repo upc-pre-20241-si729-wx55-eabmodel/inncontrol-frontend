@@ -33,6 +33,7 @@ export class SidebarContentComponent {
     );
 
   protected isLogged: boolean = false;
+  private currentUsername: string = '';
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -43,13 +44,16 @@ export class SidebarContentComponent {
     iamService.isSignedIn.subscribe(value => {
       this.isLogged = value;
     });
+    iamService.currentUserName.subscribe(value => {
+      this.currentUsername = value;
+    });
   }
 
   sendToRoute(toRoute: string) {
     if (toRoute === '/logout') {
       this.logout();
     } else if (toRoute.includes('profile')) {
-      this.router.navigate([toRoute, localStorage.getItem('id')]);
+      this.router.navigate([toRoute, this.currentUsername]);
     } else {
       this.router.navigate([toRoute]);
     }
