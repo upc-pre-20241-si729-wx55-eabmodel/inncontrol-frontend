@@ -14,12 +14,12 @@ import {AuthenticationService} from "../../../../../iam/services/authentication.
 export class SidebarContentComponent {
 
   items: PanelCard[] = [
-    new PanelCard('Profile', PanelCardIcon.Profile, '/profile'),
-    new PanelCard('Tasks', PanelCardIcon.Tasks, '/tasks'),
-    new PanelCard('Rooms', PanelCardIcon.Rooms, '/rooms'),
-    new PanelCard('Inventory', PanelCardIcon.Inventory, '/inventory'),
-    new PanelCard('Employees', PanelCardIcon.Employees, '/employees'),
-    new PanelCard('Messages', PanelCardIcon.Messages, '/messages'),
+    new PanelCard('Profile', PanelCardIcon.Profile, '/profile', false),
+    new PanelCard('Tasks', PanelCardIcon.Tasks, '/tasks', false),
+    new PanelCard('Rooms', PanelCardIcon.Rooms, '/rooms', false),
+    new PanelCard('Inventory', PanelCardIcon.Inventory, '/inventory', true),
+    new PanelCard('Employees', PanelCardIcon.Employees, '/employees', true),
+    new PanelCard('Messages', PanelCardIcon.Messages, '/messages', false),
   ]
 
   logout() {

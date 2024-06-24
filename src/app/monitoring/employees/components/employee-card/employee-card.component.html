@@ -7,8 +7,13 @@
       </mat-menu>
     </mat-card-title>
     <mat-card-subtitle class="subtitle-text">Role: {{ employee.role }}</mat-card-subtitle>
+    <mat-card-subtitle class="subtitle-text">Email: {{ this.email }}</mat-card-subtitle>
 
-    <button (click)="clickedMenu()" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_horiz</mat-icon></button>
+    <button
+      *ngIf="false"
+      (click)="clickedMenu()" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
   </mat-card-header>
   <mat-card-content class="EmployeeCardContent">
     <div class="subtitle">

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EmployeeResponse} from "../../../../shared/model/employee/employee.response";
 import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
 import {ProfileResponse} from "../../../../shared/model/employee/profile.response";
+import {Router} from "@angular/router";
 
 
 
@@ -17,8 +18,11 @@ export class EmployeeCardComponent implements OnInit {
   @Output() updated = new EventEmitter<void>();
   Menu: boolean = false;
   @Input() name: any;
+  @Input() email: any;
 
-  constructor(private employeeApiService: EmployeeApiService) {
+  constructor(private employeeApiService: EmployeeApiService,
+              private router: Router
+  ) {
   }
 
   delete() {
@@ -37,18 +41,20 @@ export class EmployeeCardComponent implements OnInit {
   clickedEmployee() {
     if (!this.Menu) {
       console.log('Clicked');
-      this.clicked.emit(this.employee);
+      // this.clicked.emit(this.employee);
+      // console.log('Employee:', this.employee);
+      this.router.navigate(['/profile', this.email]);
     }
   }
 
   ngOnInit(): void {
-    console.log('Employee:', this.employee);
+    // console.log('Employee:', this.employee);
     this.getEmployee(this.employee.id);
   }
 
   getEmployee(id: any) {
     this.employeeApiService.getEmployeeById(id).subscribe((employee) => {
-      console.log('Employee:', employee);
+      // console.log('Employee:', employee);
       this.employee = employee;
     });
   }

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
-import { EmployeeDialogComponent } from "../employee-dialog/employee-dialog.component";
-import {EmployeeResponse} from "../../../../shared/model/employee/employee.response";
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {EmployeeDialogComponent} from "../employee-dialog/employee-dialog.component";
 import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
 import {ProfileResponse} from "../../../../shared/model/employee/profile.response";
 
@@ -14,27 +13,25 @@ export class EmployeesContainerComponent implements OnInit {
   ResetEmployees: ProfileResponse[] = [];
   EmployeesArray: ProfileResponse[] = [];
   options: { title: string }[] = [
-    { title: 'Role' },
-    { title: 'Service Hours' },
-    { title: 'Reset' }
+    {title: 'Role'},
+    {title: 'Service Hours'},
+    {title: 'Reset'}
   ];
 
-  constructor(private employeeApiService: EmployeeApiService, private dialog: MatDialog) {}
-
-
-
+  constructor(private employeeApiService: EmployeeApiService, private dialog: MatDialog) {
+  }
 
   getEmployees() {
     this.employeeApiService.getAllProfiles().subscribe((employees) => {
-      this.EmployeesArray = employees;
-      this.ResetEmployees = employees;
-      console.log('Employees:', this.EmployeesArray);
+        this.EmployeesArray = employees;
+        this.ResetEmployees = employees;
+        // console.log('Employees:', this.EmployeesArray);
       },
-(error: any) => {
-      console.log('Error getting employees');
-      console.error(error);
-    }
-      );
+      (error: any) => {
+        console.log('Error getting employees');
+        console.error(error);
+      }
+    );
   }
 
   ngOnInit() {

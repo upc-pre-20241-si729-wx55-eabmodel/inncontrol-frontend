@@ -14,14 +14,14 @@ export class ControlPanelPageComponent {
 
   constructor() {
     this.controlPanelCards = [
-      new PanelCard('Tasks', PanelCardIcon.Tasks, '/tasks'),
-      new PanelCard('Rooms', PanelCardIcon.Rooms, '/rooms'),
-      new PanelCard('Inventory', PanelCardIcon.Inventory, '/inventory'),
+      new PanelCard('Tasks', PanelCardIcon.Tasks, '/tasks', false),
+      new PanelCard('Rooms', PanelCardIcon.Rooms, '/rooms', false),
+      new PanelCard('Inventory', PanelCardIcon.Inventory, '/inventory', false),
     ];
     this.managePanelCards = [
-      new PanelCard('Employees', PanelCardIcon.Employees, '/employees'),
-      new PanelCard('Messages', PanelCardIcon.Messages, '/messages'),
-      new PanelCard('Profile', PanelCardIcon.Profile, '/profile'),
+      new PanelCard('Employees', PanelCardIcon.Employees, '/employees', true),
+      new PanelCard('Messages', PanelCardIcon.Messages, '/messages', false),
+      new PanelCard('Profile', PanelCardIcon.Profile, '/profile', false),
     ];
   }
 }
