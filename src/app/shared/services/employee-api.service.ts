@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {CreateEmployeeRequest} from "../model/create-employee.request";
-import {User} from "../model/user";
+import {CreateEmployeeRequest} from "../model/employee/create-employee.request";
+import {User} from "../model/user/user";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject} from "rxjs";
-import {EmployeeResponse} from "../model/employee.response";
-import {ProfileResponse} from "../model/profile.response";
+import {EmployeeResponse} from "../model/employee/employee.response";
+import {ProfileResponse} from "../model/employee/profile.response";
 import {getRoleUserFromValue} from "../../iam/model/roll-user";
 
 @Injectable({

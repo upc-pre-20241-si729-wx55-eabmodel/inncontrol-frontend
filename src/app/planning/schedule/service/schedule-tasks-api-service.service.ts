@@ -10,6 +10,6 @@ export class ScheduleTasksApiServiceService extends BaseService<CalendarEvent>{
 
   constructor(private httpClient: HttpClient) {
     super(httpClient);
-    this.resourceEndpoint = 'calendar-events'; // the endpoint for the calendar events
+    this.resourceEndpoint = '/calendar-event'; // the endpoint for the calendar events
   }
 }

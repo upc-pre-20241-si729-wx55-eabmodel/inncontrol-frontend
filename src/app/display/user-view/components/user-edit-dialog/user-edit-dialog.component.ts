@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserApiServiceService } from '../../../../shared/services/user-api.service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {User} from "../../../../shared/model/user";
+import {User} from "../../../../shared/model/user/user";
 
 @Component({
   selector: 'app-user-edit-dialog',

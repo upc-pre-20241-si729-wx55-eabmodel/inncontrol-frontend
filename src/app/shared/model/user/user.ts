@@ -1,4 +1,4 @@
-import {RoleUser} from "../../iam/model/roll-user";
+import {RoleUser} from "../../../iam/model/roll-user";
 
 export class User {
   id:number;

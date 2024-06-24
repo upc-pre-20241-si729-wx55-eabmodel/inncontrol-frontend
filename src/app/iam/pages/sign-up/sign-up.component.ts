@@ -6,8 +6,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {SignUpRequest} from "../../model/sign-up.request";
 import {AuthenticationService} from "../../services/authentication.service";
-import {CreateEmployeeRequest} from "../../../shared/model/create-employee.request";
-import {ContractInformationResource} from "../../../shared/model/contract-information.resource";
+import {CreateEmployeeRequest} from "../../../shared/model/employee/create-employee.request";
+import {ContractInformationResource} from "../../../shared/model/employee/contract-information.resource";
 import {EmployeeApiService} from "../../../shared/services/employee-api.service";
 import {SignInRequest} from "../../model/sign-in.request";
 

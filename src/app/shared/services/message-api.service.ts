@@ -3,8 +3,8 @@ import { environment } from "../../../environments/environment";
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { MessageResponse } from "../model/message.response";
-import { CreateMessageRequest } from "../model/create-message.request";
+import { MessageResponse } from "../model/message/message.response";
+import { CreateMessageRequest } from "../model/employee/create-message.request";
 
 @Injectable({
   providedIn: 'root'

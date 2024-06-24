@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { EmployeeDialogComponent } from "../employee-dialog/employee-dialog.component";
-import {EmployeeResponse} from "../../../../shared/model/employee.response";
+import {EmployeeResponse} from "../../../../shared/model/employee/employee.response";
 import {EmployeeApiService} from "../../../../shared/services/employee-api.service";
 
 @Component({

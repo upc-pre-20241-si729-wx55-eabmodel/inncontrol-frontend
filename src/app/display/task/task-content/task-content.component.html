@@ -14,11 +14,11 @@
       <mat-icon>filter_list</mat-icon>
     </button>
     <mat-menu #filterMenu="matMenu">
-      <button mat-menu-item (click)="filterType = 'taskName'">Task Name</button>
+      <button mat-menu-item (click)="filterType = 'name'">Task Name</button>
       <button mat-menu-item (click)="filterType = 'description'">Description</button>
       <button mat-menu-item (click)="filterType = 'dueDate'">Due Date</button>
-      <button mat-menu-item (click)="filterType = 'status'">Status</button>
-      <button mat-menu-item (click)="filterType = 'employee'">Employee</button>
+      <button mat-menu-item (click)="filterType = 'pending'">Status</button>
+      <button mat-menu-item (click)="filterType = 'employeeEmail'">Employee</button>
     </mat-menu>
   </div>
   <div class="task-buttons">
