@@ -69,6 +69,7 @@ export class AuthenticationService {
             this.router.navigate(['/register']).then();
           }
         });
+      // xd
     });
   }
 
