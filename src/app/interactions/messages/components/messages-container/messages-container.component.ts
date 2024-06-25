@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
-import { Messages } from '../../model/messages.entity';
 import {MessageApiService} from "../../../../shared/services/message-api.service";
-import { UsermessageEntity } from "../../model/usermessage.entity";
 import { MessagesCardDialogComponent } from "../messages-card-dialog/messages-card-dialog.component";
 import { MessagesNewMessageDialogComponent } from "../messages-new-message-dialog/messages-new-message-dialog.component";
 import { UserApiServiceService } from "../../../../shared/services/user-api.service.service";

@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MessageResponse} from "../../../../shared/model/message/message.response";
 
 @Component({
   selector: 'app-messages-card-dialog',
@@ -12,11 +13,8 @@ export class MessagesCardDialogComponent {
   answer: string = 'Answer';
 
   constructor(public dialogRef: MatDialogRef<MessagesCardDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-
+    @Inject(MAT_DIALOG_DATA) public data: MessageResponse) {
     console.log('Data recieved: ', data);
-
-
   }
 
   onNoClick(): void {

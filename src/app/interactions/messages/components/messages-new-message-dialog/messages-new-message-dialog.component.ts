@@ -8,24 +8,23 @@ import {FormControl} from "@angular/forms";
   templateUrl: './messages-new-message-dialog.component.html',
   styleUrl: './messages-new-message-dialog.component.css'
 })
-export class MessagesNewMessageDialogComponent implements OnInit{
+export class MessagesNewMessageDialogComponent implements OnInit {
   controller = new FormControl();
   myControl = new FormControl<string | { id: number; name: string; }>('');
   answer: any;
   sender: string = '';
 
   usersNames: { id: number; name: string; }[] = [] as any;
-    filteredOptions: Observable<{ id: number; name: string; }[]> = new Observable<{ id: number; name: string; }[]>();
+  filteredOptions: Observable<{ id: number; name: string; }[]> = new Observable<{ id: number; name: string; }[]>();
   text: any;
   receiver: any;
   subject: any;
 
 
-
   constructor(public dialogRef: MatDialogRef<MessagesNewMessageDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
-            console.log('Data recieved: ', data);
-            console.log('Users Names:', this.usersNames);
+    console.log('Data recieved: ', data);
+    console.log('Users Names:', this.usersNames);
     data.users.forEach((name: any) => {
       this.usersNames.push({id: name.id, name: name.concatName()});
     });
@@ -54,11 +53,11 @@ export class MessagesNewMessageDialogComponent implements OnInit{
     );
   }
 
-  displayFn(user: {id: number, name: string}): string {
+  displayFn(user: { id: number, name: string }): string {
     return user && user.name ? user.name : '';
   }
 
-  private _filter(name: string):  {id: number, name: string}[] {
+  private _filter(name: string): { id: number, name: string }[] {
     const filterValue = name.toLowerCase();
 
     return this.usersNames.filter(option => option.name.toLowerCase().includes(filterValue));

@@ -1,9 +1,14 @@
 export class MessageResponse {
   constructor(
     public id: number,
-    public sender_id: number,
-    public receiver_id: number,
+    public senderId: number,
+    public receiverId: number,
     public message: string,
-    public created_at: string,
+    public createdAt: string,
+    public status: string,
   ) {}
+
+  getDateTime(): Date {
+    return new Date(this.createdAt);
+  }
 }

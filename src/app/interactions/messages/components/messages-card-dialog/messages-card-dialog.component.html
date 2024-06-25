@@ -1,15 +1,15 @@
 
 <div class="cardContain">
 <div class="header">
-  <h2 class="title">{{data.subject}}</h2>
+  <h2 class="title">{{data.id}}</h2>
   <mat-divider></mat-divider>
-  <p >from: {{data.sender}}<br>to: {{data.receiver}}</p>
+  <p >from: {{data.senderId}}<br>to: {{data.receiverId}}</p>
 </div>
   <section class="text">
-    <p>{{ data.text }}</p>
+    <p>{{ data.message }}</p>
 </section>
 
-   <p class="header"> sent: {{data.date | date: "short" }}</p>
+   <p class="header"> sent: {{data.getDateTime() | date: "short" }}</p>
     <mat-divider></mat-divider>
     <div class="buttons">
       <mat-dialog-actions>
