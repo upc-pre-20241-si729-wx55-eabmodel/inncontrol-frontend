@@ -42,7 +42,8 @@
       </div>
 
       <!--      if has pending notifications-->
-      <app-notifications-badge *ngIf="isLogged"/>
+      <app-notifications-badge *ngIf="false"/>
+<!--      <app-notifications-badge *ngIf="isLogged"/>-->
       <br>
       <div *ngIf="isLogged">
         <button mat-icon-button  (click)="sendToRoute('/logout')" *ngIf="!(isHandset$ | async)">
